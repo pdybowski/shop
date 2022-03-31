@@ -1,9 +1,15 @@
 import React from 'react';
-import './App.css';
-import Item from './components/item/Item';
+import { BrowserRouter } from 'react-router-dom';
+import Views from './Views';
 
 function App() {
-    return <div className="App"></div>;
+    return (
+        <>
+            <BrowserRouter>
+                <Views />
+            </BrowserRouter>
+        </>
+    );
 }
 
 export default App;

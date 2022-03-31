@@ -1,6 +1,7 @@
 import React from 'react';
-import './item.css';
 // import { Link } from 'react-router-dom';
+
+import './style.css';
 
 export type ItemType = {
     title: string;
@@ -9,7 +10,7 @@ export type ItemType = {
     id?: string;
 };
 
-const Item = ({ imageUrl, title, price, id }: ItemType): JSX.Element => {
+export const Item = ({ imageUrl, title, price, id }: ItemType): JSX.Element => {
     return (
         <div className="block">
             <div className="block_element">
@@ -33,5 +34,3 @@ const Item = ({ imageUrl, title, price, id }: ItemType): JSX.Element => {
         </div>
     );
 };
-
-export default Item;
