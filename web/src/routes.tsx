@@ -1,7 +1,7 @@
 import { MainPage } from './pages/mainPage';
 
 export const ROUTES_PATHS = {
-    MAIN_PAGE: '/shop',
+    MAIN_PAGE: '/',
 };
 
 export const routes = [

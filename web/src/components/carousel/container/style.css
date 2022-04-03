@@ -1,0 +1,30 @@
+.container {
+    background: url('../background_image/gym3.jpg') no-repeat center center fixed;
+    /* background: no-repeat center center fixed; */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 320px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* animation-name: fade;
+    animation-duration: 1.5s; */
+}
+
+/* .container {
+    background-image: url('../background_image/alessio-soggetti-gdE-5Oui1Y0-unsplash.jpg');
+    animation-name: fade;
+    animation-duration: 1.5s;
+} */
+
+/* @keyframes fade {
+    from {
+        opacity: 0.4;
+    }
+    to {
+        opacity: 1;
+    }
+} */
