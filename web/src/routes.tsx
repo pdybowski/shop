@@ -1,12 +1,12 @@
 import { MainPage } from './pages/mainPage';
 
-export const ROUTES_PATHS = {
-    MAIN_PAGE: '/shop',
-};
+export enum RoutesPaths {
+    MainPage = '/',
+}
 
 export const routes = [
     {
-        path: ROUTES_PATHS.MAIN_PAGE,
+        path: RoutesPaths.MainPage,
         element: <MainPage />,
         key: 'main-page',
     },
