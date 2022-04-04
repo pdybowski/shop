@@ -1,11 +1,9 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import { Navigation } from './components';
 import Views from './Views';
-import { Navigation } from './components/navigation';
 
 function App() {
-
-
     return (
         <>
             <BrowserRouter>
