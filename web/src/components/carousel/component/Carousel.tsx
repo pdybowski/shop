@@ -3,13 +3,14 @@ import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from 'react-icons
 import './style.css';
 
 interface Props {
-    images: Required<{ image: string }[]>;
+    children: Required<{ item: string }[]>;
     interval?: number;
 }
 
-const Carousel = ({ images, interval }: Props) => {
+const Carousel = (props: Props) => {
+    const { children, interval } = props;
     const [count, setCount] = useState(0);
-    const length = images.length;
+    const length = children.length;
 
     const next = () => {
         setCount(count === length - 1 ? 0 : count + 1);
@@ -24,18 +25,18 @@ const Carousel = ({ images, interval }: Props) => {
         return () => clearInterval(setImage);
     });
 
+    const items = children.map((child, index) => {
+        return (
+            <div key={child.item}>
+                {index === count && <img src={child.item} alt="slide" className="tile fade" />}
+            </div>
+        );
+    });
+
     return (
-        <div>
+        <div className="container">
             <IoIosArrowDropleftCircle className="leftArrow" onClick={previous} />
-            {images.map((slide: any, index: any) => {
-                return (
-                    <div key={index}>
-                        {index === count && (
-                            <img src={slide.image} alt="slide" className="tile fade" />
-                        )}
-                    </div>
-                );
-            })}
+            {items}
             <IoIosArrowDroprightCircle className="rightArrow" onClick={next} />
         </div>
     );

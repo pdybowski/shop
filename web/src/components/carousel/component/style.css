@@ -1,3 +1,11 @@
+.container {
+    height: 320px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .tile {
     width: 540px;
     height: 320px;

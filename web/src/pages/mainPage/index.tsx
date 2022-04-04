@@ -1,9 +1,7 @@
-import { CarouselContainer } from '../../components/carousel/container';
-
 export const MainPage = () => {
     return (
         <main>
-            <CarouselContainer />
+            <h1>Shop Main Page</h1>
         </main>
     );
 };
