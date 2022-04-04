@@ -72,7 +72,7 @@ const navigationLinks: Item[] = [
 export const Navigation = () => {
     return (
         <nav className="main-nav">
-            <ul className="submenu">
+            <ul>
                 {navigationLinks.map((menu: Item) => (
                     <NavItem key={menu.name} child={menu} level={1} />
                 ))}

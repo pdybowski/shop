@@ -26,15 +26,11 @@ const NavName = ({ child, level }: NavItemProps) => {
 
 const NavChildren = ({ child, level }: NavItemProps) => {
     return (
-        <>
-            {child.children && (
-                <ul className={`submenu-${level}`}>
-                    {child.children.map((submenu: Item) => (
-                        <NavItem key={submenu.name} child={submenu} level={level + 1} />
-                    ))}
-                </ul>
-            )}
-        </>
+        <ul className={`submenu submenu-${level}`}>
+            {child.children!.map((submenu: Item) => (
+                <NavItem key={submenu.name} child={submenu} level={level + 1} />
+            ))}
+        </ul>
     );
 };
 
@@ -42,7 +38,7 @@ export const NavItem = ({ child, level }: NavItemProps) => {
     return (
         <li key={child.name}>
             <NavName child={child} level={level} />
-            <NavChildren child={child} level={level} />
+            {child.children && <NavChildren child={child} level={level} />}
         </li>
     );
 };

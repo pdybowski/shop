@@ -31,22 +31,22 @@
     text-align: center;
 }
 
+.main-nav > ul > li {
+    position: relative;
+}
+
 .submenu > li {
     position: relative;
 }
 
-.submenu-1 > li {
-    position: relative;
-}
-
-.submenu > li:hover .submenu-1 {
+.main-nav > ul > li:hover > .submenu {
     display: block;
     position: absolute;
     width: 100%;
     z-index: 1;
 }
 
-.submenu-1 > li:hover .submenu-2 {
+.submenu > li:hover > .submenu {
     display: block;
     position: absolute;
     left: 100%;
