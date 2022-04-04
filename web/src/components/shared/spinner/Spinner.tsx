@@ -5,5 +5,5 @@ interface Props {
 }
 
 export const Spinner = (props: Props) => {
-    return <div className="spinner" style={props.style}></div>;
+    return <div className='spinner' style={props.style}/>;
 };
