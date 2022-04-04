@@ -1,5 +1,5 @@
 import React from 'react';
-import './productItem.css';
+import './style.css';
 
 export type ProductItemType = {
     title: string;
@@ -18,28 +18,28 @@ export const ProductItem = ({
 }: ProductItemType): JSX.Element => {
     return (
         <div className="item">
-            <div className="item_element">
-                <img className="item_element_image" src={url} alt={title}></img>
+            <div className="item__header">
+                <img className="item__header__image" src={url} alt={title}></img>
             </div>
-            <div className="item_footer">
-                <div className="item_footer_title">
+            <div className="item__body">
+                <div className="item__body__title">
                     <h4>{title}</h4>
                 </div>
-                <div className="item_footer_description">
+                <div className="item__body__description">
                     <p className="">{description}</p>
                 </div>
-                <div className="item_footer_price">
-                    <h6>{price}$</h6>
+                <div className="item__body__price">
+                    <h6>${price}</h6>
                 </div>
             </div>
             <hr />
-            <div className="item_buttons">
+            <div className="item__buttons">
                 {/* <Link to={`/products/${id}`}> */}
-                <button className="item_button" type="button">
+                <button className="item__button" type="button">
                     VIEW
                 </button>
                 {/* </Link> */}
-                <button className="item_button" type="button">
+                <button className="item__button" type="button">
                     ADD TO CART
                 </button>
             </div>
