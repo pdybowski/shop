@@ -1,0 +1,36 @@
+.carousel {
+    height: 320px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel__item {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    transition: all .8s ease-out;
+}
+
+.carousel__item--active {
+    visibility: visible;
+    z-index: 1;
+    opacity: 1;
+}
+
+.arrow__right {
+    position: absolute;
+    top: 50%;
+    right: 20rem;
+    font-size: 3rem;
+    color: rgb(88, 88, 88);
+}
+
+.arrow__left {
+    position: absolute;
+    top: 50%;
+    left: 20rem;
+    font-size: 3rem;
+    color: rgb(88, 88, 88);
+}

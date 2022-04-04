@@ -1,9 +1,13 @@
-import { MainPage } from './pages/mainPage';
-// import { ProductsPage } from './pages/productsPage/ProductsPage';
+import { MainPage } from './components/pages';
 
 export enum RoutesPaths {
     MainPage = '/',
-    ProductsPage = '/products/:type',
+    Sports = '/sports',
+    Woman = '/woman',
+    Man = '/man',
+    Child = '/child',
+    Bestsellers = '/bestsellers',
+    Brands = '/brands',
 }
 
 export const routes = [
@@ -12,9 +16,29 @@ export const routes = [
         element: <MainPage />,
         key: 'main-page',
     },
-    // {
-    //     path: RoutesPaths.ProductsPage,
-    //     element: <ProductsPage />,
-    //     key: 'products-page',
-    // },
+    {
+        path: RoutesPaths.Sports,
+        element: <></>,
+        key: 'sports',
+    },
+    {
+        path: RoutesPaths.Woman,
+        element: <></>,
+        key: 'woman',
+    },
+    {
+        path: RoutesPaths.Man,
+        element: <></>,
+        key: 'man',
+    },
+    {
+        path: RoutesPaths.Bestsellers,
+        element: <></>,
+        key: 'bestsellers',
+    },
+    {
+        path: RoutesPaths.Brands,
+        element: <></>,
+        key: 'brands',
+    },
 ];
