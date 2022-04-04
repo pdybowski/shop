@@ -1,2 +1,2 @@
-import Carousel from './carousel/component/Carousel';
-export { Carousel };
+export * from './carousel/Carousel';
+
