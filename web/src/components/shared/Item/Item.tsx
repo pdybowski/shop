@@ -5,16 +5,16 @@ import './style.css';
 
 export type ItemType = {
     title: string;
-    imageUrl?: string;
+    url?: string;
     price?: number;
     id?: string;
 };
 
-export const Item = ({ imageUrl, title, price, id }: ItemType): JSX.Element => {
+export const Item = ({ url, title, price, id }: ItemType): JSX.Element => {
     return (
         <div className="block">
             <div className="block_element">
-                <img className="block_element_image" src={imageUrl} alt={title}></img>
+                <img className="block_element_image" src={url} alt={title}></img>
             </div>
             <div className="block_element_footer">
                 <div className="block_element_title">
