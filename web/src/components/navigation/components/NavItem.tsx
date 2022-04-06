@@ -1,6 +1,6 @@
-import { RoutesPaths } from '../../../routes';
+import { RoutePaths } from '../../../routes';
 
-type Item = { name: string; link: RoutesPaths; children?: Item[] };
+type Item = { name: string; link: RoutePaths; children?: Item[] };
 
 interface NavItemProps {
     child: Item;

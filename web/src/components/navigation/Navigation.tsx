@@ -1,71 +1,71 @@
-import { RoutesPaths } from '../../routes';
+import { RoutePaths } from '../../routes';
 import { Item, NavItem } from './components';
 import './style.css';
 
 const navigationLinks: Item[] = [
     {
         name: 'Main Page',
-        link: RoutesPaths.MainPage,
+        link: RoutePaths.MainPage,
     },
     {
         name: 'Sports',
-        link: RoutesPaths.Sports,
+        link: RoutePaths.Sports,
         children: [
             {
                 name: 'Tennis',
-                link: RoutesPaths.MainPage,
+                link: RoutePaths.MainPage,
             },
             {
                 name: 'Football',
-                link: RoutesPaths.MainPage,
+                link: RoutePaths.MainPage,
             },
         ],
     },
     {
         name: 'Woman',
-        link: RoutesPaths.Woman,
+        link: RoutePaths.Woman,
         children: [
             {
                 name: 'Female clothing',
-                link: RoutesPaths.MainPage,
+                link: RoutePaths.MainPage,
                 children: [
                     {
                         name: 'Female jackets',
-                        link: RoutesPaths.MainPage,
+                        link: RoutePaths.MainPage,
                     },
                 ],
             },
             {
                 name: 'Female shoes',
-                link: RoutesPaths.MainPage,
+                link: RoutePaths.MainPage,
             },
         ],
     },
     {
         name: 'Man',
-        link: RoutesPaths.Man,
+        link: RoutePaths.Man,
         children: [
             {
                 name: "Men's clothing",
-                link: RoutesPaths.MainPage,
+                link: RoutePaths.MainPage,
             },
             {
                 name: "Men's shoes",
-                link: RoutesPaths.MainPage,
+                link: RoutePaths.MainPage,
             },
         ],
     },
     {
         name: 'Child',
-        link: RoutesPaths.Child,
+        link: RoutePaths.Child,
     },
     {
         name: 'Brands',
-        link: RoutesPaths.Brands,
+        link: RoutePaths.Brands,
     },
     {
         name: 'Bestsellers',
-        link: RoutesPaths.Bestsellers,
+        link: RoutePaths.Bestsellers,
     },
 ];
 

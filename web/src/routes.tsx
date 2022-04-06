@@ -1,7 +1,7 @@
 import { MainPage } from './components/pages';
 import { ProductsPage } from './pages/productsPage/ProductsPage';
 
-export enum RoutesPaths {
+export enum RoutePaths {
     MainPage = '/',
     Sports = '/sports',
     Woman = '/woman',
@@ -23,32 +23,32 @@ export enum RoutesPaths {
 
 export const routes = [
     {
-        path: RoutesPaths.MainPage,
+        path: RoutePaths.MainPage,
         element: <MainPage />,
         key: 'main-page',
     },
     {
-        path: RoutesPaths.Sports,
+        path: RoutePaths.Sports,
         element: <ProductsPage header="Sports" />,
         key: 'sports',
     },
     {
-        path: RoutesPaths.Woman,
+        path: RoutePaths.Woman,
         element: <></>,
         key: 'woman',
     },
     {
-        path: RoutesPaths.Man,
+        path: RoutePaths.Man,
         element: <></>,
         key: 'man',
     },
     {
-        path: RoutesPaths.Bestsellers,
+        path: RoutePaths.Bestsellers,
         element: <></>,
         key: 'bestsellers',
     },
     {
-        path: RoutesPaths.Brands,
+        path: RoutePaths.Brands,
         element: <></>,
         key: 'brands',
     },
