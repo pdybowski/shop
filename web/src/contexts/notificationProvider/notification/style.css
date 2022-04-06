@@ -9,6 +9,10 @@
     padding: 8px 15px
 }
 
+.notification__title {
+    margin: 0px;
+}
+
 .notification--info {
     color: rgb(0, 0, 255);
     border-color: rgb(0, 0, 255);

@@ -35,7 +35,7 @@ export const Notification = ({ mode, title, message, deleteTimeout = 5000 }: not
     };
 
     useEffect(() => {
-        // startTimer();
+        startTimer();
     }, []);
 
     return (
@@ -44,7 +44,7 @@ export const Notification = ({ mode, title, message, deleteTimeout = 5000 }: not
             className={`notification notification--${mode}`}
             onClick={handleNotificationClick}
         >
-            <h4>{title}</h4>
+            <h4 className="notification__title">{title}</h4>
             <div>{message}</div>
             <span className="notification__icon">
                 {mode === NotificationMode.DANGER && 'D'}
