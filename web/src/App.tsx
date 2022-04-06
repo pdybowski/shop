@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Navigation } from './components';
-import { NotificationProvider } from './context';
+import { NotificationProvider } from './contexts';
 import Views from './Views';
 
 function App() {
