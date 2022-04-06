@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Navigation } from './components';
+import { NotificationProvider } from './context';
 import Views from './Views';
 
 function App() {
@@ -8,7 +9,9 @@ function App() {
         <>
             <BrowserRouter>
                 <Navigation />
-                <Views />
+                <NotificationProvider>
+                    <Views />
+                </NotificationProvider>
             </BrowserRouter>
         </>
     );
