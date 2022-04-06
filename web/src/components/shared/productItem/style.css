@@ -14,7 +14,8 @@
 }
 
 .item__header__image{
-    width: 350px;
+    width: 300px;
+    height: auto;
     margin-top: 30px; 
  }
 
@@ -59,6 +60,7 @@
  }
 
 .item__button {
+    width: 110px;
     background-color: black;
     color: white;
     opacity: 0.7;
