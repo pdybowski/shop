@@ -3,8 +3,12 @@ import { BrowserRouter } from 'react-router-dom';
 import { Navigation } from './components';
 import { NotificationProvider } from './contexts';
 import Views from './Views';
-import { pageResourceContextData, PageResourceProvider } from './contexts/pageResourceProvider/PageResourceProvider';
+import {
+    pageResourceContextData,
+    PageResourceProvider,
+} from './contexts/pageResourceProvider/PageResourceProvider';
 import { Spinner } from './components/shared';
+import CartProvider from './contexts/cartProvider/CartProvider';
 
 function App() {
     const [isLoading, setIsLoading] = useState(true);
@@ -33,7 +37,9 @@ function App() {
                     ) : (
                         // @ts-ignore
                         <PageResourceProvider value={{ pageResource }}>
-                            <Views />
+                            <CartProvider>
+                                <Views />
+                            </CartProvider>
                         </PageResourceProvider>
                     )}
                 </NotificationProvider>
