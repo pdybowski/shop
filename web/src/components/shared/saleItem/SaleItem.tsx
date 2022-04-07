@@ -1,48 +1,43 @@
 import React from 'react';
+import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import './style.css';
+import { RoutePaths } from '../../../routes';
 
-export type ProductItemType = {
-    title: string;
+function showStars(star: number) {
+    let stars = [];
+
+    for (let i = 0; i < Math.floor(star); i++) {
+        stars.push(<AiFillStar />);
+    }
+    for (let i = 0; i < 5 - star; i++) {
+        stars.push(<AiOutlineStar />);
+    }
+
+    return <p>{stars}</p>;
+}
+
+type SaleItem = {
     url?: string;
-    description?: string;
-    price?: number;
-    id?: string;
+    title: string;
+    price: number;
+    id?: number;
+    stars?: number;
+    link?: RoutePaths;
 };
 
-export const ProductItem = ({
-                                url,
-                                title,
-                                description,
-                                price,
-                                id,
-                            }: ProductItemType): JSX.Element => {
+export const SaleItem = ({ url, title, price, id, stars, link }: SaleItem): JSX.Element => {
     return (
-        <div className="item">
-            <div className="item__header">
-                <img className="item__header__image" src={url} alt={title}></img>
-            </div>
-            <div className="item__body">
-                <div className="item__body__title">
-                    <h4>{title}</h4>
+        <div>
+            <a className="item" href={link}>
+                <img className="item__image" src={url} alt={title} />
+                <div className="item__price">
+                    <p>{price} zł</p>
                 </div>
-                <div className="item__body__description">
-                    <p className="">{description}</p>
+                <div className="item__title">
+                    <p>{title}</p>
                 </div>
-                <div className="item__body__price">
-                    <h6>${price}</h6>
-                </div>
-            </div>
-            <hr />
-            <div className="item__buttons">
-                {/* <Link to={`/products/${id}`}> */}
-                <button className="item__button" type="button">
-                    VIEW
-                </button>
-                {/* </Link> */}
-                <button className="item__button" type="button">
-                    ADD TO CART
-                </button>
-            </div>
+                {stars && <div className="item__stars">{showStars(stars)}</div>}
+            </a>
         </div>
     );
 };
