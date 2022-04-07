@@ -1,4 +1,4 @@
-import { MainPage } from './components/pages';
+import { MainPage } from './components';
 
 export enum RoutePaths {
     MainPage = '/',
