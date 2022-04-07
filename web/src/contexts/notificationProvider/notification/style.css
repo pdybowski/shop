@@ -1,0 +1,45 @@
+.notification {
+    position: relative;
+    border-radius: 7px;
+    border: 2px solid;
+    width: 300px;
+    max-width: 300px;
+    margin-bottom: 7px;
+    color: black;
+    padding: 8px 15px
+}
+
+.notification__title {
+    margin: 0px;
+}
+
+.notification--info {
+    color: rgb(0, 0, 255);
+    border-color: rgb(0, 0, 255);
+    background-color: rgb(225 225 255);
+}
+
+.notification--warn {
+    color: rgb(255, 166, 0);
+    border-color: rgb(255, 166, 0);
+    background-color: rgb(255 235 200);
+}
+
+.notification--danger {
+    color: rgb(255, 0, 0);
+    border-color: rgb(255, 0, 0);
+    background-color: rgb(255 225 225);
+}
+
+.notification--success {
+    color: rgb(0, 128, 0);
+    border-color: rgb(0, 128, 0);
+    background-color: rgb(225 255 225);
+}
+
+.notification__icon {
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    font-size: 1em;
+}
