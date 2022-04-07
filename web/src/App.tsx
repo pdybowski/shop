@@ -1,14 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { Navigation } from './components';
-import { NotificationProvider } from './contexts';
-import Views from './Views';
-import { Spinner } from './components/shared';
-import CartProvider from './contexts/cartProvider/CartProvider';
+import { Navigation, Spinner } from './components';
 import {
+    NotificationProvider,
+    CartProvider,
     PageResourceContext,
     PageResourceProvider,
-} from './contexts/pageResourceProvider/PageResourceProvider';
+} from './contexts';
+import Views from './Views';
 
 function App() {
     const [isLoading, setIsLoading] = useState(true);

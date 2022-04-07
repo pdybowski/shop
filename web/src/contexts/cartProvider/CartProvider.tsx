@@ -1,5 +1,5 @@
 import React, { createContext, useState } from 'react';
-import { ProductItemType } from '../../components/shared/productItem/ProductItem';
+import { ProductItemType } from '../../components';
 
 export interface cartContextData {
     cart: ProductItemType[];
@@ -17,7 +17,7 @@ interface providerProps {
 
 export const CartContext = createContext<cartContextData>(contextDefaultValues);
 
-const CartProvider = ({ children }: providerProps) => {
+export const CartProvider = ({ children }: providerProps) => {
     const [cart, setCart] = useState<ProductItemType[]>(contextDefaultValues.cart);
 
     const addItem = (newItem: ProductItemType) => {
@@ -26,5 +26,3 @@ const CartProvider = ({ children }: providerProps) => {
 
     return <CartContext.Provider value={{ cart, addItem }}>{children}</CartContext.Provider>;
 };
-
-export default CartProvider;
