@@ -19,7 +19,7 @@ export const ProductItem = ({
     return (
         <div className="item">
             <div className="item__header">
-                <img className="item__header__image" src={url} alt={title}></img>
+                <img className="item__header__image" src={url} alt={title} />
             </div>
             <div className="item__body">
                 <div className="item__body__title">
