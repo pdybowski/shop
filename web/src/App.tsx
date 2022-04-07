@@ -1,23 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Navigation } from './components';
 import { NotificationProvider } from './contexts';
 import Views from './Views';
-import {
-    pageResourceContextData,
-    PageResourceProvider,
-} from './contexts/pageResourceProvider/PageResourceProvider';
 import { Spinner } from './components/shared';
 import CartProvider from './contexts/cartProvider/CartProvider';
+import {
+    PageResourceContext,
+    PageResourceProvider,
+} from './contexts/pageResourceProvider/PageResourceProvider';
 
 function App() {
     const [isLoading, setIsLoading] = useState(true);
-    const [pageResource, setPageResource] = useState<pageResourceContextData>({});
 
     const fetchData = async () => {
+        const { pageResource, addPageResource } = useContext(PageResourceContext);
+
         try {
             // TO DO
-            setPageResource({});
+            addPageResource([]);
         } finally {
             setIsLoading(false);
         }
@@ -35,8 +36,7 @@ function App() {
                     {isLoading ? (
                         <Spinner style={{}} />
                     ) : (
-                        // @ts-ignore
-                        <PageResourceProvider value={{ pageResource }}>
+                        <PageResourceProvider>
                             <CartProvider>
                                 <Views />
                             </CartProvider>
