@@ -4,7 +4,7 @@ import './style.css';
 import { RoutePaths } from '../../../routes';
 
 function showStars(star: number) {
-    let stars = [];
+    const stars = [];
 
     for (let i = 0; i < Math.floor(star); i++) {
         stars.push(<AiFillStar />);
@@ -16,16 +16,16 @@ function showStars(star: number) {
     return <p>{stars}</p>;
 }
 
-type SaleItem = {
+interface saleItemProps {
     url?: string;
     title: string;
     price: number;
     id?: number;
     stars?: number;
     link?: RoutePaths;
-};
+}
 
-export const SaleItem = ({ url, title, price, id, stars, link }: SaleItem): JSX.Element => {
+export const SaleItem = ({ url, title, price, id, stars, link }: saleItemProps) => {
     return (
         <div>
             <a className="item" href={link}>
