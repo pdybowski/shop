@@ -1,22 +1,41 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Navigation } from './components';
 import { NotificationProvider } from './contexts';
 import Views from './Views';
-import { AppProvider } from './contexts/apiContext';
+import { apiContextData, ApiProvider } from './contexts/apiProvider/ApiProvider';
+import { Spinner } from './components/shared';
 
 function App() {
-    const [pageResource, setPageResource] = useState({
-    });
+    const [isLoading, setIsLoading] = useState(true);
+    const [pageResource, setPageResource] = useState<apiContextData>({});
+
+    const fetchData = async () => {
+        try {
+            // TO DO
+            setPageResource({});
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
 
     return (
         <>
             <BrowserRouter>
                 <Navigation />
                 <NotificationProvider>
-                    <AppProvider value={{ pageResource }}>
-                        <Views />
-                    </AppProvider>
+                    {isLoading ? (
+                        <Spinner style={{}} />
+                    ) : (
+                        // @ts-ignore
+                        <ApiProvider value={{ pageResource }}>
+                            <Views />
+                        </ApiProvider>
+                    )}
                 </NotificationProvider>
             </BrowserRouter>
         </>
