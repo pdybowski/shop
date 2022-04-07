@@ -1,12 +1,19 @@
 import { useState, useEffect } from 'react';
 
-interface TypingProps {
+interface typingProps {
     staticText?: string;
     typedWords: Required<string[]>;
     intervalTime?: number;
+    style?: React.CSSProperties;
+    className?: string;
 }
-const Typing = (props: TypingProps) => {
-    const { staticText = '', typedWords, intervalTime = 130 } = props;
+const Typing = ({
+    staticText = '',
+    typedWords,
+    intervalTime = 130,
+    style,
+    className,
+}: typingProps) => {
     const [index, setIndex] = useState(0);
     const [subIndex, setSubIndex] = useState(0);
     const [blink, setBlink] = useState(true);
@@ -22,8 +29,7 @@ const Typing = (props: TypingProps) => {
             index !== typedWords.length - 1 &&
             !reverse
         ) {
-            setReverse(true);
-            return;
+            return setReverse(true);
         }
 
         if (subIndex === 0 && reverse) {
@@ -48,9 +54,10 @@ const Typing = (props: TypingProps) => {
 
     return (
         <>
-            <div>{`${staticText} ${typedWords[index].substring(0, subIndex)}${
-                blink ? '|' : ' '
-            }`}</div>
+            <div style={style} className={className}>{`${staticText} ${typedWords[index].substring(
+                0,
+                subIndex
+            )}${blink ? '|' : ' '}`}</div>
         </>
     );
 };
