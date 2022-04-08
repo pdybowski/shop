@@ -4,7 +4,7 @@ import logger from '../utils/logger'
 
 
 async function dbConnect() {
-    const dbUri:string = process.env.DBPATH_TEST!
+    const dbUri: string = process.env.DBPATH_TEST!
     try {
         await mongoose.connect(dbUri)
         logger.info("DB Connected")
@@ -12,7 +12,6 @@ async function dbConnect() {
         logger.error("Could not conenct to db")
         process.exit(1)
     }
-
 }
 
 

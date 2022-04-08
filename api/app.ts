@@ -2,7 +2,7 @@ import express from 'express'
 import 'dotenv/config'
 import dbConnect from './startup/dbConnect'
 import logger from './utils/logger'
-import routes from './routes/product.router'
+import { routes } from './startup/routes'
 
 
 const port: string = process.env.PORT!

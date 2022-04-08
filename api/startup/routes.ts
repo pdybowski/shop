@@ -3,7 +3,7 @@ import express, {Request, Response, NextFunction} from 'express'
 import productRouter from '../routes/product.router'
 
 
-function routes(app: express.Express) {
+export function routes(app: express.Express) {
     app.use(cors())
     app.use(express.json());
     app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
@@ -15,5 +15,6 @@ function routes(app: express.Express) {
         }
         next();
       });
-    app.use('/api/product', productRouter )
+
+    app.use('/api/product', productRouter)
 }
