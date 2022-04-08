@@ -10,17 +10,16 @@ import {
 import Views from './Views';
 
 function App() {
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
 
     const fetchData = async () => {
-        const { pageResource, addPageResource } = useContext(PageResourceContext);
-
-        try {
-            // TO DO
-            addPageResource([]);
-        } finally {
-            setIsLoading(false);
-        }
+        // const { pageResource, addPageResource } = useContext(PageResourceContext);
+        // try {
+        //     // TO DO
+        //     addPageResource([]);
+        // } finally {
+        //     setIsLoading(false);
+        // }
     };
 
     useEffect(() => {

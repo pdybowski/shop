@@ -1,4 +1,4 @@
-import { MainPage } from './components';
+import { MainPage, ProductsPage } from './components/pages';
 
 export enum RoutePaths {
     MainPage = '/',
@@ -18,7 +18,7 @@ export const routes = [
     },
     {
         path: RoutePaths.Sports,
-        element: <></>,
+        element: <ProductsPage header="Sports" />,
         key: 'sports',
     },
     {
