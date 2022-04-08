@@ -1,5 +1,6 @@
 import { RoutePaths } from '../../routes';
 import { Item, NavItem } from './components';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
 import './style.css';
 
 const navigationLinks: Item[] = [
@@ -67,6 +68,10 @@ const navigationLinks: Item[] = [
         name: 'Bestsellers',
         link: RoutePaths.Bestsellers,
     },
+    {
+        name: <AiOutlineShoppingCart />,
+        link: RoutePaths.Cart,
+    },
 ];
 
 export const Navigation = () => {
@@ -74,7 +79,7 @@ export const Navigation = () => {
         <nav className="main-nav">
             <ul>
                 {navigationLinks.map((menu: Item) => (
-                    <NavItem key={menu.name} child={menu} level={1} />
+                    <NavItem child={menu} level={1} />
                 ))}
             </ul>
         </nav>

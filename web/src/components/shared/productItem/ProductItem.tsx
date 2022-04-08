@@ -7,6 +7,7 @@ export type ProductItemType = {
     description?: string;
     price?: number;
     id?: string;
+    stars?: number;
 };
 
 export const ProductItem = ({

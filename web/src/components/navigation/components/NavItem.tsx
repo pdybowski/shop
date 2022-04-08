@@ -1,6 +1,6 @@
 import { RoutePaths } from '../../../routes';
 
-type Item = { name: string; link: RoutePaths; children?: Item[] };
+type Item = { name: string | JSX.Element; link: RoutePaths; children?: Item[] };
 
 interface NavItemProps {
     child: Item;
@@ -28,7 +28,7 @@ const NavChildren = ({ child, level }: NavItemProps) => {
     return (
         <ul className={`submenu submenu-${level}`}>
             {child.children!.map((submenu: Item) => (
-                <NavItem key={submenu.name} child={submenu} level={level + 1} />
+                <NavItem child={submenu} level={level + 1} />
             ))}
         </ul>
     );
@@ -36,7 +36,7 @@ const NavChildren = ({ child, level }: NavItemProps) => {
 
 export const NavItem = ({ child, level }: NavItemProps) => {
     return (
-        <li key={child.name}>
+        <li>
             <NavName child={child} level={level} />
             {child.children && <NavChildren child={child} level={level} />}
         </li>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import './style.css';
-import { RoutePaths } from '../../../routes';
+import { ProductItemType } from '../productItem/ProductItem';
 
 function showStars(star: number) {
     const stars = [];
@@ -16,19 +16,10 @@ function showStars(star: number) {
     return <p>{stars}</p>;
 }
 
-interface saleItemProps {
-    url?: string;
-    title: string;
-    price: number;
-    id?: number;
-    stars?: number;
-    link?: RoutePaths;
-}
-
-export const SaleItem = ({ url, title, price, id, stars, link }: saleItemProps) => {
+export const SaleItem = ({ url, title, price, id, stars }: ProductItemType) => {
     return (
         <div>
-            <a className="item" href={link}>
+            <a className="item" href={''}>
                 <img className="item__image" src={url} alt={title} />
                 <div className="item__price">
                     <p>{price} zł</p>
