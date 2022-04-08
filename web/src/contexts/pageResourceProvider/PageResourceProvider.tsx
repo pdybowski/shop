@@ -1,9 +1,9 @@
 import React, { createContext, useState } from 'react';
-import { ProductItemType } from '../../components';
+import { Product } from '../../interfaces/product';
 
 export interface pageResourceContextData {
-    pageResource: ProductItemType[];
-    addPageResource: (value: ProductItemType[]) => void;
+    pageResource: Product[];
+    addPageResource: (value: Product[]) => void;
 }
 
 const contextDefaultValues: pageResourceContextData = {
@@ -18,11 +18,9 @@ interface providerProps {
 export const PageResourceContext = createContext<pageResourceContextData>(contextDefaultValues);
 
 export const PageResourceProvider = ({ children }: providerProps) => {
-    const [pageResource, setPageResource] = useState<ProductItemType[]>(
-        contextDefaultValues.pageResource
-    );
+    const [pageResource, setPageResource] = useState<Product[]>(contextDefaultValues.pageResource);
 
-    const addPageResource = (data: ProductItemType[]) => {
+    const addPageResource = (data: Product[]) => {
         setPageResource(data);
     };
 
