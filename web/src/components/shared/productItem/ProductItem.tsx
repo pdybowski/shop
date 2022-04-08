@@ -1,13 +1,12 @@
 import React from 'react';
-import { ReadonlyProductArray } from '../../../interfaces/product';
+import { Product } from '../../../interfaces';
 import './style.css';
 
-export const ProductItem = ({ img, name, description, price, id }: ReadonlyProductArray): JSX.Element => {
+export const ProductItem = ({ img, name, description, price, id }: Product): JSX.Element => {
     return (
         <div className="item">
             <div className="item__header">
                 <img className="item__header__image" src={img} alt={name}></img>
-
             </div>
             <div className="item__body">
                 <div className="item__body__title">

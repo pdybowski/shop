@@ -1,7 +1,4 @@
-
-import { MainPage } from './components/pages';
-import { ProductsPage } from './components/pages/productsPage/ProductsPage';
-
+import { MainPage, ProductsPage } from './components/pages';
 
 export enum RoutePaths {
     MainPage = '/',
