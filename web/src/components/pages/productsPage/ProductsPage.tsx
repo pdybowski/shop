@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
-import { Product } from '../../../interfaces/product';
-import { ProductItem } from '../../shared/productItem/ProductItem';
-import { SearchInput } from '../../shared/searchInput/SearchInput';
+import { Product } from '../../../interfaces';
+import { ProductItem, SearchInput } from '../../shared';
 import './style.css';
 
-type ProductsPageType = {
-    header: string;
-};
 const products: Product[] = [
     {
         id: 'test',
@@ -32,12 +28,15 @@ const products: Product[] = [
     },
 ];
 
-export const ProductsPage = ({ header }: ProductsPageType): JSX.Element => {
+interface productsPageProps {
+    header: string;
+}
+
+export const ProductsPage = ({ header }: productsPageProps): JSX.Element => {
     const [filteredProducts, setFilteredProducts] = useState<Product[]>(products);
 
     const searchProduct = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = e.target;
-        debugger;
         const results: Product[] = products.filter(
             (product) =>
                 product.name.toLowerCase().includes(value.toLowerCase()) ||

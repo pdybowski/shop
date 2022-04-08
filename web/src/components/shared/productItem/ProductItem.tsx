@@ -1,5 +1,5 @@
 import React from 'react';
-import { Product } from '../../../interfaces/product';
+import { Product } from '../../../interfaces';
 import './style.css';
 
 export const ProductItem = ({ img, name, description, price, id }: Product): JSX.Element => {

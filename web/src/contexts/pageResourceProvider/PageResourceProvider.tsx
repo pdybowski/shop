@@ -1,5 +1,5 @@
 import React, { createContext, useState } from 'react';
-import { Product } from '../../interfaces/product';
+import { Product } from '../../interfaces';
 
 export interface pageResourceContextData {
     pageResource: Product[];
