@@ -3,8 +3,12 @@ import { Api } from '../api';
 import { ApiMethod } from "../interfaces";
 
 
-
-export const useFetch = (method: ApiMethod = ApiMethod.GET, url: string, requestBody?: any) => {
+interface useFetchProps {
+    url: string
+    method?: ApiMethod,
+    requestBody?: any
+}
+export const useFetch = ({ method = ApiMethod.GET, url, requestBody }: useFetchProps) => {
     const [data, setData] = useState<any>(null);
     const [error, setError] = useState<string>("");
     const [isLoading, setIsLoading] = useState(false);

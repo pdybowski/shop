@@ -1,5 +1,7 @@
+
 import { MainPage } from './components/pages';
 import { ProductsPage } from './components/pages/productsPage/ProductsPage';
+
 
 export enum RoutePaths {
     MainPage = '/',

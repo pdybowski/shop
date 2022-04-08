@@ -7,6 +7,7 @@ export const ProductItem = ({ img, name, description, price, id }: ReadonlyProdu
         <div className="item">
             <div className="item__header">
                 <img className="item__header__image" src={img} alt={name}></img>
+
             </div>
             <div className="item__body">
                 <div className="item__body__title">
