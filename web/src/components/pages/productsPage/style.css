@@ -3,18 +3,7 @@
     display: flex;
     justify-content: center;
     margin-top: 30px;
-}
-.products__page__search{
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 50px;
-}
-.products__page__search__input{
-    width: 150px;
-    height: 40px;
-    color: black;
-    border-radius: 15px;
-    border-color: #254441;
+    margin-bottom: 30px;
 }
 
 .products__page__items{

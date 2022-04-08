@@ -26,6 +26,17 @@ const products: Product[] = [
         productCategory: '',
         brand: '',
     },
+    {
+        id: 'test3',
+        name: 'Adidas Turbo',
+        description: 'Some description 777',
+        price: 185,
+        size: 'l',
+        img: 'https://www.eobuwie.com.pl/media/catalog/product/cache/image/650x650/0/0/0000209204049_01_rz.jpg',
+        productType: '',
+        productCategory: '',
+        brand: '',
+    },
 ];
 
 interface productsPageProps {
@@ -49,7 +60,7 @@ export const ProductsPage = ({ header }: productsPageProps): JSX.Element => {
     return (
         <div className="products__page">
             <h2 className="products__page__title">{header}</h2>
-            {/* <SearchInput onSearch={searchProduct} /> */}
+            <SearchInput onSearch={searchProduct} />
             <div className="products__page__items">
                 {filteredProducts.map((item) => {
                     return <ProductItem key={item.id} {...item} />;

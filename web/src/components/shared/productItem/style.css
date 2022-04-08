@@ -1,6 +1,6 @@
-.item{
+#ProductItem.item{
+    height: 500px;
     width: 350px;
-    height:500px;
     margin-bottom: 50px;
     margin-top: 50px;
     margin-left: 50px;
@@ -12,23 +12,23 @@
     box-shadow: 8px 8px 24px 0px rgba(25, 119, 25, 1);
 }
 
-.item__header{
+#ProductItem .item__header{
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.item__header__image{
+#ProductItem .item__header__image{
     width: 200px;
     height: auto;
     margin-top: 30px; 
  }
 
- .item__header__image:hover{
+ #ProductItem .item__header__image:hover{
     opacity: 0.8;
  }
 
- .item__body{
+ #ProductItem .item__body{
     width: 100%;
     height: 60px;
     display: flex;
@@ -36,21 +36,21 @@
     font-size: 18px; 
 } 
 
-.item__body__title{
+#ProductItem .item__body__title{
     margin: auto;
 }
 
-.item__body__description{
+#ProductItem .item__body__description{
     margin: auto;
 }
 
-.item__body__price{
+#ProductItem .item__body__price{
     margin: auto;
     color:green;
     font-weight: 500;
 }
 
-.item__buttons{
+#ProductItem .item__buttons{
     margin-top: 30px;
     min-width: 165px;
     width: auto;
@@ -68,7 +68,7 @@
     justify-content: center
  }
 
-.item__button {
+#ProductItem .item__button {
     width: 110px;
     margin: 10px 10px 10px 10px;
     background-color: green;
@@ -82,7 +82,7 @@
     cursor: pointer;
 }
 
-.item__button:hover {
+#ProductItem .item__button:hover {
     background-color: greenyellow;
     color: black;
     border: 1px solid black;

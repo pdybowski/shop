@@ -4,7 +4,7 @@ import './style.css';
 
 export const ProductItem = ({ img, name, description, price, id }: Product): JSX.Element => {
     return (
-        <div className="item">
+        <div id="ProductItem" className="item">
             <div className="item__header">
                 <img className="item__header__image" src={img} alt={name}></img>
             </div>
