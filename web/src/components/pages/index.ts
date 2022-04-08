@@ -1,2 +1,2 @@
-export * from './MainPage/MainPage'
+export * from './mainPage/MainPage'
 export * from './productsPage/ProductsPage'

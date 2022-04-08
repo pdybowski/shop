@@ -5,7 +5,7 @@ import './style.css';
 
 const products: Product[] = [
     {
-        id: 'test',
+        _id: 'test',
         name: 'Adidas 2000',
         description: 'Some description',
         price: 100,
@@ -16,7 +16,7 @@ const products: Product[] = [
         brand: '',
     },
     {
-        id: 'test2',
+        _id: 'test2',
         name: 'Adidas',
         description: 'Some description 5e00',
         price: 125,
@@ -27,7 +27,7 @@ const products: Product[] = [
         brand: '',
     },
     {
-        id: 'test3',
+        _id: 'test3',
         name: 'Adidas Turbo',
         description: 'Some description 777',
         price: 185,
@@ -63,7 +63,7 @@ export const ProductsPage = ({ header }: productsPageProps): JSX.Element => {
             <SearchInput onSearch={searchProduct} />
             <div className="products__page__items">
                 {filteredProducts.map((item) => {
-                    return <ProductItem key={item.id} {...item} />;
+                    return <ProductItem key={item._id} {...item} />;
                 })}
             </div>
         </div>
