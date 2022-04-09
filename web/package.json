@@ -19,7 +19,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set REACT_APP_API_URL=production && react-scripts start",
     "local": "set REACT_APP_API_URL=local && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

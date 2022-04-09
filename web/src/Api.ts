@@ -2,7 +2,7 @@ import axios from 'axios';
 import { ApiMethod } from './interfaces';
 
 export class Api {
-    private readonly BASE_URL = process.env.REACT_APP_API_URL?.trim() === 'local' ? 'http://localhost:3002/api/' : '';
+    private readonly BASE_URL = process.env.REACT_APP_API_URL?.trim() === 'local' ? 'http://localhost:3002/api/' : 'https://shop-coders-camp.herokuapp.com/api/';
 
     constructor() {}
 
