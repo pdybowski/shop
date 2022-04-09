@@ -4,7 +4,7 @@ import './style.css';
 
 const navigationLinks: Item[] = [
     {
-        name: 'Main Page',
+        name: 'MainPage',
         link: RoutePaths.MainPage,
     },
     {
@@ -13,7 +13,7 @@ const navigationLinks: Item[] = [
         children: [
             {
                 name: 'Tennis',
-                link: RoutePaths.MainPage,
+                link: RoutePaths.Tennis,
             },
             {
                 name: 'Football',

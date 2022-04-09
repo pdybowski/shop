@@ -20,7 +20,6 @@ export enum PRODUCT_TYPES  {
     shirt = 'Shirt',
     pants = 'Pants',
     other = 'other'
-
 } 
 
 export const SHIRT_SIZE = ['XXS' , 'XS' , 'S' , 'M' , 'L' , 'XL' , 'XXL' ]

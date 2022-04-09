@@ -1,49 +1,44 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Router } from 'react-router-dom';
 import { Navigation, Spinner } from './components';
-import {
-    CartProvider,
-    NotificationContext,
-    PageResourceContext,
-    PageResourceProvider,
-} from './contexts';
+import { CartProvider, NotificationContext, PageResourceContext } from './contexts';
 import { useFetch } from './hooks';
 import { NotificationMode, Product } from './interfaces';
 import Views from './Views';
 
 function App() {
-    const { isLoading, data, error } = useFetch<Product[]>({ url: 'products' });
+    const { isLoading, data, error } = useFetch<Product[]>({ url: 'product' });
 
     const { addPageResource } = useContext(PageResourceContext);
     const { addNotification } = useContext(NotificationContext);
 
-    useEffect(() => {
-        if (!isLoading) {
-            if (error) {
-                return addNotification({
-                    mode: NotificationMode.DANGER,
-                    title: 'Products',
-                    message: error,
-                });
-            }
-            if (data) {
-                addPageResource(data);
-            }
+    function getData() {
+        if (error) {
+            return addNotification({
+                mode: NotificationMode.DANGER,
+                title: 'Products',
+                message: error,
+            });
         }
-    }, [isLoading]);
+        if (data) {
+            return addPageResource({ products: data });
+        }
+    }
+
+    useEffect(() => {
+        getData();
+    }, [data, error]);
 
     return (
         <>
             <BrowserRouter>
                 <Navigation />
                 {isLoading ? (
-                    <Spinner style={{}} />
+                    <Spinner />
                 ) : (
-                    <PageResourceProvider>
-                        <CartProvider>
-                            <Views />
-                        </CartProvider>
-                    </PageResourceProvider>
+                    <CartProvider>
+                        <Views />
+                    </CartProvider>
                 )}
             </BrowserRouter>
         </>

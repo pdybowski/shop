@@ -17,7 +17,7 @@ isCarousel (temporary)
 */
 import mongoose from "mongoose";
 // import { BRANDS,  PRODUCT_CATEGORIES, SHIRT_SIZE, PANTS_SIZE, SHOE_SIZE, SPORT_TYPES } from "../constants/constants";
-import { BRANDS,  PRODUCT_CATEGORIES, SPORT_TYPES } from "../constants/constants";
+import { BRANDS,  PRODUCT_CATEGORIES, PRODUCT_TYPES, SPORT_TYPES } from "../constants/constants";
 
 
 export interface IProductInput {
@@ -60,6 +60,11 @@ const productSchema = new mongoose.Schema({
     productCategory: {
         type: String,
         enum: PRODUCT_CATEGORIES,
+        required: true,
+    },
+    productType: {
+        type: String, 
+        enum: PRODUCT_TYPES,
         required: true,
     },
     img: {

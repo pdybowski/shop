@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { NotificationProvider } from './contexts';
+import { NotificationProvider, PageResourceProvider } from './contexts';
 
 ReactDOM.render(
     <React.StrictMode>
         <NotificationProvider>
-            <App />
+            <PageResourceProvider>
+                <App />
+            </PageResourceProvider>
         </NotificationProvider>
     </React.StrictMode>,
     document.getElementById('root')

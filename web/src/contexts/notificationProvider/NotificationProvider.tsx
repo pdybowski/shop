@@ -10,7 +10,11 @@ interface providerProps {
     children: Required<React.ReactChild>;
 }
 
-export const NotificationContext = createContext<contextData>({ addNotification: () => {} });
+const contextDefaultValues: contextData = {
+    addNotification: () => {},
+};
+
+export const NotificationContext = createContext<contextData>(contextDefaultValues);
 
 export const NotificationProvider = ({ children }: providerProps) => {
     const [notification, setNotification] = useState<notificationProps[]>([]);
