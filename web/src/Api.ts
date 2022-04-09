@@ -1,14 +1,13 @@
 import axios from 'axios';
 import { ApiMethod } from './interfaces';
 
-const BASE_URL = ""
-
 export class Api {
+    private readonly BASE_URL = process.env.REACT_APP_API_URL?.trim() === 'local' ? 'http://localhost:3002/api/' : 'https://shop-coders-camp.herokuapp.com/api/';
 
     constructor() {}
 
     instance = axios.create({
-        baseURL: BASE_URL,
+        baseURL: this.BASE_URL,
     });
 
     public async getData<T>(method: ApiMethod, url: string) {
@@ -17,7 +16,11 @@ export class Api {
             url: `${url}`,
         }
 
-        const { data }: { data : T } = await this.instance(params); // TODO adjust to our api
-        return data;
+        try {
+            const { data }: { data : T } = await this.instance(params); // TODO adjust to our api
+            return data;
+        } catch(error: any) {
+            throw new Error(error.message)
+        }
     }
 }

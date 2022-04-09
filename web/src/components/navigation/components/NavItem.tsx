@@ -1,18 +1,21 @@
 import { RoutePaths } from '../../../routes';
+import { Link } from 'react-router-dom';
 
 type Item = { name: string; link: RoutePaths; children?: Item[] };
 
 interface NavItemProps {
     child: Item;
     level: number;
+    parentUrl?: string;
 }
 
 const DownArrow = () => <span className="arrow">&#x25BC;</span>;
 const RightArrow = () => <span className="arrow">&#x25B6;</span>;
 
-const NavName = ({ child, level }: NavItemProps) => {
+const NavName = ({ child, level, parentUrl }: NavItemProps) => {
+    const url = parentUrl ? `${parentUrl}${child.link}` : child.link
     return (
-        <a href={child.link}>
+        <Link to={url}>
             {child.name}
             {child.children && (
                 <>
@@ -20,25 +23,25 @@ const NavName = ({ child, level }: NavItemProps) => {
                     {level > 1 && <RightArrow />}
                 </>
             )}
-        </a>
+        </Link>
     );
 };
 
-const NavChildren = ({ child, level }: NavItemProps) => {
+const NavChildren = ({ parentUrl, child, level }: NavItemProps) => {
     return (
         <ul className={`submenu submenu-${level}`}>
             {child.children!.map((submenu: Item) => (
-                <NavItem key={submenu.name} child={submenu} level={level + 1} />
+                <NavItem key={submenu.name} child={submenu} level={level + 1} parentUrl={parentUrl}/>
             ))}
         </ul>
     );
 };
 
-export const NavItem = ({ child, level }: NavItemProps) => {
+export const NavItem = ({ child, level, parentUrl }: NavItemProps) => {
     return (
         <li key={child.name}>
-            <NavName child={child} level={level} />
-            {child.children && <NavChildren child={child} level={level} />}
+            <NavName child={child} level={level} parentUrl={parentUrl}/>
+            {child.children && <NavChildren child={child} level={level} parentUrl={child.link || ""} />}
         </li>
     );
 };

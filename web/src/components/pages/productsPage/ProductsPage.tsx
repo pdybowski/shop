@@ -1,53 +1,25 @@
-import React, { useState } from 'react';
-import { Product } from '../../../interfaces';
+import React, { useContext, useEffect, useState } from 'react';
+import { PageResourceContext } from '../../../contexts';
+import { useFilterProducts } from '../../../hooks';
+import { Product, ProductCategory, ProductType, SportType } from '../../../interfaces';
 import { ProductItem, SearchInput } from '../../shared';
 import './style.css';
 
-const products: Product[] = [
-    {
-        _id: 'test',
-        name: 'Adidas 2000',
-        description: 'Some description',
-        price: 100,
-        size: 'x1',
-        img: 'https://www.eobuwie.com.pl/media/catalog/product/cache/image/650x650/0/0/0000201282847_01_fp.jpg',
-        productType: '',
-        productCategory: '',
-        brand: '',
-    },
-    {
-        _id: 'test2',
-        name: 'Adidas',
-        description: 'Some description 5e00',
-        price: 125,
-        size: 'l',
-        img: 'https://www.eobuwie.com.pl/media/catalog/product/cache/image/650x650/0/0/0000206708137_1__1.jpg',
-        productType: '',
-        productCategory: '',
-        brand: '',
-    },
-    {
-        _id: 'test3',
-        name: 'Adidas Turbo',
-        description: 'Some description 777',
-        price: 185,
-        size: 'l',
-        img: 'https://www.eobuwie.com.pl/media/catalog/product/cache/image/650x650/0/0/0000209204049_01_rz.jpg',
-        productType: '',
-        productCategory: '',
-        brand: '',
-    },
-];
-
 interface productsPageProps {
     header: string;
+    sportType?: SportType
+    productCategory?: ProductCategory
+    productType?: ProductType
 }
 
-export const ProductsPage = ({ header }: productsPageProps): JSX.Element => {
+export const ProductsPage = ({ header, sportType, productCategory, productType }: productsPageProps): JSX.Element => {
+    const { pageResource: { products } } = useContext(PageResourceContext);
     const [filteredProducts, setFilteredProducts] = useState<Product[]>(products);
+    const { productsFilteredByType } = useFilterProducts({ products, sportType, productCategory, productType })
 
     const searchProduct = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = e.target;
+
         const results: Product[] = products.filter(
             (product) =>
                 product.name.toLowerCase().includes(value.toLowerCase()) ||
@@ -56,6 +28,10 @@ export const ProductsPage = ({ header }: productsPageProps): JSX.Element => {
 
         setFilteredProducts(results);
     };
+
+    useEffect(() => {
+        setFilteredProducts(productsFilteredByType);
+    }, [productsFilteredByType])
 
     return (
         <div className="products__page">
