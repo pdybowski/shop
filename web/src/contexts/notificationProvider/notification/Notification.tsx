@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { AiOutlineCheckCircle, AiOutlineExclamationCircle, AiOutlineInfoCircle, AiOutlineQuestionCircle } from 'react-icons/ai';
 import { NotificationMode } from '../../../interfaces';
 
 import './style.css';
@@ -47,10 +48,10 @@ export const Notification = ({ mode, title, message, deleteTimeout = 5000 }: not
             <h4 className="notification__title">{title}</h4>
             <div>{message}</div>
             <span className="notification__icon">
-                {mode === NotificationMode.DANGER && 'D'}
-                {mode === NotificationMode.WARN && 'W'}
-                {mode === NotificationMode.INFO && 'I'}
-                {mode === NotificationMode.SUCCESS && 'S'}
+                {mode === NotificationMode.DANGER && <AiOutlineExclamationCircle /> }
+                {mode === NotificationMode.WARN && <AiOutlineQuestionCircle />}
+                {mode === NotificationMode.INFO && <AiOutlineInfoCircle />}
+                {mode === NotificationMode.SUCCESS && <AiOutlineCheckCircle />}
             </span>
         </div>
     );
