@@ -1,46 +1,45 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Router } from 'react-router-dom';
 import { Navigation, Spinner } from './components';
-import {
-    NotificationProvider,
-    CartProvider,
-    PageResourceContext,
-    PageResourceProvider,
-} from './contexts';
+import { CartProvider, NotificationContext, PageResourceContext } from './contexts';
+import { useFetch } from './hooks';
+import { NotificationMode, Product } from './interfaces';
 import Views from './Views';
 
 function App() {
-    const [isLoading, setIsLoading] = useState(false);
+    const { isLoading, data, error } = useFetch<Product[]>({ url: 'product' });
 
-    const fetchData = async () => {
-        // const { pageResource, addPageResource } = useContext(PageResourceContext);
-        // try {
-        //     // TO DO
-        //     addPageResource([]);
-        // } finally {
-        //     setIsLoading(false);
-        // }
-    };
+    const { addPageResource } = useContext(PageResourceContext);
+    const { addNotification } = useContext(NotificationContext);
+
+    function getData() {
+        if (error) {
+            return addNotification({
+                mode: NotificationMode.DANGER,
+                title: 'Products',
+                message: error,
+            });
+        }
+        if (data) {
+            return addPageResource({ products: data });
+        }
+    }
 
     useEffect(() => {
-        fetchData();
-    }, []);
+        getData();
+    }, [data, error]);
 
     return (
         <>
             <BrowserRouter>
                 <Navigation />
-                <NotificationProvider>
-                    {isLoading ? (
-                        <Spinner style={{}} />
-                    ) : (
-                        <PageResourceProvider>
-                            <CartProvider>
-                                <Views />
-                            </CartProvider>
-                        </PageResourceProvider>
-                    )}
-                </NotificationProvider>
+                {isLoading ? (
+                    <Spinner />
+                ) : (
+                    <CartProvider>
+                        <Views />
+                    </CartProvider>
+                )}
             </BrowserRouter>
         </>
     );

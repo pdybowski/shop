@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Api } from '../api';
+import { Api } from '../Api';
 import { ApiMethod } from "../interfaces";
 
 
@@ -8,18 +8,16 @@ interface useFetchProps {
     method?: ApiMethod,
     requestBody?: any
 }
-export const useFetch = ({ method = ApiMethod.GET, url, requestBody }: useFetchProps) => {
-    const [data, setData] = useState<any>(null);
+export const useFetch = <T>({ method = ApiMethod.GET, url, requestBody }: useFetchProps) => {
+    const [data, setData] = useState<T>();
     const [error, setError] = useState<string>("");
-    const [isLoading, setIsLoading] = useState(false);
-
+    const [isLoading, setIsLoading] = useState(true);
 
     const getData = async () => {
         const api = new Api();
 
-        setIsLoading(true);
         try {
-            const data = await api.getData<any[]>(ApiMethod.GET, url);
+            const data = await api.getData<T>(ApiMethod.GET, url);
             setData(data);
         } catch(err: any) {
             setError(err.message);
