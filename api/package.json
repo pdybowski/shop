@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only app.ts"
+    "dev": "ts-node-dev --respawn --transpile-only app.ts",
+    "start": "npm i && ts-node app.ts",
+    "build": "tsc"
   },
   "author": "",
   "license": "ISC",
@@ -19,6 +21,8 @@
     "mongoose": "^6.2.8",
     "pino": "^7.9.2",
     "pino-pretty": "^7.6.0",
+    "ts-node": "^10.7.0",
+    "tslib": "^2.3.1",
     "zod": "^3.14.4"
   },
   "devDependencies": {
