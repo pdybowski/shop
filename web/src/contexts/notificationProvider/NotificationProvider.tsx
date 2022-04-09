@@ -3,7 +3,7 @@ import { randomId } from '../../utils';
 import { Notification, notificationProps } from './notification/Notification';
 
 interface contextData {
-    addNotification: (value: notificationProps) => void;
+    addNotification: ({ mode, title, deleteTimeout, key, message }: notificationProps) => void;
 }
 
 interface providerProps {

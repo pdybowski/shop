@@ -20,6 +20,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "local": "set REACT_APP_API_URL=local && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
