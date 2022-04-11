@@ -37,7 +37,7 @@ export const ProductItem = (item: Product): JSX.Element => {
                 <button
                     className="product__button product__button--cart"
                     type="button"
-                    // onClick={cartContext.addProductToCart(item)}
+                    onClick={() => cartContext.addProductToCart(item)}
                 >
                     ADD TO CART
                 </button>

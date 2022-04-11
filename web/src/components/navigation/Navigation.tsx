@@ -4,6 +4,8 @@ import { Item, NavItem } from './components';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import './style.css';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { CartContext } from '../../contexts';
 
 const navigationLinks: Item[] = [
     {
@@ -95,6 +97,13 @@ const navigationLinks: Item[] = [
 ];
 
 export const Navigation = () => {
+    const cartContext = useContext(CartContext);
+    let cartItemNumber = 0;
+    cartContext.cart.reduce((count, curItem) => {
+        cartItemNumber = count + curItem.quantity;
+        return cartItemNumber;
+    }, 0);
+
     return (
         <nav className="main-nav">
             <ul>
@@ -104,7 +113,7 @@ export const Navigation = () => {
                 <li>
                     <Link to={RoutePaths.Cart}>
                         <AiOutlineShoppingCart />
-                        <p> (x)</p>
+                        {cartItemNumber > 0 ? <p> ({cartItemNumber})</p> : null}
                     </Link>
                 </li>
             </ul>

@@ -40,7 +40,7 @@ const removeProductFromCart = (productId: Product['_id'], state: cartContextData
     return { ...state, cart: updatedCart };
 };
 
-export const shopReducer = (
+export const cartReducer = (
     state: any,
     action: { type: string; product: Product; productId?: Product['_id'] }
 ) => {

@@ -31,14 +31,12 @@ function App() {
 
     return (
         <>
-            <BrowserRouter>
-                <CartProvider>
-                    <>
-                        <Navigation />
-                        {isLoading ? <Spinner /> : <Views />}
-                    </>
-                </CartProvider>
-            </BrowserRouter>
+            <CartProvider>
+                <BrowserRouter>
+                    <Navigation />
+                    {isLoading ? <Spinner /> : <Views />}
+                </BrowserRouter>
+            </CartProvider>
         </>
     );
 }
