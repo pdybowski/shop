@@ -4,7 +4,7 @@ import { Navigation, Spinner } from './components';
 import { CartProvider, NotificationContext, PageResourceContext } from './contexts';
 import { useFetch } from './hooks';
 import { NotificationMode, PageResource, Product } from './interfaces';
-import * as PageResourceService from './services/PageResource.service';
+import * as PageResourceService from './services/pageResource.service';
 import Views from './Views';
 
 function App() {
