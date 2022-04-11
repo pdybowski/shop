@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { CartContext } from '../../contexts';
 import { ProductItemType } from '../shared';
+import './style.css';
 
 export const Cart = () => {
     const { cart, addItem } = useContext(CartContext);
@@ -14,16 +15,23 @@ export const Cart = () => {
 
     return (
         <div>
-            {/*<a className="item" href={''}>*/}
-            {/*    <img className="item__image" src={url} alt={title} />*/}
-            {/*    <div className="item__price">*/}
-            {/*        <p>{price} zł</p>*/}
-            {/*    </div>*/}
-            {/*    <div className="item__title">*/}
-            {/*        <p>{title}</p>*/}
-            {/*    </div>*/}
-            {/*    {stars && <div className="item__stars">{showStars(stars)}</div>}*/}
-            {/*</a>*/}
+            <div className="cart">
+                <div className="cart__items">
+                    <div>
+                        <a className="item" href={''}>
+                            <img className="item__image" alt={SampleItem.title} />
+                            <div className="item__price">
+                                <p>{SampleItem.price} zł</p>
+                            </div>
+                            <div className="item__title">
+                                <p>{SampleItem.title}</p>
+                            </div>
+                            {SampleItem.stars && <div className='item__stars'/>}
+                        </a>
+                    </div>
+                </div>
+                <div className="cart__summary"></div>
+            </div>
 
             <div>
                 {SampleItem.title}
