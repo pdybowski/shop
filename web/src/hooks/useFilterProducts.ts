@@ -4,21 +4,21 @@ import { filterArrayByType } from "../utils";
 
 interface props {
     products: Product[],
+    productCategory: ProductCategory, 
     sportType?: SportType, 
-    productCategory?: ProductCategory, 
     productType?: ProductType
 }
-export const useFilterProducts = ({ products, sportType, productCategory, productType }: props) => {
+export const useFilterProducts = ({ products, productCategory, sportType, productType }: props) => {
     const [productsFilteredByType, setProductsFilteredByType] = useState(products);
 
     useEffect(() => {
         let array = products;
 
-        if(sportType) {
-            array = filterArrayByType<Product>(array, 'sportType', sportType);
-        } 
         if(productCategory) {
             array = filterArrayByType<Product>(array, 'productCategory', productCategory);
+        }
+        if(sportType) {
+            array = filterArrayByType<Product>(array, 'sportType', sportType);
         }
         if(productType) {
             array = filterArrayByType<Product>(array, 'productType', productType);

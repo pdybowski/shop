@@ -1,3 +1,4 @@
+import { ProductCategory, ProductType, SportType } from '../../interfaces';
 import { RoutePaths } from '../../routes';
 import { Item, NavItem } from './components';
 import './style.css';
@@ -13,51 +14,73 @@ const navigationLinks: Item[] = [
         children: [
             {
                 name: 'Tennis',
-                link: RoutePaths.Tennis,
+                link: `/product?sportType=${SportType.tennis}`,
             },
             {
                 name: 'Football',
-                link: RoutePaths.MainPage,
+                link: `/product?sportType=${SportType.football}`,
             },
         ],
     },
     {
         name: 'Woman',
-        link: RoutePaths.Woman,
+        link: `product?productCategory=${ProductCategory.woman}`,
         children: [
             {
-                name: 'Female clothing',
-                link: RoutePaths.MainPage,
+                name: 'Tennis',
+                link: `&sportType=${SportType.tennis}`,
                 children: [
                     {
-                        name: 'Female jackets',
-                        link: RoutePaths.MainPage,
+                        name: 'T-shirt',
+                        link: `&productType=${ProductType.shirt}`,
                     },
                 ],
             },
             {
-                name: 'Female shoes',
-                link: RoutePaths.MainPage,
+                name: 'Football',
+                link: `&sportType=${SportType.football}`,
             },
         ],
     },
     {
         name: 'Man',
-        link: RoutePaths.Man,
+        link: `product?productCategory=${ProductCategory.man}`,
         children: [
             {
-                name: "Men's clothing",
-                link: RoutePaths.MainPage,
+                name: 'Tennis',
+                link: `&sportType=${SportType.tennis}`,
+                children: [
+                    {
+                        name: 'T-shirt',
+                        link: `&productType=${ProductType.shirt}`,
+                    },
+                ],
             },
             {
-                name: "Men's shoes",
-                link: RoutePaths.MainPage,
+                name: 'Football',
+                link: `&sportType=${SportType.football}`,
             },
         ],
     },
     {
         name: 'Child',
-        link: RoutePaths.Child,
+        link: `product?productCategory=${ProductCategory.child}`,
+        children: [
+            {
+                name: 'Tennis',
+                link: `&sportType=${SportType.tennis}`,
+                children: [
+                    {
+                        name: 'T-shirt',
+                        link: `&productType=${ProductType.shirt}`,
+                    },
+                ],
+            },
+            {
+                name: 'Football',
+                link: `&sportType=${SportType.football}`,
+            },
+        ],
     },
     {
         name: 'Brands',

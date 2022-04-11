@@ -1,7 +1,7 @@
 import { RoutePaths } from '../../../routes';
 import { Link } from 'react-router-dom';
 
-type Item = { name: string; link: RoutePaths; children?: Item[] };
+type Item = { name: string; link: string; children?: Item[] };
 
 interface NavItemProps {
     child: Item;
@@ -38,10 +38,12 @@ const NavChildren = ({ parentUrl, child, level }: NavItemProps) => {
 };
 
 export const NavItem = ({ child, level, parentUrl }: NavItemProps) => {
+    const link = parentUrl ? parentUrl + child.link : child.link;
+   
     return (
         <li key={child.name}>
             <NavName child={child} level={level} parentUrl={parentUrl}/>
-            {child.children && <NavChildren child={child} level={level} parentUrl={child.link || ""} />}
+            {child.children && <NavChildren child={child} level={level} parentUrl={link || ""} />}
         </li>
     );
 };
