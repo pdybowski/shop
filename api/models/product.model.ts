@@ -16,7 +16,6 @@ isCarousel (temporary)
 
 */
 import mongoose from "mongoose";
-// import { BRANDS,  PRODUCT_CATEGORIES, SHIRT_SIZE, PANTS_SIZE, SHOE_SIZE, SPORT_TYPES } from "../constants/constants";
 import { BRANDS,  PRODUCT_CATEGORIES, PRODUCT_TYPES, SPORT_TYPES } from "../constants/constants";
 
 
@@ -36,7 +35,6 @@ export interface IProductInput {
 }
 
 export interface IProductDocument extends IProductInput, mongoose.Document {
-    
     createdAt: Date,
     updatedAt: Date,
 }
