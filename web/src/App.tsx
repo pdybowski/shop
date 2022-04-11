@@ -3,11 +3,12 @@ import { BrowserRouter, Router } from 'react-router-dom';
 import { Navigation, Spinner } from './components';
 import { CartProvider, NotificationContext, PageResourceContext } from './contexts';
 import { useFetch } from './hooks';
-import { NotificationMode, Product } from './interfaces';
+import { NotificationMode, PageResource, Product } from './interfaces';
+import * as PageResourceService from './services/PageResource.service';
 import Views from './Views';
 
 function App() {
-    const { isLoading, data, error } = useFetch<Product[]>({ url: 'product' });
+    const { isLoading, data, error } = useFetch<PageResource>({ url: 'pageResource' });
 
     const { addPageResource } = useContext(PageResourceContext);
     const { addNotification } = useContext(NotificationContext);
@@ -21,7 +22,8 @@ function App() {
             });
         }
         if (data) {
-            return addPageResource({ products: data });
+            const pageResource = PageResourceService.getEnabledPageResource(data);
+            return addPageResource({ ...pageResource });
         }
     }
 

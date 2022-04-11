@@ -7,7 +7,7 @@ export class Product {
     sportType: SportType 
     productCategory: ProductCategory
     productType: ProductType
-    brand: Brand
+    brand: BrandType
     img?: string
 };
 
@@ -35,7 +35,7 @@ export enum ProductType  {
     other = 'other'
 } 
 
-export enum Brand  {
+export enum BrandType  {
     adidas = 'Adidas',
     nike = 'Nike',
     jackWolfskin = 'Jack Wolfskin',
