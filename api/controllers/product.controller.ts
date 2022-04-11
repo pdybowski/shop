@@ -1,8 +1,6 @@
-import mongoose from "mongoose";
 import {Request, Response} from 'express'
 import {
     CreateProductInput,
-    UpdateProductInput,
 } from '../schemaValidators/product.schema'
 import {
     createProduct,

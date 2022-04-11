@@ -1,18 +1,18 @@
 export class Product {
-    readonly _id?: string;
-    name: string;
-    description: string;
-    price: number;
-    size: ShirtSize | ShoeSize | PantsSize;
-    sportType: SportType;
-    productCategory: ProductCategory;
-    productType: ProductType;
-    brand: Brand;
-    img?: string;
-    stars?: number;
-}
+    readonly _id?: string
+    name: string
+    description: string
+    price: number
+    size: ShirtSize | ShoeSize | PantsSize
+    sportType: SportType 
+    productCategory: ProductCategory
+    productType: ProductType
+    brand: BrandType
+    img?: string
+    stars?: number
+};
 
-export enum SportType {
+export enum SportType  {
     volleyball = 'Volleyball',
     running = 'Running',
     basketball = 'Basketball',
@@ -20,23 +20,23 @@ export enum SportType {
     swimming = 'Swimming',
     tennis = 'Tennis',
     cycling = 'Cycling',
-    other = 'Other',
-}
+    other = 'Other'
+} 
 
-export enum ProductCategory {
+export enum ProductCategory  {
     man = 'Man',
     woman = 'Woman',
-    child = 'Child',
-}
+    child = 'Child'
+} 
 
-export enum ProductType {
+export enum ProductType  {
     shoe = 'Shoe',
     shirt = 'Shirt',
     pants = 'Pants',
-    other = 'other',
-}
+    other = 'other'
+} 
 
-export enum Brand {
+export enum BrandType  {
     adidas = 'Adidas',
     nike = 'Nike',
     jackWolfskin = 'Jack Wolfskin',
@@ -48,29 +48,9 @@ export enum Brand {
     underArmour = 'Under Armour',
 }
 
-export type ShirtSize = 'XXS' | 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL';
+export type ShirtSize = 'XXS' | 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL'
 
-export type ShoeSize =
-    | '28'
-    | '29'
-    | '30'
-    | '31'
-    | '32'
-    | '33'
-    | '34'
-    | '35'
-    | '36'
-    | '37'
-    | '38'
-    | '39'
-    | '40'
-    | '41'
-    | '42'
-    | '43'
-    | '44'
-    | '45'
-    | '46'
-    | '47'
-    | '48';
+export type ShoeSize = '28' | '29' | '30' | '31' | '32' | '33' | '34' | '35' | '36' | '37' | '38' | '39' | '40'  | '41'  | '42' | '43' | '44' | '45' | '46' | '47' | '48'
 
-export type PantsSize = '28' | '30' | '32' | '34' | '36' | '38' | '40' | '42' | '44' | '46';
+export type PantsSize = '28' | '30' | '32' | '34' | '36' | '38' | '40' | '42' | '44' | '46'
+

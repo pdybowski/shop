@@ -1,6 +1,7 @@
 import cors from 'cors'
 import express, {Request, Response, NextFunction} from 'express'
 import productRouter from '../routes/product.router'
+import pageResource from '../routes/page-resource.router'
 
 
 export function routes(app: express.Express) {
@@ -17,4 +18,5 @@ export function routes(app: express.Express) {
       });
 
     app.use('/api/product', productRouter)
+    app.use('/api/pageResource', pageResource)
 }
