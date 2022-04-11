@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import { ProductsPage } from './components';
 import { routes } from './routes';
 
 const Views = () => {

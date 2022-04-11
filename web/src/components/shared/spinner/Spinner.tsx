@@ -1,9 +1,9 @@
 import './style.css';
 
 interface props {
-    style: React.CSSProperties;
+    style?: React.CSSProperties;
 }
 
-export const Spinner = (props: props) => {
-    return <div className="spinner" style={props.style} />;
+export const Spinner = ({ style }: props) => {
+    return <div className="spinner" style={style} />;
 };

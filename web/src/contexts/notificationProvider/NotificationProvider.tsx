@@ -3,14 +3,18 @@ import { randomId } from '../../utils';
 import { Notification, notificationProps } from './notification/Notification';
 
 interface contextData {
-    addNotification: (value: notificationProps) => void;
+    addNotification: ({ mode, title, deleteTimeout, key, message }: notificationProps) => void;
 }
 
 interface providerProps {
     children: Required<React.ReactChild>;
 }
 
-export const NotificationContext = createContext<contextData>({ addNotification: () => {} });
+const contextDefaultValues: contextData = {
+    addNotification: () => {},
+};
+
+export const NotificationContext = createContext<contextData>(contextDefaultValues);
 
 export const NotificationProvider = ({ children }: providerProps) => {
     const [notification, setNotification] = useState<notificationProps[]>([]);

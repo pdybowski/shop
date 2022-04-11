@@ -1,11 +1,10 @@
 import { RoutePaths } from '../../routes';
 import { Item, NavItem } from './components';
-import { AiOutlineShoppingCart } from 'react-icons/ai';
 import './style.css';
 
 const navigationLinks: Item[] = [
     {
-        name: 'Main Page',
+        name: 'MainPage',
         link: RoutePaths.MainPage,
     },
     {
@@ -14,7 +13,7 @@ const navigationLinks: Item[] = [
         children: [
             {
                 name: 'Tennis',
-                link: RoutePaths.MainPage,
+                link: RoutePaths.Tennis,
             },
             {
                 name: 'Football',
@@ -69,7 +68,7 @@ const navigationLinks: Item[] = [
         link: RoutePaths.Bestsellers,
     },
     {
-        name: <AiOutlineShoppingCart />,
+        name: 'Cart',
         link: RoutePaths.Cart,
     },
 ];

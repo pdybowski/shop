@@ -1,9 +1,11 @@
-import { MainPage } from './components';
+import { MainPage, ProductsPage } from './components';
+import { ProductType, SportType } from './interfaces';
 import { CartPage } from './components/pages/CartPage/CartPage';
 
 export enum RoutePaths {
     MainPage = '/',
     Sports = '/sports',
+    Tennis = '/tennis',
     Woman = '/woman',
     Man = '/man',
     Child = '/child',
@@ -25,8 +27,13 @@ export const routes = [
     },
     {
         path: RoutePaths.Sports,
-        element: <></>,
+        element: <ProductsPage header="Sports" />,
         key: 'sports',
+    },
+    {
+        path: `${RoutePaths.Sports}${RoutePaths.Tennis}`,
+        element: <ProductsPage header="Tennis" sportType={SportType.tennis} />,
+        key: 'sports-tennis',
     },
     {
         path: RoutePaths.Woman,
@@ -42,6 +49,11 @@ export const routes = [
         path: RoutePaths.Bestsellers,
         element: <></>,
         key: 'bestsellers',
+    },
+    {
+        path: RoutePaths.Child,
+        element: <></>,
+        key: 'child',
     },
     {
         path: RoutePaths.Brands,

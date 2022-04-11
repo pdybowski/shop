@@ -1,29 +1,27 @@
 import React, { createContext, useState } from 'react';
-import { ProductItemType } from '../../components';
+import { PageResource, PageResourceEditType } from '../../interfaces';
 
-export interface pageResourceContextData {
-    pageResource: ProductItemType[];
-    addPageResource: (value: ProductItemType[]) => void;
+interface contextData {
+    pageResource: PageResource;
+    addPageResource: (value: PageResourceEditType) => void;
 }
-
-const contextDefaultValues: pageResourceContextData = {
-    pageResource: [],
-    addPageResource: () => {},
-};
 
 interface providerProps {
     children: Required<React.ReactChild>;
 }
 
-export const PageResourceContext = createContext<pageResourceContextData>(contextDefaultValues);
+const contextDefaultValues: PageResource = new PageResource();
+
+export const PageResourceContext = createContext<contextData>({
+    pageResource: new PageResource(),
+    addPageResource: () => {},
+});
 
 export const PageResourceProvider = ({ children }: providerProps) => {
-    const [pageResource, setPageResource] = useState<ProductItemType[]>(
-        contextDefaultValues.pageResource
-    );
+    const [pageResource, setPageResource] = useState<PageResource>(contextDefaultValues);
 
-    const addPageResource = (data: ProductItemType[]) => {
-        setPageResource(data);
+    const addPageResource = (data: PageResourceEditType) => {
+        setPageResource({ ...pageResource, ...data });
     };
 
     return (
