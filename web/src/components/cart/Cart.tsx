@@ -1,54 +1,39 @@
 import React, { useContext } from 'react';
 import { CartContext } from '../../contexts';
 import './style.css';
-import { Brand, Product, ProductCategory, ProductType, SportType } from '../../interfaces';
+import { Product } from '../../interfaces';
 
 export const Cart = () => {
-    const { cart, addItem } = useContext(CartContext);
-
-    const SampleItem: Product = {
-        name: 'cos',
-        price: 453,
-        stars: 3,
-        description: 'yolo',
-        size: '42',
-        sportType: SportType.volleyball,
-        productCategory: ProductCategory.child,
-        productType: ProductType.other,
-        brand: Brand.adidas,
-    };
+    const cartContext = useContext(CartContext);
 
     return (
         <div>
             <div className="cart">
-                <div className="cart__items">
-                    <div>
-                        <a className="item" href={''}>
-                            <img className="item__image" alt={SampleItem.name} />
-                            <div className="item__price">
-                                <p>{SampleItem.price} zł</p>
+                {cartContext.cart.length <= 0 && <p>No Item in the Cart!</p>}
+                <ul>
+                    {cartContext.cart.map((cartItem: { product: Product; quantity: number }) => (
+                        <li key={cartItem.product['_id']}>
+                            <div>
+                                <strong>{cartItem.product.name}</strong> - ${cartItem.product.price}{' '}
+                                ({cartItem.quantity})
                             </div>
-                            <div className="item__title">
-                                <p>{SampleItem.name}</p>
+                            <div>
+                                <button
+                                    onClick={() => cartContext.addProductToCart(cartItem.product)}
+                                >
+                                    +
+                                </button>
+                                <button
+                                    onClick={() =>
+                                        cartContext.removeProductFromCart(cartItem.product['_id'])
+                                    }
+                                >
+                                    -
+                                </button>
                             </div>
-                            {SampleItem.stars && <div className="item__stars" />}
-                        </a>
-                    </div>
-                </div>
-                <div className="cart__summary" />
-            </div>
-
-            <div>
-                {SampleItem.name}
-                <button onClick={() => addItem(SampleItem)}>plus</button>
-            </div>
-            <div>
-                {cart.map((item, i) => (
-                    <div>
-                        <div key={i}>{item.name}</div>
-                        <button onClick={() => addItem(item)}>plus</button>
-                    </div>
-                ))}
+                        </li>
+                    ))}
+                </ul>
             </div>
         </div>
     );
