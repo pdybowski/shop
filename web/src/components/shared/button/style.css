@@ -1,0 +1,99 @@
+/* BUTTON PRIMARY */
+.button--primary{
+  width: 130px;
+  height: 50px;
+  margin: 15px 15px 15px 15px;
+  background-color: white;
+  color: #337FED;
+  font: normal bold 20px "Open Sans", sans-serif;
+  border-radius: 12px;
+  border: solid #337FED 2px;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+
+}
+.button--primary:hover{
+  border: solid #337FED 1px;
+  background-color: white;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 13px;
+  text-decoration: none;
+}
+
+
+/* BUTTO--secondary */
+
+.button--secondary{
+  width: 130px;
+  height: 50px;
+  margin: 15px 15px 15px 15px;
+  background-color: white;
+  color:#15d798;
+  font: normal bold 20px "Open Sans", sans-serif;
+  border-radius: 12px;
+  border: solid #15d798 2px;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+
+}
+.button--secondary:hover{
+  border: solid #15d798 1px;
+  background-color: white;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 13px;
+  text-decoration: none;
+}
+
+/* BUTTON CANCEL */
+
+.button--cancel{
+  width: 130px;
+  height: 50px;
+  margin: 15px 15px 15px 15px;
+  background-color: white;
+  color:#cf4910;
+  font: normal bold 20px "Open Sans", sans-serif;
+  border-radius: 12px;
+  border: solid #cf4910 2px;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+
+}
+.button--dark:hover{
+  border: solid #1a6a47 1px;
+  background-color: white;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 13px;
+  text-decoration: none;
+}
+
+.button--dark{
+  width: 130px;
+  height: 50px;
+  margin: 15px 15px 15px 15px;
+  background-color: white;
+  color:#1a6a47;
+  font: normal bold 20px "Open Sans", sans-serif;
+  border-radius: 12px;
+  border: solid #1a6a47 2px;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+
+}
+.button--cancel:hover{
+  border: solid #cf4910 1px;
+  background-color: white;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 13px;
+  text-decoration: none;
+}
+
+
