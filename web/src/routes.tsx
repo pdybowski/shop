@@ -25,7 +25,7 @@ export const routes = [
     {
         path: RoutePaths.Products,
         exact: true,
-        element: <ProductsPage  header={''}/>,
+        element: <ProductsPage/>,
         key: 'products-page',
     },
     // '/sport'
@@ -38,7 +38,7 @@ export const routes = [
     // '/sport/product?queries...'
     {
         path: RoutePaths.Sports + RoutePaths.Products,
-        element: <ProductsPage  header={''}/>,
+        element: <ProductsPage/>,
         key: 'sport-product-page',
     },
     // {
