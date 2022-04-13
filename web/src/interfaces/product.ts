@@ -9,6 +9,7 @@ export class Product {
     productType: ProductType
     brand: BrandType
     img?: string
+    stars?: number
 };
 
 export enum SportType  {

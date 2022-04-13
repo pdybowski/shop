@@ -1,14 +1,22 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useReducer } from 'react';
 import { Product } from '../../interfaces';
+import { ADD_PRODUCT, REMOVE_PRODUCT, cartReducer } from './CartReducer';
+
+export interface cartItem {
+    product: Product;
+    quantity: number;
+}
 
 export interface cartContextData {
-    cart: Product[];
-    addItem: (value: Product) => void;
+    cart: cartItem[];
+    addProductToCart: (value: Product) => void;
+    removeProductFromCart: (value: Product['_id']) => void;
 }
 
 const contextDefaultValues: cartContextData = {
     cart: [],
-    addItem: () => {},
+    addProductToCart: (product) => {},
+    removeProductFromCart: (productId) => {},
 };
 
 interface providerProps {
@@ -18,11 +26,28 @@ interface providerProps {
 export const CartContext = createContext<cartContextData>(contextDefaultValues);
 
 export const CartProvider = ({ children }: providerProps) => {
-    const [cart, setCart] = useState<Product[]>(contextDefaultValues.cart);
+    const [cartState, dispatch] = useReducer(cartReducer, {
+        cart: [],
+    });
 
-    const addItem = (newItem: Product) => {
-        setCart((cart) => [...cart, newItem]);
+    const addProductToCart = (product: Product) => {
+        dispatch({ type: ADD_PRODUCT, product: product });
     };
 
-    return <CartContext.Provider value={{ cart, addItem }}>{children}</CartContext.Provider>;
+    const removeProductFromCart = (productId: Product['_id']) => {
+        // @ts-ignore
+        dispatch({ type: REMOVE_PRODUCT, productId: productId });
+    };
+
+    return (
+        <CartContext.Provider
+            value={{
+                cart: cartState.cart,
+                addProductToCart: addProductToCart,
+                removeProductFromCart: removeProductFromCart,
+            }}
+        >
+            {children}
+        </CartContext.Provider>
+    );
 };

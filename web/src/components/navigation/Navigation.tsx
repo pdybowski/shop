@@ -1,7 +1,11 @@
 import { ProductCategory, ProductType, SportType } from '../../interfaces';
 import { RoutePaths } from '../../routes';
 import { Item, NavItem } from './components';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
 import './style.css';
+import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { CartContext } from '../../contexts';
 
 const navigationLinks: Item[] = [
     {
@@ -93,12 +97,25 @@ const navigationLinks: Item[] = [
 ];
 
 export const Navigation = () => {
+    const cartContext = useContext(CartContext);
+    let cartItemNumber = 0;
+    cartContext.cart.reduce((count, curItem) => {
+        cartItemNumber = count + curItem.quantity;
+        return cartItemNumber;
+    }, 0);
+
     return (
         <nav className="main-nav">
             <ul>
                 {navigationLinks.map((menu: Item) => (
-                    <NavItem key={menu.name} child={menu} level={1} />
+                    <NavItem child={menu} level={1} />
                 ))}
+                <li>
+                    <Link to={RoutePaths.Cart}>
+                        <AiOutlineShoppingCart />
+                        {cartItemNumber > 0 ? <p> ({cartItemNumber})</p> : null}
+                    </Link>
+                </li>
             </ul>
         </nav>
     );

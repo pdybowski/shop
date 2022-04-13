@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { BrowserRouter, Router } from 'react-router-dom';
+import React, { useContext, useEffect } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import { Navigation, Spinner } from './components';
 import { CartProvider, NotificationContext, PageResourceContext } from './contexts';
 import { useFetch } from './hooks';
@@ -33,16 +33,12 @@ function App() {
 
     return (
         <>
-            <BrowserRouter>
-                <Navigation />
-                {isLoading ? (
-                    <Spinner />
-                ) : (
-                    <CartProvider>
-                        <Views />
-                    </CartProvider>
-                )}
-            </BrowserRouter>
+            <CartProvider>
+                <BrowserRouter>
+                    <Navigation />
+                    {isLoading ? <Spinner /> : <Views />}
+                </BrowserRouter>
+            </CartProvider>
         </>
     );
 }
