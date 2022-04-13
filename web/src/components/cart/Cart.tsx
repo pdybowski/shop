@@ -14,7 +14,7 @@ export const Cart = () => {
 
     let subTotal = 0;
     cartContext.cart.reduce((cost, curItem) => {
-        subTotal = cost + curItem.product.price;
+        subTotal = cost + curItem.product.price * curItem.quantity;
         return subTotal;
     }, 0);
 
@@ -38,7 +38,10 @@ export const Cart = () => {
                                     <h3 className="cart__item-brand">{cartItem.product.brand}</h3>
                                 </div>
                                 <div className="cart__item-prices">
-                                    <div className="amount">${cartItem.product.price}</div>
+                                    <div className="amount">{cartItem.product.price} $/pcs</div>
+                                </div>
+                                <div className="cart__item-prices-total">
+                                    <div className="amount">${cartItem.product.price*cartItem.quantity}</div>
                                 </div>
                                 <div className="cart__item-counter">
                                     <div>
