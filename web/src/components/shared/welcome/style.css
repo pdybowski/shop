@@ -1,0 +1,15 @@
+.welcome {
+    background-image: url("https://live.staticflickr.com/8726/27958774414_74902526b5_k.jpg");
+    height: 30vh;
+    background-position: center;
+    background-color: #B6BAD0;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.welcome-text {
+    font-size: 36px;
+    margin-left: 10%;
+}
