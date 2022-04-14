@@ -1,5 +1,8 @@
 {
+    "homepage": "https://pdybowski.github.io/shop",
     "scripts": {
+        "predeploy": "cd web && npm run predeploy",
+        "deploy": "cd web && npm run deploy",
         "start": "cd api && npm run start"
     }
 }

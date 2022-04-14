@@ -1,0 +1,18 @@
+.welcome {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)), url("https://live.staticflickr.com/8726/27958774414_74902526b5_k.jpg");
+    height: 30vh;
+    background-position: center;
+    background-color: #B6BAD0;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.welcome-text {
+    font-size: 36px;
+    margin-left: 10%;
+    color: #f6f7f8;
+    font-weight: 900;
+}

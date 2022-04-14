@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Product } from '../../../interfaces';
 import './style.css';
+import { CartContext } from '../../../contexts';
 
-export const ProductItem = ({ img, name, description, price, _id }: Product): JSX.Element => {
+export const ProductItem = (item: Product): JSX.Element => {
+    const { img, name, description, price, _id } = item;
+
+    const cartContext = useContext(CartContext);
+
+    useEffect(() => {
+        console.log('Please wait...');
+    }, [cartContext]);
+
     return (
         <div className="product__item">
             <div className="product__header">
-                <img className="product__image" src={img} alt={name}></img>
+                <img className="product__image" src={img} alt={name} />
             </div>
             <div className="product__body">
                 <div className="product__title">
@@ -25,7 +34,11 @@ export const ProductItem = ({ img, name, description, price, _id }: Product): JS
                     VIEW
                 </button>
                 {/* </Link> */}
-                <button className="product__button product__button--cart" type="button">
+                <button
+                    className="product__button product__button--cart"
+                    type="button"
+                    onClick={() => cartContext.addProductToCart(item)}
+                >
                     ADD TO CART
                 </button>
             </div>

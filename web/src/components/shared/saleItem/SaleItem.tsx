@@ -1,7 +1,7 @@
 import React from 'react';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import './style.css';
-import { RoutePaths } from '../../../routes';
+import { Product } from '../../../interfaces';
 
 function showStars(star: number) {
     const stars = [];
@@ -16,25 +16,16 @@ function showStars(star: number) {
     return <p>{stars}</p>;
 }
 
-interface saleItemProps {
-    url?: string;
-    title: string;
-    price: number;
-    id?: number;
-    stars?: number;
-    link?: RoutePaths;
-}
-
-export const SaleItem = ({ url, title, price, id, stars, link }: saleItemProps) => {
+export const SaleItem = ({ img, name, price, stars }: Product) => {
     return (
         <div>
-            <a className="item" href={link}>
-                <img className="item__image" src={url} alt={title} />
+            <a className="item" href={''}>
+                <img className="item__image" src={img} alt={name} />
                 <div className="item__price">
                     <p>{price} zł</p>
                 </div>
                 <div className="item__title">
-                    <p>{title}</p>
+                    <p>{name}</p>
                 </div>
                 {stars && <div className="item__stars">{showStars(stars)}</div>}
             </a>

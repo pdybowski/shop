@@ -23,4 +23,4 @@ export class Api {
             throw new Error(error.message)
         }
     }
-}
+} 
