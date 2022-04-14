@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Api } from '../Api';
+import { Api } from '../api';
 import { ApiMethod } from "../interfaces";
 
 
