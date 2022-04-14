@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { Navigate, useSearchParams } from 'react-router-dom';
 
-import { CartContext, PageResourceContext } from '../../../contexts';
+import { PageResourceContext } from '../../../contexts';
 import { useFilterProducts } from '../../../hooks';
 import { Product, ProductCategory, ProductType, SportType } from '../../../interfaces';
 import { ProductItem, SearchInput } from '../../shared';
 import './style.css';
+import { Pagination } from '../../shared/pagination/Pagination';
 
 export const ProductsPage = (): JSX.Element => {
     const {
@@ -65,15 +66,22 @@ export const ProductsPage = (): JSX.Element => {
         setHeader(text);
     }, [productCategory, sportType, productType]);
 
+    const [page, setPage] = useState(1);
+    const totalPages = 15;
+    const handlePages = (updatePage: number) => setPage(updatePage);
+
     return (
         <div className="products__page">
             <h2 className="products__page__title">{header}</h2>
             <SearchInput onSearch={searchProduct} />
-                <div className="products__page__items">
-                    {filteredProducts.map((item) => {
-                        return <ProductItem key={item._id} {...item} />;
-                    })}
-                </div>
+            <div className="products__page__items">
+                {filteredProducts.map((item) => {
+                    return <ProductItem key={item._id} {...item} />;
+                })}
+            </div>
+            <div>
+                <Pagination page={page} totalPages={totalPages} handlePagination={handlePages} />
+            </div>
         </div>
     );
 };
