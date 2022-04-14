@@ -1,0 +1,26 @@
+.products__search{
+    margin:5px 20px 5px 20px; 
+    display: flex;
+    color: green;
+}
+
+.products__search-icon{
+    margin-right: 0px;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+
+}
+
+.products__search__input{
+    width: 140px;
+    text-align: center;
+    padding: 7px;
+    margin:5px 5px 5px 0px ;
+    border-color: green;
+    border-width: 3px;
+    border-radius: 12px;
+}
+
+
