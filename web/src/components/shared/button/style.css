@@ -14,7 +14,7 @@
 
 }
 .button--primary:hover{
-  border: solid #337FED 1px;
+  border: solid #6f9ddd 2px;
   background-color: white;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
@@ -40,7 +40,7 @@
 
 }
 .button--secondary:hover{
-  border: solid #15d798 1px;
+  border: solid #86e9ca 2px;
   background-color: white;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
@@ -64,14 +64,16 @@
   text-align: center;
 
 }
-.button--dark:hover{
-  border: solid #1a6a47 1px;
+
+.button--cancel:hover{
+  border: solid rgb(212, 155, 130) 2px;
   background-color: white;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   border-radius: 13px;
   text-decoration: none;
 }
+
 
 .button--dark{
   width: 130px;
@@ -85,15 +87,16 @@
   display: inline-block;
   cursor: pointer;
   text-align: center;
-
 }
-.button--cancel:hover{
-  border: solid #cf4910 1px;
+.button--dark:hover{
+  border: solid hsl(154, 53%, 47%) 2px;
   background-color: white;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   border-radius: 13px;
   text-decoration: none;
 }
+
+
 
 

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button } from '../shared/button/Button';
+import { Button } from './Button';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { ButtonMode } from '../../interfaces/button';
+import { ButtonMode } from './interfaces';
 
 export default {
     title: 'Button',
