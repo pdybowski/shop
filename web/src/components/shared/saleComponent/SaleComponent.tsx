@@ -13,37 +13,37 @@ const SaleComponent = () => {
 
             <div className="sale__container__items">
                 <SaleItem
-                    title="Buty"
-                    url="https://www.eobuwie.com.pl/media/catalog/product/cache/image/650x650/0/1/01_0000300270608_is.jpg"
-                    price={25}
+                    name="New Balance"
+                    img="https://www.eobuwie.com.pl/media/catalog/product/cache/image/650x650/0/1/01_0000300270608_is.jpg"
+                    price={279}
                 />
                 <SaleItem
-                    title="Buty"
-                    url="https://www.eobuwie.com.pl/media/catalog/product/cache/image/650x650/0/1/01_0000300270608_is.jpg"
-                    price={25}
+                    name="New Balance"
+                    img="https://www.eobuwie.com.pl/media/catalog/product/cache/image/650x650/0/1/01_0000300270608_is.jpg"
+                    price={279}
                 />
                 <SaleItem
-                    title="Buty"
-                    url="https://www.eobuwie.com.pl/media/catalog/product/cache/image/650x650/0/1/01_0000300270608_is.jpg"
-                    price={25}
-                />
-
-                <SaleItem
-                    title="Buty"
-                    url="https://www.eobuwie.com.pl/media/catalog/product/cache/image/650x650/0/1/01_0000300270608_is.jpg"
-                    price={25}
+                    name="New Balance"
+                    img="https://www.eobuwie.com.pl/media/catalog/product/cache/image/650x650/0/1/01_0000300270608_is.jpg"
+                    price={279}
                 />
 
                 <SaleItem
-                    title="Buty"
-                    url="https://www.eobuwie.com.pl/media/catalog/product/cache/image/650x650/0/1/01_0000300270608_is.jpg"
-                    price={25}
+                    name="New Balance"
+                    img="https://www.eobuwie.com.pl/media/catalog/product/cache/image/650x650/0/1/01_0000300270608_is.jpg"
+                    price={279}
                 />
 
                 <SaleItem
-                    title="Buty"
-                    url="https://www.eobuwie.com.pl/media/catalog/product/cache/image/650x650/0/1/01_0000300270608_is.jpg"
-                    price={25}
+                    name="New Balance"
+                    img="https://www.eobuwie.com.pl/media/catalog/product/cache/image/650x650/0/1/01_0000300270608_is.jpg"
+                    price={279}
+                />
+
+                <SaleItem
+                    name="New Balance"
+                    img="https://www.eobuwie.com.pl/media/catalog/product/cache/image/650x650/0/1/01_0000300270608_is.jpg"
+                    price={279}
                 />
             </div>
         </div>
