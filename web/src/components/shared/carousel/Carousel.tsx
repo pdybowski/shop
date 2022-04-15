@@ -31,10 +31,9 @@ const Carousel = ({ children, intervalTime = 5000 }: CarouselProps) => {
 
     return (
         <div className="carousel">
-            <IoIosArrowDropleftCircle
-                className="arrow__left"
-                onClick={() => onArrowClick('prev')}
-            />
+            <span className="arrow__left" onClick={() => onArrowClick('prev')}>
+                <IoIosArrowDropleftCircle />
+            </span>
             {children.map((child, index) => (
                 <div
                     key={index}
@@ -43,10 +42,9 @@ const Carousel = ({ children, intervalTime = 5000 }: CarouselProps) => {
                     {child}
                 </div>
             ))}
-            <IoIosArrowDroprightCircle
-                className="arrow__right"
-                onClick={() => onArrowClick('next')}
-            />
+            <span className="arrow__right" onClick={() => onArrowClick('next')}>
+                <IoIosArrowDroprightCircle />
+            </span>
         </div>
     );
 };
