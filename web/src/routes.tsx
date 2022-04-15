@@ -6,6 +6,7 @@ export enum RoutePaths {
     Products = '/product',
     Bestsellers = '/bestsellers',
     Brands = '/brands',
+    Product = '/products/:id',
     Cart = '/cart',
 }
 
@@ -39,6 +40,11 @@ export const routes = [
         path: RoutePaths.Sports + RoutePaths.Products,
         element: <ProductsPage />,
         key: 'sport-product-page',
+    },
+    {
+        path: RoutePaths.Product,
+        element: <ProductPageContainer />,
+        key: 'product',
     },
     // {
     //     path: RoutePaths.Bestsellers,

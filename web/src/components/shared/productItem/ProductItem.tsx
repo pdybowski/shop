@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { Product } from '../../../interfaces';
+import { Link } from 'react-router-dom';
 import './style.css';
 import { CartContext } from '../../../contexts';
 
@@ -29,16 +30,12 @@ export const ProductItem = (item: Product): JSX.Element => {
                 </div>
             </div>
             <div className="product__buttons">
-                {/* <Link to={`/products/${id}`}> */}
-                <button className="product__button product__button--view" type="button">
-                    VIEW
-                </button>
-                {/* </Link> */}
-                <button
-                    className="product__button product__button--cart"
-                    type="button"
-                    onClick={() => cartContext.addProductToCart(item)}
-                >
+                <Link to={`/products/${_id}`}>
+                    <button className="product__button product__button--view" type="button">
+                        VIEW
+                    </button>
+                </Link>
+                <button className="product__button product__button--cart" type="button">
                     ADD TO CART
                 </button>
             </div>
