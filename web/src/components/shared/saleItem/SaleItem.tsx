@@ -1,7 +1,7 @@
 import React from 'react';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import './style.css';
-import { ProductSale } from '../../../interfaces';
+import { Product } from '../../../interfaces';
 
 function showStars(star: number) {
     const stars = [];
@@ -16,7 +16,7 @@ function showStars(star: number) {
     return <p>{stars}</p>;
 }
 
-export const SaleItem = ({ img, name, price, stars }: ProductSale) => {
+export const SaleItem = ({ img, name, price, stars }: Product) => {
     return (
         <div>
             <a className="item" href={''}>

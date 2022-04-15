@@ -12,13 +12,6 @@ export class Product {
     stars?: number
 };
 
-export class ProductSale {
-    readonly _id?: string;
-    name: string;
-    img: string;
-    price: number;
-    stars?: number;
-}
 
 export enum SportType  {
     volleyball = 'Volleyball',
