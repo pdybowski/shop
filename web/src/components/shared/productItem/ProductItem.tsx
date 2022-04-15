@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 import { Product } from '../../../interfaces';
 import { Link } from 'react-router-dom';
-import './style.css';
 import { CartContext } from '../../../contexts';
+import './style.css';
 
 export const ProductItem = (item: Product): JSX.Element => {
     const { img, name, description, price, _id } = item;
@@ -35,7 +35,11 @@ export const ProductItem = (item: Product): JSX.Element => {
                         VIEW
                     </button>
                 </Link>
-                <button className="product__button product__button--cart" type="button">
+                <button
+                    className="product__button product__button--cart"
+                    type="button"
+                    onClick={() => cartContext.addProductToCart(item)}
+                >
                     ADD TO CART
                 </button>
             </div>
