@@ -1,30 +1,32 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { PageResourceContext } from '../../../contexts';
 import { SaleItem } from '../saleItem/SaleItem';
 import './style.css';
 
-const SaleComponent = (): JSX.Element => {
+const BestComponent = (): JSX.Element => {
     const {
         pageResource: { products },
     } = useContext(PageResourceContext);
+    const [limit, setLimit] = useState(6);
 
     return (
-        <div className="sale__container">
+        <div className="best__container">
             <img
-                className="sale__image"
+                className="best__image"
                 src="https://d-art.ppstatic.pl/kadry/k/r/1/9d/0a/6234b5b877108_o_full.jpg"
                 alt="photo"
             ></img>
 
-            <div className="sale__items">
+            <div className="best__items">
                 {products
-                    .filter((p) => p.stars && p.stars > 2)
+                    .slice(0, limit ? limit : products.length)
+                    .filter((p) => Number(p.stars) && Number(p.stars) > 2)
                     .map((item) => (
-                        <SaleItem {...item} />
+                        <SaleItem {...item} {...setLimit} />
                     ))}
             </div>
         </div>
     );
 };
 
-export default SaleComponent;
+export default BestComponent;

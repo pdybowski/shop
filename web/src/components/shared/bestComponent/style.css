@@ -1,21 +1,19 @@
-.sale__container{
+.best__container{
     display: flex;
     align-items: center;
 
 }
 
-.sale__image{
+.best__image{
     display: flex;
     width: 1000px;
     object-fit: cover;
 }
 
-.sale__items{
+.best__items{
     position: absolute;
     margin-left: 400px;
     display: flex;
     flex-wrap: wrap;
     width: 800px;
-    
-    
 }

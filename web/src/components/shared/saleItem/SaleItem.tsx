@@ -1,5 +1,5 @@
-import React from 'react';
-import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
+import React, { useState } from 'react';
+import { BsStarFill, BsStar, BsStarHalf } from 'react-icons/bs';
 import './style.css';
 import { Product } from '../../../interfaces';
 
@@ -7,10 +7,14 @@ function showStars(star: number) {
     const stars = [];
 
     for (let i = 0; i < Math.floor(star); i++) {
-        stars.push(<AiFillStar />);
+        stars.push(<BsStarFill />);
     }
-    for (let i = 0; i < 5 - star; i++) {
-        stars.push(<AiOutlineStar />);
+    if (Number(star) % 1 < 1) {
+        stars.push(<BsStarHalf />);
+    }
+
+    for (let i = 0; i < 4 - star; i++) {
+        stars.push(<BsStar />);
     }
 
     return <p>{stars}</p>;
@@ -27,7 +31,7 @@ export const SaleItem = ({ img, name, price, stars }: Product) => {
                 <div className="item__title">
                     <p>{name}</p>
                 </div>
-                {stars && <div className="item__stars">{showStars(stars)}</div>}
+                {stars && <div className="item__stars">{showStars(Number(stars))}</div>}
             </a>
         </div>
     );
