@@ -1,9 +1,9 @@
-.carousel__item--container {
+.item__container {
     position: relative;
     width: 50%;
 }
 
-.carousel__img {
+.item__img {
     margin-top: 40px;
     opacity: 1;
     display: block;
@@ -13,7 +13,7 @@
     backface-visibility: hidden;
 }
 
-.carousel__txt--container {
+.item__txt__container {
     transition: 0.5s ease;
     opacity: 0;
     position: absolute;
@@ -22,17 +22,18 @@
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     text-align: center;
+    width: 12rem;
 }
 
-.carousel__item--container:hover .carousel__img {
+.item__container:hover .item__img {
     opacity: 0.3;
 }
 
-.carousel__item--container:hover .carousel__txt--container {
+.item__container:hover .item__txt__container {
     opacity: 1;
 }
 
-.carousel__txt {
+.item__txt {
     font-size: 20px;
     color: #04aa6d;
 }

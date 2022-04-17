@@ -1,45 +1,26 @@
 import Carousel from '../shared/carousel/Carousel';
+import { useContext } from 'react';
+import { PageResourceContext } from '../../contexts';
 import './style.css';
 
 export const MainPageCarousel = () => {
-    const img_mockup = [
-        <div className="carousel__item--container">
-            <img
-                className="carousel__img"
-                alt=""
-                src={
-                    'https://www.eobuwie.com.pl/media/catalog/product/cache/image/650x650/0/0/0000200985664_06_mf_1.jpg'
-                }
-            />
-            <div className="carousel__txt--container">
-                <div className="carousel__txt">WOMAN SPORT SHOES -10% OFF</div>
-            </div>
-        </div>,
-        <div className="carousel__item--container">
-            <img
-                className="carousel__img"
-                alt=""
-                src={
-                    'https://www.eobuwie.com.pl/media/catalog/product/cache/image/650x650/0/0/0000208119443_06_wj_2.jpg'
-                }
-            />
-            <div className="carousel__txt--container">
-                <div className="carousel__txt">WOMAN SPORT SHOES -10% OFF</div>
-            </div>
-        </div>,
-        <div className="carousel__item--container">
-            <img
-                className="carousel__img"
-                alt=""
-                src={
-                    'https://www.eobuwie.com.pl/media/catalog/product/cache/image/650x650/0/0/0000209026351_03_bs_kopia.jpg'
-                }
-            />
-            <div className="carousel__txt--container">
-                <div className="carousel__txt">WOMAN SPORT SHOES -10% OFF</div>
-            </div>
-        </div>,
-    ];
+    const {
+        pageResource: { products },
+    } = useContext(PageResourceContext);
 
-    return <Carousel>{img_mockup}</Carousel>;
+    const productsArr = products.slice(0, 3);
+
+    const items = productsArr.map((product) => {
+        return (
+            <div className="item__container" key={product._id}>
+                <img className="item__img" alt="Product" src={product.img} />
+                <div className="item__txt__container">
+                    <div className="item__txt">{product.name}</div>
+                    <div className="item__txt">${product.price}</div>
+                </div>
+            </div>
+        );
+    });
+
+    return <Carousel>{items}</Carousel>;
 };
