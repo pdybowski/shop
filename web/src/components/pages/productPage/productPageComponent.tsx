@@ -2,20 +2,14 @@ import './style.css';
 import { Product } from '../../../interfaces/product';
 import { BiCube, BiRevision } from 'react-icons/bi';
 import { FiPercent } from 'react-icons/fi';
-const img_fallback = require('./img/photo.jpg');
 
-export const ProductPageComponent = ({
-    img = img_fallback,
-    brand,
-    name,
-    price,
-}: Product): JSX.Element => {
+export const ProductPageComponent = ({ img, brand, name, price }: Product): JSX.Element => {
     return (
         <div className="product__page">
             <div className="product__info--general">
                 <div className="product__name">{name}</div>
                 <div>
-                    <img src={img} alt="" className="product__image--img"></img>
+                    <img src={img} alt="Product" className="product__image--img"></img>
                 </div>
             </div>
             <div className="product__info--specific">

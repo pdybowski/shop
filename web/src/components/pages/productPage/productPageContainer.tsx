@@ -1,4 +1,4 @@
-import { ProductPageComponent } from './productPageComponent';
+import { ProductPageComponent } from './ProductPageComponent';
 import { useParams } from 'react-router-dom';
 import { useContext } from 'react';
 import { PageResourceContext } from '../../../contexts';
