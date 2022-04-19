@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { Product } from '../../../interfaces';
 import './style.css';
 import { CartContext } from '../../../contexts';
+import { CURRENCY_TYPE } from '../../../constants';
 
 export const ProductItem = (item: Product): JSX.Element => {
     const { img, name, description, price, _id } = item;
@@ -25,7 +26,7 @@ export const ProductItem = (item: Product): JSX.Element => {
                     <p className="">{description}</p>
                 </div>
                 <div className="product__price">
-                    <h4>${price}</h4>
+                    <h4>{CURRENCY_TYPE}{price}</h4>
                 </div>
             </div>
             <div className="product__buttons">
