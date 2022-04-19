@@ -2,6 +2,7 @@ import './style.css';
 import { Product } from '../../../interfaces/product';
 import { BiCube, BiRevision } from 'react-icons/bi';
 import { FiPercent } from 'react-icons/fi';
+import { CURRENCY_TYPE } from '../../../constants';
 
 export const ProductPageComponent = ({ img, brand, name, price }: Product): JSX.Element => {
     return (
@@ -14,7 +15,10 @@ export const ProductPageComponent = ({ img, brand, name, price }: Product): JSX.
             </div>
             <div className="product__info--specific">
                 <div className="product__brand">{brand}</div>
-                <div className="product__price--large">{price}$</div>
+                <div className="product__price--large">
+                    {CURRENCY_TYPE}
+                    {price}
+                </div>
                 <form className="product__size--form">
                     <label htmlFor="size" className="product__size--label">
                         Choose size:

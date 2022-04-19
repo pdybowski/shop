@@ -1,4 +1,4 @@
-import { ProductPageComponent } from './ProductPageComponent';
+import { ProductPageComponent } from './ProductPage';
 import { useParams } from 'react-router-dom';
 import { useContext } from 'react';
 import { PageResourceContext } from '../../../contexts';
@@ -10,9 +10,9 @@ export const ProductPageContainer = () => {
 
     const { id } = useParams();
 
-    const product = products.filter((product) => {
+    const product = products.find((product) => {
         return product._id === id;
     });
 
-    return <ProductPageComponent {...product[0]} />;
+    return product ? <ProductPageComponent {...product} /> : <div>Product not found</div>;
 };
