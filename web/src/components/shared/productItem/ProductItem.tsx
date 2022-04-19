@@ -1,7 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 import { Product } from '../../../interfaces';
-import './style.css';
+import { Link } from 'react-router-dom';
 import { CartContext } from '../../../contexts';
+import './style.css';
 
 export const ProductItem = (item: Product): JSX.Element => {
     const { img, name, description, price, _id } = item;
@@ -29,11 +30,11 @@ export const ProductItem = (item: Product): JSX.Element => {
                 </div>
             </div>
             <div className="product__buttons">
-                {/* <Link to={`/products/${id}`}> */}
-                <button className="product__button product__button--view" type="button">
-                    VIEW
-                </button>
-                {/* </Link> */}
+                <Link to={`/products/${_id}`}>
+                    <button className="product__button product__button--view" type="button">
+                        VIEW
+                    </button>
+                </Link>
                 <button
                     className="product__button product__button--cart"
                     type="button"
