@@ -85,15 +85,16 @@ export const Pagination: React.FC<Props> = ({ page, totalPages, handlePagination
                     </button>
                 )}
                 {page < totalPages - 2 && <div className={'separator'}>...</div>}
-                {page === totalPages ? (
-                        <button
-                            onClick={() => handlePagination(totalPages)}
-                            type='button'
-                            className={'pageItem active'}
-                        >
-                            {totalPages}
-                        </button>
-                    ) :
+                {(totalPages !== 1 && page === totalPages) && (
+                    <button
+                        onClick={() => handlePagination(totalPages)}
+                        type='button'
+                        className={'pageItem active'}
+                    >
+                        {totalPages}
+                    </button>
+                )}
+                {(totalPages !== 1 && totalPages !== 0 && page !== totalPages) &&
                     (
                         <button
                             onClick={() => handlePagination(totalPages)}
@@ -102,8 +103,9 @@ export const Pagination: React.FC<Props> = ({ page, totalPages, handlePagination
                         >
                             {totalPages}
                         </button>
-                    )}
-                {page !== totalPages && (
+                    )
+                }
+                {page !== totalPages && totalPages !== 0 && (
                     <button
                         onClick={() => handlePagination(page + 1)}
                         type='button'

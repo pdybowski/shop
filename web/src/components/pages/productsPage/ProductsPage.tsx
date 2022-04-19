@@ -9,6 +9,11 @@ import './style.css';
 import { Pagination } from '../../shared/pagination/Pagination';
 
 export const ProductsPage = (): JSX.Element => {
+    const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
+    const itemsPerPage = 12;
+    const handlePages = (updatePage: number) => setPage(updatePage);
+
     const {
         pageResource: { products },
     } = useContext(PageResourceContext);
@@ -32,19 +37,21 @@ export const ProductsPage = (): JSX.Element => {
         const results: Product[] = products.filter(
             (product) =>
                 product.name.toLowerCase().includes(value.toLowerCase()) ||
-                product.description.toLowerCase().includes(value.toLowerCase())
+                product.description.toLowerCase().includes(value.toLowerCase()),
         );
 
         setFilteredProducts(results);
     };
 
     useMemo(() => {
-        if (!productCategory) return <Navigate replace to="/" />;
+        if (!productCategory) return <Navigate replace to='/' />;
     }, []);
 
     useEffect(() => {
-        setFilteredProducts(productsFilteredByType);
-    }, [productsFilteredByType]);
+        let pageProducts = productsFilteredByType.slice((page - 1) * itemsPerPage, page * (itemsPerPage - 1));
+        setTotalPages(Math.ceil(productsFilteredByType.length / 12));
+        setFilteredProducts(pageProducts);
+    }, [productsFilteredByType, page]);
 
     useEffect(() => {
         let text = '';
@@ -66,15 +73,11 @@ export const ProductsPage = (): JSX.Element => {
         setHeader(text);
     }, [productCategory, sportType, productType]);
 
-    const [page, setPage] = useState(1);
-    const totalPages = 15;
-    const handlePages = (updatePage: number) => setPage(updatePage);
-
     return (
-        <div className="products__page">
-            <h2 className="products__page__title">{header}</h2>
+        <div className='products__page'>
+            <h2 className='products__page__title'>{header}</h2>
             <SearchInput onSearch={searchProduct} />
-            <div className="products__page__items">
+            <div className='products__page__items'>
                 {filteredProducts.map((item) => {
                     return <ProductItem key={item._id} {...item} />;
                 })}
