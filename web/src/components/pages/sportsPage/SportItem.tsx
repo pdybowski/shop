@@ -1,6 +1,16 @@
-import './style.css';
-import { MdOutlineSportsSoccer, MdOutlineSportsBasketball } from 'react-icons/md';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { PageResourceContext } from '../../../contexts';
+import {
+    MdOutlineSportsSoccer,
+    MdOutlineSportsBasketball,
+    MdSportsVolleyball,
+    MdOutlineSportsTennis,
+    MdOutlineSportsHandball,
+    MdEmojiPeople,
+} from 'react-icons/md';
+import { BiRun, BiSwim, BiCycling } from 'react-icons/bi';
+import './style.css';
 
 interface SportItemProps {
     sportType: String;
@@ -9,36 +19,43 @@ interface SportItemProps {
 const sportItemImg = (param: any) => {
     switch (param) {
         case 'Volleyball':
-            return 'bar';
+            return <MdSportsVolleyball className="sportItem__icon" />;
         case 'Running':
-            return 'bar';
+            return <BiRun className="sportItem__icon" />;
         case 'Basketball':
-            return <MdOutlineSportsBasketball />;
+            return <MdOutlineSportsBasketball className="sportItem__icon" />;
         case 'Football':
-            return <MdOutlineSportsSoccer />;
+            return <MdOutlineSportsSoccer className="sportItem__icon" />;
         case 'Swimming':
-            return 'bar';
+            return <BiSwim className="sportItem__icon" />;
         case 'Tennis':
-            return 'bar';
+            return <MdOutlineSportsTennis className="sportItem__icon" />;
         case 'Cycling':
-            return 'bar';
+            return <BiCycling className="sportItem__icon" />;
         case 'Other':
-            return 'bar';
+            return <MdOutlineSportsHandball className="sportItem__icon" />;
         default:
-            return 'foo';
+            return <MdEmojiPeople className="sportItem__icon" />;
     }
 };
 
 export const SportItem = ({ sportType }: SportItemProps) => {
-    console.log(sportType);
+    const {
+        pageResource: { products },
+    } = useContext(PageResourceContext);
+
+    const sportTypeArray = products.filter((element) => {
+        return element.sportType === sportType;
+    });
+
+    const numberOfElements = sportTypeArray.length;
+
     return (
         <div className="sportItem__container">
-            <div className="sportItem">
+            <div className="sportItem__element">
                 <div>{sportItemImg(sportType)}</div>
-                <div className="sportItem__name" id={'my__txt'}>
-                    {sportType}
-                </div>
-                <div className="sportItem__number">Elements in category:</div>
+                <div className="sportItem__name">{sportType}</div>
+                <div className="sportItem__number">Elements in category: {numberOfElements}</div>
                 <Link to={`/product?sportType=${sportType}`}>
                     <button className="sportItem__button">VIEW</button>
                 </Link>
