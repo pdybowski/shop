@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Navigation, Spinner } from './components';
 import { CartProvider, NotificationContext, PageResourceContext } from './contexts';
 import { useFetch } from './hooks';
-import { NotificationMode, PageResource, Product } from './interfaces';
+import { NotificationMode, PageResource } from './interfaces';
 import * as PageResourceService from './services/pageResource.service';
 import Views from './Views';
 

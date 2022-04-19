@@ -1,4 +1,4 @@
-import { CartPage, MainPage, ProductsPage } from './components';
+import { CartPage, MainPage, ProductsPage, ProductPageContainer } from './components';
 
 export enum RoutePaths {
     MainPage = '/',
@@ -6,6 +6,7 @@ export enum RoutePaths {
     Products = '/product',
     Bestsellers = '/bestsellers',
     Brands = '/brands',
+    Product = '/products/:id',
     Cart = '/cart',
 }
 
@@ -40,12 +41,17 @@ export const routes = [
         element: <ProductsPage />,
         key: 'sport-product-page',
     },
+    {
+        path: RoutePaths.Product,
+        element: <ProductPageContainer />,
+        key: 'product',
+    },
     // {
     //     path: RoutePaths.Bestsellers,
     //     element: <Bestsellers />,
     //     key: 'bestsellers-page',
     // },
-        // {
+    // {
     //     path: RoutePaths.Brands,
     //     element: <Brands />,
     //     key: 'brands-page',
