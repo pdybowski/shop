@@ -1,9 +1,9 @@
-.item__container {
+.mainPageCarouselItem__container {
     position: relative;
     width: 50%;
 }
 
-.item__img {
+.mainPageCarouselItem__img {
     margin-top: 40px;
     opacity: 1;
     display: block;
@@ -13,7 +13,7 @@
     backface-visibility: hidden;
 }
 
-.item__txt__container {
+.mainPageCarouselItem__txt__container {
     transition: 0.5s ease;
     opacity: 0;
     position: absolute;
@@ -25,15 +25,15 @@
     width: 12rem;
 }
 
-.item__container:hover .item__img {
+.mainPageCarouselItem__container:hover .mainPageCarouselItem__img {
     opacity: 0.3;
 }
 
-.item__container:hover .item__txt__container {
+.mainPageCarouselItem__container:hover .mainPageCarouselItem__txt__container {
     opacity: 1;
 }
 
-.item__txt {
+.mainPageCarouselItem__txt {
     font-size: 20px;
     color: #04aa6d;
 }
