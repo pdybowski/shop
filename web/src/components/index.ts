@@ -1,4 +1,3 @@
-export * from './shared'
-export * from './pages'
-export * from './navigation/Navigation'
-export * from './carousel/Carousel'
+export * from './shared';
+export * from './pages';
+export * from './navigation/Navigation';
