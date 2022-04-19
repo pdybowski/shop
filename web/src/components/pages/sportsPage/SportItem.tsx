@@ -55,7 +55,7 @@ export const SportItem = ({ sportType }: SportItemProps) => {
             <div className="sportItem__element">
                 <div>{sportItemImg(sportType)}</div>
                 <div className="sportItem__name">{sportType}</div>
-                <div className="sportItem__number">Elements in category: {numberOfElements}</div>
+                <div className="sportItem__number">Products in category: {numberOfElements}</div>
                 <Link to={`/product?sportType=${sportType}`}>
                     <button className="sportItem__button">VIEW</button>
                 </Link>
