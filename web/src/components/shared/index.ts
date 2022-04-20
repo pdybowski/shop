@@ -4,3 +4,4 @@ export * from './typing/Typing'
 export * from './saleItem/SaleItem';
 export * from './searchInput/SearchInput'
 export * from './button/Button';
+export * from './ellipsisWrapper/EllipsisWrapper'
