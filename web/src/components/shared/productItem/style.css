@@ -10,6 +10,7 @@
     -webkit-box-shadow: 8px 8px 24px 0px rgba(25, 119, 25, 1);
     -moz-box-shadow: 8px 8px 24px 0px rgba(25, 119, 25, 1);
     box-shadow: 8px 8px 24px 0px rgba(25, 119, 25, 1);
+    padding: 16px;
 }
 
 .product__header {
@@ -38,10 +39,12 @@
 
 .product__title {
     margin: auto;
+    padding: 1.5em 1.5em;
 }
 
 .product__description {
     margin: auto;
+    padding: 1.5em 1.5em;
 }
 
 .product__price {

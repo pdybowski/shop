@@ -5,6 +5,7 @@ import { CartContext } from '../../../contexts';
 import { CURRENCY_TYPE } from '../../../constants';
 
 import './style.css';
+import { EllipsisWrapper } from '../ellipsisWrapper/EllipsisWrapper';
 
 export const ProductItem = (item: Product): JSX.Element => {
     const { img, name, description, price, _id } = item;
@@ -22,13 +23,26 @@ export const ProductItem = (item: Product): JSX.Element => {
             </div>
             <div className="product__body">
                 <div className="product__title">
-                    <h4>{name}</h4>
+                    {name.length > 30 ? (
+                        <EllipsisWrapper>
+                            <h4>{name}</h4>
+                        </EllipsisWrapper>
+                    ) : (
+                        <h4>{name}</h4>
+                    )}
                 </div>
                 <div className="product__description">
-                    <p className="">{description}</p>
+                    {description.length > 200 ? (
+                        <EllipsisWrapper>{description}</EllipsisWrapper>
+                    ) : (
+                        description
+                    )}
                 </div>
                 <div className="product__price">
-                    <h4>{CURRENCY_TYPE}{price}</h4>
+                    <h4>
+                        {CURRENCY_TYPE}
+                        {price}
+                    </h4>
                 </div>
             </div>
             <div className="product__buttons">
