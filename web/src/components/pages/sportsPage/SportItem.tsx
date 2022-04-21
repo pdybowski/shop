@@ -16,7 +16,7 @@ interface SportItemProps {
     sportType: String;
 }
 
-const sportItemImg = (param: any) => {
+const sportItemImg = (param: String) => {
     switch (param) {
         case 'Volleyball':
             return <MdSportsVolleyball className="sportItem__icon" />;
