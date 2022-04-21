@@ -1,13 +1,14 @@
 import React, { useContext, useState } from 'react';
 import { PageResourceContext } from '../../../contexts';
-import { SaleItem } from '../saleItem/SaleItem';
+import { Product } from '../../../interfaces';
+import { SaleItem } from '../bestItem/BestItem';
 import './style.css';
-
+const BEST_LIMIT = 6;
 const BestComponent = (): JSX.Element => {
     const {
         pageResource: { products },
     } = useContext(PageResourceContext);
-    const [limit, setLimit] = useState(6);
+    const [limit, setLimit] = useState(BEST_LIMIT);
 
     return (
         <div className="best__container">
@@ -19,8 +20,12 @@ const BestComponent = (): JSX.Element => {
 
             <div className="best__items">
                 {products
-                    .slice(0, limit ? limit : products.length)
                     .filter((p) => Number(p.stars) && Number(p.stars) > 2)
+                    .sort((a: any, b: any) => {
+                        return b.stars - a.stars;
+                    })
+                    .slice(0, products.length)
+
                     .map((item) => (
                         <SaleItem {...item} {...setLimit} />
                     ))}
