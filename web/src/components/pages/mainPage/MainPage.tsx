@@ -1,11 +1,12 @@
 import SaleComponent from '../../shared/saleComponent/SaleComponent';
 import { Welcome } from '../../shared/welcome/Welcome';
+import { MainPageCarousel } from '../../mainPageCarousel/MainPageCarousel';
 
 export const MainPage = () => {
     return (
         <main>
             <Welcome />
-            <SaleComponent />
+            <MainPageCarousel />
         </main>
     );
 };
