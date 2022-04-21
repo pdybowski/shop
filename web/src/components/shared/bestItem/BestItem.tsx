@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BsStarFill, BsStar, BsStarHalf } from 'react-icons/bs';
 import './style.css';
 import { Product } from '../../../interfaces';
+import { CURRENCY_TYPE } from '../../../constants';
 
 function showStars(star: number) {
     const stars = [];
@@ -26,7 +27,7 @@ export const SaleItem = ({ img, name, price, stars }: Product) => {
             <a className="item" href={''}>
                 <img className="item__image" src={img} alt={name} />
                 <div className="item__price">
-                    <p>{price} zł</p>
+                    <p>{CURRENCY_TYPE}{price}</p>
                 </div>
                 <div className="item__title">
                     <p>{name}</p>

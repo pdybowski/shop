@@ -1,0 +1,130 @@
+.product__page {
+    height: 91vh;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+}
+
+.product__name {
+    height: 20%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    color: rgb(130, 255, 130);
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.product__image--img {
+    width: 100%;
+    height: auto;
+}
+
+.product__info--general {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product__info--specific {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(245, 245, 245);
+    border-color: hsl(84, 100%, 59%);
+    border-style: groove;
+    border-width: 3px;
+    -webkit-box-shadow: 8px 8px 24px 0px rgba(25, 119, 25, 1);
+    -moz-box-shadow: 8px 8px 24px 0px rgba(25, 119, 25, 1);
+    box-shadow: 8px 8px 24px 0px rgba(25, 119, 25, 1);
+}
+
+.product__info--additional {
+    font-size: 18px;
+    padding: 15px;
+    display: flex;
+    flex: 1;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.product__brand {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.basic__info {
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.product__price--large {
+    text-align: center;
+    font-size: 56px;
+    font-weight: bold;
+    padding: 0;
+    color: green;
+    margin: 30px 0px 30px 0px;
+}
+
+.product__size--form {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.product__button--add {
+    width: 70%;
+}
+
+.product__button--container {
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
+.product__size--select {
+    margin-top: 15px;
+    height: 40px;
+    width: 62.5%;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.product__size--label {
+    font-size: 18px;
+}
+
+.product__icon {
+    margin-right: 15px;
+}
+
+@media only screen and (max-width: 768px) {
+    .product__page {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product__info--specific {
+        width: 70%;
+    }
+}
