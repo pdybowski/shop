@@ -1,46 +1,95 @@
-# Getting Started with Create React App
+# Sport shop
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**[Sport Shop App](https://pdybowski.github.io/shop/) is a single page application created with** **React** **and** **Typescript**.
 
-## Available Scripts
+An example of the fullstack shop application with sport clothes.
 
-In the project directory, you can run:
+Application has its backend deployed on: https://shop-coders-camp.herokuapp.com/
 
-### `npm start`
+> Note: due to the issuess realted to the limited number of characters available in db.json file, app version published on github page does not display images. To see full version of the app, please [install](#1-installation) and display it locally.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Table of contents
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1.  [Installation](#1-installation)
+2.  [Stack](#2-stack)
+3.  [Features](#3-features)
+4.  [Authors](#4-authors)
+5.  [Additonal informations](#5-additional-informations)
 
-### `npm test`
+## 1. Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the app:
 
-### `npm run build`
+`git clone https://github.com/pdybowski/shop.git`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Install packages:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+`npm install`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Run application:
+   on local server set `REACT_APP_API_URL=local` and type `react-scripts start`,
+   on production server set `REACT_APP_API_URL=production` and type `react-scripts start`.
 
-### `npm run eject`
+## 2. Stack
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Frontend of the app is created with:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+-   [React 17.0.2](https://reactjs.org/) and React [packages](https://github.com/pdybowski/healthy-food/blob/master/package.json)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+-   [Typescript](https://www.typescriptlang.org/)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+-   [Webpack 5.70.0](https://webpack.js.org/)
 
-## Learn More
+-   [Prettier 2.6.1](https://prettier.io/)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+-   [storybook 6.4.19](https://storybook.js.org/)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+-   [gh-pages ^3.2.3](https://pages.github.com/)
+
+Backend of the app is created with:
+
+-   [Mongoose 6.2.8](https://mongoosejs.com/)
+
+-   [Express 4.17.3](https://expressjs.com/)
+
+-   [Dotenv 16.0.0](https://www.npmjs.com/package/dotenv)
+
+-   [Zod 3.14.4](https://github.com/colinhacks/zod)
+
+-   [Ts-node](https://www.npmjs.com/package/ts-node)
+
+## 3. Features
+
+<details><summary>Frontend</summary>
+-   Available sports
+-   Woman clothes
+-   Man clothes
+-   Children clothes
+-   Brands
+-   Bestsellers
+</details>
+
+<details><summary>Backend</summary>
+-   Available sports
+-   Woman clothes
+-   Man clothes
+-   Children clothes
+-   Brands
+-   Bestsellers
+</details>
+
+## 4. Authors
+
+-   **Mentor:** [Piotr Dybowski](https://github.com/pdybowski)
+
+-   [Iwona Gorbacz](https://github.com/igorbacz)
+
+-   [Justyna Gładysz](https://github.com/jusgladysz)
+
+-   [Patrycja Starzec](https://github.com/patrycjastarzec)
+
+-   [Tomasz Prządka](https://github.com/altNameForStudying)
+
+## 5. Additional Informations
+
+This project was created during the CodersCamp, 2021/2022 edition. To read more, please check: [CodersCamp](https://www.coderscamp.edu.pl/), [CodersCamp Github](https://github.com/CodersCamp2021).
