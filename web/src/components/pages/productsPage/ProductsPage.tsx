@@ -34,12 +34,12 @@ export const ProductsPage = (): JSX.Element => {
     const searchProduct = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = e.target;
 
-        const results: Product[] = products.filter(
+        const results: Product[] = productsFilteredByType.filter(
             (product) =>
                 product.name.toLowerCase().includes(value.toLowerCase()) ||
                 product.description.toLowerCase().includes(value.toLowerCase()),
         );
-
+        setTotalPages(Math.ceil(results.length / itemsPerPage));
         setFilteredProducts(results);
     };
 
@@ -48,8 +48,8 @@ export const ProductsPage = (): JSX.Element => {
     }, []);
 
     useEffect(() => {
-        let pageProducts = productsFilteredByType.slice((page - 1) * itemsPerPage, page * (itemsPerPage - 1));
-        setTotalPages(Math.ceil(productsFilteredByType.length / 12));
+        let pageProducts = productsFilteredByType.slice((page - 1) * itemsPerPage, page * (itemsPerPage));
+        setTotalPages(Math.ceil(productsFilteredByType.length / itemsPerPage));
         setFilteredProducts(pageProducts);
     }, [productsFilteredByType, page]);
 
