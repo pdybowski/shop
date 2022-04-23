@@ -21,13 +21,16 @@ function showStars(star: number) {
     return <p>{stars}</p>;
 }
 
-export const SaleItem = ({ img, name, price, stars }: Product) => {
+export const BestItem = ({ img, name, price, stars }: Product) => {
     return (
         <div>
             <a className="item" href={''}>
                 <img className="item__image" src={img} alt={name} />
                 <div className="item__price">
-                    <p>{CURRENCY_TYPE}{price}</p>
+                    <p>
+                        {CURRENCY_TYPE}
+                        {price}
+                    </p>
                 </div>
                 <div className="item__title">
                     <p>{name}</p>
