@@ -23,6 +23,8 @@ export const ProductsPage = (): JSX.Element => {
 
     const [nameSearch, setNameSearch] = useState('');
     const [minPriceSearch, setMinPriceSearch] = useState('');
+    const [maxPriceSearch, setMaxPriceSearch] = useState('');
+
 
     const sportType = searchParams.get('sportType') as SportType;
     const productType = searchParams.get('productType') as ProductType;
@@ -44,8 +46,12 @@ export const ProductsPage = (): JSX.Element => {
         setMinPriceSearch(value);
     };
 
-    useEffect(() => {
+    const searchProductByMaxPrice = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { value } = e.target;
+        setMaxPriceSearch(value);
+    };
 
+    useEffect(() => {
         let results: Product[] = productsFilteredByType;
 
         const filterProductsByName = () => {
@@ -54,32 +60,38 @@ export const ProductsPage = (): JSX.Element => {
                     product.name.toLowerCase().includes(nameSearch.toLowerCase()) ||
                     product.description.toLowerCase().includes(nameSearch.toLowerCase()),
             );
-        }
+        };
 
         const filterProductsByMinPrice = () => {
             results = results.filter(
                 (product) =>
                     product.price >= parseInt(minPriceSearch),
             );
-        }
+        };
 
-        if (nameSearch != '' && minPriceSearch === '') {
+        const filterProductsByMaxPrice = () => {
+            results = results.filter(
+                (product) =>
+                    product.price <= parseInt(maxPriceSearch),
+            );
+        };
+
+        if (nameSearch != '') {
             filterProductsByName();
         }
 
-        if (nameSearch === '' && minPriceSearch != '') {
+        if (minPriceSearch != '') {
             filterProductsByMinPrice();
         }
 
-        if (nameSearch != '' && minPriceSearch != '') {
-            filterProductsByName();
-            filterProductsByMinPrice();
+        if (maxPriceSearch != '') {
+            filterProductsByMaxPrice();
         }
 
         setTotalPages(Math.ceil(results.length / itemsPerPage));
         setFilteredProducts(results);
 
-    }, [nameSearch, minPriceSearch]);
+    }, [nameSearch, minPriceSearch, maxPriceSearch]);
 
     useMemo(() => {
         if (!productCategory) return <Navigate replace to='/' />;
@@ -116,6 +128,7 @@ export const ProductsPage = (): JSX.Element => {
             <h2 className='products__page__title'>{header}</h2>
             <SearchInput onSearch={searchProductByName} />
             <SearchInput onSearch={searchProductByMinPrice} />
+            <SearchInput onSearch={searchProductByMaxPrice} />
             <div className='products__page__items'>
                 {filteredProducts.map((item) => {
                     return <ProductItem key={item._id} {...item} />;
