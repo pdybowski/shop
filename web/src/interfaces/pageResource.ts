@@ -1,22 +1,22 @@
-import { BrandType, Product, SportType } from "./product";
+import { BrandType, Product, SportType } from './product';
 
 class baseModel {
-    name: string
-    isEnabled: string
+    name: string;
+    isEnabled: string;
 }
 
 export class brandModel extends baseModel {
-    name: BrandType
+    name: BrandType;
 }
 
 export class sportModel extends baseModel {
-    name: SportType
+    name: SportType;
 }
 
 export class PageResource {
     products: Product[] = [];
-    sports: brandModel[] = [];
-    brands: sportModel[] = [];
+    sports: sportModel[] = [];
+    brands: brandModel[] = [];
 }
 
 export interface PageResourceEditType extends Partial<PageResource> {}
