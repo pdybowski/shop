@@ -126,9 +126,23 @@ export const ProductsPage = (): JSX.Element => {
     return (
         <div className='products__page'>
             <h2 className='products__page__title'>{header}</h2>
-            <SearchInput onSearch={searchProductByName} />
-            <SearchInput onSearch={searchProductByMinPrice} />
-            <SearchInput onSearch={searchProductByMaxPrice} />
+            <div className='products__page__search'>
+                <SearchInput onSearch={searchProductByName} />
+                <div className='products__page__search-price'>
+                    <input
+                        type='text'
+                        onChange={searchProductByMinPrice}
+                        placeholder='Min price...'
+                        className='search-price-button'
+                    />
+                    <input
+                        type='text'
+                        onChange={searchProductByMaxPrice}
+                        placeholder='Max price...'
+                        className='search-price-button'
+                    />
+                </div>
+            </div>
             <div className='products__page__items'>
                 {filteredProducts.map((item) => {
                     return <ProductItem key={item._id} {...item} />;
