@@ -1,9 +1,11 @@
-import { Welcome } from '../../shared/welcome/Welcome';
+import { Welcome } from './components/welcome/Welcome';
+import { MainPageCarousel } from './components/mainPageCarousel/MainPageCarousel';
 
 export const MainPage = () => {
     return (
         <main>
-            <Welcome/>
+            <Welcome />
+            <MainPageCarousel />
         </main>
     );
 };

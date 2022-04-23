@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.css';
-import Typing from '../typing/Typing';
+import Typing from '../../../../shared/typing/Typing';
 
 export const Welcome = () => {
     return (
