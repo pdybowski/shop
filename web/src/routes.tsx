@@ -1,7 +1,7 @@
 import { CartPage, MainPage, ProductsPage, ProductPageContainer } from './components';
 
 export enum RoutePaths {
-    MainPage = '/shop',
+    MainPage = '/',
     Sports = '/sport',
     Products = '/product',
     Bestsellers = '/bestsellers',

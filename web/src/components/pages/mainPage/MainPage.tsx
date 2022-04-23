@@ -1,5 +1,5 @@
-import { Welcome } from '../../shared/welcome/Welcome';
-import { MainPageCarousel } from '../../mainPageCarousel/mainPageCarousel';
+import { Welcome } from './components/welcome/Welcome';
+import { MainPageCarousel } from './components/mainPageCarousel/MainPageCarousel';
 
 export const MainPage = () => {
     return (
