@@ -6,8 +6,8 @@ export const MainPage = () => {
     return (
         <main>
             <Welcome />
-            <BestComponent />
             <MainPageCarousel />
+            <BestComponent />
         </main>
     );
 };
