@@ -3,8 +3,18 @@ import { Product } from '../../../interfaces/product';
 import { BiCube, BiRevision } from 'react-icons/bi';
 import { FiPercent } from 'react-icons/fi';
 import { CURRENCY_TYPE } from '../../../constants';
+import React, { useContext, useEffect } from 'react';
+import { CartContext } from '../../../contexts';
 
-export const ProductPageComponent = ({ img, brand, name, price }: Product): JSX.Element => {
+export const ProductPageComponent = (item: Product): JSX.Element => {
+    const { img, brand, name, price} = item;
+
+    const cartContext = useContext(CartContext);
+
+    useEffect(() => {
+        console.log('Please wait...');
+    }, [cartContext]);
+
     return (
         <div className="product__page">
             <div className="product__info--general">
@@ -32,7 +42,13 @@ export const ProductPageComponent = ({ img, brand, name, price }: Product): JSX.
                     </select>
                 </form>
                 <div className="product__buttons product__button--container">
-                    <button className="product__button product__button--add">ADD TO CART</button>
+                    <button
+                        className="product__button product__button--add"
+                        type="button"
+                        onClick={() => cartContext.addProductToCart(item)}
+                    >
+                        ADD TO CART
+                    </button>
                 </div>
                 <div className="product__info--additional">
                     <span>
