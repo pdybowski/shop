@@ -20,11 +20,11 @@ export const ProductsPage = (): JSX.Element => {
     const [header, setHeader] = useState<string>('');
     const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
     const [searchParams] = useSearchParams();
+    const [productsForPage, setProductsForPage] = useState<Product[]>([]);
 
     const [nameSearch, setNameSearch] = useState('');
     const [minPriceSearch, setMinPriceSearch] = useState('');
     const [maxPriceSearch, setMaxPriceSearch] = useState('');
-
 
     const sportType = searchParams.get('sportType') as SportType;
     const productType = searchParams.get('productType') as ProductType;
@@ -88,9 +88,12 @@ export const ProductsPage = (): JSX.Element => {
             filterProductsByMaxPrice();
         }
 
-        setTotalPages(Math.ceil(results.length / itemsPerPage));
         setFilteredProducts(results);
 
+        let pageProducts = results.slice((page - 1) * itemsPerPage, page * (itemsPerPage));
+        setTotalPages(Math.ceil(results.length / itemsPerPage));
+        setProductsForPage(pageProducts);
+        setPage(1);
     }, [nameSearch, minPriceSearch, maxPriceSearch]);
 
     useMemo(() => {
@@ -100,8 +103,13 @@ export const ProductsPage = (): JSX.Element => {
     useEffect(() => {
         let pageProducts = productsFilteredByType.slice((page - 1) * itemsPerPage, page * (itemsPerPage));
         setTotalPages(Math.ceil(productsFilteredByType.length / itemsPerPage));
-        setFilteredProducts(pageProducts);
-    }, [productsFilteredByType, page]);
+        setProductsForPage(pageProducts);
+    }, [productsFilteredByType]);
+
+    useEffect(() => {
+        let pageProducts = filteredProducts.slice((page - 1) * itemsPerPage, page * (itemsPerPage));
+        setProductsForPage(pageProducts);
+    }, [page]);
 
     useEffect(() => {
         let text = '';
@@ -144,7 +152,7 @@ export const ProductsPage = (): JSX.Element => {
                 </div>
             </div>
             <div className='products__page__items'>
-                {filteredProducts.map((item) => {
+                {productsForPage.map((item) => {
                     return <ProductItem key={item._id} {...item} />;
                 })}
             </div>
