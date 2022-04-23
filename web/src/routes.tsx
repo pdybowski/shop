@@ -1,4 +1,4 @@
-import { CartPage, MainPage, ProductsPage, ProductPageContainer } from './components';
+import { CartPage, MainPage, ProductsPage, SportsPage, ProductPageContainer } from './components';
 
 export enum RoutePaths {
     MainPage = '/',
@@ -32,7 +32,7 @@ export const routes = [
     {
         path: RoutePaths.Sports,
         exact: true,
-        element: <div>Hello</div>,
+        element: <SportsPage />,
         key: 'sport-page',
     },
     // '/sport/product?queries...'
