@@ -1,12 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { PageResourceContext } from '../../../contexts';
-import { Product } from '../../../interfaces';
 import { BestItem } from '../bestItem/BestItem';
-
 import './style.css';
 
 const BEST_LIMIT = 6;
-
 const BestComponent = (): JSX.Element => {
     const {
         pageResource: { products },

@@ -10,13 +10,11 @@ function showStars(star: number) {
     for (let i = 0; i < Math.floor(star); i++) {
         stars.push(<BsStarFill />);
     }
-    if (Number(star) % 1 < 1) {
-        stars.push(<BsStarHalf />);
-    }
-
     for (let i = 0; i < 4 - star; i++) {
         stars.push(<BsStar />);
     }
+    if (Number.isInteger(star)) {
+    } else stars.push(<BsStarHalf />);
 
     return <p>{stars}</p>;
 }
