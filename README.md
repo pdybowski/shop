@@ -34,29 +34,29 @@ Application has its backend deployed on: https://shop-coders-camp.herokuapp.com/
 
 Frontend of the app is created with:
 
--   [React 17.0.2](https://reactjs.org/) and React [packages](https://github.com/pdybowski/healthy-food/blob/master/package.json)
+- [React 17.0.2](https://reactjs.org/) and React [packages](https://github.com/pdybowski/healthy-food/blob/master/package.json)
 
--   [Typescript](https://www.typescriptlang.org/)
+- [Typescript](https://www.typescriptlang.org/)
 
--   [Webpack 5.70.0](https://webpack.js.org/)
+- [Webpack 5.70.0](https://webpack.js.org/)
 
--   [Prettier 2.6.1](https://prettier.io/)
+- [Prettier 2.6.1](https://prettier.io/)
 
--   [storybook 6.4.19](https://storybook.js.org/)
+- [storybook 6.4.19](https://storybook.js.org/)
 
--   [gh-pages ^3.2.3](https://pages.github.com/)
+- [gh-pages ^3.2.3](https://pages.github.com/)
 
 Backend of the app is created with:
 
--   [Mongoose 6.2.8](https://mongoosejs.com/)
+- [Mongoose 6.2.8](https://mongoosejs.com/)
 
--   [Express 4.17.3](https://expressjs.com/)
+- [Express 4.17.3](https://expressjs.com/)
 
--   [Dotenv 16.0.0](https://www.npmjs.com/package/dotenv)
+- [Dotenv 16.0.0](https://www.npmjs.com/package/dotenv)
 
--   [Zod 3.14.4](https://github.com/colinhacks/zod)
+- [Zod 3.14.4](https://github.com/colinhacks/zod)
 
--   [Ts-node](https://www.npmjs.com/package/ts-node)
+- [Ts-node](https://www.npmjs.com/package/ts-node)
 
 ## 3. Features
 
@@ -70,26 +70,27 @@ Backend of the app is created with:
 </details>
 
 <details><summary>Backend</summary>
--   Available sports
--   Woman clothes
--   Man clothes
--   Children clothes
--   Brands
--   Bestsellers
+-   Brand model
+-   Product model
+-   Sport model
+-   Shirt model
+-   Shoe model
+-   Pants model
 </details>
 
 ## 4. Authors
 
--   **Mentor:** [Piotr Dybowski](https://github.com/pdybowski)
+- **Mentor:** [Piotr Dybowski](https://github.com/pdybowski)
 
--   [Iwona Gorbacz](https://github.com/igorbacz)
+- [Iwona Gorbacz](https://github.com/igorbacz)
 
--   [Justyna Gładysz](https://github.com/jusgladysz)
+- [Justyna Gładysz](https://github.com/jusgladysz)
 
--   [Patrycja Starzec](https://github.com/patrycjastarzec)
+- [Patrycja Starzec](https://github.com/patrycjastarzec)
 
--   [Tomasz Prządka](https://github.com/altNameForStudying)
+- [Tomasz Prządka](https://github.com/altNameForStudying)
 
 ## 5. Additional Informations
 
 This project was created during the CodersCamp, 2021/2022 edition. To read more, please check: [CodersCamp](https://www.coderscamp.edu.pl/), [CodersCamp Github](https://github.com/CodersCamp2021).
+
