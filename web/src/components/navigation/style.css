@@ -63,12 +63,17 @@
 .nav__icon{
     display: none;        
 }
+.nav__arrow__resp{
+    display: none;
+}
 
 @media screen and (max-width:720px){
     .main-nav a {
+        /* z-index: 3; */
         position: relative;
-    }
 
+    }
+ 
     .nav-links{
         display: flex;
         flex-direction: column;
@@ -80,6 +85,11 @@
         transition: 0.5s all;
     }
 
+    .main-nav li {
+        border: solid white 2px;
+        background-color: rgb(17, 160, 17);
+}
+
     .nav-links.active{
         background-color:#254441 ;
         left:0;
@@ -87,8 +97,6 @@
 
     .main-nav >li{
         padding: 10px 0;
-        border-top: 1px; 
-        border-top-style: solid;
     }
    
 
@@ -97,5 +105,7 @@
         display: flex;
         color: white; 
      }
-    
+     .nav_arrow{
+         display: none;
+     }
 }
