@@ -32,7 +32,7 @@
     width: 190px;
     text-align: center;
     padding: 7px;
-    border-color: green;
+    border-color: var(--green-main);
     border-width: 3px;
     border-radius: 12px;
 }

@@ -7,16 +7,16 @@
     justify-content: center;
     text-decoration: none;
     transition: background 0.4s;
-    background: #254441;
+    background: var(--green-dark);
 }
 
 .main-nav a:hover {
-    background: #305753;
+    background: var(--green-main);
 }
 
 .main-nav > ul {
     display: flex !important;
-    background: #254441;
+    background: var(--green-dark);
     flex-wrap: wrap;
 }
 
