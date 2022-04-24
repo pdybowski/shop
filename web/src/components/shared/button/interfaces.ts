@@ -1,6 +1,9 @@
 export enum ButtonMode {
     PRIMARY = 'primary',
+    PRIMARYSMALL = 'primarySmall',
+    PRIMARYBIG = 'primaryBig',
     SECONDARY = 'secondary',
+    SECONDARYBIG = 'secondaryBig',
     CANCEL = 'cancel',
     DARK = 'dark',
 }
@@ -16,4 +19,5 @@ export interface ButtonProps {
     backgroundColor?: string;
     borderColor?: string;
     onClick?: () => void;
+    toLink?: any;
 }

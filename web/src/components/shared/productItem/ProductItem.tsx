@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { Children, useContext, useEffect } from 'react';
 import { Product, RoutePaths } from '../../../models';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../../contexts';
@@ -7,6 +7,8 @@ import { CURRENCY_TYPE } from '../../../constants';
 import { EllipsisWrapper } from '../ellipsisWrapper/EllipsisWrapper';
 
 import './style.css';
+import { Button } from '../button/Button';
+import { ButtonMode } from '../button/interfaces';
 
 export const ProductItem = (item: Product): JSX.Element => {
     const { img, name, description, price, _id } = item;
@@ -42,18 +44,18 @@ export const ProductItem = (item: Product): JSX.Element => {
                     </div>
                 </div>
                 <div className="product__buttons">
-                    <button className="product__button product__button--view" type="button">
-                        <Link className="product__button-link" to={`${RoutePaths.Product}/${_id}`}>
-                            VIEW
-                        </Link>
-                    </button>
-                    <button
-                        className="product__button product__button--cart"
+                    <Button
+                        label="VIEW"
+                        mode={ButtonMode.SECONDARY}
+                        type="button"
+                        toLink={`${RoutePaths.Product}/${_id}`}
+                    ></Button>
+                    <Button
+                        label="ADD TO CART"
+                        mode={ButtonMode.SECONDARY}
                         type="button"
                         onClick={() => cartContext.addProductToCart(item)}
-                    >
-                        ADD TO CART
-                    </button>
+                    ></Button>
                 </div>
             </div>
         </div>

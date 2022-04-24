@@ -5,6 +5,8 @@ import { Product } from '../../../../../models';
 import { CURRENCY_TYPE } from '../../../../../constants';
 
 import './style.css';
+import { Button } from '../../../../shared';
+import { ButtonMode } from '../../../../shared/button/interfaces';
 
 export const Cart = () => {
     const cartContext = useContext(CartContext);
@@ -94,7 +96,11 @@ export const Cart = () => {
                         </div>
                     </div>
                     <div>
-                        <button className="cart__checkout-button">Go to payment</button>
+                        <Button
+                            type="button"
+                            label="Go to payment"
+                            mode={ButtonMode.PRIMARYBIG}
+                        ></Button>
                     </div>
                 </div>
             )}
