@@ -150,7 +150,7 @@ export const ProductsPage = (): JSX.Element => {
             </div>
             <div className="products__page__items">
                 {productsForPage.map((item) => {
-                    return <ProductItem key={item._id} {...item} />;
+                    return <ProductItem key={`page-product-${item._id}`} {...item} />;
                 })}
             </div>
             <div>

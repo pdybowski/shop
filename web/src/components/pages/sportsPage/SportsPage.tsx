@@ -11,7 +11,7 @@ export const SportsPage = () => {
     return (
         <div className="sportItems__container">
             {sports.map((sport) => {
-                return <SportItem sportType={sport.name} />;
+                return <SportItem key={sport.name} sportType={sport.name} />;
             })}
         </div>
     );

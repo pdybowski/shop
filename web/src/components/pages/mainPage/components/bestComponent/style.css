@@ -4,10 +4,17 @@
 
 }
 
-.best__image{
+.best__image {
     display: flex;
-    width: 1000px;
+    width: 60%;
     object-fit: cover;
+}
+
+.best__icon {
+    width: 40%;
+    font-size: 300px;
+    text-align: center;
+    color: var(--green-main);
 }
 
 .best__items{

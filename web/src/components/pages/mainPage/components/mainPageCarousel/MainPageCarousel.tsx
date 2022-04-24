@@ -12,7 +12,10 @@ export const MainPageCarousel = () => {
 
     const items = productsArr.map((product) => {
         return (
-            <div className="mainPageCarouselItem__container" key={product._id}>
+            <div
+                className="mainPageCarouselItem__container"
+                key={`carousel-product-${product._id}`}
+            >
                 <img className="mainPageCarouselItem__img" alt="Product" src={product.img} />
                 <div className="mainPageCarouselItem__txt__container">
                     <div className="mainPageCarouselItem__txt">{product.name}</div>
