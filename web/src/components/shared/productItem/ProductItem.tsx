@@ -46,11 +46,11 @@ export const ProductItem = (item: Product): JSX.Element => {
                 </div>
             </div>
             <div className="product__buttons">
-                <Link to={`/products/${_id}`}>
-                    <button className="product__button product__button--view" type="button">
+                <button className="product__button product__button--view" type="button">
+                    <Link className="product__button-link" to={`/products/${_id}`}>
                         VIEW
-                    </button>
-                </Link>
+                    </Link>
+                </button>
                 <button
                     className="product__button product__button--cart"
                     type="button"

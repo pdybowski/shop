@@ -1,0 +1,19 @@
+.best__container{
+    display: flex;
+    align-items: center;
+
+}
+
+.best__image{
+    display: flex;
+    width: 1000px;
+    object-fit: cover;
+}
+
+.best__items{
+    position: absolute;
+    margin-left: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 800px;
+}

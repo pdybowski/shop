@@ -1,13 +1,37 @@
-
-.products__page__title{
+.products__page__title {
     display: flex;
     justify-content: center;
     margin-top: 30px;
     margin-bottom: 30px;
 }
 
-.products__page__items{
+.products__page__items {
     display: flex;
     flex-wrap: wrap;
+    margin-left: 100px;
+    margin-right: 100px;
+    justify-content: center;
+}
 
+.products__page__search {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.products__page__search-price {
+    margin-left: auto;
+}
+
+.search-price-button {
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
+    width: 190px;
+    text-align: center;
+    padding: 7px;
+    border-color: green;
+    border-width: 3px;
+    border-radius: 12px;
 }
