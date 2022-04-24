@@ -4,6 +4,13 @@
     box-sizing: border-box;
 }
 
+:root {
+    --green-main: green;
+    --green-light: lightgreen;
+    --green-dark: darkgreen;
+    --green-shadow: green;
+}
+
 html, body {
     width: 100%;
     height: 100%;

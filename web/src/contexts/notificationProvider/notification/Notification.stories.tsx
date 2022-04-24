@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { NotificationMode } from '../../../interfaces';
+import { NotificationMode } from '../../../models';
 import { Notification, notificationProps } from './Notification';
 
 export default {

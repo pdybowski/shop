@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
-import { CartContext } from '../../contexts';
+
+import { CartContext } from '../../../../../contexts';
+import { Product } from '../../../../../models';
+import { CURRENCY_TYPE } from '../../../../../constants';
+
 import './style.css';
-import { Product } from '../../interfaces';
-import { CURRENCY_TYPE } from '../../constants';
 
 export const Cart = () => {
     const cartContext = useContext(CartContext);
@@ -39,10 +41,15 @@ export const Cart = () => {
                                     <h3 className="cart__item-brand">{cartItem.product.brand}</h3>
                                 </div>
                                 <div className="cart__item-prices">
-                                    <div className="amount">{cartItem.product.price} {CURRENCY_TYPE}/pcs</div>
+                                    <div className="amount">
+                                        {cartItem.product.price} {CURRENCY_TYPE}/pcs
+                                    </div>
                                 </div>
                                 <div className="cart__item-prices-total">
-                                    <div className="amount">{CURRENCY_TYPE}{cartItem.product.price*cartItem.quantity}</div>
+                                    <div className="amount">
+                                        {CURRENCY_TYPE}
+                                        {cartItem.product.price * cartItem.quantity}
+                                    </div>
                                 </div>
                                 <div className="cart__item-counter">
                                     <div>
@@ -81,9 +88,14 @@ export const Cart = () => {
                             <div className="cart__checkout-total-subtotal">Sub-Total</div>
                             <div className="cart__checkout-total-items">{cartItemNumber} items</div>
                         </div>
-                        <div className="cart__checkout-total-amount">{CURRENCY_TYPE}{subTotal}</div>
+                        <div className="cart__checkout-total-amount">
+                            {CURRENCY_TYPE}
+                            {subTotal}
+                        </div>
                     </div>
-                    <button className="cart__checkout-button">Go to payment</button>
+                    <div>
+                        <button className="cart__checkout-button">Go to payment</button>
+                    </div>
                 </div>
             )}
         </div>

@@ -1,10 +1,10 @@
-.products__search{
-    margin:5px 20px 5px 20px; 
+.products__search {
+    margin: 5px 20px 5px 20px;
     display: flex;
-    color: green;
+    color: var(--green-main);
 }
 
-.products__search-icon{
+.products__search-icon {
     margin-right: 0px;
     display: flex;
     align-items: center;
@@ -13,14 +13,13 @@
 
 }
 
-.products__search__input{
+.products__search__input {
     width: 140px;
+    height: 40px;
     text-align: center;
     padding: 7px;
-    margin:5px 5px 5px 0px ;
-    border-color: green;
+    margin: 5px 5px 5px 0px;
+    border-color: var(--green-main);
     border-width: 3px;
     border-radius: 12px;
 }
-
-

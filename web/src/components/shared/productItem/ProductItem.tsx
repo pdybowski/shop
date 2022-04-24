@@ -1,8 +1,10 @@
 import React, { useContext, useEffect } from 'react';
-import { Product } from '../../../interfaces';
+import { Product, RoutePaths } from '../../../models';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../../contexts';
 import { CURRENCY_TYPE } from '../../../constants';
+
+import { EllipsisWrapper } from '../ellipsisWrapper/EllipsisWrapper';
 
 import './style.css';
 
@@ -18,32 +20,41 @@ export const ProductItem = (item: Product): JSX.Element => {
     return (
         <div className="product__item">
             <div className="product__header">
-                <img className="product__image" src={img} alt={name} />
+                <img className="product__image" src={img} alt="image" />
             </div>
-            <div className="product__body">
-                <div className="product__title">
-                    <h4>{name}</h4>
+            <div>
+                <div className="product__body">
+                    <div className="product__title">
+                        <EllipsisWrapper tooltip={name} textLength={1}>
+                            <h4>{name}</h4>
+                        </EllipsisWrapper>
+                    </div>
+                    <div className="product__description">
+                        <EllipsisWrapper tooltip={description} textLength={1}>
+                            {description}
+                        </EllipsisWrapper>
+                    </div>
+                    <div className="product__price">
+                        <h4>
+                            {CURRENCY_TYPE}
+                            {price}
+                        </h4>
+                    </div>
                 </div>
-                <div className="product__description">
-                    <p className="">{description}</p>
-                </div>
-                <div className="product__price">
-                    <h4>{CURRENCY_TYPE}{price}</h4>
-                </div>
-            </div>
-            <div className="product__buttons">
-                <Link to={`/products/${_id}`}>
+                <div className="product__buttons">
                     <button className="product__button product__button--view" type="button">
-                        VIEW
+                        <Link className="product__button-link" to={`${RoutePaths.Product}/${_id}`}>
+                            VIEW
+                        </Link>
                     </button>
-                </Link>
-                <button
-                    className="product__button product__button--cart"
-                    type="button"
-                    onClick={() => cartContext.addProductToCart(item)}
-                >
-                    ADD TO CART
-                </button>
+                    <button
+                        className="product__button product__button--cart"
+                        type="button"
+                        onClick={() => cartContext.addProductToCart(item)}
+                    >
+                        ADD TO CART
+                    </button>
+                </div>
             </div>
         </div>
     );

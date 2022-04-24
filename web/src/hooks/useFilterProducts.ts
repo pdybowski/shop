@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react"
-import { Product, ProductCategory, ProductType, SportType } from "../interfaces"
-import { filterArrayByType } from "../utils";
+import { useEffect, useState } from 'react';
+import { Product, ProductCategory, ProductType, SportType } from '../models';
+import { filterArrayByType } from '../utils';
 
 interface props {
-    products: Product[],
-    productCategory: ProductCategory, 
-    sportType?: SportType, 
-    productType?: ProductType
+    products: Product[];
+    productCategory: ProductCategory;
+    sportType?: SportType;
+    productType?: ProductType;
 }
 export const useFilterProducts = ({ products, productCategory, sportType, productType }: props) => {
     const [productsFilteredByType, setProductsFilteredByType] = useState(products);
@@ -14,18 +14,18 @@ export const useFilterProducts = ({ products, productCategory, sportType, produc
     useEffect(() => {
         let array = products;
 
-        if(productCategory) {
+        if (productCategory) {
             array = filterArrayByType<Product>(array, 'productCategory', productCategory);
         }
-        if(sportType) {
+        if (sportType) {
             array = filterArrayByType<Product>(array, 'sportType', sportType);
         }
-        if(productType) {
+        if (productType) {
             array = filterArrayByType<Product>(array, 'productType', productType);
         }
 
-        setProductsFilteredByType(array)
-    }, [sportType, productCategory, productType])
+        setProductsFilteredByType(array);
+    }, [sportType, productCategory, productType]);
 
-    return { productsFilteredByType }
-}
+    return { productsFilteredByType };
+};

@@ -1,16 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 import { Api } from '../Api';
-import { ApiMethod } from "../interfaces";
-
+import { ApiMethod } from '../models';
 
 interface useFetchProps {
-    url: string
-    method?: ApiMethod,
-    requestBody?: any
+    url: string;
+    method?: ApiMethod;
+    requestBody?: any;
 }
 export const useFetch = <T>({ method = ApiMethod.GET, url, requestBody }: useFetchProps) => {
     const [data, setData] = useState<T>();
-    const [error, setError] = useState<string>("");
+    const [error, setError] = useState<string>('');
     const [isLoading, setIsLoading] = useState(true);
 
     const getData = async () => {
@@ -19,21 +18,20 @@ export const useFetch = <T>({ method = ApiMethod.GET, url, requestBody }: useFet
         try {
             const data = await api.getData<T>(ApiMethod.GET, url);
             setData(data);
-        } catch(err: any) {
+        } catch (err: any) {
             setError(err.message);
         } finally {
             setIsLoading(false);
         }
-    }
+    };
 
     useEffect(() => {
-        switch(method) {
-            case ApiMethod.GET: 
+        switch (method) {
+            case ApiMethod.GET:
                 getData();
                 break;
         }
-    }, [])
+    }, []);
 
-    return { isLoading, data, error }
-}
-
+    return { isLoading, data, error };
+};

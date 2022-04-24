@@ -1,15 +1,15 @@
 export class Product {
-    readonly _id?: string
-    name: string
-    description: string
-    price: number
-    size: ShirtSize | ShoeSize | PantsSize
-    sportType: SportType 
-    productCategory: ProductCategory
-    productType: ProductType
-    brand: BrandType
-    img?: string
-    stars?: number
+    readonly _id?: string;
+    name: string;
+    description: string;
+    price: number;
+    size: ShirtSize | ShoeSize | PantsSize;
+    sportType: SportType;
+    productCategory: ProductCategory;
+    productType: ProductType;
+    brand: BrandType;
+    img?: string;
+    stars?: string;
 };
 
 
