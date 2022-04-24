@@ -50,7 +50,7 @@
 
 .product__price {
     margin: auto;
-    color: green;
+    color: var(--green-main);
     font-weight: 500;
 }
 
@@ -62,7 +62,7 @@
 
 .product__button {
     width: 110px;
-    background-color: green;
+    background-color: var(--green-main);
     color: white;
     opacity: 0.7;
     display: flex;
@@ -75,7 +75,7 @@
 }
 
 .product__button:hover {
-    background-color: greenyellow;
+    background-color: var(--green-light);
     color: black;
     border: 1px solid black;
     transition: all 0.3s ease;

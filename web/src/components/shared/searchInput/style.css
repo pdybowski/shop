@@ -1,7 +1,7 @@
 .products__search {
     margin: 5px 20px 5px 20px;
     display: flex;
-    color: green;
+    color: var(--green-main);
 }
 
 .products__search-icon {
@@ -19,7 +19,7 @@
     text-align: center;
     padding: 7px;
     margin: 5px 5px 5px 0px;
-    border-color: green;
+    border-color: var(--green-main);
     border-width: 3px;
     border-radius: 12px;
 }
