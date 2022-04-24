@@ -24,7 +24,7 @@ export const ProductItem = (item: Product): JSX.Element => {
             <div className="product__body">
                 <div className="product__title">
                     {name.length > 30 ? (
-                        <EllipsisWrapper>
+                        <EllipsisWrapper tooltip={name}>
                             <h4>{name}</h4>
                         </EllipsisWrapper>
                     ) : (
@@ -33,7 +33,7 @@ export const ProductItem = (item: Product): JSX.Element => {
                 </div>
                 <div className="product__description">
                     {description.length > 200 ? (
-                        <EllipsisWrapper>{description}</EllipsisWrapper>
+                        <EllipsisWrapper tooltip={description}>{description}</EllipsisWrapper>
                     ) : (
                         description
                     )}
