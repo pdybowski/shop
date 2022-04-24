@@ -1,11 +1,11 @@
-import { ProductCategory, ProductType, SportType } from '../../models';
-import { RoutePaths } from '../../routes';
+import { ProductCategory, ProductType, RoutePaths, SportType } from '../../models';
 import { Item, NavItem } from './components';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
-import './style.css';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { CartContext } from '../../contexts';
+
+import './style.css';
 
 const navigationLinks: Item[] = [
     {
@@ -108,7 +108,7 @@ export const Navigation = () => {
         <nav className="main-nav">
             <ul>
                 {navigationLinks.map((menu: Item) => (
-                    <NavItem child={menu} level={1} />
+                    <NavItem key={menu.link} child={menu} level={1} />
                 ))}
                 <li>
                     <Link to={RoutePaths.Cart}>

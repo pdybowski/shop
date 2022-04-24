@@ -1,11 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
-import { ProductsPage } from './components';
 import { routes } from './routes';
 
 const Views = () => {
     return (
         <Routes>
-            {routes.map((route: {}) => (
+            {routes.map((route: any) => (
                 <Route {...route} /> // eslint-disable-line react/jsx-key
             ))}
         </Routes>

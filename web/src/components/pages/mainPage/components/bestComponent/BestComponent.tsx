@@ -26,7 +26,7 @@ export const BestComponent = (): JSX.Element => {
                     })
                     .slice(0, products.length)
                     .map((item) => (
-                        <BestItem {...item} {...setLimit} />
+                        <BestItem key={item._id} {...item} {...setLimit} />
                     ))}
             </div>
         </div>

@@ -1,12 +1,12 @@
 import React, { useContext, useEffect } from 'react';
-import { Product } from '../../../models';
+import { Product, RoutePaths } from '../../../models';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../../contexts';
 import { CURRENCY_TYPE } from '../../../constants';
 
-import './style.css';
 import { EllipsisWrapper } from '../ellipsisWrapper/EllipsisWrapper';
-import { RoutePaths } from '../../../routes';
+
+import './style.css';
 
 export const ProductItem = (item: Product): JSX.Element => {
     const { img, name, description, price, _id } = item;
