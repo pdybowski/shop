@@ -3,7 +3,7 @@ import { Navigate, useSearchParams } from 'react-router-dom';
 
 import { PageResourceContext } from '../../../contexts';
 import { useFilterProducts } from '../../../hooks';
-import { Product, ProductCategory, ProductType, SportType } from '../../../interfaces';
+import { Product, ProductCategory, ProductType, SportType } from '../../../models';
 import { ProductItem, SearchInput } from '../../shared';
 import './style.css';
 import { Pagination } from '../../shared/pagination/Pagination';
@@ -58,22 +58,16 @@ export const ProductsPage = (): JSX.Element => {
             results = results.filter(
                 (product) =>
                     product.name.toLowerCase().includes(nameSearch.toLowerCase()) ||
-                    product.description.toLowerCase().includes(nameSearch.toLowerCase()),
+                    product.description.toLowerCase().includes(nameSearch.toLowerCase())
             );
         };
 
         const filterProductsByMinPrice = () => {
-            results = results.filter(
-                (product) =>
-                    product.price >= parseInt(minPriceSearch),
-            );
+            results = results.filter((product) => product.price >= parseInt(minPriceSearch));
         };
 
         const filterProductsByMaxPrice = () => {
-            results = results.filter(
-                (product) =>
-                    product.price <= parseInt(maxPriceSearch),
-            );
+            results = results.filter((product) => product.price <= parseInt(maxPriceSearch));
         };
 
         if (nameSearch != '') {
@@ -90,24 +84,27 @@ export const ProductsPage = (): JSX.Element => {
 
         setFilteredProducts(results);
 
-        let pageProducts = results.slice((page - 1) * itemsPerPage, page * (itemsPerPage));
+        let pageProducts = results.slice((page - 1) * itemsPerPage, page * itemsPerPage);
         setTotalPages(Math.ceil(results.length / itemsPerPage));
         setProductsForPage(pageProducts);
         setPage(1);
     }, [nameSearch, minPriceSearch, maxPriceSearch]);
 
     useMemo(() => {
-        if (!productCategory) return <Navigate replace to='/' />;
+        if (!productCategory) return <Navigate replace to="/" />;
     }, []);
 
     useEffect(() => {
-        let pageProducts = productsFilteredByType.slice((page - 1) * itemsPerPage, page * (itemsPerPage));
+        let pageProducts = productsFilteredByType.slice(
+            (page - 1) * itemsPerPage,
+            page * itemsPerPage
+        );
         setTotalPages(Math.ceil(productsFilteredByType.length / itemsPerPage));
         setProductsForPage(pageProducts);
     }, [productsFilteredByType]);
 
     useEffect(() => {
-        let pageProducts = filteredProducts.slice((page - 1) * itemsPerPage, page * (itemsPerPage));
+        let pageProducts = filteredProducts.slice((page - 1) * itemsPerPage, page * itemsPerPage);
         setProductsForPage(pageProducts);
     }, [page]);
 
@@ -132,26 +129,26 @@ export const ProductsPage = (): JSX.Element => {
     }, [productCategory, sportType, productType]);
 
     return (
-        <div className='products__page'>
-            <h2 className='products__page__title'>{header}</h2>
-            <div className='products__page__search'>
+        <div className="products__page">
+            <h2 className="products__page__title">{header}</h2>
+            <div className="products__page__search">
                 <SearchInput onSearch={searchProductByName} />
-                <div className='products__page__search-price'>
+                <div className="products__page__search-price">
                     <input
-                        type='text'
+                        type="text"
                         onChange={searchProductByMinPrice}
-                        placeholder='Min price...'
-                        className='search-price-button'
+                        placeholder="Min price..."
+                        className="search-price-button"
                     />
                     <input
-                        type='text'
+                        type="text"
                         onChange={searchProductByMaxPrice}
-                        placeholder='Max price...'
-                        className='search-price-button'
+                        placeholder="Max price..."
+                        className="search-price-button"
                     />
                 </div>
             </div>
-            <div className='products__page__items'>
+            <div className="products__page__items">
                 {productsForPage.map((item) => {
                     return <ProductItem key={item._id} {...item} />;
                 })}

@@ -1,12 +1,12 @@
-import { CartPage, MainPage, ProductsPage, SportsPage, ProductPageContainer } from './components';
+import { CartPage, MainPage, ProductsPage, SportsPage, SingleProductPage } from './components';
 
 export enum RoutePaths {
     MainPage = '/shop',
-    Sports = '/sport',
-    Products = '/product',
+    Sports = '/sports',
+    Products = '/products',
     Bestsellers = '/bestsellers',
     Brands = '/brands',
-    Product = '/products/:id',
+    Product = '/product',
     Cart = '/cart',
 }
 
@@ -42,18 +42,8 @@ export const routes = [
         key: 'sport-product-page',
     },
     {
-        path: RoutePaths.Product,
-        element: <ProductPageContainer />,
+        path: RoutePaths.Product + '/:id',
+        element: <SingleProductPage />,
         key: 'product',
     },
-    // {
-    //     path: RoutePaths.Bestsellers,
-    //     element: <Bestsellers />,
-    //     key: 'bestsellers-page',
-    // },
-    // {
-    //     path: RoutePaths.Brands,
-    //     element: <Brands />,
-    //     key: 'brands-page',
-    // },
 ];
