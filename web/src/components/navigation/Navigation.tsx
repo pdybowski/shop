@@ -1,4 +1,4 @@
-import { ProductCategory, ProductType, SportType } from '../../interfaces';
+import { ProductCategory, ProductType, SportType } from '../../models';
 import { RoutePaths } from '../../routes';
 import { Item, NavItem } from './components';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
@@ -18,17 +18,17 @@ const navigationLinks: Item[] = [
         children: [
             {
                 name: 'Tennis',
-                link: `/product?sportType=${SportType.tennis}`,
+                link: `${RoutePaths.Products}?sportType=${SportType.tennis}`,
             },
             {
                 name: 'Football',
-                link: `/product?sportType=${SportType.football}`,
+                link: `${RoutePaths.Products}?sportType=${SportType.football}`,
             },
         ],
     },
     {
         name: 'Woman',
-        link: `product?productCategory=${ProductCategory.woman}`,
+        link: `${RoutePaths.Products}?productCategory=${ProductCategory.woman}`,
         children: [
             {
                 name: 'Tennis',
@@ -48,7 +48,7 @@ const navigationLinks: Item[] = [
     },
     {
         name: 'Man',
-        link: `product?productCategory=${ProductCategory.man}`,
+        link: `${RoutePaths.Products}?productCategory=${ProductCategory.man}`,
         children: [
             {
                 name: 'Tennis',
@@ -68,7 +68,7 @@ const navigationLinks: Item[] = [
     },
     {
         name: 'Child',
-        link: `product?productCategory=${ProductCategory.child}`,
+        link: `${RoutePaths.Products}?productCategory=${ProductCategory.child}`,
         children: [
             {
                 name: 'Tennis',

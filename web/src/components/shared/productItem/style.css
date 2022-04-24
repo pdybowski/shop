@@ -1,5 +1,5 @@
 .product__item {
-    height: 500px;
+    height: 550px;
     width: 350px;
     margin: 25px;
     border-color: hsl(84, 100%, 59%);
@@ -55,20 +55,7 @@
 }
 
 .product__buttons {
-    margin-top: auto;
-    margin-bottom: 30px;
-    min-width: 165px;
-    width: auto;
     height: 70px;
-    letter-spacing: 0.5px;
-    line-height: 50px;
-    padding: 0 35px 0 35px;
-    font-size: 15px;
-    text-transform: uppercase;
-    font-weight: bolder;
-    border: none;
-    cursor: pointer;
-    border-radius: 3px;
     display: flex;
     justify-content: center;
 }

@@ -1,5 +1,5 @@
 import React, { createContext, useReducer } from 'react';
-import { Product } from '../../interfaces';
+import { Product } from '../../models';
 import { ADD_PRODUCT, REMOVE_PRODUCT, cartReducer } from './CartReducer';
 
 export interface cartItem {

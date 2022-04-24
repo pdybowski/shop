@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react';
-import { PageResourceContext } from '../../../contexts';
+import { PageResourceContext } from '../../../../../contexts';
 import { BestItem } from '../bestItem/BestItem';
 import './style.css';
 
 const BEST_LIMIT = 6;
-const BestComponent = (): JSX.Element => {
+export const BestComponent = (): JSX.Element => {
     const {
         pageResource: { products },
     } = useContext(PageResourceContext);
@@ -32,5 +32,3 @@ const BestComponent = (): JSX.Element => {
         </div>
     );
 };
-
-export default BestComponent;

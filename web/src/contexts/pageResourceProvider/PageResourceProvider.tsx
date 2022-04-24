@@ -1,5 +1,5 @@
 import React, { createContext, useState } from 'react';
-import { PageResource, PageResourceEditType } from '../../interfaces';
+import { PageResource, PageResourceEditType } from '../../models';
 
 interface contextData {
     pageResource: PageResource;

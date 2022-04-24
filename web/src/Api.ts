@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ApiMethod } from './interfaces';
+import { ApiMethod } from './models';
 
 export class Api {
     private readonly BASE_URL =

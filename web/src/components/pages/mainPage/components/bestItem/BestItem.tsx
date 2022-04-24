@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { BsStarFill, BsStar, BsStarHalf } from 'react-icons/bs';
 import './style.css';
-import { Product } from '../../../interfaces';
-import { CURRENCY_TYPE } from '../../../constants';
+import { Product } from '../../../../../models';
+import { CURRENCY_TYPE } from '../../../../../constants';
+import { EllipsisWrapper } from '../../../../shared';
 
 function showStars(star: number) {
     const stars = [];
@@ -23,7 +24,7 @@ export const BestItem = ({ img, name, price, stars }: Product) => {
     return (
         <div>
             <a className="item" href={''}>
-                <img className="item__image" src={img} alt={name} />
+                <img className="item__image" src={img} alt="image" />
                 <div className="item__price">
                     <p>
                         {CURRENCY_TYPE}
@@ -31,7 +32,9 @@ export const BestItem = ({ img, name, price, stars }: Product) => {
                     </p>
                 </div>
                 <div className="item__title">
-                    <p>{name}</p>
+                    <EllipsisWrapper tooltip={name} textLength={1}>
+                        {name}
+                    </EllipsisWrapper>
                 </div>
                 {stars && <div className="item__stars">{showStars(Number(stars))}</div>}
             </a>

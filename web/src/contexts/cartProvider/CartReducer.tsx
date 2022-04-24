@@ -1,4 +1,4 @@
-import { Product } from '../../interfaces';
+import { Product } from '../../models';
 import { cartContextData } from './CartProvider';
 
 export const ADD_PRODUCT = 'ADD_PRODUCT';
