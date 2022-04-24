@@ -104,7 +104,9 @@
 
 .cart__checkout {
     align-self: stretch;
-    margin: 20px auto auto;
+    margin: auto auto 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .cart__checkout-total {
