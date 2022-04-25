@@ -2,12 +2,10 @@
     height: 550px;
     width: 350px;
     margin: 25px;
-    border-color: var(--green-light);
-    border-style: groove;
     border-width: 3px;
-    -webkit-box-shadow: 8px 8px 24px 0 var(--green-shadow);
-    -moz-box-shadow: 8px 8px 24px 0 var(--green-shadow);
-    box-shadow: 8px 8px 24px 0 var(--green-shadow);
+    -webkit-box-shadow: 0px 0px 24px -13px var(--green-shadow);
+    -moz-box-shadow: 0px 0px 24px -13px var(--green-shadow);
+    box-shadow: 0px 0px 24px -13px var(--green-shadow);
     display: flex;
     flex-direction: column;
 }
