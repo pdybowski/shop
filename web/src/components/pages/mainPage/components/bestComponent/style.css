@@ -1,26 +1,25 @@
-.best__container{
+.best__container {
+    background: url('https://d-art.ppstatic.pl/kadry/k/r/1/9d/0a/6234b5b877108_o_full.jpg')
+        no-repeat center center fixed;
+    min-height: 38rem;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-
 }
 
-.best__image {
-    display: flex;
-    width: 60%;
-    object-fit: cover;
-}
-
-.best__icon {
-    width: 40%;
-    font-size: 300px;
+.best__header {
+    margin: 0.5rem 0rem 0.5rem 0rem;
+    font-size: 28px;
     text-align: center;
-    color: var(--green-main);
+    font-weight: bold;
 }
 
-.best__items{
-    position: absolute;
-    margin-left: 400px;
+.best__items {
+    width: 100%;
+    padding: 1rem 0rem 1rem 0rem;
     display: flex;
     flex-wrap: wrap;
-    width: 800px;
+    justify-content: center;
+    align-items: center;
 }

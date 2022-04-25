@@ -1,19 +1,67 @@
 /* BUTTON PRIMARY */
-.button--primary{
-  width: 130px;
-  height: 50px;
-  margin: 15px 15px 15px 15px;
-  background-color: white;
-  color: #337FED;
-  font: normal bold 20px "Open Sans", sans-serif;
-  border-radius: 12px;
-  border: solid #337FED 2px;
-  display: inline-block;
-  cursor: pointer;
-  text-align: center;
+.button--primary {
+    width: 130px;
+    height: 50px;
+    margin: 15px 15px 15px 15px;
+    background-color: white;
+    color: #337FED;
+    font: normal bold 20px "Open Sans", sans-serif;
+    border-radius: 12px;
+    border: solid #337FED 2px;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
 
 }
-.button--primary:hover{
+
+.button--primary:hover {
+    border: solid #6f9ddd 2px;
+    background-color: white;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 13px;
+    text-decoration: none;
+}
+
+.button--primarySmall {
+    width: 50px;
+    height: 40px;
+    margin: 7px 7px 7px 7px;
+    background-color: white;
+    color: #337FED;
+    font: normal bold 10px "Open Sans", sans-serif;
+    border-radius: 12px;
+    border: solid #337FED 2px;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+}
+
+.button--primarySmall:hover {
+    border: solid #6f9ddd 2px;
+    background-color: white;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 13px;
+    text-decoration: none;
+}
+
+/* BUTTON PRIMARY BIG */
+.button--primaryBig {
+    width: 200px;
+    height: 50px;
+    margin: 15px 15px 15px 15px;
+    background: linear-gradient(to bottom right, #b8d7ff, #8eb7eb);
+    color: #202020;
+    font: normal bold 16px "Open Sans", sans-serif;
+    border-radius: 12px;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    border: none;
+}
+
+.button--primaryBig:hover{
   border: solid #6f9ddd 2px;
   background-color: white;
   -webkit-border-radius: 20px;
@@ -25,78 +73,105 @@
 
 /* BUTTO--secondary */
 
-.button--secondary{
-  width: 130px;
-  height: 50px;
-  margin: 15px 15px 15px 15px;
-  background-color: white;
-  color:#15d798;
-  font: normal bold 20px "Open Sans", sans-serif;
-  border-radius: 12px;
-  border: solid #15d798 2px;
-  display: inline-block;
-  cursor: pointer;
-  text-align: center;
+.button--secondary {
+    width: 145px;
+    height: 50px;
+    margin: 15px 15px 15px 15px;
+    background: var(--green-light);
+    font: normal bold 18px "Open Sans", sans-serif;
+    border-radius: 12px;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    color: #202020;
+    border: none;
+}
+
+.button--secondary:hover {
+    border: solid #86e9ca 2px;
+    background-color: white;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 13px;
+    text-decoration: none;
+}
+
+/* BUTTO--secondary -BIG */
+
+.button--secondaryBig {
+    width: 200px;
+    height: 50px;
+    margin: 15px 15px 15px 15px;
+    background-color: white;
+    /*color: #15d798 !important;*/
+    font: normal bold 20px "Open Sans", sans-serif;
+    border-radius: 12px;
+    /*border: solid #15d798 2px;*/
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+
+    background: var(--green-light);
+    color: #202020;
+    border: none;
 
 }
-.button--secondary:hover{
-  border: solid #86e9ca 2px;
-  background-color: white;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  border-radius: 13px;
-  text-decoration: none;
+
+.button--secondaryBig:hover {
+    border: solid #86e9ca 2px;
+    background-color: white;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 13px;
+    text-decoration: none;
 }
 
 /* BUTTON CANCEL */
 
-.button--cancel{
-  width: 130px;
-  height: 50px;
-  margin: 15px 15px 15px 15px;
-  background-color: white;
-  color:#cf4910;
-  font: normal bold 20px "Open Sans", sans-serif;
-  border-radius: 12px;
-  border: solid #cf4910 2px;
-  display: inline-block;
-  cursor: pointer;
-  text-align: center;
+.button--cancel {
+    width: 130px;
+    height: 50px;
+    margin: 15px 15px 15px 15px;
+    background-color: white;
+    color: #cf4910;
+    font: normal bold 20px "Open Sans", sans-serif;
+    border-radius: 12px;
+    border: solid #cf4910 2px;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
 
 }
 
-.button--cancel:hover{
-  border: solid rgb(212, 155, 130) 2px;
-  background-color: white;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  border-radius: 13px;
-  text-decoration: none;
+.button--cancel:hover {
+    border: solid rgb(212, 155, 130) 2px;
+    background-color: white;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 13px;
+    text-decoration: none;
 }
 
 
-.button--dark{
-  width: 130px;
-  height: 50px;
-  margin: 15px 15px 15px 15px;
-  background-color: white;
-  color:#1a6a47;
-  font: normal bold 20px "Open Sans", sans-serif;
-  border-radius: 12px;
-  border: solid #1a6a47 2px;
-  display: inline-block;
-  cursor: pointer;
-  text-align: center;
-}
-.button--dark:hover{
-  border: solid hsl(154, 53%, 47%) 2px;
-  background-color: white;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  border-radius: 13px;
-  text-decoration: none;
+.button--dark {
+    width: 130px;
+    height: 50px;
+    margin: 15px 15px 15px 15px;
+    background-color: white;
+    color: #1a6a47;
+    font: normal bold 20px "Open Sans", sans-serif;
+    border-radius: 12px;
+    border: solid #1a6a47 2px;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
 }
 
-
-
-
+.button--dark:hover {
+    border: solid hsl(154, 53%, 47%) 2px;
+    background-color: white;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 13px;
+    text-decoration: none;
+}

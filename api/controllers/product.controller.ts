@@ -1,6 +1,7 @@
 import {Request, Response} from 'express'
+import { TypeOf } from 'zod'
 import {
-    CreateProductInput,
+    CreateProductInput, createProductSchema 
 } from '../schemaValidators/product.schema'
 import {
     createProduct,
@@ -44,7 +45,7 @@ export async function getSingleProductHandler(
 
 // post product/
 export async function createProductHandler(
-    req: Request<{}, {}, CreateProductInput["body"]>, res: Response ) {
+    req: Request<{}, {}, TypeOf<typeof createProductSchema>>, res: Response ) {
         const body = req.body
         const product = await createProduct({...body})
         return res.send(product)

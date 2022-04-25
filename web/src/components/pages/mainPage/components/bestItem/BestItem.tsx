@@ -4,6 +4,7 @@ import './style.css';
 import { Product } from '../../../../../models';
 import { CURRENCY_TYPE } from '../../../../../constants';
 import { EllipsisWrapper } from '../../../../shared';
+import placeholder from '../../../../../assets/images/placeholder.jpg';
 
 function showStars(star: number) {
     const stars = [];
@@ -24,7 +25,7 @@ export const BestItem = ({ img, name, price, stars }: Product) => {
     return (
         <div>
             <a className="item" href={''}>
-                <img className="item__image" src={img} alt="image" />
+                <img className="item__image" src={img && true ? img : placeholder} alt="image" />
                 <div className="item__price">
                     <p>
                         {CURRENCY_TYPE}

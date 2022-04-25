@@ -2,12 +2,12 @@
     height: 550px;
     width: 350px;
     margin: 25px;
-    border-color: hsl(84, 100%, 59%);
+    border-color: var(--green-light);
     border-style: groove;
     border-width: 3px;
-    -webkit-box-shadow: 8px 8px 24px 0 rgba(25, 119, 25, 1);
-    -moz-box-shadow: 8px 8px 24px 0 rgba(25, 119, 25, 1);
-    box-shadow: 8px 8px 24px 0 rgba(25, 119, 25, 1);
+    -webkit-box-shadow: 8px 8px 24px 0 var(--green-shadow);
+    -moz-box-shadow: 8px 8px 24px 0 var(--green-shadow);
+    box-shadow: 8px 8px 24px 0 var(--green-shadow);
     display: flex;
     flex-direction: column;
 }

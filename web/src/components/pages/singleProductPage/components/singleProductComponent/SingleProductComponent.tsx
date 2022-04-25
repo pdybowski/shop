@@ -6,6 +6,9 @@ import { CartContext } from '../../../../../contexts';
 import { Product } from '../../../../../models';
 
 import './style.css';
+import { Button } from '../../../../shared';
+import { ButtonMode } from '../../../../shared/button/interfaces';
+import placeholder from '../../../../../assets/images/placeholder.jpg';
 
 export const SingleProductComponent = (item: Product): JSX.Element => {
     const { img, brand, name, price } = item;
@@ -21,7 +24,7 @@ export const SingleProductComponent = (item: Product): JSX.Element => {
             <div className="product__info--general">
                 <div className="product__name">{name}</div>
                 <div>
-                    <img src={img} alt="Product" className="product__image--img"></img>
+                    <img src={img && true ? img : placeholder} alt="Product" className="product__image--img"></img>
                 </div>
             </div>
             <div className="product__info--specific">
@@ -43,13 +46,12 @@ export const SingleProductComponent = (item: Product): JSX.Element => {
                     </select>
                 </form>
                 <div className="product__buttons product__button--container">
-                    <button
-                        className="product__button product__button--add"
+                    <Button
                         type="button"
+                        mode={ButtonMode.SECONDARYBIG}
+                        label="ADD TO CART"
                         onClick={() => cartContext.addProductToCart(item)}
-                    >
-                        ADD TO CART
-                    </button>
+                    />
                 </div>
                 <div className="product__info--additional">
                     <span>

@@ -1,7 +1,7 @@
-import { number, object, string, TypeOf } from "zod";
+import { z, number, object, string, TypeOf } from "zod";
 
 const payload = {
-    body: object({
+    body: z.object({
         name: string({
             required_error: 'Name is required'
         }),
@@ -16,13 +16,12 @@ const payload = {
         }),
         brand: string({
             required_error: 'Brand is required'
-        }),
-
+        })
     })
 }
 
 const payloadUpdateSchema = {
-body: object({ 
+body: z.object({ 
     name: string(),
     price: number(),
     sportType: string(),
