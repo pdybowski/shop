@@ -28,8 +28,9 @@
 .search-price-button {
     margin-right: 20px;
     margin-left: 20px;
-    margin-top: 20px;
+    margin-top: 10px;
     width: 190px;
+    height: 40px;
     text-align: center;
     padding: 7px;
     border-color: var(--green-main);
