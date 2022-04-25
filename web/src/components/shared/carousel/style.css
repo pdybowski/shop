@@ -10,7 +10,7 @@
     position: absolute;
     visibility: hidden;
     opacity: 0;
-    transition: all .8s ease-out;
+    transition: all 0.8s ease-out;
 }
 
 .carousel__item--active {
@@ -33,4 +33,11 @@
     left: 20rem;
     font-size: 3rem;
     color: rgb(88, 88, 88);
+}
+
+@media only screen and (max-width: 768px) {
+    .arrow__left,
+    .arrow__right {
+        display: none;
+    }
 }

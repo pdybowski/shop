@@ -1,6 +1,7 @@
 import Carousel from '../../../../shared/carousel/Carousel';
 import { useContext } from 'react';
 import { PageResourceContext } from '../../../../../contexts';
+import { CURRENCY_TYPE } from '../../../../../constants';
 import './style.css';
 
 export const MainPageCarousel = () => {
@@ -19,7 +20,10 @@ export const MainPageCarousel = () => {
                 <img className="mainPageCarouselItem__img" alt="Product" src={product.img} />
                 <div className="mainPageCarouselItem__txt__container">
                     <div className="mainPageCarouselItem__txt">{product.name}</div>
-                    <div className="mainPageCarouselItem__txt">${product.price}</div>
+                    <div className="mainPageCarouselItem__txt">
+                        {CURRENCY_TYPE}
+                        {product.price}
+                    </div>
                 </div>
             </div>
         );

@@ -1,9 +1,9 @@
 .item {
-    width: 236px;
-    height: 267px;
+    width: 15rem;
+    height: 17rem;
     background-color: white;
     color: #222222;
-    border: 1px solid #ECEFF1;
+    border: 1px solid #eceff1;
     display: flex;
     flex-direction: column;
     cursor: pointer;
@@ -48,6 +48,5 @@
 
 .item__stars {
     text-align: center;
-    color: #FFDC5E;
+    color: #ffdc5e;
 }
-
