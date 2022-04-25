@@ -3,6 +3,7 @@ import { Product, RoutePaths } from '../../../models';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../../contexts';
 import { CURRENCY_TYPE } from '../../../constants';
+import placeholder from '../../../assets/images/placeholder.jpg';
 
 import { EllipsisWrapper } from '../ellipsisWrapper/EllipsisWrapper';
 
@@ -20,37 +21,37 @@ export const ProductItem = (item: Product): JSX.Element => {
     }, [cartContext]);
 
     return (
-        <div className="product__item">
-            <div className="product__header">
-                <img className="product__image" src={img} alt="image" />
+        <div className='product__item'>
+            <div className='product__header'>
+                <img className='product__image' src={img && true ? img : placeholder} alt='image' />
             </div>
             <div>
-                <div className="product__body">
-                    <div className="product__title">
+                <div className='product__body'>
+                    <div className='product__title'>
                         <EllipsisWrapper tooltip={name} textLength={1}>
                             <h4>{name}</h4>
                         </EllipsisWrapper>
                     </div>
-                    <div className="product__description">
+                    <div className='product__description'>
                         <EllipsisWrapper tooltip={description} textLength={1}>
                             {description}
                         </EllipsisWrapper>
                     </div>
-                    <div className="product__price">
+                    <div className='product__price'>
                         <h4>
                             {CURRENCY_TYPE}
                             {price}
                         </h4>
                     </div>
                 </div>
-                <div className="product__buttons">
+                <div className='product__buttons'>
                     <Link to={`${RoutePaths.Product}/${_id}`}>
-                        <Button label="VIEW" mode={ButtonMode.SECONDARY} type="button"></Button>
+                        <Button label='VIEW' mode={ButtonMode.SECONDARY} type='button'></Button>
                     </Link>
                     <Button
-                        label="ADD TO CART"
+                        label='ADD TO CART'
                         mode={ButtonMode.SECONDARY}
-                        type="button"
+                        type='button'
                         onClick={() => cartContext.addProductToCart(item)}
                     ></Button>
                 </div>
