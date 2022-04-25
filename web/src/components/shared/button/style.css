@@ -168,13 +168,3 @@
   border-radius: 13px;
   text-decoration: none;
 }
-
-.button__link:-webkit-any-link {
- text-decoration: none;
- color: inherit;
- text-decoration: inherit;
-}
-  
-
-
-

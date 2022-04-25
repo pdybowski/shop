@@ -19,5 +19,4 @@ export interface ButtonProps {
     backgroundColor?: string;
     borderColor?: string;
     onClick?: () => void;
-    toLink?: any;
 }

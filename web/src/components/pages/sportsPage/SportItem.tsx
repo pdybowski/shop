@@ -13,6 +13,7 @@ import { BiRun, BiSwim, BiCycling } from 'react-icons/bi';
 import './style.css';
 import { Button } from '../../shared';
 import { ButtonMode } from '../../shared/button/interfaces';
+import { RoutePaths } from '../../../models';
 
 interface SportItemProps {
     sportType: String;
@@ -58,7 +59,7 @@ export const SportItem = ({ sportType }: SportItemProps) => {
                 <div>{sportItemImg(sportType)}</div>
                 <div className="sportItem__name">{sportType}</div>
                 <div className="sportItem__number">Products in category: {numberOfElements}</div>
-                <Link to={`/product?sportType=${sportType}`}>
+                <Link to={`${RoutePaths.Products}?sportType=${sportType}`}>
                     <Button type="button" mode={ButtonMode.SECONDARY} label="VIEW" />
                 </Link>
             </div>

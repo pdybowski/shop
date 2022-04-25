@@ -44,12 +44,9 @@ export const ProductItem = (item: Product): JSX.Element => {
                     </div>
                 </div>
                 <div className="product__buttons">
-                    <Button
-                        label="VIEW"
-                        mode={ButtonMode.SECONDARY}
-                        type="button"
-                        toLink={`${RoutePaths.Product}/${_id}`}
-                    ></Button>
+                    <Link to={`${RoutePaths.Product}/${_id}`}>
+                        <Button label="VIEW" mode={ButtonMode.SECONDARY} type="button"></Button>
+                    </Link>
                     <Button
                         label="ADD TO CART"
                         mode={ButtonMode.SECONDARY}
