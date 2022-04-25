@@ -5,10 +5,10 @@
 }
 
 :root {
-    --green-main: green;
-    --green-light: lightgreen;
-    --green-dark: darkgreen;
-    --green-shadow: green;
+    --green-main: #75C4C0;
+    --green-light: #82FF82;
+    --green-dark: #254441;
+    --green-shadow: #305753;
 }
 
 html, body {
