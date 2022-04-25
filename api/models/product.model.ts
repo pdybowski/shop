@@ -25,7 +25,7 @@ export interface IProductInput {
     description?: String,
     price: Number,
     sportType: String,
-    img?: Buffer,
+    img?: String,
     // size: String,
     brand: String,
     isCarousel?: Boolean,
@@ -66,8 +66,7 @@ const productSchema = new mongoose.Schema({
         required: true,
     },
     img: {
-        data: Buffer,
-        contentType: String,
+        type: String,
     },
     brand: {
         type: String,
