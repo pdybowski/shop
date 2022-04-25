@@ -22,16 +22,63 @@
   text-decoration: none;
 }
 
+.button--primarySmall{
+   width: 50px;
+  height: 40px;
+  margin: 7px 7px 7px 7px;
+  background-color: white;
+  color: #337FED;
+  font: normal bold 10px "Open Sans", sans-serif;
+  border-radius: 12px;
+  border: solid #337FED 2px;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+}
+
+.button--primarySmall:hover{
+  border: solid #6f9ddd 2px;
+  background-color: white;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 13px;
+  text-decoration: none;
+}
+
+/* BUTTON PRIMARY BIG */
+.button--primaryBig{
+    width: 200px;
+  height: 50px;
+  margin: 15px 15px 15px 15px;
+  background-color: white;
+  color: #337FED;
+  font: normal bold 20px "Open Sans", sans-serif;
+  border-radius: 12px;
+  border: solid #337FED 2px;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+}
+
+.button--primaryBig:hover{
+  border: solid #6f9ddd 2px;
+  background-color: white;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 13px;
+  text-decoration: none;
+}
+
 
 /* BUTTO--secondary */
 
 .button--secondary{
-  width: 130px;
+  width: 145px;
   height: 50px;
   margin: 15px 15px 15px 15px;
   background-color: white;
-  color:#15d798;
-  font: normal bold 20px "Open Sans", sans-serif;
+  color:#15d798 !important;
+  font: normal bold 18px "Open Sans", sans-serif ;
   border-radius: 12px;
   border: solid #15d798 2px;
   display: inline-block;
@@ -40,6 +87,31 @@
 
 }
 .button--secondary:hover{
+  border: solid #86e9ca 2px;
+  background-color: white;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 13px;
+  text-decoration: none;
+}
+
+/* BUTTO--secondary -BIG */
+
+.button--secondaryBig{
+  width: 200px;
+  height: 50px;
+  margin: 15px 15px 15px 15px;
+  background-color: white;
+  color:#15d798 !important;
+  font: normal bold 20px "Open Sans", sans-serif ;
+  border-radius: 12px;
+  border: solid #15d798 2px;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+
+}
+.button--secondaryBig:hover{
   border: solid #86e9ca 2px;
   background-color: white;
   -webkit-border-radius: 20px;
@@ -96,7 +168,3 @@
   border-radius: 13px;
   text-decoration: none;
 }
-
-
-
-

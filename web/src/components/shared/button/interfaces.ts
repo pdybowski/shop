@@ -1,6 +1,9 @@
 export enum ButtonMode {
     PRIMARY = 'primary',
+    PRIMARYSMALL = 'primarySmall',
+    PRIMARYBIG = 'primaryBig',
     SECONDARY = 'secondary',
+    SECONDARYBIG = 'secondaryBig',
     CANCEL = 'cancel',
     DARK = 'dark',
 }
