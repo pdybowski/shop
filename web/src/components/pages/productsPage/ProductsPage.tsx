@@ -135,13 +135,13 @@ export const ProductsPage = (): JSX.Element => {
                 <SearchInput onSearch={searchProductByName} />
                 <div className="products__page__search-price">
                     <input
-                        type="text"
+                        type="number"
                         onChange={searchProductByMinPrice}
                         placeholder="Min price..."
                         className="search-price-button"
                     />
                     <input
-                        type="text"
+                        type="number"
                         onChange={searchProductByMaxPrice}
                         placeholder="Max price..."
                         className="search-price-button"
