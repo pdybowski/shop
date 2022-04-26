@@ -62,7 +62,6 @@
     width: 110px;
     background-color: var(--green-main);
     color: white;
-    opacity: 0.7;
     display: flex;
     align-items: center;
     justify-content: space-around;
