@@ -18,9 +18,8 @@ const NavName = ({ child, level, parentUrl }: NavItemProps) => {
             {child.name}
             {child.children && (
                 <>
-                    <div>{level === 1 && <DownArrow />}</div>
-                    <div className="nav__arrow">{level > 1 && <RightArrow />}</div>
-                    <div className="nav__arrow__resp">{level > 1 && <DownArrow />}</div>
+                    {level === 1 && <DownArrow />}
+                    {level > 1 && <RightArrow />}
                 </>
             )}
         </Link>
