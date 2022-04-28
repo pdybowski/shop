@@ -7,6 +7,7 @@ import { Product, ProductCategory, ProductType, SportType } from '../../../model
 import { ProductItem, SearchInput } from '../../shared';
 import './style.css';
 import { Pagination } from '../../shared/pagination/Pagination';
+import { DownArrow } from '../../navigation/components';
 
 export const ProductsPage = (): JSX.Element => {
     const [page, setPage] = useState(1);
@@ -58,7 +59,7 @@ export const ProductsPage = (): JSX.Element => {
             results = results.filter(
                 (product) =>
                     product.name.toLowerCase().includes(nameSearch.toLowerCase()) ||
-                    product.description.toLowerCase().includes(nameSearch.toLowerCase())
+                    product.description.toLowerCase().includes(nameSearch.toLowerCase()),
             );
         };
 
@@ -91,13 +92,13 @@ export const ProductsPage = (): JSX.Element => {
     }, [nameSearch, minPriceSearch, maxPriceSearch]);
 
     useMemo(() => {
-        if (!productCategory) return <Navigate replace to="/" />;
+        if (!productCategory) return <Navigate replace to='/' />;
     }, []);
 
     useEffect(() => {
         let pageProducts = productsFilteredByType.slice(
             (page - 1) * itemsPerPage,
-            page * itemsPerPage
+            page * itemsPerPage,
         );
         setTotalPages(Math.ceil(productsFilteredByType.length / itemsPerPage));
         setProductsForPage(pageProducts);
@@ -129,32 +130,44 @@ export const ProductsPage = (): JSX.Element => {
     }, [productCategory, sportType, productType]);
 
     return (
-        <div className="products__page">
-            <h2 className="products__page__title">{header}</h2>
-            <div className="products__page__search">
-                <SearchInput onSearch={searchProductByName} />
-                <div className="products__page__search-price">
-                    <input
-                        type="text"
-                        onChange={searchProductByMinPrice}
-                        placeholder="Min price..."
-                        className="search-price-button"
-                    />
-                    <input
-                        type="text"
-                        onChange={searchProductByMaxPrice}
-                        placeholder="Max price..."
-                        className="search-price-button"
-                    />
+        <div className='products__page'>
+            <h2 className='products__page__title'>{header}</h2>
+            <div className='products__page-container'>
+                <div className='products__page-container-left'>
+                    <div className='products__page__search'>
+                        <SearchInput onSearch={searchProductByName} />
+                    </div>
+                    <div className='products-page__filter'>
+                        <div className='products-page__filter-name'><p>Size</p><p className='products-page__filter-arrow'><DownArrow/></p></div>
+                    </div>
+                    <div className='products-page__filter'>
+                        <div className='products-page__filter-name'><p>Price</p></div>
+                        <div>
+                            <input
+                                type='text'
+                                onChange={searchProductByMinPrice}
+                                placeholder='Min price...'
+                                className='search-price-button'
+                            />
+                            <input
+                                type='text'
+                                onChange={searchProductByMaxPrice}
+                                placeholder='Max price...'
+                                className='search-price-button'
+                            />
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div className="products__page__items">
-                {productsForPage.map((item) => {
-                    return <ProductItem key={`page-product-${item._id}`} {...item} />;
-                })}
-            </div>
-            <div>
-                <Pagination page={page} totalPages={totalPages} handlePagination={handlePages} />
+                <div className='products__page-container-right'>
+                    <div className='products__page__items'>
+                        {productsForPage.map((item) => {
+                            return <ProductItem key={`page-product-${item._id}`} {...item} />;
+                        })}
+                    </div>
+                    <div>
+                        <Pagination page={page} totalPages={totalPages} handlePagination={handlePages} />
+                    </div>
+                </div>
             </div>
         </div>
     );
