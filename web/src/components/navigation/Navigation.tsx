@@ -4,14 +4,11 @@ import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { CartContext } from '../../contexts';
+import logo from '../../assets/images/logo.png'
 
 import './style.css';
 
 const navigationLinks: Item[] = [
-    {
-        name: 'MainPage',
-        link: RoutePaths.MainPage,
-    },
     {
         name: 'Sports',
         link: RoutePaths.Sports,
@@ -107,13 +104,19 @@ export const Navigation = () => {
     return (
         <nav className="main-nav">
             <ul>
+                <li className={'nav-logo'}>
+                    <Link to={RoutePaths.MainPage}>
+                        <img src={logo} alt={'logo'} className={'nav-logo-img'}/>
+                        <p className={'nav-logo-name'}>Sport Gen</p>
+                    </Link>
+                </li>
                 {navigationLinks.map((menu: Item) => (
                     <NavItem key={menu.link} child={menu} level={1} />
                 ))}
-                <li>
-                    <Link to={RoutePaths.Cart}>
+                <li className={'nav-cart'}>
+                    <Link to={RoutePaths.Cart} >
                         <AiOutlineShoppingCart />
-                        {cartItemNumber > 0 ? <p> ({cartItemNumber})</p> : null}
+                        {cartItemNumber > 0 ? <p className={'nav-cart-badge'}> {cartItemNumber}</p> : null}
                     </Link>
                 </li>
             </ul>
