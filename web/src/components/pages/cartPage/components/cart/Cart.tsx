@@ -1,34 +1,31 @@
-import React, { useContext } from 'react';
-
-import { CartContext } from '../../../../../contexts';
+import { useDispatch, useSelector } from 'react-redux';
+import store from '../../../../../services/store';
+import {
+    selectSubtotalAmount,
+    selectItemsNumber,
+} from '../../../../../services/selectors/cartSelectors';
+import { addProduct, removeProduct } from '../../../../../services/actions/cartActions';
 import { Product } from '../../../../../models';
 import { CURRENCY_TYPE } from '../../../../../constants';
-
-import './style.css';
 import { Button } from '../../../../shared';
 import { ButtonMode } from '../../../../shared/button/interfaces';
+import './style.css';
 
 export const Cart = () => {
-    const cartContext = useContext(CartContext);
+    const cartState = store.getState().shoppingCart;
+    const subtotalAmount = selectSubtotalAmount(cartState);
+    const itemsNumber = selectItemsNumber(cartState);
 
-    let cartItemNumber = 0;
-    cartContext.cart.reduce((count, curItem) => {
-        cartItemNumber = count + curItem.quantity;
-        return cartItemNumber;
-    }, 0);
+    useSelector(() => cartState.cart.map((item) => item));
 
-    let subTotal = 0;
-    cartContext.cart.reduce((cost, curItem) => {
-        subTotal = cost + curItem.product.price * curItem.quantity;
-        return subTotal;
-    }, 0);
+    const dispatch = useDispatch();
 
     return (
         <div className="cart">
             <div className="cart__list">
-                {cartContext.cart.length <= 0 && <div>No Item in the Cart!</div>}
+                {cartState.cart.length <= 0 && <div>No Item in the Cart!</div>}
                 <ul>
-                    {cartContext.cart.map((cartItem: { product: Product; quantity: number }) => (
+                    {cartState.cart.map((cartItem: { product: Product; quantity: number }) => (
                         <li key={cartItem.product['_id']}>
                             <div className="cart__item">
                                 <div className="cart__item-image">
@@ -57,9 +54,7 @@ export const Cart = () => {
                                     <div>
                                         <button
                                             className="btn"
-                                            onClick={() =>
-                                                cartContext.addProductToCart(cartItem.product)
-                                            }
+                                            onClick={() => dispatch(addProduct(cartItem.product))}
                                         >
                                             +
                                         </button>
@@ -69,9 +64,7 @@ export const Cart = () => {
                                         <button
                                             className="btn"
                                             onClick={() =>
-                                                cartContext.removeProductFromCart(
-                                                    cartItem.product['_id']
-                                                )
+                                                dispatch(removeProduct(cartItem.product['_id']))
                                             }
                                         >
                                             -
@@ -83,16 +76,16 @@ export const Cart = () => {
                     ))}
                 </ul>
             </div>
-            {cartContext.cart.length > 0 && (
+            {cartState.cart.length > 0 && (
                 <div className="cart__checkout">
                     <div className="cart__checkout-total">
                         <div>
                             <div className="cart__checkout-total-subtotal">Sub-Total</div>
-                            <div className="cart__checkout-total-items">{cartItemNumber} items</div>
+                            <div className="cart__checkout-total-items">{itemsNumber} items</div>
                         </div>
                         <div className="cart__checkout-total-amount">
                             {CURRENCY_TYPE}
-                            {subTotal}
+                            {subtotalAmount}
                         </div>
                     </div>
                     <div>

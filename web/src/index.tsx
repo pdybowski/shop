@@ -4,12 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { NotificationProvider, PageResourceProvider } from './contexts';
+import { Provider } from 'react-redux';
+import store from '../src/services/store';
 
 ReactDOM.render(
     <React.StrictMode>
         <NotificationProvider>
             <PageResourceProvider>
-                <App />
+                <Provider store={store}>
+                    <App />
+                </Provider>
             </PageResourceProvider>
         </NotificationProvider>
     </React.StrictMode>,
