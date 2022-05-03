@@ -2,8 +2,9 @@ import { ProductCategory, ProductType, RoutePaths, SportType } from '../../model
 import { Item, NavItem } from './components';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
-import { CartContext } from '../../contexts';
+import { selectItemsNumber } from '../../services/selectors/cartSelectors';
+import store from '../../services/store';
+import { useSelector } from 'react-redux';
 
 import './style.css';
 
@@ -97,12 +98,9 @@ const navigationLinks: Item[] = [
 ];
 
 export const Navigation = () => {
-    const cartContext = useContext(CartContext);
-    let cartItemNumber = 0;
-    cartContext.cart.reduce((count, curItem) => {
-        cartItemNumber = count + curItem.quantity;
-        return cartItemNumber;
-    }, 0);
+    const cartState = store.getState().shoppingCart;
+    const itemsNumber = selectItemsNumber(cartState);
+    useSelector(() => cartState.cart.map((item) => item));
 
     return (
         <nav className="main-nav">
@@ -113,7 +111,7 @@ export const Navigation = () => {
                 <li>
                     <Link to={RoutePaths.Cart}>
                         <AiOutlineShoppingCart />
-                        {cartItemNumber > 0 ? <p> ({cartItemNumber})</p> : null}
+                        {itemsNumber > 0 ? <p> ({itemsNumber})</p> : null}
                     </Link>
                 </li>
             </ul>
