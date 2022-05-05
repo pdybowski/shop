@@ -40,9 +40,17 @@ export const ProductsPage = (): JSX.Element => {
         productType,
     });
 
+    const [searchValue, setSearchValue] = useState('');
+
     const searchProductByName = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = e.target;
+        setSearchValue(value);
         setNameSearch(value);
+    };
+
+    const clearValue = () => {
+        setSearchValue('');
+        setNameSearch('');
     };
 
     const searchProductByMinPrice = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -146,7 +154,7 @@ export const ProductsPage = (): JSX.Element => {
             <div className='products__page-container'>
                 <div className='products__page-container-left'>
                     <div className='products__page__search'>
-                        <SearchInput onSearch={searchProductByName} />
+                        <SearchInput onSearch={searchProductByName} onClick={clearValue} />
                     </div>
                     <div className='products-page__filter'>
                         <button type='button' className='products-page__filter-button' onClick={toggleSizeDropdown}>
@@ -165,19 +173,19 @@ export const ProductsPage = (): JSX.Element => {
                             <div className='products-page__filter-dropdown'>
                                 <ul className='products-page__filter-dropdown-list'>
                                     <li className='size-checkbox'>
-                                        <input type='checkbox' id='sizeS'/>
+                                        <input type='checkbox' id='sizeS' />
                                         <label htmlFor='sizeS'>S</label>
                                     </li>
                                     <li className='size-checkbox'>
-                                        <input type='checkbox' id='sizeS'/>
+                                        <input type='checkbox' id='sizeS' />
                                         <label htmlFor='sizeM'>M</label>
                                     </li>
                                     <li className='size-checkbox'>
-                                        <input type='checkbox' id='sizeS'/>
+                                        <input type='checkbox' id='sizeS' />
                                         <label htmlFor='sizeL'>L</label>
                                     </li>
                                     <li className='size-checkbox'>
-                                        <input type='checkbox' id='sizeS'/>
+                                        <input type='checkbox' id='sizeS' />
                                         <label htmlFor='sizeXL'>XL</label>
                                     </li>
                                 </ul>
@@ -226,9 +234,10 @@ export const ProductsPage = (): JSX.Element => {
                             return <ProductItem key={`page-product-${item._id}`} {...item} />;
                         })}
                     </div>
-                    <div>
-                        <Pagination page={page} totalPages={totalPages} handlePagination={handlePages} />
-                    </div>
+                    {productsForPage.length < 1 ? null :
+                        <div>
+                            <Pagination page={page} totalPages={totalPages} handlePagination={handlePages} />
+                        </div>}
                 </div>
             </div>
         </div>

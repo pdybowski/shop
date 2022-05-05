@@ -1,21 +1,33 @@
-import React from 'react';
-import { AiOutlineSearch } from 'react-icons/ai';
+import React, { useState } from 'react';
+import { AiOutlineClose, AiOutlineSearch, AiOutlineShoppingCart } from 'react-icons/ai';
 import '../searchInput/style.css';
 
 interface props {
     onSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onClick: () => void;
 }
 
-export const SearchInput = ({ onSearch }: props): JSX.Element => {
+export const SearchInput = ({ onSearch, onClick }: props): JSX.Element => {
+
+    const x: React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> = <input
+        type='text'
+        onChange={onSearch}
+        className='products__search__input'
+        placeholder='Search...'
+    ></input>;
+
     return (
-        <div className="products__search">
-            <AiOutlineSearch className="products__search-icon" />
-            <input
-                type="text"
-                onChange={onSearch}
-                className="products__search__input"
-                placeholder="Search..."
-            ></input>
+        <div className='products__search'>
+            <AiOutlineSearch className='products__search-icon' />
+            {x}
+            <button onClick={clear}><AiOutlineClose /></button>
         </div>
     );
+
+    function clear() {
+        x.value = ''
+        if (onClick) {
+            onClick()
+        }
+    }
 };
