@@ -10,9 +10,10 @@ import { EllipsisWrapper } from '../ellipsisWrapper/EllipsisWrapper';
 import './style.css';
 import { Button } from '../button/Button';
 import { ButtonMode } from '../button/interfaces';
+import { showStars } from '../../pages/mainPage/components/bestItem/BestItem';
 
 export const ProductItem = (item: Product): JSX.Element => {
-    const { img, name, description, price, _id } = item;
+    const { img, name, description, price, _id, stars } = item;
 
     const cartContext = useContext(CartContext);
 
@@ -22,40 +23,39 @@ export const ProductItem = (item: Product): JSX.Element => {
 
     return (
         <div className='product__item'>
-            <div className='product__header'>
-                <img className='product__image' src={img && true ? img : placeholder} alt='image' />
-            </div>
-            <div>
+            <Link className='product-link' to={`${RoutePaths.Product}/${_id}`}>
+                <div className='product__header'>
+                    <img className='product__image' src={img && true ? img : placeholder} alt='image' />
+                </div>
                 <div className='product__body'>
                     <div className='product__title'>
                         <EllipsisWrapper tooltip={name} textLength={1}>
-                            <h4>{name}</h4>
+                            <p>{name}</p>
                         </EllipsisWrapper>
+                    </div>
+                    <div className='product__price'>
+                        <p>
+                            {CURRENCY_TYPE}
+                            {price}
+                        </p>
                     </div>
                     <div className='product__description'>
                         <EllipsisWrapper tooltip={description} textLength={1}>
                             {description}
                         </EllipsisWrapper>
                     </div>
-                    <div className='product__price'>
-                        <h4>
-                            {CURRENCY_TYPE}
-                            {price}
-                        </h4>
-                    </div>
                 </div>
-                <div className='product__buttons'>
-                    <Link to={`${RoutePaths.Product}/${_id}`}>
-                        <Button label='VIEW' mode={ButtonMode.SECONDARY} type='button'></Button>
-                    </Link>
-                    <Button
-                        label='ADD TO CART'
-                        mode={ButtonMode.SECONDARY}
-                        type='button'
-                        onClick={() => cartContext.addProductToCart(item)}
-                    ></Button>
-                </div>
+            </Link>
+            <div className='product__buttons'>
+                <Button
+                    label='Add to cart'
+                    mode={ButtonMode.SECONDARY}
+                    type='button'
+                    onClick={() => cartContext.addProductToCart(item)}
+                ></Button>
+                {stars && <div className='item__stars'>{showStars(Number(stars))}</div>}
             </div>
+
         </div>
     );
 };

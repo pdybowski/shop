@@ -6,7 +6,7 @@ import { CURRENCY_TYPE } from '../../../../../constants';
 import { EllipsisWrapper } from '../../../../shared';
 import placeholder from '../../../../../assets/images/placeholder.jpg';
 
-function showStars(star: number) {
+export function showStars(star: number) {
     const stars = [];
 
     for (let i = 0; i < Math.floor(star); i++) {
