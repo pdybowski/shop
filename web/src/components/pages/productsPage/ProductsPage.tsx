@@ -7,7 +7,7 @@ import { Product, ProductCategory, ProductType, SportType } from '../../../model
 import { ProductItem, SearchInput } from '../../shared';
 import './style.css';
 import { Pagination } from '../../shared/pagination/Pagination';
-import { DownArrow } from '../../navigation/components';
+import { DownArrow, UpArrow } from '../../navigation/components';
 
 export const ProductsPage = (): JSX.Element => {
     const [page, setPage] = useState(1);
@@ -22,6 +22,9 @@ export const ProductsPage = (): JSX.Element => {
     const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
     const [searchParams] = useSearchParams();
     const [productsForPage, setProductsForPage] = useState<Product[]>([]);
+
+    const [priceDropdown, setPriceDropdown] = useState(false);
+    const [sizeDropdown, setSizeDropdown] = useState(false);
 
     const [nameSearch, setNameSearch] = useState('');
     const [minPriceSearch, setMinPriceSearch] = useState('');
@@ -129,6 +132,14 @@ export const ProductsPage = (): JSX.Element => {
         setHeader(text);
     }, [productCategory, sportType, productType]);
 
+    function togglePriceDropdown() {
+        setPriceDropdown(!priceDropdown);
+    }
+
+    function toggleSizeDropdown() {
+        setSizeDropdown(!sizeDropdown);
+    }
+
     return (
         <div className='products__page'>
             <h2 className='products__page__title'>{header}</h2>
@@ -138,24 +149,75 @@ export const ProductsPage = (): JSX.Element => {
                         <SearchInput onSearch={searchProductByName} />
                     </div>
                     <div className='products-page__filter'>
-                        <div className='products-page__filter-name'><p>Size</p><p className='products-page__filter-arrow'><DownArrow/></p></div>
+                        <button type='button' className='products-page__filter-button' onClick={toggleSizeDropdown}>
+                            {sizeDropdown ?
+                                <div className='products-page__filter-name-dropdown'>
+                                    <p>Size</p>
+                                    <p className='products-page__filter-arrow'><UpArrow /></p>
+                                </div> :
+                                <div className='products-page__filter-name'>
+                                    <p>Size</p>
+                                    <p className='products-page__filter-arrow'><DownArrow /></p>
+                                </div>
+                            }
+                        </button>
+                        {sizeDropdown &&
+                            <div className='products-page__filter-dropdown'>
+                                <ul className='products-page__filter-dropdown-list'>
+                                    <li className='size-checkbox'>
+                                        <input type='checkbox' id='sizeS'/>
+                                        <label htmlFor='sizeS'>S</label>
+                                    </li>
+                                    <li className='size-checkbox'>
+                                        <input type='checkbox' id='sizeS'/>
+                                        <label htmlFor='sizeM'>M</label>
+                                    </li>
+                                    <li className='size-checkbox'>
+                                        <input type='checkbox' id='sizeS'/>
+                                        <label htmlFor='sizeL'>L</label>
+                                    </li>
+                                    <li className='size-checkbox'>
+                                        <input type='checkbox' id='sizeS'/>
+                                        <label htmlFor='sizeXL'>XL</label>
+                                    </li>
+                                </ul>
+                            </div>
+                        }
                     </div>
                     <div className='products-page__filter'>
-                        <div className='products-page__filter-name'><p>Price</p></div>
-                        <div>
-                            <input
-                                type='text'
-                                onChange={searchProductByMinPrice}
-                                placeholder='Min price...'
-                                className='search-price-button'
-                            />
-                            <input
-                                type='text'
-                                onChange={searchProductByMaxPrice}
-                                placeholder='Max price...'
-                                className='search-price-button'
-                            />
-                        </div>
+                        <button type='button' className='products-page__filter-button' onClick={togglePriceDropdown}>
+                            {priceDropdown ?
+                                <div className='products-page__filter-name-dropdown'>
+                                    <p>Price</p>
+                                    <p className='products-page__filter-arrow'><UpArrow /></p>
+                                </div> :
+                                <div className='products-page__filter-name'>
+                                    <p>Price</p>
+                                    <p className='products-page__filter-arrow'><DownArrow /></p>
+                                </div>
+                            }
+                        </button>
+                        {priceDropdown &&
+                            <div className='products-page__filter-dropdown'>
+                                <ul className='products-page__filter-dropdown-list'>
+                                    <li>
+                                        <input
+                                            type='text'
+                                            onChange={searchProductByMinPrice}
+                                            placeholder='Min price...'
+                                            className='search-price-button'
+                                        />
+                                        -
+                                        <input
+                                            type='text'
+                                            onChange={searchProductByMaxPrice}
+                                            placeholder='Max price...'
+                                            className='search-price-button'
+                                        />
+                                    </li>
+                                </ul>
+                            </div>
+                        }
                     </div>
                 </div>
                 <div className='products__page-container-right'>
