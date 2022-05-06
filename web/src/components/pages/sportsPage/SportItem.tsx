@@ -60,7 +60,9 @@ export const SportItem = ({ sportType }: SportItemProps) => {
                 <div className="sportItem__name">{sportType}</div>
                 <div className="sportItem__number">Products in category: {numberOfElements}</div>
                 <Link to={`${RoutePaths.Products}?sportType=${sportType}`}>
-                    <Button type="button" mode={ButtonMode.SECONDARY} label="VIEW" />
+                    <Button type="button" mode={ButtonMode.SECONDARY}>
+                        View
+                    </Button>
                 </Link>
             </div>
         </div>

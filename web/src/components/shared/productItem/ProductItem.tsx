@@ -45,14 +45,17 @@ export const ProductItem = (item: Product): JSX.Element => {
                 </div>
                 <div className="product__buttons">
                     <Link to={`${RoutePaths.Product}/${_id}`}>
-                        <Button label="VIEW" mode={ButtonMode.SECONDARY} type="button"></Button>
+                        <Button mode={ButtonMode.SECONDARY} type="button">
+                            View
+                        </Button>
                     </Link>
                     <Button
-                        label="ADD TO CART"
                         mode={ButtonMode.SECONDARY}
                         type="button"
                         onClick={() => dispatch(addProduct(item))}
-                    ></Button>
+                    >
+                        Add to cart
+                    </Button>
                 </div>
             </div>
         </div>

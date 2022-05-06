@@ -49,9 +49,10 @@ export const SingleProductComponent = (item: Product): JSX.Element => {
                     <Button
                         type="button"
                         mode={ButtonMode.SECONDARYBIG}
-                        label="ADD TO CART"
                         onClick={() => dispatch(addProduct(item))}
-                    />
+                    >
+                        Add to cart
+                    </Button>
                 </div>
                 <div className="product__info--additional">
                     <span>
