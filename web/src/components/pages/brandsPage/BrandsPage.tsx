@@ -11,7 +11,7 @@ export const BrandsPage = () => {
     return (
         <div className="brandItems__container">
             {brands.map((brand) => {
-                return <BrandItem key={brand.name} brandName={brand.name} brandLogo={brand.name} />;
+                return <BrandItem key={brand.name} brandName={brand.name} brandLogo={brand.logo} />;
             })}
         </div>
     );
