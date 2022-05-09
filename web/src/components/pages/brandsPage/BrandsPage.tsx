@@ -9,7 +9,7 @@ export const BrandsPage = () => {
     } = useContext(PageResourceContext);
 
     return (
-        <div className="brandItems__container">
+        <div className="brands__container">
             {brands.map((brand) => {
                 return <BrandItem key={brand.name} brandName={brand.name} brandLogo={brand.logo} />;
             })}
