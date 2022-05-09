@@ -10,13 +10,14 @@ export enum ButtonMode {
 
 export interface ButtonProps {
     type: 'button' | 'submit' | 'reset';
+    children: string;
     mode?: ButtonMode;
-    label?: string | JSX.Element;
     height?: string;
     width?: string;
     border?: string;
     color?: string;
     backgroundColor?: string;
     borderColor?: string;
+    style?: React.CSSProperties;
     onClick?: () => void;
 }

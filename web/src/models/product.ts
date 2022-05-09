@@ -1,9 +1,15 @@
+export const aShirtSizes = <const> ['XXS', 'XS', 'S', 'M', 'L', 'XL', 'XXL']
+export type tShirtSizes = typeof aShirtSizes[number];
+
+export const aSizes = <const> ['28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40' , '41' , '42', '43', '44', '45', '46', '47', '48']
+export type tSizes = typeof aSizes[number];
+
 export class Product {
     readonly _id?: string;
     name: string;
     description: string;
     price: number;
-    size: ShirtSize | ShoeSize | PantsSize;
+    size: tShirtSizes | tSizes;
     sportType: SportType;
     productCategory: ProductCategory;
     productType: ProductType;
@@ -48,10 +54,3 @@ export enum BrandType  {
     umbro = 'Umbro',
     underArmour = 'Under Armour',
 }
-
-export type ShirtSize = 'XXS' | 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL'
-
-export type ShoeSize = '28' | '29' | '30' | '31' | '32' | '33' | '34' | '35' | '36' | '37' | '38' | '39' | '40'  | '41'  | '42' | '43' | '44' | '45' | '46' | '47' | '48'
-
-export type PantsSize = '28' | '30' | '32' | '34' | '36' | '38' | '40' | '42' | '44' | '46'
-

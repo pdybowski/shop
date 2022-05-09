@@ -30,3 +30,9 @@ code {
     position: relative;
     min-height: 100vh;
 }
+
+
+/* --------------- cursors --------------- */
+.cursor--pointer {
+    cursor: pointer;
+}

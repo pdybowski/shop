@@ -1,30 +1,30 @@
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { addProduct } from '../../../../../services/actions/cartActions';
 import { BiCube, BiRevision } from 'react-icons/bi';
 import { FiPercent } from 'react-icons/fi';
-import React, { useContext, useEffect } from 'react';
-import { CURRENCY_TYPE } from '../../../../../constants';
-import { CartContext } from '../../../../../contexts';
 import { Product } from '../../../../../models';
-
-import './style.css';
 import { Button } from '../../../../shared';
 import { ButtonMode } from '../../../../shared/button/interfaces';
-import placeholder from '../../../../../assets/images/placeholder.jpg';
+import { CURRENCY_TYPE } from '../../../../../constants';
+import './style.css';
+const placeholder = require('../../../../../assets/images/placeholder.jpg');
 
 export const SingleProductComponent = (item: Product): JSX.Element => {
     const { img, brand, name, price } = item;
 
-    const cartContext = useContext(CartContext);
-
-    useEffect(() => {
-        console.log('Please wait...');
-    }, [cartContext]);
+    const dispatch = useDispatch();
 
     return (
         <div className="product__page">
             <div className="product__info--general">
                 <div className="product__name">{name}</div>
                 <div>
-                    <img src={img && true ? img : placeholder} alt="Product" className="product__image--img"></img>
+                    <img
+                        src={img && true ? img : placeholder}
+                        alt="Product"
+                        className="product__image--img"
+                    ></img>
                 </div>
             </div>
             <div className="product__info--specific">
@@ -49,9 +49,10 @@ export const SingleProductComponent = (item: Product): JSX.Element => {
                     <Button
                         type="button"
                         mode={ButtonMode.SECONDARYBIG}
-                        label="ADD TO CART"
-                        onClick={() => cartContext.addProductToCart(item)}
-                    />
+                        onClick={() => dispatch(addProduct(item))}
+                    >
+                        Add to cart
+                    </Button>
                 </div>
                 <div className="product__info--additional">
                     <span>

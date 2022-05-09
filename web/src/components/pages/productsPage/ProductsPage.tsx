@@ -210,14 +210,14 @@ export const ProductsPage = (): JSX.Element => {
                                 <ul className='products-page__filter-dropdown-list'>
                                     <li>
                                         <input
-                                            type='text'
+                                            type='number'
                                             onChange={searchProductByMinPrice}
                                             placeholder='Min price...'
                                             className='search-price-button'
                                         />
                                         -
                                         <input
-                                            type='text'
+                                            type='number'
                                             onChange={searchProductByMaxPrice}
                                             placeholder='Max price...'
                                             className='search-price-button'
