@@ -3,6 +3,7 @@ import { BrandType, Product, SportType } from './product';
 class baseModel {
     name: string;
     isEnabled: string;
+    logo: string;
 }
 
 export class brandModel extends baseModel {
