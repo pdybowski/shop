@@ -8,8 +8,8 @@ import { RoutePaths } from '../../../models';
 const defaultImage = require('../../../assets/images/placeholder.jpg');
 
 interface BrandItemProps {
-    brandName: String;
-    brandLogo: String;
+    brandName: string;
+    brandLogo?: string;
 }
 
 export const BrandItem = ({ brandName, brandLogo = defaultImage }: BrandItemProps) => {
