@@ -31,7 +31,6 @@ export const Popup = ({
     const handleOverlayClick = (e: any) => {
         e.preventDefault();
 
-        console.log([...e.target.classList]);
         const isOverlay = [...e.target.classList].indexOf('popup__overlay') > -1;
         if (isOverlay) {
             handleClose();
