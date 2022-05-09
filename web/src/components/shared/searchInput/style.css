@@ -16,6 +16,15 @@
     color: #2264D1;
 }
 
+.products__close-icon {
+    margin-right: 15px;
+    height: 18px;
+    width: 18px;
+    color: #2264D1;
+    border: none;
+    cursor: pointer;
+}
+
 .products__search__input {
     margin-left: 8px;
     line-height: 32px;

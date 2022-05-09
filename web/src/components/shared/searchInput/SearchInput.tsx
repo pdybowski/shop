@@ -20,14 +20,14 @@ export const SearchInput = ({ onSearch, onClick }: props): JSX.Element => {
         <div className='products__search'>
             <AiOutlineSearch className='products__search-icon' />
             {x}
-            <button onClick={clear}><AiOutlineClose /></button>
+            {x && <button className='products__close-icon' onClick={clear}><AiOutlineClose /></button>}
         </div>
     );
 
     function clear() {
-        x.value = ''
+        x.value = '';
         if (onClick) {
-            onClick()
+            onClick();
         }
     }
 };
