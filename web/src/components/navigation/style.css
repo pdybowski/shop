@@ -1,10 +1,10 @@
 .main-nav {
-    background: white;
-    box-shadow: 0 1px 2px rgba(58, 58, 68, 0.24), 0 2px 4px rgba(90, 91, 106, 0.24);
+    background: var(--main-background);
+    box-shadow: 0 1px 2px var(--box-shadow1), 0 2px 4px var(--box-shadow2);
 }
 
 .main-nav a {
-    color: #787885;
+    color: var(--navigation-text);
     min-height: 64px;
     font-weight: bold;
     display: flex;
@@ -12,11 +12,11 @@
     justify-content: center;
     text-decoration: none;
     transition: background 0.4s;
-    background: white;
+    background: var(--main-background);
 }
 
 .main-nav a:hover {
-    border-bottom: 0.2rem solid #0C2146;
+    border-bottom: 0.2rem solid var(--navigation);
 }
 
 .main-nav > ul {
@@ -47,7 +47,7 @@
     position: absolute;
     width: 100%;
     z-index: 1;
-    box-shadow: 0 1px 2px rgba(58, 58, 68, 0.24), 0 2px 4px rgba(90, 91, 106, 0.24);
+    box-shadow: 0 1px 2px var(--box-shadow1), 0 2px 4px var(--box-shadow2);
 }
 
 .submenu > li:hover > .submenu {
@@ -57,12 +57,12 @@
     width: 100%;
     top: 0px;
     z-index: 2;
-    box-shadow: 0 1px 2px rgba(58, 58, 68, 0.24), 0 2px 4px rgba(90, 91, 106, 0.24);
+    box-shadow: 0 1px 2px var(--box-shadow1), 0 2px 4px var(--box-shadow2);
 }
 
 .arrow {
     margin-left: 8px;
-    color: #2264D1;
+    color: var(--icons);
     font-size: 12px;
 }
 
@@ -83,7 +83,7 @@
     letter-spacing: 0;
     text-align: left;
     margin-right: 16px;
-    color: #0C2146;
+    color: var(--navigation);
 }
 
 .nav-signIn {
@@ -101,9 +101,9 @@
     position: absolute;
     width: 20px;
     height: 20px;
-    right: 30px;
+    right: 25px;
     top: calc(50% - 20px / 2 - 12px);
-    background: #F44336;
+    background: var(--badge);
     border-radius: 99px;
-    color: #FFFFFF;
+    color: var(--main-background);
 }

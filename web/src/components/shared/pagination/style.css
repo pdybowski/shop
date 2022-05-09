@@ -17,7 +17,6 @@
     margin: 0 0.25rem;
     border-radius: 50%;
     font-weight: 600;
-    color: black;
 }
 
 .pageItem:hover {
@@ -25,14 +24,15 @@
 }
 
 .active {
-    background-color: #9DC2FF;
+    background-color: var(--buttons);
+    color: var(--main-background)
 }
 
 .sides {
-    box-shadow: transparent 0 0 0 1px, transparent 0 0 0 4px, rgba(0, 0, 0, 0.18) 0 2px 4px;
+    box-shadow: 0 2px 4px var(--box-shadow1), 0 4px 8px var(--box-shadow2)
 }
 
 .sides:hover {
     text-decoration: none;
-    box-shadow: transparent 0 0 0 1px, transparent 0 0 0 4px, rgba(0, 0, 0, 0.12) 0 6px 16px;
+    box-shadow: 0 2px 4px var(--box-shadow1), 0 4px 8px var(--box-shadow2)
 }

@@ -114,18 +114,16 @@ export const Navigation = () => {
                 ))}
                 <li className={'nav-signIn'}>
                     <Button
-                        label='Sign in'
                         mode={ButtonMode.SECONDARY}
                         type='button'
-                    ></Button>
+                    >Sign in</Button>
                 </li>
                 <li className={'nav-cart'}>
                     <Link to={RoutePaths.Cart}>
                         <Button
-                            label='My cart'
                             mode={ButtonMode.SECONDARY}
                             type='button'
-                        ></Button>
+                        >My cart</Button>
                         {itemsNumber > 0 ? <p className={'nav-cart-badge'}> {itemsNumber}</p> : null}
                     </Link>
                 </li>

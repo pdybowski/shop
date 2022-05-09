@@ -214,6 +214,7 @@ export const ProductsPage = (): JSX.Element => {
                                             onChange={searchProductByMinPrice}
                                             placeholder='Min price...'
                                             className='search-price-button'
+                                            min='0'
                                         />
                                         -
                                         <input
@@ -221,6 +222,7 @@ export const ProductsPage = (): JSX.Element => {
                                             onChange={searchProductByMaxPrice}
                                             placeholder='Max price...'
                                             className='search-price-button'
+                                            min='0'
                                         />
                                     </li>
                                 </ul>

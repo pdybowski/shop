@@ -7,10 +7,19 @@
 }
 
 :root {
-    --green-main: #75C4C0;
-    --green-light: #82FF82;
-    --green-dark: #254441;
-    --green-shadow: #305753;
+    --main-background: #FFF;
+    --secondary-background: #F7F7FA;
+    --icons: #2264D1;
+    --box-shadow1: rgba(58, 58, 68, 0.24);
+    --box-shadow2: rgba(90, 91, 106, 0.24);
+    --navigation-text: #787885;
+    --navigation: #0C2146;
+    --badge: #F44336;
+    --input-border: #CCC;
+    --product-title: #19191D;
+    --product-price: rgba(0, 0, 0, 0.87);
+    --product-description: #787885;
+    --buttons: #9DC2FF;
 }
 
 html, body {

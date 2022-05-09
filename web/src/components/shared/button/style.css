@@ -61,13 +61,12 @@
     border: none;
 }
 
-.button--primaryBig:hover{
-  border: solid #6f9ddd 2px;
-  background-color: white;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  border-radius: 13px;
-  text-decoration: none;
+.button--primaryBig:hover {
+    color: whitesmoke;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 13px;
+    text-decoration: none;
 }
 
 
