@@ -12,18 +12,20 @@ export const BestComponent = (): JSX.Element => {
     const [limit, setLimit] = useState(BEST_LIMIT);
 
     return (
-        <div className="best__container">
-            <div className="best__header">Bestsellers</div>
-            <div className="best__items">
-                {products
-                    .filter((p) => Number(p.stars) && Number(p.stars) > 2)
-                    .sort((a: any, b: any) => {
-                        return b.stars - a.stars;
-                    })
-                    .slice(0, products.length)
-                    .map((item) => (
-                        <BestItem key={item._id} {...item} {...setLimit} />
-                    ))}
+        <div className='best'>
+            <div className='best__header'>Bestsellers</div>
+            <div className='best__container'>
+                <div className='best__items'>
+                    {products
+                        .filter((p) => Number(p.stars) && Number(p.stars) > 2)
+                        .sort((a: any, b: any) => {
+                            return b.stars - a.stars;
+                        })
+                        .slice(0, products.length)
+                        .map((item) => (
+                            <BestItem key={item._id} {...item} {...setLimit} />
+                        ))}
+                </div>
             </div>
         </div>
     );
