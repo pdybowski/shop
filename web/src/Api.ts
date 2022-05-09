@@ -13,14 +13,29 @@ export class Api {
         baseURL: this.BASE_URL,
     });
 
-    public async getData<T>(method: ApiMethod, url: string) {
+    public async get<T>(url: string) {
         const params = {
-            method: method,
+            method: ApiMethod.GET,
             url: `${url}`,
         };
 
         try {
-            const { data }: { data: T } = await this.instance(params); // TODO adjust to our api
+            const { data }: { data: T } = await this.instance(params);
+            return data;
+        } catch (error: any) {
+            throw new Error(error.message);
+        }
+    }
+
+    public async put(url: string, body: any) {
+        const params = {
+            method: ApiMethod.PUT,
+            url: `${url}`,
+            data: body
+        };
+
+        try {
+            const { data } = await this.instance(params);
             return data;
         } catch (error: any) {
             throw new Error(error.message);
