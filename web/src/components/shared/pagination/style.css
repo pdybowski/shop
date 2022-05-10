@@ -24,7 +24,7 @@
 }
 
 .active {
-    background-color: var(--buttons);
+    background-color: var(--buttons-light);
     color: var(--main-background)
 }
 

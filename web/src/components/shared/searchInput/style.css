@@ -1,5 +1,5 @@
 .products__search {
-    background: #EDEDF0;
+    background: var(--search-background);
     border-radius: 99px;
     height: 52px;
     width: 310px;
@@ -13,14 +13,14 @@
     margin-left: 15px;
     height: 18px;
     width: 18px;
-    color: #2264D1;
+    color: var(--icons);
 }
 
 .products__close-icon {
     margin-right: 20px;
     height: 18px;
     width: 18px;
-    color: #2264D1;
+    color: var(--icons);
     border: none;
     cursor: pointer;
 }
@@ -31,6 +31,6 @@
     width: 253px;
     text-align: left;
     border: none;
-    background: #EDEDF0;
+    background: var(--search-background);
     outline: none;
 }
