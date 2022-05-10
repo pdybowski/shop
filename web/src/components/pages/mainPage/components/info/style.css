@@ -1,0 +1,17 @@
+.info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px auto;
+    width: 90%;
+    padding-top: 30px;
+}
+
+.info__item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}

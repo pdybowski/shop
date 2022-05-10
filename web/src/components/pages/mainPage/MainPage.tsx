@@ -1,6 +1,7 @@
 import { Welcome } from './components/welcome/Welcome';
 import { MainPageCarousel } from './components/mainPageCarousel/MainPageCarousel';
 import { BestComponent } from './components/bestComponent/BestComponent';
+import { Info } from './components/info/Info';
 
 export const MainPage = () => {
     return (
@@ -8,6 +9,7 @@ export const MainPage = () => {
             <Welcome />
             <MainPageCarousel />
             <BestComponent />
+            <Info />
         </main>
     );
 };
