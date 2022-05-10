@@ -5,8 +5,10 @@ import { Link } from 'react-router-dom';
 import { selectItemsNumber } from '../../services/selectors/cartSelectors';
 import store from '../../services/store';
 import { useSelector } from 'react-redux';
-
 import './style.css';
+import { useState } from 'react';
+import { Button } from '../shared';
+import { ButtonMode } from '../shared/button/interfaces';
 
 const navigationLinks: Item[] = [
     {
@@ -102,6 +104,12 @@ export const Navigation = () => {
     const itemsNumber = selectItemsNumber(cartState);
     useSelector(() => cartState.cart.map((item) => item));
 
+    const [isLoggedIn, setIsLoggedIn] = useState(true);
+
+    const onLogout = () => {
+        setIsLoggedIn(false);
+    };
+
     return (
         <nav className="main-nav">
             <ul>
@@ -113,6 +121,21 @@ export const Navigation = () => {
                         <AiOutlineShoppingCart />
                         {itemsNumber > 0 ? <p> ({itemsNumber})</p> : null}
                     </Link>
+                </li>
+                <li>
+                    {isLoggedIn && (
+                        <Button
+                            type="button"
+                            mode={ButtonMode.SECONDARY}
+                            label="Logout"
+                            onClick={onLogout}
+                        />
+                    )}
+                    {!isLoggedIn && (
+                        <Link to={RoutePaths.Login}>
+                            <Button type="button" mode={ButtonMode.SECONDARY} label="Login" />
+                        </Link>
+                    )}
                 </li>
             </ul>
         </nav>

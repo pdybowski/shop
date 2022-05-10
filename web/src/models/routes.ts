@@ -6,4 +6,6 @@ export enum RoutePaths {
     Brands = '/brands',
     Product = '/product',
     Cart = '/cart',
+    Register = '/register',
+    Login = '/login',
 }

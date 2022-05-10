@@ -1,5 +1,7 @@
 import { CartPage, MainPage, ProductsPage, SingleProductPage, SportsPage } from './components';
+import RegisterPage from './components/pages/registerPage/RegisterPage';
 import { RoutePaths } from './models';
+import LoginPage from './components/pages/loginPage/LoginPage';
 
 export const routes = [
     {
@@ -36,5 +38,15 @@ export const routes = [
         path: RoutePaths.Product + '/:id',
         element: <SingleProductPage />,
         key: 'single-product-page',
+    },
+    {
+        path: RoutePaths.Register,
+        element: <RegisterPage />,
+        key: 'user-register',
+    },
+    {
+        path: RoutePaths.Login,
+        element: <LoginPage />,
+        key: 'user-login',
     },
 ];
