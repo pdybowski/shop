@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { EllipsisWrapper } from '../ellipsisWrapper/EllipsisWrapper';
 import { Button } from '../button/Button';
 import { ButtonMode } from '../button/interfaces';
+import { Tooltip } from '../tooltip/Tooltip';
 import { CURRENCY_TYPE } from '../../../constants';
 import './style.css';
 const placeholder = require('../../../assets/images/placeholder.jpg');
@@ -27,14 +28,16 @@ export const ProductItem = (item: Product): JSX.Element => {
             <div>
                 <div className="product__body">
                     <div className="product__title">
-                        <EllipsisWrapper tooltip={name} textLength={1}>
-                            <h4>{name}</h4>
-                        </EllipsisWrapper>
+                        <Tooltip content={name}>
+                            <EllipsisWrapper textLength={1}>
+                                <h4>{name}</h4>
+                            </EllipsisWrapper>
+                        </Tooltip>
                     </div>
                     <div className="product__description">
-                        <EllipsisWrapper tooltip={description} textLength={1}>
-                            {description}
-                        </EllipsisWrapper>
+                        <Tooltip content={description}>
+                            <EllipsisWrapper textLength={1}>{description}</EllipsisWrapper>
+                        </Tooltip>
                     </div>
                     <div className="product__price">
                         <h4>
@@ -45,14 +48,17 @@ export const ProductItem = (item: Product): JSX.Element => {
                 </div>
                 <div className="product__buttons">
                     <Link to={`${RoutePaths.Product}/${_id}`}>
-                        <Button label="VIEW" mode={ButtonMode.SECONDARY} type="button"></Button>
+                        <Button mode={ButtonMode.SECONDARY} type="button">
+                            View
+                        </Button>
                     </Link>
                     <Button
-                        label="ADD TO CART"
                         mode={ButtonMode.SECONDARY}
                         type="button"
                         onClick={() => dispatch(addProduct(item))}
-                    ></Button>
+                    >
+                        Add to cart
+                    </Button>
                 </div>
             </div>
         </div>

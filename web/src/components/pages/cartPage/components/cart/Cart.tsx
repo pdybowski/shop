@@ -89,11 +89,9 @@ export const Cart = () => {
                         </div>
                     </div>
                     <div>
-                        <Button
-                            type="button"
-                            label="Go to payment"
-                            mode={ButtonMode.PRIMARYBIG}
-                        ></Button>
+                        <Button type="button" mode={ButtonMode.PRIMARYBIG}>
+                            Go to payment
+                        </Button>
                     </div>
                 </div>
             )}

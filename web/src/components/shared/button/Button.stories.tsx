@@ -11,14 +11,17 @@ export default {
             options: [ButtonMode.PRIMARY, ButtonMode.SECONDARY, ButtonMode.CANCEL, ButtonMode.DARK],
             backgroundColor: { control: 'color' },
         },
-        label: { control: 'text' },
+        children: { constrol: 'text' },
         color: { control: true },
     },
 } as ComponentMeta<typeof Button>;
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+const Template: ComponentStory<typeof Button> = (args) => (
+    <Button {...args}>{args.children}</Button>
+);
 
 export const Primary = Template.bind({});
 Primary.args = {
     mode: ButtonMode.PRIMARY,
+    children: 'button text',
 };

@@ -20,18 +20,17 @@ import { BRANDS,  PRODUCT_CATEGORIES, PRODUCT_TYPES, SPORT_TYPES } from "../cons
 
 
 export interface IProductInput {
-
     name: String,
-    description?: String,
     price: Number,
     sportType: String,
     img?: String,
     // size: String,
     brand: String,
+    description?: String,
     isCarousel?: Boolean,
     isBestseller?: Boolean,
-    rating?: Number
-
+    rating?: Number,
+    sellCount?: Number,
 }
 
 export interface IProductDocument extends IProductInput, mongoose.Document {
@@ -73,6 +72,10 @@ const productSchema = new mongoose.Schema({
         enum: BRANDS,
         required: true,
     },
+    sellCount: {
+        type: Number,
+        default: 0,
+    }
     // size: {
     //     type: String,
     //     enum: [SHIRT_SIZE, ]
