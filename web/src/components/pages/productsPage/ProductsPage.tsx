@@ -42,17 +42,9 @@ export const ProductsPage = (): JSX.Element => {
         brandType,
     });
 
-    const [searchValue, setSearchValue] = useState('');
-
     const searchProductByName = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = e.target;
-        setSearchValue(value);
         setNameSearch(value);
-    };
-
-    const clearValue = () => {
-        setSearchValue('');
-        setNameSearch('');
     };
 
     const searchProductByMinPrice = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -150,13 +142,17 @@ export const ProductsPage = (): JSX.Element => {
         setSizeDropdown(!sizeDropdown);
     }
 
+    function clearSearch() {
+        setNameSearch('');
+    }
+
     return (
         <div className='products__page'>
             <h2 className='products__page__title'>{header}</h2>
             <div className='products__page-container'>
                 <div className='products__page-container-left'>
                     <div className='products__page__search'>
-                        <SearchInput onSearch={searchProductByName} onClick={clearValue} />
+                        <SearchInput onSearch={searchProductByName} onClear={clearSearch} />
                     </div>
                     <div className='products-page__filter'>
                         <button type='button' className='products-page__filter-button' onClick={toggleSizeDropdown}>
