@@ -1,4 +1,11 @@
-import { CartPage, MainPage, ProductsPage, SingleProductPage, SportsPage } from './components';
+import {
+    CartPage,
+    MainPage,
+    ProductsPage,
+    SingleProductPage,
+    SportsPage,
+    BrandsPage,
+} from './components';
 import { RoutePaths } from './models';
 
 export const routes = [
@@ -36,5 +43,11 @@ export const routes = [
         path: RoutePaths.Product + '/:id',
         element: <SingleProductPage />,
         key: 'single-product-page',
+    },
+    {
+        path: RoutePaths.Brands,
+        exact: true,
+        element: <BrandsPage />,
+        key: 'brands-page',
     },
 ];

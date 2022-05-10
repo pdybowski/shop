@@ -1,4 +1,4 @@
-.sportItems__container {
+.brands__container {
     height: 82vh;
     display: flex;
     flex-wrap: wrap;
@@ -7,7 +7,7 @@
     padding: 10px;
 }
 
-.sportItem__element {
+.brandItem__element {
     height: 25rem;
     width: 25rem;
     margin: 0.5rem;
@@ -21,25 +21,30 @@
     border-radius: 8px;
 }
 
-.sportItem__element:hover {
+.brandItem__element:hover {
     background-color: var(--secondary-background);
 }
 
-.sportItem__name {
+.brandItem__name {
     font-weight: bold;
     color: var(--product-title);
     font-size: 24px;
 }
 
-.sportItem__number {
+.brandItem__number {
     color: var(--product-description);
 }
 
-.sportItem__icon {
-    font-size: 42px;
-    color: rgb(180, 180, 180);
+.brandItem__logo__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.sportItem__link {
+.brandItem__logo {
+    max-width: 60%;
+}
+
+.brandItem__link {
     text-decoration: none;
 }

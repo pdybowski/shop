@@ -11,8 +11,6 @@ import {
 } from 'react-icons/md';
 import { BiRun, BiSwim, BiCycling } from 'react-icons/bi';
 import './style.css';
-import { Button } from '../../shared';
-import { ButtonMode } from '../../shared/button/interfaces';
 import { RoutePaths } from '../../../models';
 
 interface SportItemProps {

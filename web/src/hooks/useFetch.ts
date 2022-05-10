@@ -16,7 +16,7 @@ export const useFetch = <T>({ method = ApiMethod.GET, url, requestBody }: useFet
         const api = new Api();
 
         try {
-            const data = await api.getData<T>(ApiMethod.GET, url);
+            const data = await api.get<T>(url);
             setData(data);
         } catch (err: any) {
             setError(err.message);

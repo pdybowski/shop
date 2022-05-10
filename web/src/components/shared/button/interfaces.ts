@@ -10,7 +10,7 @@ export enum ButtonMode {
 
 export interface ButtonProps {
     type: 'button' | 'submit' | 'reset';
-    children: string;
+    children: string | JSX.Element;
     mode?: ButtonMode;
     height?: string;
     width?: string;

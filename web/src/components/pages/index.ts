@@ -3,3 +3,4 @@ export * from './productsPage/ProductsPage';
 export * from './cartPage/CartPage';
 export * from './sportsPage/SportsPage';
 export * from './singleProductPage/SingleProductPage';
+export * from './brandsPage/BrandsPage';

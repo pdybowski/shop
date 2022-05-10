@@ -56,3 +56,25 @@ export async function deleteProduct(query: FilterQuery<IProductDocument>) {
         throw e
     }
 }
+
+export async function buyProducts(products: Array<any>) {
+
+    for (let i = 0; i < products.length; i++) {
+        try {
+            const product = products[i];
+
+            const oldProduct = await ProductModel.findById(product._id)
+            if (!oldProduct) return;
+
+            if (!oldProduct) {
+                oldProduct.sellCount = 0;
+            } else if (typeof oldProduct !== 'number') {
+                oldProduct.sellCount = +oldProduct.sellCount;
+            }
+
+            await ProductModel.findByIdAndUpdate(product._id, { sellCount: oldProduct.sellCount + product.count });
+        } catch (e) {
+            throw e;
+        }
+    }
+}
