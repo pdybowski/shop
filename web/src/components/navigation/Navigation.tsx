@@ -127,14 +127,24 @@ export const Navigation = () => {
                         <Button
                             type="button"
                             mode={ButtonMode.SECONDARY}
-                            label="Logout"
+                            children="Logout"
                             onClick={onLogout}
                         />
                     )}
                     {!isLoggedIn && (
                         <Link to={RoutePaths.Login}>
-                            <Button type="button" mode={ButtonMode.SECONDARY} label="Login" />
+                            <Button type="button" mode={ButtonMode.SECONDARY} children="Login" />
                         </Link>
+                    )}
+                </li>
+                <li>
+                    {' '}
+                    {isLoggedIn && (
+                        <Button
+                            type="button"
+                            mode={ButtonMode.SECONDARY}
+                            children="Go to profile"
+                        />
                     )}
                 </li>
             </ul>

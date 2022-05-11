@@ -47,7 +47,6 @@ export const routes = [
         key: 'single-product-page',
     },
     {
-<<<<<<< HEAD
         path: RoutePaths.Register,
         element: <RegisterPage />,
         key: 'user-register',
@@ -56,11 +55,6 @@ export const routes = [
         path: RoutePaths.Login,
         element: <LoginPage />,
         key: 'user-login',
-=======
-        path: RoutePaths.Brands,
-        exact: true,
-        element: <BrandsPage />,
-        key: 'brands-page',
->>>>>>> master
     },
+    { path: RoutePaths.Brands, exact: true, element: <BrandsPage />, key: 'brands-page' },
 ];
