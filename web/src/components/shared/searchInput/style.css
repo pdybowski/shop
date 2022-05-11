@@ -1,25 +1,36 @@
 .products__search {
-    margin: 5px 20px 5px 20px;
+    background: var(--search-background);
+    border-radius: 99px;
+    height: 52px;
+    width: 310px;
     display: flex;
-    color: var(--green-main);
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
 }
 
 .products__search-icon {
-    margin-right: 0px;
-    display: flex;
-    align-items: center;
-    height: 50px;
-    width: 50px;
+    margin-left: 15px;
+    height: 18px;
+    width: 18px;
+    color: var(--icons);
+}
 
+.products__close-icon {
+    margin-right: 20px;
+    height: 18px;
+    width: 18px;
+    color: var(--icons);
+    border: none;
+    cursor: pointer;
 }
 
 .products__search__input {
-    width: 140px;
-    height: 40px;
-    text-align: center;
-    padding: 7px;
-    margin: 5px 5px 5px 0px;
-    border-color: var(--green-main);
-    border-width: 3px;
-    border-radius: 12px;
+    margin-left: 8px;
+    line-height: 32px;
+    width: 253px;
+    text-align: left;
+    border: none;
+    background: var(--search-background);
+    outline: none;
 }

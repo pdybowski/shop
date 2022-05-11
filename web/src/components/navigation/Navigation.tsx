@@ -1,20 +1,16 @@
 import { ProductCategory, ProductType, RoutePaths, SportType } from '../../models';
 import { Item, NavItem } from './components';
-import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { selectItemsNumber } from '../../services/selectors/cartSelectors';
 import store from '../../services/store';
 import { useSelector } from 'react-redux';
+import logo from '../../assets/images/logo.png';
+
 import './style.css';
-import { useState } from 'react';
-import { Button } from '../shared';
 import { ButtonMode } from '../shared/button/interfaces';
+import { Button } from '../shared';
 
 const navigationLinks: Item[] = [
-    {
-        name: 'MainPage',
-        link: RoutePaths.MainPage,
-    },
     {
         name: 'Sports',
         link: RoutePaths.Sports,
@@ -113,13 +109,28 @@ export const Navigation = () => {
     return (
         <nav className="main-nav">
             <ul>
+                <li className={'nav-logo'}>
+                    <Link to={RoutePaths.MainPage}>
+                        <img src={logo} alt={'logo'} className={'nav-logo-img'} />
+                        <p className={'nav-logo-name'}>Sport Gen</p>
+                    </Link>
+                </li>
                 {navigationLinks.map((menu: Item) => (
                     <NavItem key={menu.link} child={menu} level={1} />
                 ))}
-                <li>
+                <li className={'nav-signIn'}>
+                    <Button mode={ButtonMode.SECONDARY} type="button">
+                        Sign in
+                    </Button>
+                </li>
+                <li className={'nav-cart'}>
                     <Link to={RoutePaths.Cart}>
-                        <AiOutlineShoppingCart />
-                        {itemsNumber > 0 ? <p> ({itemsNumber})</p> : null}
+                        <Button mode={ButtonMode.SECONDARY} type="button">
+                            My cart
+                        </Button>
+                        {itemsNumber > 0 ? (
+                            <p className={'nav-cart-badge'}> {itemsNumber}</p>
+                        ) : null}
                     </Link>
                 </li>
                 <li>

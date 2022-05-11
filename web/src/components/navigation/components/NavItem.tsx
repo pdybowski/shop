@@ -8,7 +8,8 @@ interface NavItemProps {
     parentUrl?: string;
 }
 
-const DownArrow = () => <span className="arrow">&#x25BC;</span>;
+export const DownArrow = () => <span className="arrow">&#x25BC;</span>;
+export const UpArrow = () => <span className="arrow">&#9650;</span>;
 const RightArrow = () => <span className="arrow">&#x25B6;</span>;
 
 const NavName = ({ child, level, parentUrl }: NavItemProps) => {
