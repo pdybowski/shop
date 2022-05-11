@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -5,18 +7,27 @@
 }
 
 :root {
-    --green-main: #75C4C0;
-    --green-light: #82FF82;
-    --green-dark: #254441;
-    --green-shadow: #305753;
+    --main-background: #FFF;
+    --secondary-background: #F7F7FA;
+    --search-background: #EDEDF0;
+    --icons: #2264D1;
+    --box-shadow1: rgba(58, 58, 68, 0.24);
+    --box-shadow2: rgba(90, 91, 106, 0.24);
+    --navigation-text: #787885;
+    --navigation: #173e81;
+    --badge: #F44336;
+    --input-border: #CCC;
+    --product-title: #19191D;
+    --product-price: rgba(0, 0, 0, 0.87);
+    --product-description: #787885;
+    --buttons-light: #9DC2FF;
+    --buttons: #2264D1;
 }
 
 html, body {
     width: 100%;
     height: 100%;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    font-family: 'Red Hat Display', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -35,4 +46,8 @@ code {
 /* --------------- cursors --------------- */
 .cursor--pointer {
     cursor: pointer;
+}
+
+#content-wrap {
+    padding-bottom: 158px;
 }

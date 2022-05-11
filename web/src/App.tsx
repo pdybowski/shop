@@ -6,6 +6,8 @@ import { useFetch } from './hooks';
 import { NotificationMode, PageResource } from './models';
 import * as PageResourceService from './services/pageResource.service';
 import Views from './Views';
+import { Footer } from './components/shared/footer/Footer';
+import './index.css';
 
 function App() {
     const { isLoading, data, error } = useFetch<PageResource>({ url: 'pageResource' });
@@ -33,14 +35,18 @@ function App() {
 
     return (
         <>
-            <CartProvider>
-                <BrowserRouter>
-                    <Navigation />
-                    {isLoading ? <Spinner /> : <Views />}
-                </BrowserRouter>
-            </CartProvider>
+            <div id='content-wrap'>
+                <CartProvider>
+                    <BrowserRouter>
+                        <Navigation />
+                        {isLoading ? <Spinner /> : <Views />}
+                    </BrowserRouter>
+                </CartProvider>
+            </div>
+            <Footer />
         </>
     );
 }
 
+// @ts-ignore
 export default App;

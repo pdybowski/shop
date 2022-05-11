@@ -17,23 +17,22 @@
     margin: 0 0.25rem;
     border-radius: 50%;
     font-weight: 600;
-    color: darkslategray;
 }
 
 .pageItem:hover {
-     text-decoration: underline;
- }
+    text-decoration: underline;
+}
 
 .active {
-    background-color: darkslategray;
-    color: white;
+    background-color: var(--buttons-light);
+    color: var(--main-background)
 }
 
 .sides {
-    box-shadow: transparent 0 0 0 1px, transparent 0 0 0 4px, rgba(0, 0, 0, 0.18) 0 2px 4px;
+    box-shadow: 0 2px 4px var(--box-shadow1), 0 4px 8px var(--box-shadow2)
 }
 
 .sides:hover {
-     text-decoration: none;
-     box-shadow: transparent 0 0 0 1px, transparent 0 0 0 4px, rgba(0, 0, 0, 0.12) 0 6px 16px;
- }
+    text-decoration: none;
+    box-shadow: 0 2px 4px var(--box-shadow1), 0 4px 8px var(--box-shadow2)
+}

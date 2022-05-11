@@ -6,60 +6,51 @@ import { Link } from 'react-router-dom';
 import { EllipsisWrapper } from '../ellipsisWrapper/EllipsisWrapper';
 import { Button } from '../button/Button';
 import { ButtonMode } from '../button/interfaces';
+import { showStars } from '../../pages/mainPage/components/bestItem/BestItem';
 import { Tooltip } from '../tooltip/Tooltip';
 import { CURRENCY_TYPE } from '../../../constants';
 import './style.css';
 const placeholder = require('../../../assets/images/placeholder.jpg');
 
 export const ProductItem = (item: Product): JSX.Element => {
-    const { img, name, description, price, _id } = item;
+    const { img, name, description, price, _id, stars } = item;
 
     const dispatch = useDispatch();
 
     return (
-        <div className="product__item">
-            <div className="product__header">
-                <img
-                    className="product__image"
-                    src={img && true ? img : placeholder}
-                    alt="product__image"
-                />
-            </div>
-            <div>
-                <div className="product__body">
-                    <div className="product__title">
+        <div className='product__item'>
+            <Link className='product-link' to={`${RoutePaths.Product}/${_id}`}>
+                <div className='product__header'>
+                    <img className='product__image' src={img && true ? img : placeholder} alt='product__image' />
+                </div>
+                <div className='product__body'>
+                    <div className='product__title'>
                         <Tooltip content={name}>
                             <EllipsisWrapper textLength={1}>
                                 <h4>{name}</h4>
                             </EllipsisWrapper>
                         </Tooltip>
                     </div>
-                    <div className="product__description">
+                    <div className='product__price'>
+                        <p>
+                            {CURRENCY_TYPE}
+                            {price}
+                        </p>
+                    </div>
+                    <div className='product__description'>
                         <Tooltip content={description}>
                             <EllipsisWrapper textLength={1}>{description}</EllipsisWrapper>
                         </Tooltip>
                     </div>
-                    <div className="product__price">
-                        <h4>
-                            {CURRENCY_TYPE}
-                            {price}
-                        </h4>
-                    </div>
                 </div>
-                <div className="product__buttons">
-                    <Link to={`${RoutePaths.Product}/${_id}`}>
-                        <Button mode={ButtonMode.SECONDARY} type="button">
-                            View
-                        </Button>
-                    </Link>
-                    <Button
-                        mode={ButtonMode.SECONDARY}
-                        type="button"
-                        onClick={() => dispatch(addProduct(item))}
-                    >
-                        Add to cart
-                    </Button>
-                </div>
+            </Link>
+            <div className='product__buttons'>
+                <Button
+                    mode={ButtonMode.SECONDARY}
+                    type='button'
+                    onClick={() => dispatch(addProduct(item))}
+                >Add to cart</Button>
+                {stars && <div className='item__stars'>{showStars(Number(stars))}</div>}
             </div>
         </div>
     );
