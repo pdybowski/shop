@@ -9,7 +9,7 @@ interface Props {
     headerText?: string;
     saveBtnText?: string;
     isDisplayed: boolean;
-    children: JSX.Element;
+    children: JSX.Element | string;
     handleClose: () => void;
     handleSubmit?: () => void;
 }
@@ -45,20 +45,16 @@ export const Popup = ({
                 {<div className="popup__body">{children}</div>}
 
                 <div className="popup__footer">
-                    <Button
-                        type="reset"
-                        mode={ButtonMode.CANCEL}
-                        onClick={handleClose}
-                        style={{ margin: '0px' }}
-                    >
+                    <Button type="button" mode={ButtonMode.CANCEL} onClick={handleClose}>
                         Cancel
                     </Button>
+
                     {saveBtnText && (
                         <Button
-                            type="submit"
+                            type="button"
                             mode={ButtonMode.PRIMARY}
-                            style={{ margin: '0px' }}
                             onClick={handleSubmit}
+                            style={{ marginLeft: '13px' }}
                         >
                             {saveBtnText}
                         </Button>
