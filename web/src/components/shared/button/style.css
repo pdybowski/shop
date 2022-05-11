@@ -44,12 +44,11 @@
 }
 
 .button--primarySmall:hover {
-    background-color: var(--buttons-light);
-    color: var(--main-background);
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    border-radius: 13px;
+    color: var(--buttons-light);
+    background-color: var(--main-background);
+    transition: all 0.3s ease;
     text-decoration: none;
+    border: 1px solid var(--buttons-light);
 }
 
 /* BUTTON PRIMARY BIG */
@@ -68,12 +67,11 @@
 }
 
 .button--primaryBig:hover {
-    background-color: var(--buttons-light);
-    color: var(--main-background);
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    border-radius: 13px;
+    color: var(--buttons-light);
+    background-color: var(--main-background);
+    transition: all 0.3s ease;
     text-decoration: none;
+    border: 1px solid var(--buttons-light);
 }
 
 
