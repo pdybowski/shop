@@ -15,20 +15,20 @@ import { ButtonMode } from '../../../../shared/button/interfaces';
 import './style.css';
 
 export const Cart = () => {
-    const cartState = store.getState().cart;
-    const subtotalAmount = selectSubtotalAmount(cartState);
-    const itemsNumber = selectItemsNumber(cartState);
+    const cartStore = store.getState().cart;
+    const subtotalAmount = selectSubtotalAmount(cartStore);
+    const itemsNumber = selectItemsNumber(cartStore);
 
-    useSelector(() => cartState.cart.map((item) => item));
+    useSelector(() => cartStore.cart.map((item) => item));
 
     const dispatch = useDispatch();
 
     return (
         <div className="cart">
             <div className="cart__list">
-                {cartState.cart.length <= 0 && <div>No Item in the Cart!</div>}
+                {itemsNumber <= 0 && <div>No Item in the cartStore!</div>}
                 <ul>
-                    {cartState.cart.map((cartItem: { product: Product; quantity: number }) => (
+                    {cartStore.cart.map((cartItem: { product: Product; quantity: number }) => (
                         <li key={cartItem.product['_id']}>
                             <div className="cart__item">
                                 <div className="cart__item-image">
@@ -83,7 +83,7 @@ export const Cart = () => {
                     ))}
                 </ul>
             </div>
-            {cartState.cart.length > 0 && (
+            {cartStore.cart.length > 0 && (
                 <div className="cart__checkout">
                     <div className="cart__checkout-total">
                         <div>

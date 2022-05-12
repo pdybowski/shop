@@ -1,4 +1,4 @@
-import { configureStore, createStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import rootReducer from './reducers/combineReducers';
 
 const store = configureStore({
