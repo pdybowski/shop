@@ -1,24 +1,20 @@
-import React, { useContext, useEffect, useMemo, useState } from 'react';
-import { Navigate, useSearchParams } from 'react-router-dom';
-import { useFilterProducts } from '../../../hooks';
-import { Product, ProductCategory, ProductType, SportType, BrandType } from '../../../models';
+import React, { useEffect, useState } from 'react';
+import { Product } from '../../../models';
 import { ProductItem, SearchInput } from '../../shared';
 import { Pagination } from '../../shared/pagination/Pagination';
 import { DownArrow, UpArrow } from '../../navigation/components';
 import store from '../../../services/store';
-// import './style.css';
 
+const ITEMS_ON_PAGE = 12;
 export const BestsellersPage = (): JSX.Element => {
-    const [page, setPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(1);
-    const itemsPerPage = 12;
-    const handlePages = (updatePage: number) => setPage(updatePage);
-
     const products = store.getState().pageResource.products;
 
-    const [header, setHeader] = useState<string>('');
+    const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
+    const handlePages = (updatePage: number) => setPage(updatePage);
+
     const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
-    const [searchParams] = useSearchParams();
+
     const [productsForPage, setProductsForPage] = useState<Product[]>([]);
 
     const [priceDropdown, setPriceDropdown] = useState(false);
@@ -28,20 +24,9 @@ export const BestsellersPage = (): JSX.Element => {
     const [minPriceSearch, setMinPriceSearch] = useState('');
     const [maxPriceSearch, setMaxPriceSearch] = useState('');
 
-    const sportType = searchParams.get('sportType') as SportType;
-    const productType = searchParams.get('productType') as ProductType;
-    const productCategory = searchParams.get('productCategory') as ProductCategory;
-    const brandType = searchParams.get('brandType') as BrandType;
-    const bestsellers = 'bestsellers';
-
-    const { productsFilteredByType } = useFilterProducts({
-        products,
-        productCategory,
-        sportType,
-        productType,
-        brandType,
-        bestsellers,
-    });
+    const bestsellers = products.filter((product) =>
+        product.sellCount ? product.sellCount > 20 : null
+    );
 
     const searchProductByName = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = e.target;
@@ -59,8 +44,7 @@ export const BestsellersPage = (): JSX.Element => {
     };
 
     useEffect(() => {
-        let results: Product[] = productsFilteredByType;
-
+        let results: Product[] = bestsellers;
         const filterProductsByName = () => {
             results = results.filter(
                 (product) =>
@@ -91,49 +75,22 @@ export const BestsellersPage = (): JSX.Element => {
 
         setFilteredProducts(results);
 
-        let pageProducts = results.slice((page - 1) * itemsPerPage, page * itemsPerPage);
-        setTotalPages(Math.ceil(results.length / itemsPerPage));
+        let pageProducts = results.slice((page - 1) * ITEMS_ON_PAGE, page * ITEMS_ON_PAGE);
+        setTotalPages(Math.ceil(results.length / ITEMS_ON_PAGE));
         setProductsForPage(pageProducts);
         setPage(1);
     }, [nameSearch, minPriceSearch, maxPriceSearch]);
 
-    useMemo(() => {
-        if (!productCategory) return <Navigate replace to="/" />;
-    }, []);
-
     useEffect(() => {
-        let pageProducts = productsFilteredByType.slice(
-            (page - 1) * itemsPerPage,
-            page * itemsPerPage
-        );
-        setTotalPages(Math.ceil(productsFilteredByType.length / itemsPerPage));
-        setProductsForPage(pageProducts);
-    }, [productsFilteredByType]);
-
-    useEffect(() => {
-        let pageProducts = filteredProducts.slice((page - 1) * itemsPerPage, page * itemsPerPage);
+        let pageProducts = bestsellers.slice((page - 1) * ITEMS_ON_PAGE, page * ITEMS_ON_PAGE);
+        setTotalPages(Math.ceil(bestsellers.length / ITEMS_ON_PAGE));
         setProductsForPage(pageProducts);
     }, [page]);
 
     useEffect(() => {
-        let text = '';
-        if (productCategory) {
-            text += productCategory;
-        }
-        if (!productCategory) {
-            text += 'Sport';
-        }
-        if (sportType) {
-            text += ` - ${sportType}`;
-        }
-        if (productType) {
-            text += ` (${productType})`;
-        }
-        if (!text.length) {
-            text = 'Sport Shop Products';
-        }
-        setHeader(text);
-    }, [productCategory, sportType, productType]);
+        let pageProducts = filteredProducts.slice((page - 1) * ITEMS_ON_PAGE, page * ITEMS_ON_PAGE);
+        setProductsForPage(pageProducts);
+    }, [filteredProducts]);
 
     function togglePriceDropdown() {
         setPriceDropdown(!priceDropdown);
@@ -149,7 +106,7 @@ export const BestsellersPage = (): JSX.Element => {
 
     return (
         <div className="products__page">
-            <h2 className="products__page__title">{header}</h2>
+            <h2 className="products__page__title">Bestsellers</h2>
             <div className="products__page-container">
                 <div className="products__page-container-left">
                     <div className="products__page__search">

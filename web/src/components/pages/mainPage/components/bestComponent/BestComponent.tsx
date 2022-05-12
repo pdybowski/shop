@@ -1,6 +1,7 @@
 import store from '../../../../../services/store';
 import { BestItem } from '../bestItem/BestItem';
-
+import { Product, RoutePaths } from '../../../../../models';
+import { Link } from 'react-router-dom';
 import './style.css';
 
 const BEST_LIMIT = 6;
@@ -9,7 +10,9 @@ export const BestComponent = (): JSX.Element => {
 
     return (
         <div className="best">
-            <div className="best__header">Bestsellers</div>
+            <Link className="product-link" to={`${RoutePaths.Bestsellers}`}>
+                <div className="best__header">Bestsellers</div>
+            </Link>
             <div className="best__container">
                 <div className="best__items">
                     {products
