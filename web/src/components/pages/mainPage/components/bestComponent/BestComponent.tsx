@@ -1,6 +1,5 @@
 import store from '../../../../../services/store';
 import { BestItem } from '../bestItem/BestItem';
-
 import './style.css';
 
 const BEST_LIMIT = 6;
