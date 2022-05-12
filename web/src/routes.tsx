@@ -52,7 +52,7 @@ export const routes = [
         key: 'brands-page',
     },
     {
-        path: `${RoutePaths.Bestsellers}`,
+        path: RoutePaths.Bestsellers,
         exact: true,
         element: <BestsellersPage />,
         key: 'bestsellers-page',

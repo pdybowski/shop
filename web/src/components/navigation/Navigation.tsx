@@ -90,7 +90,7 @@ const navigationLinks: Item[] = [
     },
     {
         name: 'Bestsellers',
-        link: `${RoutePaths.Bestsellers}`,
+        link: RoutePaths.Bestsellers,
     },
 ];
 
