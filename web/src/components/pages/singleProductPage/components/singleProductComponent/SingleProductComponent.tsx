@@ -19,7 +19,7 @@ export const SingleProductComponent = (item: Product): JSX.Element => {
         <div className="product__page">
             <div className="product__info--general">
                 <div className="product__name">{name}</div>
-                <div>
+                <div className="product__image--container">
                     <img
                         src={img && true ? img : placeholder}
                         alt="Product"
