@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { useStore } from 'react-redux';
+import { useDispatch, useStore } from 'react-redux';
 
 import { Navigation, Spinner, Footer } from './components';
 import { NotificationContext } from './contexts';
@@ -14,9 +14,9 @@ import { addPageResourceAction } from './services/actions';
 
 function App() {
     const { isLoading, data, error } = useFetch<PageResource>({ url: 'pageResource' });
-    const store: any = useStore();
 
     const { addNotification } = useContext(NotificationContext);
+    const dispatch = useDispatch();
 
     function getData(): (() => { payload: PageResourceEditType; type: string }) | void {
         if (error) {
@@ -28,9 +28,7 @@ function App() {
         }
         if (data) {
             const pageResource = PageResourceService.getEnabledPageResource(data);
-            store.dispatch((dispatch: any, getState: any) =>
-                addPageResourceAction(dispatch, getState, pageResource)
-            );
+            dispatch(addPageResourceAction(pageResource));
         }
     }
 
@@ -51,5 +49,4 @@ function App() {
     );
 }
 
-// @ts-ignore
 export default App;
