@@ -1,43 +1,30 @@
 import e from 'express';
-import React, { useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import { Button } from '../../shared';
 import { ButtonMode } from '../../shared/button/interfaces';
 import '../registerPage/style.css';
 import { User } from '../../../models/user';
+import { Api } from '../../../Api';
+import { useNavigate } from 'react-router-dom';
+import { RoutePaths } from '../../../models';
 
-const RegisterPage = ({
-    email = '',
-    firstName = '',
-    lastName = '',
-    password = '',
-}: User): JSX.Element => {
-    const [errors, setErrors] = useState({} as User);
-    const [form, setForm] = useState({
-        email: email,
-        firstName: firstName,
-        lastName: lastName,
-        password: password,
-    });
-    // async function postForm(form:User) {
-    //     await "Api".post('users', form);
-    // }
+const RegisterPage = (): JSX.Element => {
+    const [errors, setErrors] = useState(new User());
+    const [form, setForm] = useState(new User());
+    const api = new Api();
 
-    const setField = ({ target: { firstName, value } }: any) => {
-        const convertedValue = isNaN(value) ? value : parseInt(value, 10);
-        setForm({
-            ...form,
-            [firstName]: convertedValue,
-        });
-        if (errors.firstName)
-            setErrors({
-                ...errors,
-                [firstName]: null,
-            });
+    async function postForm(form: any) {
+        await api.put('users', form); // post ?
+    }
+
+    const handleChange = (e: ChangeEvent<{ name: string; value: string }>) => {
+        const { name, value } = e.target;
+        setForm({ ...form, [name]: value });
     };
 
     const findErrors = () => {
         const { email, firstName, lastName, password }: User = form;
-        const newErrors: User = {};
+        const newErrors: any = {};
         if (!email || email === '') {
             newErrors.email = 'E-mail is required!';
         } else if (!/\S+@\S+\.\S+/.test(email)) {
@@ -58,21 +45,20 @@ const RegisterPage = ({
         }
         return newErrors;
     };
+    let navigate = useNavigate();
 
-    const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
+    const handleRegister = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
         e.preventDefault();
         const newErrors = findErrors();
         if (Object.keys(newErrors).length > 0) {
             setErrors(newErrors);
         } else {
-            setForm(form);
+            navigate(RoutePaths.MainPage);
+            console.log(form);
+            postForm(form);
         }
     };
 
-    const [disabled, setDisabled] = useState(true);
-    const buttonSubmit = () => {
-        setDisabled(true);
-    };
     return (
         <div className="register">
             <form className="register__form">
@@ -83,7 +69,7 @@ const RegisterPage = ({
                     name="email"
                     placeholder="Email"
                     type="text"
-                    onChange={setField}
+                    onChange={handleChange}
                 ></input>
                 {errors.email && errors.email !== '' ? (
                     <span className="form__errors">{errors.email}</span>
@@ -94,7 +80,7 @@ const RegisterPage = ({
                     placeholder="First Name"
                     type="text"
                     name="firstName"
-                    onChange={setField}
+                    onChange={handleChange}
                 ></input>
                 {errors.firstName && errors.firstName !== '' ? (
                     <span className="form__errors">{errors.firstName}</span>
@@ -104,7 +90,7 @@ const RegisterPage = ({
                     placeholder="Last Name"
                     type="text"
                     name="lastName"
-                    onChange={setField}
+                    onChange={handleChange}
                 ></input>
                 {errors.lastName && errors.lastName !== '' ? (
                     <span className="form__errors">{errors.lastName}</span>
@@ -114,7 +100,7 @@ const RegisterPage = ({
                     placeholder="Password"
                     type="password"
                     name="password"
-                    onChange={setField}
+                    onChange={handleChange}
                 ></input>
                 {errors.password && errors.password !== '' ? (
                     <span className="form__errors">{errors.password}</span>
@@ -123,8 +109,8 @@ const RegisterPage = ({
                     type="button"
                     mode={ButtonMode.SECONDARY}
                     children="Register"
-                    disabled={!findErrors()}
-                    onClick={() => handleSubmit}
+                    disabled={!findErrors}
+                    onClick={handleRegister}
                 />
             </form>
         </div>

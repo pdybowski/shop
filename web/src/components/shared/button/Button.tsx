@@ -1,8 +1,8 @@
 import { ButtonProps } from './interfaces';
 import './style.css';
 
-export const Button = ({ children, mode, type, ...args }: ButtonProps) => (
-    <button className={`button button--${mode}`} type={type} {...args}>
+export const Button = ({ children, mode, type, onClick, ...args }: ButtonProps) => (
+    <button className={`button button--${mode}`} type={type} onClick={onClick} {...args}>
         {children}
     </button>
 );

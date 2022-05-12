@@ -4,35 +4,20 @@ import { RoutePaths } from '../../../models';
 import { Button } from '../../shared';
 import { ButtonMode } from '../../shared/button/interfaces';
 import '../loginPage/style.css';
-import PropTypes from 'prop-types';
-import UseToken from '../../../hooks/useToken';
 import { User } from '../../../models/user';
-import { MainPage } from '../mainPage/MainPage';
-import useToken from '../../../hooks/useToken';
+import { Api } from '../../../Api';
 
 const LoginPage = (): JSX.Element => {
-    const [mail, setMail] = useState('');
-    const [pass, setPass] = useState('');
-    const [errors, setErrors] = useState({} as User);
-    const { token, setToken } = UseToken('');
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [errors, setErrors] = useState(new User());
+    const [isLoggedIn, setIsLoggedIn] = useState(true);
+    const [dataUsers, setDataUsers] = useState([]);
 
-    const [form, setForm] = useState({
-        email: '',
-        password: '',
-    });
+    const [form, setForm] = useState(new User());
 
     const handleChange = (e: ChangeEvent<{ value: string; name: string }>) => {
         const { name, value } = e.target;
-        setForm({ [name]: value });
-        if (errors[name])
-            setErrors({
-                ...errors,
-                [name]: null,
-            });
+        setForm({ ...form, [name]: value });
     };
-
-    // const setField = ({ target: { email } }) => {};
 
     const findErrors = () => {
         const { email, password }: User = form;
@@ -48,60 +33,51 @@ const LoginPage = (): JSX.Element => {
         return newErrors;
     };
 
-    // let navigate = useNavigate();
+    let navigate = useNavigate();
 
-    // const handleLogin = (e: React.SyntheticEvent<EventTarget>): void => {
-    //     e.preventDefault();
-    //     const newError = findErrors();
-    //     setIsLoggedIn(true);
-    //     navigate(RoutePaths.MainPage);
-    //     localStorage.setItem('token', token);
-    //     return newError;
-    // };
+    const api = new Api();
 
-    const handleSubmit = (e: React.SyntheticEvent<EventTarget>): void => {
+    const fetchData = async () => {
+        try {
+            setDataUsers(await api.get('users'));
+            localStorage.setItem('userToken', 'token');
+        } catch (error: any) {
+            console.log(error?.response.data || error?.response.status);
+        }
+    };
+
+    const handleLogin = (e: any): void => {
         e.preventDefault();
         const newErrors = findErrors();
         if (Object.keys(newErrors).length > 0) {
             setErrors(newErrors);
         } else {
-            setForm(form);
+            setIsLoggedIn(true);
+            fetchData();
+            navigate(RoutePaths.MainPage);
+            console.log(form);
         }
     };
-    //     setToken(token);
-    //     <MainPage />;
-    // };
-    // let { email, password } = document.forms[0] || {};
-
-    // const userData = database?.find((user: { email: any }) => user.email === email.value);
-
-    // if (typeof userData !== undefined) {
-    //     if (database.password !== password.value) {
-    //         setErrors(errors);
-    //     } else {
-    //         setIsLoggedIn(true);
-    //     }
-    // }
 
     return (
-        <div className="register">
-            <form className="register__form" onSubmit={handleSubmit}>
-                <h2 className="register__form__header">Member login</h2>
+        <div className="login">
+            <form className="login__form">
+                <h2 className="login__form__header">Member login</h2>
                 <input
-                    className="register__form__input"
+                    className="login__form__input"
                     placeholder="Email"
                     type="text"
-                    value={mail}
-                    onChange={(e) => handleChange(e.target.value)}
+                    onChange={handleChange}
+                    name="email"
                     required
                 ></input>
                 {errors.email && <span className="form__errors">{errors.email}</span>}
                 <input
-                    className="register__form__input down__input"
+                    className="login__form__input"
                     placeholder="Password"
                     type="password"
-                    value={pass}
-                    onChange={(e) => handleChange(e.target.value)}
+                    onChange={handleChange}
+                    name="password"
                     required
                 ></input>
                 {errors.password && errors.password !== '' ? (
@@ -110,9 +86,10 @@ const LoginPage = (): JSX.Element => {
                 <Link to={`${RoutePaths.Login}/`} style={{ textDecoration: 'none' }}>
                     <Button
                         type="submit"
+                        onClick={handleLogin}
                         mode={ButtonMode.SECONDARY}
-                        // onSubmit={handleLogin}
                         children="Login"
+                        disabled={!findErrors}
                     />
                 </Link>
                 <h4 className="login__info">Don't have an account?</h4>

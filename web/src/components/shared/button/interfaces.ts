@@ -1,3 +1,5 @@
+import { MouseEventHandler } from 'react';
+
 export enum ButtonMode {
     PRIMARY = 'primary',
     PRIMARYSMALL = 'primarySmall',
@@ -20,5 +22,5 @@ export interface ButtonProps {
     backgroundColor?: string;
     borderColor?: string;
     style?: any;
-    onClick?: () => void;
+    onClick?: (e: any) => void;
 }

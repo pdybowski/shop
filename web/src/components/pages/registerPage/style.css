@@ -9,8 +9,7 @@
 }
 
 .register__form{
-    height: 400px;
-
+    height: 500px;
     width: 325px;
     background-color: white;
     margin-top: 30px;
@@ -36,4 +35,9 @@
     border-radius: 5px;
     padding: 8px 8px 8px 8px;
     font-size: medium;
+}
+
+.form__errors{
+    font-size: small;
+    color: red;
 }

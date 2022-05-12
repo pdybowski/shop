@@ -1,11 +1,9 @@
-.register{
+.login{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     background-color: var(--main-background);
-    /* background: url("https://prezentokracja.pl/media/catalog/product/optimized/d/8/d8a0d47495cd242e35b9c6143b986db1/spadochrony-skoki-tandemowe.jpg")  */
-    /* no-repeat  center ; */
 }
 
 .login__form{
@@ -22,11 +20,11 @@
     -moz-box-shadow: 8px 8px 24px -10px rgba(66, 68, 90, 1);
     box-shadow: 8px 8px 24px -10px rgba(66, 68, 90, 1);
 }
-.register__form__header{
+.login__form__header{
     margin: 10px 10px 10px 10px;
     color: var(--green-main);
 }
-.register__form__input{
+.login__form__input{
     color: black;
     width:250px;
     height: 50px;
@@ -35,9 +33,7 @@
     padding: 8px 8px 8px 8px;
     font-size: medium;
 }
-.down__input{
-    margin-bottom: 20px;
-}
+
 .login__info{
     margin-top: 20px;
     color: var(--green-main);
