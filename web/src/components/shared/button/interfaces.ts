@@ -19,6 +19,6 @@ export interface ButtonProps {
     color?: string;
     backgroundColor?: string;
     borderColor?: string;
-    style?: React.CSSProperties;
+    style?: any;
     onClick?: () => void;
 }

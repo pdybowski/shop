@@ -4,4 +4,5 @@ export interface User {
     lastName?: string;
     password?: string;
     role?: 'user' | 'admin';
+    props?: any;
 }

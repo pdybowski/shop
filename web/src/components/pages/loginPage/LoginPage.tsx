@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { ChangeEvent, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { RoutePaths } from '../../../models';
 import { Button } from '../../shared';
 import { ButtonMode } from '../../shared/button/interfaces';
@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import UseToken from '../../../hooks/useToken';
 import { User } from '../../../models/user';
 import { MainPage } from '../mainPage/MainPage';
-// import useToken from '../../../hooks/useToken';
+import useToken from '../../../hooks/useToken';
 
 const LoginPage = (): JSX.Element => {
     const [mail, setMail] = useState('');
@@ -17,26 +17,26 @@ const LoginPage = (): JSX.Element => {
     const { token, setToken } = UseToken('');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    // if (!token) {
-    //     setToken();
-    //     <LoginPage />;
-    // }
-
-    const database = [
-        { email: 'test@test', password: 'test' },
-        {
-            email: 'test@test2',
-            password: 'test',
-        },
-    ];
-
     const [form, setForm] = useState({
-        email: mail,
-        password: pass,
+        email: '',
+        password: '',
     });
+
+    const handleChange = (e: ChangeEvent<{ value: string; name: string }>) => {
+        const { name, value } = e.target;
+        setForm({ [name]: value });
+        if (errors[name])
+            setErrors({
+                ...errors,
+                [name]: null,
+            });
+    };
+
+    // const setField = ({ target: { email } }) => {};
+
     const findErrors = () => {
         const { email, password }: User = form;
-        const newErrors: User = {};
+        const newErrors: any = {};
         if (!email || email === '') {
             newErrors.email = 'E-mail is required!';
         } else if (!/\S+@\S+\.\S+/.test(email)) {
@@ -48,6 +48,17 @@ const LoginPage = (): JSX.Element => {
         return newErrors;
     };
 
+    // let navigate = useNavigate();
+
+    // const handleLogin = (e: React.SyntheticEvent<EventTarget>): void => {
+    //     e.preventDefault();
+    //     const newError = findErrors();
+    //     setIsLoggedIn(true);
+    //     navigate(RoutePaths.MainPage);
+    //     localStorage.setItem('token', token);
+    //     return newError;
+    // };
+
     const handleSubmit = (e: React.SyntheticEvent<EventTarget>): void => {
         e.preventDefault();
         const newErrors = findErrors();
@@ -56,21 +67,21 @@ const LoginPage = (): JSX.Element => {
         } else {
             setForm(form);
         }
-
-        setToken(token);
-        <MainPage />;
     };
-    let { email, password } = document.forms[0] || {};
+    //     setToken(token);
+    //     <MainPage />;
+    // };
+    // let { email, password } = document.forms[0] || {};
 
-    const userData = database?.find((user: { email: any }) => user.email === email.value);
+    // const userData = database?.find((user: { email: any }) => user.email === email.value);
 
-    if (typeof userData !== undefined) {
-        if (database.password !== password.value) {
-            setErrors(errors);
-        } else {
-            setIsLoggedIn(true);
-        }
-    }
+    // if (typeof userData !== undefined) {
+    //     if (database.password !== password.value) {
+    //         setErrors(errors);
+    //     } else {
+    //         setIsLoggedIn(true);
+    //     }
+    // }
 
     return (
         <div className="register">
@@ -80,22 +91,29 @@ const LoginPage = (): JSX.Element => {
                     className="register__form__input"
                     placeholder="Email"
                     type="text"
-                    onChange={(e) => setMail(e.target.value)}
+                    value={mail}
+                    onChange={(e) => handleChange(e.target.value)}
+                    required
                 ></input>
-                {errors.email && errors.email !== '' ? (
-                    <span className="form__errors">{errors.email}</span>
-                ) : null}
+                {errors.email && <span className="form__errors">{errors.email}</span>}
                 <input
-                    className="register__form__input"
+                    className="register__form__input down__input"
                     placeholder="Password"
                     type="password"
-                    onChange={(e) => setPass(e.target.value)}
+                    value={pass}
+                    onChange={(e) => handleChange(e.target.value)}
+                    required
                 ></input>
                 {errors.password && errors.password !== '' ? (
                     <span className="form__errors">{errors.password}</span>
                 ) : null}
-                <Link to={`${RoutePaths.Login}/`}>
-                    <Button type="submit" mode={ButtonMode.SECONDARY} children="Login" />
+                <Link to={`${RoutePaths.Login}/`} style={{ textDecoration: 'none' }}>
+                    <Button
+                        type="submit"
+                        mode={ButtonMode.SECONDARY}
+                        // onSubmit={handleLogin}
+                        children="Login"
+                    />
                 </Link>
                 <h4 className="login__info">Don't have an account?</h4>
                 <Link to={`${RoutePaths.Register}`}>

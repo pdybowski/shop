@@ -1,6 +1,6 @@
 import { ProductCategory, ProductType, RoutePaths, SportType } from '../../models';
 import { Item, NavItem } from './components';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { selectItemsNumber } from '../../services/selectors/cartSelectors';
 import store from '../../services/store';
 import { useSelector } from 'react-redux';
@@ -9,6 +9,7 @@ import logo from '../../assets/images/logo.png';
 import './style.css';
 import { ButtonMode } from '../shared/button/interfaces';
 import { Button } from '../shared';
+import { useState } from 'react';
 
 const navigationLinks: Item[] = [
     {
@@ -102,7 +103,8 @@ export const Navigation = () => {
 
     const [isLoggedIn, setIsLoggedIn] = useState(true);
 
-    const onLogout = () => {
+    const handleLogout = () => {
+        localStorage.removeItem('token');
         setIsLoggedIn(false);
     };
 
@@ -119,9 +121,19 @@ export const Navigation = () => {
                     <NavItem key={menu.link} child={menu} level={1} />
                 ))}
                 <li className={'nav-signIn'}>
-                    <Button mode={ButtonMode.SECONDARY} type="button">
-                        Sign in
-                    </Button>
+                    {isLoggedIn && (
+                        <Button
+                            type="button"
+                            mode={ButtonMode.SECONDARY}
+                            children="Logout"
+                            onClick={handleLogout}
+                        />
+                    )}
+                    {!isLoggedIn && (
+                        <Link to={RoutePaths.Login}>
+                            <Button type="button" mode={ButtonMode.SECONDARY} children="Login" />
+                        </Link>
+                    )}
                 </li>
                 <li className={'nav-cart'}>
                     <Link to={RoutePaths.Cart}>
@@ -133,23 +145,8 @@ export const Navigation = () => {
                         ) : null}
                     </Link>
                 </li>
-                <li>
-                    {isLoggedIn && (
-                        <Button
-                            type="button"
-                            mode={ButtonMode.SECONDARY}
-                            children="Logout"
-                            onClick={onLogout}
-                        />
-                    )}
-                    {!isLoggedIn && (
-                        <Link to={RoutePaths.Login}>
-                            <Button type="button" mode={ButtonMode.SECONDARY} children="Login" />
-                        </Link>
-                    )}
-                </li>
-                <li>
-                    {' '}
+
+                <li className={'nav-signIn'}>
                     {isLoggedIn && (
                         <Button
                             type="button"

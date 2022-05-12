@@ -110,7 +110,7 @@ const RegisterPage = ({
                     <span className="form__errors">{errors.lastName}</span>
                 ) : null}
                 <input
-                    className="register__form__input"
+                    className="register__form__input down__input"
                     placeholder="Password"
                     type="password"
                     name="password"

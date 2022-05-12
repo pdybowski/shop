@@ -81,6 +81,7 @@
     background: var(--main-background);
     border: 1px solid var(--buttons-light);
     color: var(--buttons-light);
+    text-decoration: none;
 }
 
 .button--secondary:hover {
