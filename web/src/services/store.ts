@@ -1,10 +1,8 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { cartReducer } from './reducers/cartReducer';
+import { configureStore, createStore } from '@reduxjs/toolkit';
+import rootReducer from './reducers/combineReducers';
 
 const store = configureStore({
-    reducer: {
-        shoppingCart: cartReducer,
-    },
+    reducer: rootReducer,
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: false,

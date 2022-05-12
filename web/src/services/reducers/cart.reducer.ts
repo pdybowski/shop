@@ -1,10 +1,20 @@
 import { Product } from '../../models';
-import { cartContextData } from './CartProvider';
+import { ADD_PRODUCT_TO_CART, REMOVE_PRODUCT_FROM_CART } from '../actions/cart.actions';
 
-export const ADD_PRODUCT = 'ADD_PRODUCT';
-export const REMOVE_PRODUCT = 'REMOVE_PRODUCT';
+interface cartItem {
+    quantity: number;
+    product: Product;
+}
 
-const addProductToCart = (product: Product, state: cartContextData) => {
+export interface cartState {
+    cart: cartItem[];
+}
+
+const initCartState: cartState = {
+    cart: [],
+};
+
+const addProductToCart = (product: Product, state: cartState) => {
     const updatedCart = [...state.cart];
     const updatedItemIndex = updatedCart.findIndex(
         (item) => item.product['_id'] === product['_id']
@@ -23,7 +33,7 @@ const addProductToCart = (product: Product, state: cartContextData) => {
     return { ...state, cart: updatedCart };
 };
 
-const removeProductFromCart = (productId: Product['_id'], state: cartContextData) => {
+const removeProductFromCart = (productId: Product['_id'], state: cartState) => {
     const updatedCart = [...state.cart];
     const updatedItemIndex = updatedCart.findIndex((item) => item.product['_id'] === productId);
 
@@ -40,18 +50,13 @@ const removeProductFromCart = (productId: Product['_id'], state: cartContextData
     return { ...state, cart: updatedCart };
 };
 
-export const cartReducer = (
-    state: any,
-    action: { type: string; product: Product; productId?: Product['_id'] }
-) => {
+export function cartReducer(state = initCartState, action: any) {
     switch (action.type) {
-        case ADD_PRODUCT:
-            return addProductToCart(action.product, state);
-
-        case REMOVE_PRODUCT:
-            return removeProductFromCart(action.productId, state);
-
+        case ADD_PRODUCT_TO_CART:
+            return addProductToCart(action.payload, state);
+        case REMOVE_PRODUCT_FROM_CART:
+            return removeProductFromCart(action.payload, state);
         default:
             return state;
     }
-};
+}

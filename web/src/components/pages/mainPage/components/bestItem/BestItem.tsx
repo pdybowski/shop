@@ -1,23 +1,29 @@
-import React from 'react';
 import { BsStarFill, BsStar, BsStarHalf } from 'react-icons/bs';
-import { EllipsisWrapper } from '../../../../shared';
-import { Link } from 'react-router-dom';
 import { Product, RoutePaths } from '../../../../../models';
 import { CURRENCY_TYPE } from '../../../../../constants';
+import { EllipsisWrapper } from '../../../../shared';
+import { Link } from 'react-router-dom';
 import placeholder from '../../../../../assets/images/placeholder.jpg';
 import './style.css';
+
+import './style.css';
+import { randomId } from '../../../../../utils';
 
 export function showStars(star: number) {
     const stars = [];
 
     for (let i = 0; i < Math.floor(star); i++) {
-        stars.push(<BsStarFill />);
+        const id = randomId();
+        stars.push(<BsStarFill key={id} />);
     }
     for (let i = 0; i <= 4 - star; i++) {
-        stars.push(<BsStar />);
+        const id = randomId();
+        stars.push(<BsStar key={id} />);
     }
-    if (Number.isInteger(star)) {
-    } else stars.push(<BsStarHalf />);
+    if (!Number.isInteger(star)) {
+        const id = randomId();
+        stars.push(<BsStarHalf key={id} />);
+    }
 
     return <p>{stars}</p>;
 }
