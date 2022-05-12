@@ -8,11 +8,8 @@ import { User } from '../../../models/user';
 import { Api } from '../../../Api';
 
 const LoginPage = (): JSX.Element => {
-    const [errors, setErrors] = useState(new User());
-    const [isLoggedIn, setIsLoggedIn] = useState(true);
-    const [dataUsers, setDataUsers] = useState([]);
-
     const [form, setForm] = useState(new User());
+    const [errors, setErrors] = useState(new User());
 
     const handleChange = (e: ChangeEvent<{ value: string; name: string }>) => {
         const { name, value } = e.target;
@@ -37,10 +34,15 @@ const LoginPage = (): JSX.Element => {
 
     const api = new Api();
 
-    const fetchData = async () => {
+    const login = async () => {
+        // set loading status - add spinner to the 'Login' button
         try {
-            setDataUsers(await api.get('users'));
-            localStorage.setItem('userToken', 'token');
+            // musisz dodać metodę post do API
+            // response będzie typu User, POST będzie zwracał taki typ
+            const userData = await api.post<User>('url..', form);
+
+            localStorage.setItem('userToken', userData.token); //'userToken' musi być constant (dodaj go to odpowiedniego pliku)
+            navigate(RoutePaths.MainPage);
         } catch (error: any) {
             console.log(error?.response.data || error?.response.status);
         }
@@ -48,15 +50,11 @@ const LoginPage = (): JSX.Element => {
 
     const handleLogin = (e: any): void => {
         e.preventDefault();
+
         const newErrors = findErrors();
-        if (Object.keys(newErrors).length > 0) {
-            setErrors(newErrors);
-        } else {
-            setIsLoggedIn(true);
-            fetchData();
-            navigate(RoutePaths.MainPage);
-            console.log(form);
-        }
+        if (Object.keys(newErrors).length > 0) return setErrors(newErrors);
+
+        login();
     };
 
     return (
@@ -88,9 +86,10 @@ const LoginPage = (): JSX.Element => {
                         type="submit"
                         onClick={handleLogin}
                         mode={ButtonMode.SECONDARY}
-                        children="Login"
                         disabled={!findErrors}
-                    />
+                    >
+                        Login
+                    </Button>
                 </Link>
                 <h4 className="login__info">Don't have an account?</h4>
                 <Link to={`${RoutePaths.Register}`}>
