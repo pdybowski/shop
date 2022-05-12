@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { Navigate, useSearchParams } from 'react-router-dom';
 
-import { PageResourceContext } from '../../../contexts';
 import { useFilterProducts } from '../../../hooks';
 import { Product, ProductCategory, ProductType, SportType, BrandType } from '../../../models';
 import { ProductItem, SearchInput } from '../../shared';
 import './style.css';
 import { Pagination } from '../../shared/pagination/Pagination';
 import { DownArrow, UpArrow } from '../../navigation/components';
+import store from '../../../services/store';
 
 export const ProductsPage = (): JSX.Element => {
     const [page, setPage] = useState(1);
@@ -15,9 +15,10 @@ export const ProductsPage = (): JSX.Element => {
     const itemsPerPage = 12;
     const handlePages = (updatePage: number) => setPage(updatePage);
 
-    const {
-        pageResource: { products },
-    } = useContext(PageResourceContext);
+    const pageResourceState = store.getState().pageResourceReducer;
+
+    const products = pageResourceState.products;
+
     const [header, setHeader] = useState<string>('');
     const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
     const [searchParams] = useSearchParams();

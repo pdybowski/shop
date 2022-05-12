@@ -12,7 +12,7 @@ import { ButtonMode } from '../../../../shared/button/interfaces';
 import './style.css';
 
 export const Cart = () => {
-    const cartState = store.getState().shoppingCart;
+    const cartState = store.getState().cartReducer;
     const subtotalAmount = selectSubtotalAmount(cartState);
     const itemsNumber = selectItemsNumber(cartState);
 
