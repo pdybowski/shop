@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Product, ProductCategory, ProductType, SportType, BrandType } from '../models';
-import { filterArrayByType } from '../utils';
+import { filterArrayByType, filterArrayBySellCount } from '../utils';
 
 interface props {
     products: Product[];
@@ -8,6 +8,7 @@ interface props {
     sportType?: SportType;
     productType?: ProductType;
     brandType?: BrandType;
+    bestsellers?: string;
 }
 export const useFilterProducts = ({
     products,
@@ -15,6 +16,7 @@ export const useFilterProducts = ({
     sportType,
     productType,
     brandType,
+    bestsellers,
 }: props) => {
     const [productsFilteredByType, setProductsFilteredByType] = useState(products);
 
@@ -33,8 +35,11 @@ export const useFilterProducts = ({
         if (brandType) {
             array = filterArrayByType<Product>(array, 'brand', brandType);
         }
+        if (bestsellers) {
+            array = filterArrayBySellCount<Product>(array, 'sellCount', 20);
+        }
         setProductsFilteredByType(array);
-    }, [products, sportType, productCategory, productType, brandType]);
+    }, [bestsellers, products, sportType, productCategory, productType, brandType]);
 
     return { productsFilteredByType };
 };
