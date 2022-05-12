@@ -96,12 +96,12 @@ const navigationLinks: Item[] = [
 ];
 
 export const Navigation = () => {
-    const cartState = store.getState().shoppingCart;
+    const cartState = store.getState().cart;
     const itemsNumber = selectItemsNumber(cartState);
     useSelector(() => cartState.cart.map((item) => item));
 
     return (
-        <nav className='main-nav'>
+        <nav className="main-nav">
             <ul>
                 <li className={'nav-logo'}>
                     <Link to={RoutePaths.MainPage}>
@@ -113,18 +113,18 @@ export const Navigation = () => {
                     <NavItem key={menu.link} child={menu} level={1} />
                 ))}
                 <li className={'nav-signIn'}>
-                    <Button
-                        mode={ButtonMode.SECONDARY}
-                        type='button'
-                    >Sign in</Button>
+                    <Button mode={ButtonMode.SECONDARY} type="button">
+                        Sign in
+                    </Button>
                 </li>
                 <li className={'nav-cart'}>
                     <Link to={RoutePaths.Cart}>
-                        <Button
-                            mode={ButtonMode.SECONDARY}
-                            type='button'
-                        >My cart</Button>
-                        {itemsNumber > 0 ? <p className={'nav-cart-badge'}> {itemsNumber}</p> : null}
+                        <Button mode={ButtonMode.SECONDARY} type="button">
+                            My cart
+                        </Button>
+                        {itemsNumber > 0 ? (
+                            <p className={'nav-cart-badge'}> {itemsNumber}</p>
+                        ) : null}
                     </Link>
                 </li>
             </ul>
