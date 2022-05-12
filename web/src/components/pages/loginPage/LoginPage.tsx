@@ -18,12 +18,14 @@ const LoginPage = (): JSX.Element => {
 
     const findErrors = () => {
         const { email, password }: User = form;
-        const newErrors: any = {};
+        const newErrors = new User();
+
         if (!email || email === '') {
             newErrors.email = 'E-mail is required!';
         } else if (!/\S+@\S+\.\S+/.test(email)) {
             newErrors.email = 'E-mail has incorrect format';
         }
+
         if (!password || password === '') {
             newErrors.password = 'Password is required!';
         }
