@@ -95,7 +95,7 @@ const navigationLinks: Item[] = [
 ];
 
 export const Navigation = () => {
-    const cartState = store.getState().shoppingCart;
+    const cartState = store.getState().cart;
     const itemsNumber = selectItemsNumber(cartState);
     useSelector(() => cartState.cart.map((item) => item));
 
