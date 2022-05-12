@@ -1,23 +1,22 @@
-import React, { useContext, useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Navigate, useSearchParams } from 'react-router-dom';
 
 import { useFilterProducts } from '../../../hooks';
 import { Product, ProductCategory, ProductType, SportType, BrandType } from '../../../models';
-import { ProductItem, SearchInput } from '../../shared';
-import './style.css';
-import { Pagination } from '../../shared/pagination/Pagination';
+import { ProductItem, SearchInput, Pagination } from '../../shared';
 import { DownArrow, UpArrow } from '../../navigation/components';
 import store from '../../../services/store';
 
+import './style.css';
+
+const ITEMS_ON_PAGE = 12;
 export const ProductsPage = (): JSX.Element => {
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
-    const itemsPerPage = 12;
+
     const handlePages = (updatePage: number) => setPage(updatePage);
 
-    const pageResourceState = store.getState().pageResourceReducer;
-
-    const products = pageResourceState.products;
+    const products = store.getState().pageResource.products;
 
     const [header, setHeader] = useState<string>('');
     const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
@@ -65,7 +64,7 @@ export const ProductsPage = (): JSX.Element => {
             results = results.filter(
                 (product) =>
                     product.name.toLowerCase().includes(nameSearch.toLowerCase()) ||
-                    product.description.toLowerCase().includes(nameSearch.toLowerCase()),
+                    product.description.toLowerCase().includes(nameSearch.toLowerCase())
             );
         };
 
@@ -91,27 +90,27 @@ export const ProductsPage = (): JSX.Element => {
 
         setFilteredProducts(results);
 
-        let pageProducts = results.slice((page - 1) * itemsPerPage, page * itemsPerPage);
-        setTotalPages(Math.ceil(results.length / itemsPerPage));
+        let pageProducts = results.slice((page - 1) * ITEMS_ON_PAGE, page * ITEMS_ON_PAGE);
+        setTotalPages(Math.ceil(results.length / ITEMS_ON_PAGE));
         setProductsForPage(pageProducts);
         setPage(1);
     }, [nameSearch, minPriceSearch, maxPriceSearch]);
 
     useMemo(() => {
-        if (!productCategory) return <Navigate replace to='/' />;
+        if (!productCategory) return <Navigate replace to="/" />;
     }, []);
 
     useEffect(() => {
         let pageProducts = productsFilteredByType.slice(
-            (page - 1) * itemsPerPage,
-            page * itemsPerPage,
+            (page - 1) * ITEMS_ON_PAGE,
+            page * ITEMS_ON_PAGE
         );
-        setTotalPages(Math.ceil(productsFilteredByType.length / itemsPerPage));
+        setTotalPages(Math.ceil(productsFilteredByType.length / ITEMS_ON_PAGE));
         setProductsForPage(pageProducts);
     }, [productsFilteredByType]);
 
     useEffect(() => {
-        let pageProducts = filteredProducts.slice((page - 1) * itemsPerPage, page * itemsPerPage);
+        let pageProducts = filteredProducts.slice((page - 1) * ITEMS_ON_PAGE, page * ITEMS_ON_PAGE);
         setProductsForPage(pageProducts);
     }, [page]);
 
@@ -148,97 +147,120 @@ export const ProductsPage = (): JSX.Element => {
     }
 
     return (
-        <div className='products__page'>
-            <h2 className='products__page__title'>{header}</h2>
-            <div className='products__page-container'>
-                <div className='products__page-container-left'>
-                    <div className='products__page__search'>
+        <div className="products__page">
+            <h2 className="products__page__title">{header}</h2>
+            <div className="products__page-container">
+                <div className="products__page-container-left">
+                    <div className="products__page__search">
                         <SearchInput onSearch={searchProductByName} onClear={clearSearch} />
                     </div>
-                    <div className='products-page__filter'>
-                        <button type='button' className='products-page__filter-button' onClick={toggleSizeDropdown}>
-                            {sizeDropdown ?
-                                <div className='products-page__filter-name-dropdown'>
+                    <div className="products-page__filter">
+                        <button
+                            type="button"
+                            className="products-page__filter-button"
+                            onClick={toggleSizeDropdown}
+                        >
+                            {sizeDropdown ? (
+                                <div className="products-page__filter-name-dropdown">
                                     <p>Size</p>
-                                    <p className='products-page__filter-arrow'><UpArrow /></p>
-                                </div> :
-                                <div className='products-page__filter-name'>
-                                    <p>Size</p>
-                                    <p className='products-page__filter-arrow'><DownArrow /></p>
+                                    <p className="products-page__filter-arrow">
+                                        <UpArrow />
+                                    </p>
                                 </div>
-                            }
+                            ) : (
+                                <div className="products-page__filter-name">
+                                    <p>Size</p>
+                                    <p className="products-page__filter-arrow">
+                                        <DownArrow />
+                                    </p>
+                                </div>
+                            )}
                         </button>
-                        {sizeDropdown &&
-                            <div className='products-page__filter-dropdown'>
-                                <ul className='products-page__filter-dropdown-list'>
-                                    <li className='size-checkbox'>
-                                        <input type='checkbox' id='sizeS' />
-                                        <label htmlFor='sizeS'>S</label>
+                        {sizeDropdown && (
+                            <div className="products-page__filter-dropdown">
+                                <ul className="products-page__filter-dropdown-list">
+                                    <li className="size-checkbox">
+                                        <input type="checkbox" id="sizeS" />
+                                        <label htmlFor="sizeS">S</label>
                                     </li>
-                                    <li className='size-checkbox'>
-                                        <input type='checkbox' id='sizeS' />
-                                        <label htmlFor='sizeM'>M</label>
+                                    <li className="size-checkbox">
+                                        <input type="checkbox" id="sizeS" />
+                                        <label htmlFor="sizeM">M</label>
                                     </li>
-                                    <li className='size-checkbox'>
-                                        <input type='checkbox' id='sizeS' />
-                                        <label htmlFor='sizeL'>L</label>
+                                    <li className="size-checkbox">
+                                        <input type="checkbox" id="sizeS" />
+                                        <label htmlFor="sizeL">L</label>
                                     </li>
-                                    <li className='size-checkbox'>
-                                        <input type='checkbox' id='sizeS' />
-                                        <label htmlFor='sizeXL'>XL</label>
+                                    <li className="size-checkbox">
+                                        <input type="checkbox" id="sizeS" />
+                                        <label htmlFor="sizeXL">XL</label>
                                     </li>
                                 </ul>
                             </div>
-                        }
+                        )}
                     </div>
-                    <div className='products-page__filter'>
-                        <button type='button' className='products-page__filter-button' onClick={togglePriceDropdown}>
-                            {priceDropdown ?
-                                <div className='products-page__filter-name-dropdown'>
+                    <div className="products-page__filter">
+                        <button
+                            type="button"
+                            className="products-page__filter-button"
+                            onClick={togglePriceDropdown}
+                        >
+                            {priceDropdown ? (
+                                <div className="products-page__filter-name-dropdown">
                                     <p>Price</p>
-                                    <p className='products-page__filter-arrow'><UpArrow /></p>
-                                </div> :
-                                <div className='products-page__filter-name'>
-                                    <p>Price</p>
-                                    <p className='products-page__filter-arrow'><DownArrow /></p>
+                                    <p className="products-page__filter-arrow">
+                                        <UpArrow />
+                                    </p>
                                 </div>
-                            }
+                            ) : (
+                                <div className="products-page__filter-name">
+                                    <p>Price</p>
+                                    <p className="products-page__filter-arrow">
+                                        <DownArrow />
+                                    </p>
+                                </div>
+                            )}
                         </button>
-                        {priceDropdown &&
-                            <div className='products-page__filter-dropdown'>
-                                <ul className='products-page__filter-dropdown-list'>
+                        {priceDropdown && (
+                            <div className="products-page__filter-dropdown">
+                                <ul className="products-page__filter-dropdown-list">
                                     <li>
                                         <input
-                                            type='number'
+                                            type="number"
                                             onChange={searchProductByMinPrice}
-                                            placeholder='Min price...'
-                                            className='search-price-button'
-                                            min='0'
+                                            placeholder="Min price..."
+                                            className="search-price-button"
+                                            min="0"
                                         />
                                         -
                                         <input
-                                            type='number'
+                                            type="number"
                                             onChange={searchProductByMaxPrice}
-                                            placeholder='Max price...'
-                                            className='search-price-button'
-                                            min='0'
+                                            placeholder="Max price..."
+                                            className="search-price-button"
+                                            min="0"
                                         />
                                     </li>
                                 </ul>
                             </div>
-                        }
+                        )}
                     </div>
                 </div>
-                <div className='products__page-container-right'>
-                    <div className='products__page__items'>
+                <div className="products__page-container-right">
+                    <div className="products__page__items">
                         {productsForPage.map((item) => {
                             return <ProductItem key={`page-product-${item._id}`} {...item} />;
                         })}
                     </div>
-                    {productsForPage.length < 1 ? null :
+                    {productsForPage.length < 1 ? null : (
                         <div>
-                            <Pagination page={page} totalPages={totalPages} handlePagination={handlePages} />
-                        </div>}
+                            <Pagination
+                                page={page}
+                                totalPages={totalPages}
+                                handlePagination={handlePages}
+                            />
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

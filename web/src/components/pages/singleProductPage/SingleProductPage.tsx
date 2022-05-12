@@ -1,12 +1,9 @@
 import { useParams } from 'react-router-dom';
-import { useContext } from 'react';
-import { PageResourceContext } from '../../../contexts';
 import { SingleProductComponent } from './components/singleProductComponent/SingleProductComponent';
+import store from '../../../services/store';
 
 export const SingleProductPage = () => {
-    const {
-        pageResource: { products },
-    } = useContext(PageResourceContext);
+    const products = store.getState().pageResource.products;
 
     const { id } = useParams();
 

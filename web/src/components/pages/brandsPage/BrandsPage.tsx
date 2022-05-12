@@ -1,12 +1,10 @@
-import { useContext } from 'react';
-import { PageResourceContext } from '../../../contexts';
+import store from '../../../services/store';
 import { BrandItem } from './BrandItem';
+
 import './style.css';
 
 export const BrandsPage = () => {
-    const {
-        pageResource: { brands },
-    } = useContext(PageResourceContext);
+    const brands = store.getState().pageResource.brands;
 
     return (
         <div className="brands__container">

@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { cartReducer } from './cartReducer';
-import { pageResourceReducer } from './pageResourceReducer';
+import { cartReducer as cart } from './cart.reducer';
+import { pageResourceReducer as pageResource } from './page-resource.reducer';
 
 export default combineReducers({
-    cartReducer,
-    pageResourceReducer
+    cart,
+    pageResource
 });

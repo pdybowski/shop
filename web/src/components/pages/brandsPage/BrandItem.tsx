@@ -1,8 +1,8 @@
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { PageResourceContext } from '../../../contexts';
-import './style.css';
 import { RoutePaths } from '../../../models';
+import store from '../../../services/store';
+
+import './style.css';
 
 const defaultImage = require('../../../assets/images/placeholder.jpg');
 
@@ -12,9 +12,7 @@ interface BrandItemProps {
 }
 
 export const BrandItem = ({ brandName, brandLogo = defaultImage }: BrandItemProps) => {
-    const {
-        pageResource: { products },
-    } = useContext(PageResourceContext);
+    const products = store.getState().pageResource.products;
 
     const brandsArray = products.filter((element) => {
         return element.brand === brandName;
@@ -23,14 +21,19 @@ export const BrandItem = ({ brandName, brandLogo = defaultImage }: BrandItemProp
     const numberOfElements = brandsArray.length;
 
     return (
-        <div className='brandItem__container'>
-            <Link className={'brandItem__link'} to={`${RoutePaths.Products}?brandType=${brandName}`}>
-                <div className='brandItem__element'>
-                    <div className='brandItem__logo__container'>
-                        <img className='brandItem__logo' src={`${brandLogo}`} alt='brand logo' />
+        <div className="brandItem__container">
+            <Link
+                className={'brandItem__link'}
+                to={`${RoutePaths.Products}?brandType=${brandName}`}
+            >
+                <div className="brandItem__element">
+                    <div className="brandItem__logo__container">
+                        <img className="brandItem__logo" src={`${brandLogo}`} alt="brand logo" />
                     </div>
-                    <div className='brandItem__name'>{brandName}</div>
-                    <div className='brandItem__number'>Products in category: {numberOfElements}</div>
+                    <div className="brandItem__name">{brandName}</div>
+                    <div className="brandItem__number">
+                        Products in category: {numberOfElements}
+                    </div>
                 </div>
             </Link>
         </div>

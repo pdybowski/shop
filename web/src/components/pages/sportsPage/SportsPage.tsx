@@ -1,12 +1,10 @@
 import { useContext } from 'react';
-import { PageResourceContext } from '../../../contexts';
+import store from '../../../services/store';
 import { SportItem } from './SportItem';
 import './style.css';
 
 export const SportsPage = () => {
-    const {
-        pageResource: { sports },
-    } = useContext(PageResourceContext);
+    const sports = store.getState().pageResource.sports;
 
     return (
         <div className="sportItems__container">
