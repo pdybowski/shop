@@ -4,11 +4,7 @@
     margin-top: 30px;
 }
 
-.best__container {
-}
-
 .best__items {
-    width: 50%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

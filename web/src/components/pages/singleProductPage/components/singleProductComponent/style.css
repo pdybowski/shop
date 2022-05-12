@@ -10,14 +10,20 @@
     padding: 0;
     display: flex;
     justify-content: center;
+    align-items: center;
     color: var(--product-title);
     font-size: 36px;
     font-weight: bold;
     margin-top: 20px;
 }
 
+.product__image--container {
+    display: flex;
+    justify-content: center;
+}
+
 .product__image--img {
-    width: 100%;
+    max-width: 70%;
     height: auto;
 }
 
@@ -94,6 +100,8 @@
 }
 
 .product__button--container {
+    display: flex;
+    justify-content: center;
     margin-top: 0;
     margin-bottom: 20px;
 }
