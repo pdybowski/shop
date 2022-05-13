@@ -23,9 +23,9 @@ export interface IProductInput {
     name: String,
     price: Number,
     sportType: String,
-    img?: String,
-    // size: String,
+    size: String,
     brand: String,
+    img?: String,
     description?: String,
     isCarousel?: Boolean,
     isBestseller?: Boolean,
@@ -75,13 +75,11 @@ const productSchema = new mongoose.Schema({
     sellCount: {
         type: Number,
         default: 0,
+    },
+    size: {
+        type: String,
+        required: true,
     }
-    // size: {
-    //     type: String,
-    //     enum: [SHIRT_SIZE, ]
-        
-    // }
-    
 },
 {
     timestamps: true
