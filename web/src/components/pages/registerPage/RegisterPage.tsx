@@ -11,10 +11,17 @@ import { RoutePaths } from '../../../models';
 const RegisterPage = (): JSX.Element => {
     const [errors, setErrors] = useState(new User());
     const [form, setForm] = useState(new User());
+
+    const navigate = useNavigate();
+
     const api = new Api();
 
-    async function postForm(form: any) {
-        await api.put('users', form); // post ?
+    async function register() {
+        // TODO try catch (see login page comments)
+        await api.put('users', form); // TODO post
+
+        navigate(RoutePaths.MainPage);
+        console.log(form);
     }
 
     const handleChange = (e: ChangeEvent<{ name: string; value: string }>) => {
@@ -45,18 +52,16 @@ const RegisterPage = (): JSX.Element => {
         }
         return newErrors;
     };
-    let navigate = useNavigate();
 
     const handleRegister = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
         e.preventDefault();
+
         const newErrors = findErrors();
         if (Object.keys(newErrors).length > 0) {
-            setErrors(newErrors);
-        } else {
-            navigate(RoutePaths.MainPage);
-            console.log(form);
-            postForm(form);
+            return setErrors(newErrors);
         }
+
+        register();
     };
 
     return (
