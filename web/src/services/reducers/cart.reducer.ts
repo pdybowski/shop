@@ -50,7 +50,7 @@ const removeProductFromCart = (productId: Product['_id'], state: cartState) => {
     return { ...state, cart: updatedCart };
 };
 
-export function cartReducer(state = initCartState, action: any) {
+export function cartReducer(state = initCartState, action: any): cartState {
     switch (action.type) {
         case ADD_PRODUCT_TO_CART:
             return addProductToCart(action.payload, state);
