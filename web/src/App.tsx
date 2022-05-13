@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useContext, useEffect, useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Navigation, Spinner } from './components';
@@ -6,18 +7,29 @@ import { CartProvider, NotificationContext, PageResourceContext } from './contex
 import { useFetch } from './hooks';
 import useToken from './hooks/useToken';
 import { NotificationMode, PageResource } from './models';
+=======
+import { useContext, useEffect } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { useDispatch, useStore } from 'react-redux';
+
+import { Navigation, Spinner, Footer } from './components';
+import { NotificationContext } from './contexts';
+import { useFetch } from './hooks';
+import { NotificationMode, PageResource, PageResourceEditType } from './models';
+>>>>>>> master
 import * as PageResourceService from './services/pageResource.service';
 import Views from './Views';
-import { Footer } from './components/shared/footer/Footer';
+
 import './index.css';
+import { addPageResourceAction } from './services/actions';
 
 function App() {
     const { isLoading, data, error } = useFetch<PageResource>({ url: 'pageResource' });
 
-    const { addPageResource } = useContext(PageResourceContext);
     const { addNotification } = useContext(NotificationContext);
+    const dispatch = useDispatch();
 
-    function getData() {
+    function getData(): (() => { payload: PageResourceEditType; type: string }) | void {
         if (error) {
             return addNotification({
                 mode: NotificationMode.DANGER,
@@ -27,7 +39,7 @@ function App() {
         }
         if (data) {
             const pageResource = PageResourceService.getEnabledPageResource(data);
-            return addPageResource({ ...pageResource });
+            dispatch(addPageResourceAction(pageResource));
         }
     }
 
@@ -37,18 +49,15 @@ function App() {
 
     return (
         <>
-            <div id='content-wrap'>
-                <CartProvider>
-                    <BrowserRouter>
-                        <Navigation />
-                        {isLoading ? <Spinner /> : <Views />}
-                    </BrowserRouter>
-                </CartProvider>
+            <div id="content-wrap">
+                <BrowserRouter>
+                    <Navigation />
+                    {isLoading ? <Spinner /> : <Views />}
+                </BrowserRouter>
             </div>
             <Footer />
         </>
     );
 }
 
-// @ts-ignore
 export default App;

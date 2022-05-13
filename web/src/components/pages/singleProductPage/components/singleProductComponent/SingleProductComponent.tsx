@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { addProduct } from '../../../../../services/actions/cartActions';
+import { ADD_PRODUCT_TO_CART } from '../../../../../services/actions/cart.actions';
 import { BiCube, BiRevision } from 'react-icons/bi';
 import { FiPercent } from 'react-icons/fi';
 import { Product } from '../../../../../models';
@@ -19,7 +19,7 @@ export const SingleProductComponent = (item: Product): JSX.Element => {
         <div className="product__page">
             <div className="product__info--general">
                 <div className="product__name">{name}</div>
-                <div>
+                <div className="product__image--container">
                     <img
                         src={img && true ? img : placeholder}
                         alt="Product"
@@ -49,7 +49,12 @@ export const SingleProductComponent = (item: Product): JSX.Element => {
                     <Button
                         type="button"
                         mode={ButtonMode.SECONDARYBIG}
-                        onClick={() => dispatch(addProduct(item))}
+                        onClick={() =>
+                            dispatch({
+                                type: ADD_PRODUCT_TO_CART,
+                                payload: item,
+                            })
+                        }
                     >
                         Add to cart
                     </Button>

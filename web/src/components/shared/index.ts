@@ -6,3 +6,5 @@ export * from './button/Button';
 export * from './ellipsisWrapper/EllipsisWrapper';
 export * from './popup/Popup';
 export * from './tooltip/Tooltip';
+export * from './footer/Footer'
+export * from './pagination/Pagination'
