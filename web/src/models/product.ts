@@ -56,6 +56,7 @@ export enum ProductCategory {
     man = 'Man',
     woman = 'Woman',
     child = 'Child',
+    bestseller = 'Bestsellers',
 }
 
 export enum ProductType {

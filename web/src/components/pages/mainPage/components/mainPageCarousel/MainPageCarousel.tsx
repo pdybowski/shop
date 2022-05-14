@@ -1,5 +1,5 @@
 import Carousel from '../../../../shared/carousel/Carousel';
-import { CURRENCY_TYPE } from '../../../../../constants';
+import { CURRENCY_TYPE } from '../../../../../constants/index';
 import placeholder from '../../../../../assets/images/placeholder.jpg';
 import store from '../../../../../services/store';
 

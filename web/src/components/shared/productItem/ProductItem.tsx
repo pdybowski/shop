@@ -6,10 +6,10 @@ import { Button } from '../button/Button';
 import { ButtonMode } from '../button/interfaces';
 import { showStars } from '../../pages/mainPage/components/bestItem/BestItem';
 import { Tooltip } from '../tooltip/Tooltip';
-import { CURRENCY_TYPE } from '../../../constants';
-import './style.css';
 import { addProductToCartAction } from '../../../services/actions';
-const placeholder = require('../../../assets/images/placeholder.jpg');
+import placeholder from '../../../assets/images/placeholder.jpg';
+import { CURRENCY_TYPE } from '../../../constants/index';
+import './style.css';
 
 export const ProductItem = (item: Product): JSX.Element => {
     const { img, name, description, price, _id, stars } = item;

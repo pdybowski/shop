@@ -1,0 +1,111 @@
+.products__page-container {
+    margin-left: 100px;
+    margin-right: 100px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.products__page-container-left {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 355px;
+}
+
+.products__page-container-right {
+    width: 100%;
+}
+
+.products__page__items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background: var(--main-background);
+    box-shadow: 0 1px 2px var(--box-shadow1), 0 2px 4px var(--box-shadow2);
+    border-radius: 8px;
+}
+
+.products-page__filter {
+    margin-top: 50px;
+    padding-right: 45px;
+    display: inline-block;
+    position: relative;
+}
+
+.products-page__filter-button {
+    border: 0;
+    outline: 0;
+}
+
+.products-page__filter-name {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    background: var(--main-background);
+    box-shadow: 0 1px 2px var(--box-shadow1), 0 2px 4px var(--box-shadow2);
+    border-radius: 4px;
+    height: 40px;
+    width: 310px;
+    font-size: 14px;
+    padding-left: 24px;
+    cursor: pointer;
+}
+
+.products-page__filter-name-dropdown {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    background: var(--secondary-background);
+    border-radius: 4px;
+    height: 40px;
+    width: 310px;
+    font-size: 14px;
+    padding-left: 24px;
+    cursor: pointer;
+}
+
+.products-page__filter-arrow {
+    margin-left: auto;
+    margin-right: 24px;
+    color: var(--icons);
+    font-size: 12px;
+}
+
+.products-page__filter-dropdown {
+    top: 100%;
+    left: 0;
+    width: 310px;
+    background: var(--secondary-background);
+}
+
+.products-page__filter-dropdown-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.products__page__search {
+    padding-top: 20px;
+    padding-right: 45px;
+}
+
+.search-price-button {
+    margin: 10px;
+    height: 40px;
+    border: 1px solid var(--input-border);
+    padding: 8px;
+    border-radius: 4px;
+    width: 120px;
+}
+
+.size-checkbox {
+    margin-left: 10px;
+    padding: 5px;
+}
+
+label {
+    margin-left: 10px;
+}

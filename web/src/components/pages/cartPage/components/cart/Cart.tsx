@@ -9,7 +9,7 @@ import {
     removeProductAction,
 } from '../../../../../services/actions/cart.actions';
 import { Product } from '../../../../../models';
-import { CURRENCY_TYPE } from '../../../../../constants';
+import { CURRENCY_TYPE } from '../../../../../constants/index';
 import { Button } from '../../../../shared';
 import { ButtonMode } from '../../../../shared/button/interfaces';
 import './style.css';
