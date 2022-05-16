@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Red+Hat+Display&display=swap');
+
+.product__item {
+    height: 422px;
+    width: 268px;
+    display: flex;
+    flex-direction: column;
+    margin: 8px;
+    border-radius: 4px;
+}
+
+.product-link {
+    text-decoration: none;
+}
+
+.product__item:hover {
+    box-shadow: 0 2px 4px var(--box-shadow1), 0 4px 8px var(--box-shadow2);
+    border-radius: 8px;
+    border: none;
+}
+
+.product__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-top: 16px;
+    border-radius: 4px;
+}
+
+.product__image {
+    width: 224px;
+    height: 224px;
+}
+
+.product__body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-top: 12px;
+    text-decoration: none;
+}
+
+.product__title {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0.0275em;
+    color: var(--product-title);
+    width: 232px;
+    text-align: left;
+    height: 24px;
+}
+
+.product__price {
+    height: 36px;
+    margin-top: 8px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 150%;
+    color: var(--product-price);
+    width: 232px;
+    text-align: left;
+}
+
+.product__description {
+    height: 41px;
+    margin-top: 8px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 143%;
+    width: 232px;
+    text-align: left;
+    color: var(--product-description);
+}
+
+.product__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-top: 9px;
+}

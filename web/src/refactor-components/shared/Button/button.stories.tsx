@@ -1,7 +1,6 @@
-import React from 'react';
-import { Button } from './Button';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { BtnMode } from './interfaces';
+
+import { Button, BtnMode } from '.';
 
 export default {
     title: 'Button',

@@ -1,14 +1,8 @@
-export enum BtnMode {
-    PRIMARY = 'primary',
-    PRIMARYSMALL = 'primarySmall',
-    PRIMARYBIG = 'primaryBig',
-    SECONDARY = 'secondary',
-    SECONDARYBIG = 'secondaryBig',
-    CANCEL = 'cancel',
-    DARK = 'dark',
-}
+import { BtnMode } from '.';
 
-export interface ButtonProps {
+import './style.css';
+
+interface Props {
     type: 'button' | 'submit' | 'reset';
     children: string | JSX.Element;
     mode?: BtnMode;
@@ -21,3 +15,9 @@ export interface ButtonProps {
     style?: React.CSSProperties;
     onClick?: () => void;
 }
+
+export const Button = ({ children, mode, type, ...args }: Props) => (
+    <button className={`button button--${mode}`} type={type} {...args}>
+        {children}
+    </button>
+);

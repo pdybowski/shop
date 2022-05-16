@@ -5,7 +5,7 @@ import { selectItemsNumber } from '../../services/selectors/cartSelectors';
 import store from '../../services/store';
 import { useSelector } from 'react-redux';
 import logo from '../../assets/images/logo.png';
-import { ButtonMode } from '../shared/button/interfaces';
+import { BtnMode } from '../shared/button/interfaces';
 import { Button } from '../shared';
 import './style.css';
 
@@ -112,13 +112,13 @@ export const Navigation = () => {
                     <NavItem key={menu.link} child={menu} level={1} />
                 ))}
                 <li className={'nav-signIn'}>
-                    <Button mode={ButtonMode.SECONDARY} type="button">
+                    <Button mode={BtnMode.SECONDARY} type="button">
                         Sign in
                     </Button>
                 </li>
                 <li className={'nav-cart'}>
                     <Link to={RoutePaths.Cart}>
-                        <Button mode={ButtonMode.SECONDARY} type="button">
+                        <Button mode={BtnMode.SECONDARY} type="button">
                             My cart
                         </Button>
                         {itemsNumber > 0 ? (

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { IoMdClose } from 'react-icons/io';
-import { Button } from '../button/Button';
-import { BtnMode } from '../button/interfaces';
+
+import { Button, BtnMode } from '../Button';
 
 import './style.css';
 

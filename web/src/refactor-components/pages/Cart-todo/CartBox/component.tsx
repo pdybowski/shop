@@ -1,20 +1,19 @@
 import { useDispatch, useSelector } from 'react-redux';
-import store from '../../../../../services/store';
+
+import { CURRENCY_TYPE } from '../../../../constants';
+import { Product } from '../../../../models';
+import { removeProductAction, addProductToCartAction } from '../../../../services/actions';
 import {
     selectSubtotalAmount,
     selectItemsNumber,
-} from '../../../../../services/selectors/cartSelectors';
-import {
-    addProductToCartAction,
-    removeProductAction,
-} from '../../../../../services/actions/cart.actions';
-import { Product } from '../../../../../models';
-import { CURRENCY_TYPE } from '../../../../../constants';
-import { Button } from '../../../../shared';
-import { BtnMode } from '../../../../shared/button/interfaces';
+} from '../../../../services/selectors/cartSelectors';
+import store from '../../../../services/store';
+
+import { Button, BtnMode } from '../../../shared';
+
 import './style.css';
 
-export const Cart = () => {
+export const CartBox = () => {
     const cartStore = store.getState().cart;
     const subtotalAmount = selectSubtotalAmount(cartStore);
     const itemsNumber = selectItemsNumber(cartStore);

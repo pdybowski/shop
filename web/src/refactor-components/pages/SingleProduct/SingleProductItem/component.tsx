@@ -1,16 +1,17 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
-import { ADD_PRODUCT_TO_CART } from '../../../../../services/actions/cart.actions';
 import { BiCube, BiRevision } from 'react-icons/bi';
 import { FiPercent } from 'react-icons/fi';
-import { Product } from '../../../../../models';
-import { Button } from '../../../../shared';
-import { BtnMode } from '../../../../shared/button/interfaces';
-import { CURRENCY_TYPE } from '../../../../../constants';
-import './style.css';
-const placeholder = require('../../../../../assets/images/placeholder.jpg');
 
-export const SingleProductComponent = (item: Product): JSX.Element => {
+import { CURRENCY_TYPE } from '../../../../constants';
+import { Product } from '../../../../models';
+import { ADD_PRODUCT_TO_CART } from '../../../../services/actions';
+import { Button, BtnMode } from '../../../shared';
+
+import placeholder from '../../../../../assets/images/placeholder.jpg';
+
+import './style.css';
+
+export const SingleProductItem = (item: Product): JSX.Element => {
     const { img, brand, name, price } = item;
 
     const dispatch = useDispatch();

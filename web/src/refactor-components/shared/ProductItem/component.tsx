@@ -1,15 +1,18 @@
 import { useDispatch } from 'react-redux';
-import { Product, RoutePaths } from '../../../models';
 import { Link } from 'react-router-dom';
-import { EllipsisWrapper } from '../ellipsisWrapper/EllipsisWrapper';
-import { Button } from '../button/Button';
-import { BtnMode } from '../button/interfaces';
+
 import { showStars } from '../../pages/mainPage/components/bestItem/BestItem';
-import { Tooltip } from '../tooltip/Tooltip';
+import { Button, BtnMode } from '../Button';
+import { Tooltip } from '../Tooltip';
+
 import { CURRENCY_TYPE } from '../../../constants';
-import './style.css';
 import { addProductToCartAction } from '../../../services/actions';
-const placeholder = require('../../../assets/images/placeholder.jpg');
+import { EllipsisWrapper } from '../../../components';
+import { Product, RoutePaths } from '../../../models';
+
+import placeholder from '../../../assets/images/placeholder.png';
+
+import './style.css';
 
 export const ProductItem = (item: Product): JSX.Element => {
     const { img, name, description, price, _id, stars } = item;
