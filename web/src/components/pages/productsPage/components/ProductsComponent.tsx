@@ -10,7 +10,7 @@ interface Props {
     itemsOnPage: number;
 }
 
-export const ProductsPageComponent = ({ productsToDisplay, itemsOnPage }: Props): JSX.Element => {
+export const ProductsComponent = ({ productsToDisplay, itemsOnPage }: Props): JSX.Element => {
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
 
@@ -111,49 +111,49 @@ export const ProductsPageComponent = ({ productsToDisplay, itemsOnPage }: Props)
     }
 
     return (
-        <div className="products__page-container">
-            <div className="products__page-container-left">
+        <div className="products__container">
+            <div className="products__container--left">
                 <div className="products__page__search">
                     <SearchInput onSearch={searchProductByName} onClear={clearSearch} />
                 </div>
-                <div className="products-page__filter">
+                <div className="products__filter">
                     <button
                         type="button"
-                        className="products-page__filter-button"
+                        className="products__filter__btn"
                         onClick={toggleSizeDropdown}
                     >
                         {sizeDropdown ? (
-                            <div className="products-page__filter-name-dropdown">
+                            <div className="products__filter__dropdown__name">
                                 <p>Size</p>
-                                <p className="products-page__filter-arrow">
+                                <p className="products__filter__arrow">
                                     <UpArrow />
                                 </p>
                             </div>
                         ) : (
-                            <div className="products-page__filter-name">
+                            <div className="products__filter__name">
                                 <p>Size</p>
-                                <p className="products-page__filter-arrow">
+                                <p className="products__filter__arrow">
                                     <DownArrow />
                                 </p>
                             </div>
                         )}
                     </button>
                     {sizeDropdown && (
-                        <div className="products-page__filter-dropdown">
-                            <ul className="products-page__filter-dropdown-list">
-                                <li className="size-checkbox">
+                        <div className="products__filter__dropdown">
+                            <ul className="products__filter__dropdown__list">
+                                <li className="size__checkbox">
                                     <input type="checkbox" id="sizeS" />
                                     <label htmlFor="sizeS">S</label>
                                 </li>
-                                <li className="size-checkbox">
+                                <li className="size__checkbox">
                                     <input type="checkbox" id="sizeM" />
                                     <label htmlFor="sizeM">M</label>
                                 </li>
-                                <li className="size-checkbox">
+                                <li className="size__checkbox">
                                     <input type="checkbox" id="sizeL" />
                                     <label htmlFor="sizeL">L</label>
                                 </li>
-                                <li className="size-checkbox">
+                                <li className="size__checkbox">
                                     <input type="checkbox" id="sizeXL" />
                                     <label htmlFor="sizeXL">XL</label>
                                 </li>
@@ -161,37 +161,37 @@ export const ProductsPageComponent = ({ productsToDisplay, itemsOnPage }: Props)
                         </div>
                     )}
                 </div>
-                <div className="products-page__filter">
+                <div className="products__filter">
                     <button
                         type="button"
-                        className="products-page__filter-button"
+                        className="products__filter__btn"
                         onClick={togglePriceDropdown}
                     >
                         {priceDropdown ? (
-                            <div className="products-page__filter-name-dropdown">
+                            <div className="products__filter__dropdown__name">
                                 <p>Price</p>
-                                <p className="products-page__filter-arrow">
+                                <p className="products__filter__arrow">
                                     <UpArrow />
                                 </p>
                             </div>
                         ) : (
-                            <div className="products-page__filter-name">
+                            <div className="products__filter__name">
                                 <p>Price</p>
-                                <p className="products-page__filter-arrow">
+                                <p className="products__filter__arrow">
                                     <DownArrow />
                                 </p>
                             </div>
                         )}
                     </button>
                     {priceDropdown && (
-                        <div className="products-page__filter-dropdown">
-                            <ul className="products-page__filter-dropdown-list">
+                        <div className="products__filter__dropdown">
+                            <ul className="products__filter__dropdown__list">
                                 <li>
                                     <input
                                         type="number"
                                         onChange={searchProductByMinPrice}
                                         placeholder="Min price..."
-                                        className="search-price-button"
+                                        className="search__price__button"
                                         min="0"
                                     />
                                     -
@@ -199,7 +199,7 @@ export const ProductsPageComponent = ({ productsToDisplay, itemsOnPage }: Props)
                                         type="number"
                                         onChange={searchProductByMaxPrice}
                                         placeholder="Max price..."
-                                        className="search-price-button"
+                                        className="search__price__button"
                                         min="0"
                                     />
                                 </li>
@@ -208,8 +208,8 @@ export const ProductsPageComponent = ({ productsToDisplay, itemsOnPage }: Props)
                     )}
                 </div>
             </div>
-            <div className="products__page-container-right">
-                <div className="products__page__items">
+            <div className="products__container--right">
+                <div className="products__items">
                     {productsForPage.map((item) => {
                         return <ProductItem key={`page-product-${item._id}`} {...item} />;
                     })}

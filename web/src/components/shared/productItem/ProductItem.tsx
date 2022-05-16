@@ -8,7 +8,7 @@ import { showStars } from '../../pages/mainPage/components/bestItem/BestItem';
 import { Tooltip } from '../tooltip/Tooltip';
 import { addProductToCartAction } from '../../../services/actions';
 import placeholder from '../../../assets/images/placeholder.jpg';
-import { CURRENCY_TYPE } from '../../../constants/index';
+import { CURRENCY_TYPE } from '../../../constants';
 import './style.css';
 
 export const ProductItem = (item: Product): JSX.Element => {

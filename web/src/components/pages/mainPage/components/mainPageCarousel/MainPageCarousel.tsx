@@ -1,5 +1,5 @@
 import Carousel from '../../../../shared/carousel/Carousel';
-import { CURRENCY_TYPE } from '../../../../../constants/index';
+import { CURRENCY_TYPE } from '../../../../../constants';
 import placeholder from '../../../../../assets/images/placeholder.jpg';
 import store from '../../../../../services/store';
 
@@ -12,11 +12,12 @@ export const MainPageCarousel = () => {
 
     const items = products.map((product) => {
         return (
-            <Link className="product-link" to={`${RoutePaths.Product}/${product._id}`}>
-                <div
-                    className="mainPageCarouselItem__container"
-                    key={`carousel-product-${product._id}`}
-                >
+            <Link
+                className="product-link"
+                to={`${RoutePaths.Product}/${product._id}`}
+                key={`carousel-product-${product._id}`}
+            >
+                <div className="mainPageCarouselItem__container">
                     <img
                         className="mainPageCarouselItem__img"
                         alt="Product"

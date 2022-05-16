@@ -1,6 +1,6 @@
 import { BsStarFill, BsStar, BsStarHalf } from 'react-icons/bs';
 import { Product, RoutePaths } from '../../../../../models';
-import { CURRENCY_TYPE } from '../../../../../constants/index';
+import { CURRENCY_TYPE } from '../../../../../constants';
 import { EllipsisWrapper } from '../../../../shared';
 import { Link } from 'react-router-dom';
 import placeholder from '../../../../../assets/images/placeholder.jpg';

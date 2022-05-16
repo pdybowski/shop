@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import store from '../../../services/store';
 import { useSearchParams } from 'react-router-dom';
 import { useFilterProducts } from '../../../hooks';
-import { ProductsPageComponent } from './components/ProductsPageComponent';
+import { ProductsComponent } from './components/ProductsComponent';
 import { ProductCategory, ProductType, SportType, BrandType } from '../../../models';
-import { ITEMS_ON_PAGE } from '../../../constants/index';
 import './style.css';
+
+export const ITEMS_ON_PAGE = 12;
 
 export const ProductsPage = (): JSX.Element => {
     const [header, setHeader] = useState<string>('');
@@ -52,7 +53,7 @@ export const ProductsPage = (): JSX.Element => {
             <div className="products__page">
                 <h2 className="products__page__title">{header}</h2>
             </div>
-            <ProductsPageComponent
+            <ProductsComponent
                 productsToDisplay={productsFilteredByType}
                 itemsOnPage={ITEMS_ON_PAGE}
             />

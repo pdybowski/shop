@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Product, ProductCategory, ProductType, SportType, BrandType } from '../models';
 import { filterArrayByType, filterArrayBySellCount } from '../utils';
-import { BESTSELLER_SELL_COUNT } from '../constants/index';
 
 interface props {
     products: Product[];
@@ -10,6 +9,9 @@ interface props {
     productType?: ProductType;
     brandType?: BrandType;
 }
+
+export const BESTSELLER_SELL_COUNT = 20;
+
 export const useFilterProducts = ({
     products,
     productCategory,

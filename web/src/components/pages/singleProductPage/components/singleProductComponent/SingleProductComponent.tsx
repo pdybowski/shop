@@ -6,7 +6,7 @@ import { FiPercent } from 'react-icons/fi';
 import { Product } from '../../../../../models';
 import { Button } from '../../../../shared';
 import { ButtonMode } from '../../../../shared/button/interfaces';
-import { CURRENCY_TYPE } from '../../../../../constants/index';
+import { CURRENCY_TYPE } from '../../../../../constants';
 import './style.css';
 const placeholder = require('../../../../../assets/images/placeholder.jpg');
 
