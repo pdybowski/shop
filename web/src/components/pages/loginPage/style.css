@@ -8,7 +8,7 @@
 
 .login__form{
     height: 400px;
-    width: 325px;
+    width: 375px;
     background-color: white;
     margin-top: 50px;
     margin-bottom: 30px;
@@ -16,9 +16,9 @@
     flex-direction: column;
     align-items: center;
     border-radius: 7px;
-    -webkit-box-shadow: 8px 8px 24px -10px rgba(66, 68, 90, 1);
-    -moz-box-shadow: 8px 8px 24px -10px rgba(66, 68, 90, 1);
-    box-shadow: 8px 8px 24px -10px rgba(66, 68, 90, 1);
+    -webkit-box-shadow: 8px 8px 24px -10px var(--box-shadow2);
+    -moz-box-shadow: 8px 8px 24px -10px var(--box-shadow2);
+    box-shadow: 8px 8px 24px -10px var(--box-shadow2);
 }
 .login__form__header{
     margin: 10px 10px 10px 10px;
@@ -37,5 +37,8 @@
 .login__info{
     margin-top: 20px;
     color: var(--green-main);
-    text-decoration: none none;
+}
+
+.login__info:hover{
+    text-decoration: underline;
 }

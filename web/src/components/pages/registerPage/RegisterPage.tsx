@@ -1,4 +1,3 @@
-import e from 'express';
 import React, { ChangeEvent, useState } from 'react';
 import { Button } from '../../shared';
 import { ButtonMode } from '../../shared/button/interfaces';
@@ -17,10 +16,12 @@ const RegisterPage = (): JSX.Element => {
     const api = new Api();
 
     async function register() {
-        // TODO try catch (see login page comments)
-        await api.put('users', form); // TODO post
-
-        navigate(RoutePaths.MainPage);
+        try {
+            const userData = await api.post('url...', form);
+            navigate(RoutePaths.MainPage);
+        } catch (error: any) {
+            console.log(error?.response.data || error?.response.status);
+        }
         console.log(form);
     }
 
@@ -110,13 +111,16 @@ const RegisterPage = (): JSX.Element => {
                 {errors.password && errors.password !== '' ? (
                     <span className="form__errors">{errors.password}</span>
                 ) : null}
+                <br />
+                <br />
                 <Button
                     type="button"
                     mode={ButtonMode.SECONDARY}
-                    children="Register"
                     disabled={!findErrors}
                     onClick={handleRegister}
-                />
+                >
+                    Register
+                </Button>
             </form>
         </div>
     );

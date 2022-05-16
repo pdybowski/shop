@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-import React, { useContext, useEffect, useState } from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import { Navigation, Spinner } from './components';
-import LoginPage from './components/pages/loginPage/LoginPage';
-import { CartProvider, NotificationContext, PageResourceContext } from './contexts';
-import { useFetch } from './hooks';
-import useToken from './hooks/useToken';
-import { NotificationMode, PageResource } from './models';
-=======
 import { useContext, useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { useDispatch, useStore } from 'react-redux';
@@ -16,7 +6,6 @@ import { Navigation, Spinner, Footer } from './components';
 import { NotificationContext } from './contexts';
 import { useFetch } from './hooks';
 import { NotificationMode, PageResource, PageResourceEditType } from './models';
->>>>>>> master
 import * as PageResourceService from './services/pageResource.service';
 import Views from './Views';
 

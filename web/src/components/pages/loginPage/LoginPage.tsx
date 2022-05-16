@@ -6,6 +6,7 @@ import { ButtonMode } from '../../shared/button/interfaces';
 import '../loginPage/style.css';
 import { User } from '../../../models/user';
 import { Api } from '../../../Api';
+import { USER_TOKEN } from '../../../constants/userToken';
 
 const LoginPage = (): JSX.Element => {
     const [form, setForm] = useState(new User());
@@ -37,13 +38,14 @@ const LoginPage = (): JSX.Element => {
     const api = new Api();
 
     const login = async () => {
-        // set loading status - add spinner to the 'Login' button
-        try {
-            // musisz dodać metodę post do API
-            // response będzie typu User, POST będzie zwracał taki typ
-            const userData = await api.post<User>('url..', form);
+        // isLoading;
+        // console.log(isLoading);
+        //nie wiem jak to zrobić
+        console.log(form);
 
-            localStorage.setItem('userToken', userData.token); //'userToken' musi być constant (dodaj go to odpowiedniego pliku)
+        try {
+            const userData = await api.post('url..', form);
+            localStorage.setItem(USER_TOKEN, userData.token);
             navigate(RoutePaths.MainPage);
         } catch (error: any) {
             console.log(error?.response.data || error?.response.status);
@@ -83,6 +85,7 @@ const LoginPage = (): JSX.Element => {
                 {errors.password && errors.password !== '' ? (
                     <span className="form__errors">{errors.password}</span>
                 ) : null}
+                <br />
                 <Link to={`${RoutePaths.Login}/`} style={{ textDecoration: 'none' }}>
                     <Button
                         type="submit"
@@ -93,11 +96,10 @@ const LoginPage = (): JSX.Element => {
                         Login
                     </Button>
                 </Link>
+                <br />
                 <h4 className="login__info">Don't have an account?</h4>
                 <Link to={`${RoutePaths.Register}`}>
-                    <h3 className="login__info" style={{ textDecoration: 'none' }}>
-                        Join us
-                    </h3>
+                    <h3 className="login__info">Join us</h3>
                 </Link>
             </form>
         </div>
