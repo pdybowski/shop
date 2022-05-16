@@ -6,6 +6,7 @@ import {
     SingleProductPage,
     SportsPage,
     BrandsPage,
+    BestsellersPage,
 } from './components';
 import { RoutePaths } from './models';
 import LoginPage from './components/pages/loginPage/LoginPage';
@@ -57,4 +58,9 @@ export const routes = [
         key: 'user-login',
     },
     { path: RoutePaths.Brands, exact: true, element: <BrandsPage />, key: 'brands-page' },
+        path: RoutePaths.Bestsellers,
+        exact: true,
+        element: <BestsellersPage />,
+        key: 'bestsellers-page',
+    }
 ];

@@ -1,2 +1,2 @@
-export * from './randomId'
-export * from './filterArrayByType'
+export * from './randomId';
+export * from './filterArrayByType';

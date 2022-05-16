@@ -19,4 +19,5 @@
     text-align: center;
     font-weight: bold;
     color: var(--navigation);
+    text-transform: uppercase;
 }

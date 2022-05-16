@@ -5,11 +5,10 @@ import { selectItemsNumber } from '../../services/selectors/cartSelectors';
 import store from '../../services/store';
 import { useSelector } from 'react-redux';
 import logo from '../../assets/images/logo.png';
-
-import './style.css';
 import { ButtonMode } from '../shared/button/interfaces';
 import { Button } from '../shared';
 import { useState } from 'react';
+import './style.css';
 
 const navigationLinks: Item[] = [
     {
