@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { findPageResource } from '../services/page-resource.service'
+import { findPageResource } from '../services/page-resource.service';
 
 // get product/
 export async function getAllPageResource(req: Request<{}, {}>, res: Response, next: any ) {

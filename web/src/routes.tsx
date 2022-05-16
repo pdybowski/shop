@@ -2,11 +2,10 @@ import {
     CartPage,
     MainPage,
     ProductsPage,
-    SingleProductPage,
     SportsPage,
+    SingleProductPage,
     BrandsPage,
-    BestsellersPage,
-} from './components';
+} from './components/pages';
 import { RoutePaths } from './models';
 
 export const routes = [
@@ -50,11 +49,5 @@ export const routes = [
         exact: true,
         element: <BrandsPage />,
         key: 'brands-page',
-    },
-    {
-        path: RoutePaths.Bestsellers,
-        exact: true,
-        element: <BestsellersPage />,
-        key: 'bestsellers-page',
     },
 ];

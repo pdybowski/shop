@@ -1,0 +1,116 @@
+.products__container {
+    margin-left: 100px;
+    margin-right: 100px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.products__container--left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 355px;
+    background: var(--main-background);
+    padding: 35px;
+    box-shadow: 0 1px 2px var(--box-shadow1), 0 2px 4px var(--box-shadow2);
+    border-radius: 8px;
+    margin-right: 10px;
+}
+
+.products__container--right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    padding: 35px 0px;
+    background: var(--main-background);
+    box-shadow: 0 1px 2px var(--box-shadow1), 0 2px 4px var(--box-shadow2);
+    border-radius: 8px;
+    margin-left: 10px;
+}
+
+.products__items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.products__filter {
+    margin-top: 26px;
+    display: inline-block;
+    position: relative;
+}
+
+.products__filter__btn {
+    border: 0;
+    outline: 0;
+}
+
+.products__filter__name {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    background: var(--main-background);
+    box-shadow: 0 1px 2px var(--box-shadow1), 0 2px 4px var(--box-shadow2);
+    border-radius: 4px;
+    height: 40px;
+    width: 310px;
+    font-size: 14px;
+    padding-left: 24px;
+    cursor: pointer;
+}
+
+.products__filter__dropdown__name {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    background: var(--secondary-background);
+    border-radius: 4px;
+    height: 40px;
+    width: 310px;
+    font-size: 14px;
+    padding-left: 24px;
+    cursor: pointer;
+}
+
+.products__filter__arrow {
+    margin-left: auto;
+    margin-right: 24px;
+    color: var(--icons);
+    font-size: 12px;
+}
+
+.products__filter__dropdown {
+    top: 100%;
+    left: 0;
+    width: 310px;
+    background: var(--secondary-background);
+}
+
+.products__filter__dropdown__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.search__price__button {
+    margin: 10px;
+    height: 40px;
+    border: 1px solid var(--input-border);
+    padding: 8px;
+    border-radius: 4px;
+    width: 120px;
+}
+
+.size__checkbox {
+    margin-left: 10px;
+    padding: 5px;
+}
+
+.size__label {
+    margin-left: 10px;
+}
