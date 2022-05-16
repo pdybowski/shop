@@ -1,16 +1,18 @@
 import React, { ChangeEvent, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { RoutePaths } from '../../../models';
-import { Button } from '../../shared';
+import { PageResource, RoutePaths } from '../../../models';
+import { Button, Spinner } from '../../shared';
 import { ButtonMode } from '../../shared/button/interfaces';
 import '../loginPage/style.css';
 import { User } from '../../../models/user';
 import { Api } from '../../../Api';
 import { USER_TOKEN } from '../../../constants/userToken';
+import { useLogin } from '../../../hooks/useLogin';
 
 const LoginPage = (): JSX.Element => {
     const [form, setForm] = useState(new User());
     const [errors, setErrors] = useState(new User());
+    const { isLoading, body, error } = useLogin<User>({ url: '...url' });
 
     const handleChange = (e: ChangeEvent<{ value: string; name: string }>) => {
         const { name, value } = e.target;
@@ -38,9 +40,6 @@ const LoginPage = (): JSX.Element => {
     const api = new Api();
 
     const login = async () => {
-        // isLoading;
-        // console.log(isLoading);
-        //nie wiem jak to zrobić
         console.log(form);
 
         try {
@@ -93,7 +92,7 @@ const LoginPage = (): JSX.Element => {
                         mode={ButtonMode.SECONDARY}
                         disabled={!findErrors}
                     >
-                        Login
+                        {isLoading ? <Spinner /> : 'Login'}
                     </Button>
                 </Link>
                 <br />

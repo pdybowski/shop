@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useState } from 'react';
-import { Button } from '../../shared';
+import { Button, Spinner } from '../../shared';
 import { ButtonMode } from '../../shared/button/interfaces';
 import '../registerPage/style.css';
 import { User } from '../../../models/user';
@@ -10,6 +10,7 @@ import { RoutePaths } from '../../../models';
 const RegisterPage = (): JSX.Element => {
     const [errors, setErrors] = useState(new User());
     const [form, setForm] = useState(new User());
+    const [isLoading, setLoading] = useState(false);
 
     const navigate = useNavigate();
 
@@ -119,7 +120,7 @@ const RegisterPage = (): JSX.Element => {
                     disabled={!findErrors}
                     onClick={handleRegister}
                 >
-                    Register
+                    {isLoading ? <Spinner /> : 'Register'}
                 </Button>
             </form>
         </div>

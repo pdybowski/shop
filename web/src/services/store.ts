@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { combineReducers, configureStore, createStore } from '@reduxjs/toolkit';
-=======
-import { configureStore } from '@reduxjs/toolkit';
->>>>>>> master
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import rootReducer from './reducers/combineReducers';
 
 const rootReducers = combineReducers({});

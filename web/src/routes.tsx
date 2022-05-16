@@ -58,9 +58,10 @@ export const routes = [
         key: 'user-login',
     },
     { path: RoutePaths.Brands, exact: true, element: <BrandsPage />, key: 'brands-page' },
+    {
         path: RoutePaths.Bestsellers,
         exact: true,
         element: <BestsellersPage />,
         key: 'bestsellers-page',
-    }
+    },
 ];
