@@ -2,10 +2,10 @@ import {
     CartPage,
     MainPage,
     ProductsPage,
-    SingleProductPage,
     SportsPage,
+    SingleProductPage,
     BrandsPage,
-} from './components';
+} from './components/pages';
 import { RoutePaths } from './models';
 
 export const routes = [

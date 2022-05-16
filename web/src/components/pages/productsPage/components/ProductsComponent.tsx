@@ -1,8 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Navigate, useSearchParams } from 'react-router-dom';
 import { Product, ProductCategory } from '../../../../models';
-import { ProductItem, SearchInput, Pagination } from '../../../shared';
-import { DownArrow, UpArrow } from '../../../navigation/components';
+import { ProductItem, SearchInput, Pagination, DownArrow, UpArrow } from '../../../shared';
 import './style.css';
 
 interface Props {
