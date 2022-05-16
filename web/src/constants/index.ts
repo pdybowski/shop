@@ -1,1 +1,1 @@
-export {}
+export const CURRENCY_TYPE = '$';
