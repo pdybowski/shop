@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { BESTSELLER_SELL_COUNT } from '../constants';
 import { Product, ProductCategory, ProductType, SportType, BrandType } from '../models';
 import { filterArrayByType } from '../utils';
 
@@ -11,6 +10,9 @@ interface props {
     brandType?: BrandType;
     bestseller?: string;
 }
+
+export const BESTSELLER_SELL_COUNT = 20;
+
 export const useFilterProducts = ({
     products,
     productCategory,
@@ -25,7 +27,7 @@ export const useFilterProducts = ({
         let array = products;
 
         if (productCategory) {
-            array = filterArrayByType<Product>(array, 'productCategory', productCategory);
+            array = filterArrayByType<Product>(array, 'productCategory', productCategory)
         }
         if (sportType) {
             array = filterArrayByType<Product>(array, 'sportType', sportType);
