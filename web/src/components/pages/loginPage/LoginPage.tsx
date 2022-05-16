@@ -23,6 +23,8 @@ export const LoginPage = (): JSX.Element => {
         const { email, password }: User = form;
         const newErrors = new User();
 
+        delete newErrors.role;
+
         if (!email || email === '') {
             newErrors.email = 'E-mail is required!';
         } else if (!/\S+@\S+\.\S+/.test(email)) {
@@ -43,6 +45,7 @@ export const LoginPage = (): JSX.Element => {
         console.log(form);
 
         try {
+            // TODO you should declare what model type api.post returns
             const userData = await api.post('url..', form);
             setLocalStorage(USER_TOKEN, userData.token);
             navigate(RoutePaths.MainPage);
@@ -55,7 +58,7 @@ export const LoginPage = (): JSX.Element => {
         e.preventDefault();
 
         const newErrors = findErrors();
-        if (Object.keys(newErrors).length > 0) return setErrors(newErrors);
+        if (Object.values(newErrors).some((el) => el)) return setErrors(newErrors);
 
         login();
     };

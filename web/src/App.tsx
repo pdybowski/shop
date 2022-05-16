@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { useDispatch, useStore } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { Navigation, Spinner, Footer } from './components';
 import { NotificationContext } from './contexts';
