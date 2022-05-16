@@ -3,9 +3,10 @@ export class User {
     firstName: string = '';
     lastName: string = '';
     password: string = '';
-    role?: string = UserRole.user;
+    role?: string = UserRole.USER;
 }
 
 enum UserRole {
-    user = 'user',
+    USER = 'user',
+    ADMIN = 'admin',
 }

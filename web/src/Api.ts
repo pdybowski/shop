@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { ApiMethod } from './models';
-import { User } from './models/user';
+import { User } from './models';
 
 export class Api {
     private readonly BASE_URL =

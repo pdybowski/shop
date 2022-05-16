@@ -7,10 +7,10 @@ import { Api } from '../../../Api';
 import { useNavigate } from 'react-router-dom';
 import { RoutePaths } from '../../../models';
 
-const RegisterPage = (): JSX.Element => {
+export const RegisterPage = (): JSX.Element => {
     const [errors, setErrors] = useState(new User());
     const [form, setForm] = useState(new User());
-    const [isLoading, setLoading] = useState(false);
+    const [isLoading, setLoading] = useState(TrustedHTML);
 
     const navigate = useNavigate();
 
@@ -126,5 +126,3 @@ const RegisterPage = (): JSX.Element => {
         </div>
     );
 };
-
-export default RegisterPage;

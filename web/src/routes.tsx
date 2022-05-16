@@ -1,4 +1,3 @@
-import RegisterPage from './components/pages/registerPage/RegisterPage';
 import {
     CartPage,
     MainPage,
@@ -7,9 +6,10 @@ import {
     SportsPage,
     BrandsPage,
     BestsellersPage,
+    LoginPage,
+    RegisterPage,
 } from './components';
 import { RoutePaths } from './models';
-import LoginPage from './components/pages/loginPage/LoginPage';
 
 export const routes = [
     {

@@ -1,18 +1,18 @@
 import React, { ChangeEvent, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { PageResource, RoutePaths } from '../../../models';
+import { RoutePaths } from '../../../models';
 import { Button, Spinner } from '../../shared';
 import { ButtonMode } from '../../shared/button/interfaces';
 import '../loginPage/style.css';
 import { User } from '../../../models/user';
 import { Api } from '../../../Api';
 import { USER_TOKEN } from '../../../constants/userToken';
-import { useLogin } from '../../../hooks/useLogin';
+import { setLocalStorage } from '../../../utils/localStorage';
 
-const LoginPage = (): JSX.Element => {
+export const LoginPage = (): JSX.Element => {
     const [form, setForm] = useState(new User());
     const [errors, setErrors] = useState(new User());
-    const { isLoading, body, error } = useLogin<User>({ url: '...url' });
+    const [isLoading, setIsLoading] = useState(true);
 
     const handleChange = (e: ChangeEvent<{ value: string; name: string }>) => {
         const { name, value } = e.target;
@@ -44,7 +44,7 @@ const LoginPage = (): JSX.Element => {
 
         try {
             const userData = await api.post('url..', form);
-            localStorage.setItem(USER_TOKEN, userData.token);
+            setLocalStorage(USER_TOKEN, userData.token);
             navigate(RoutePaths.MainPage);
         } catch (error: any) {
             console.log(error?.response.data || error?.response.status);
@@ -104,5 +104,3 @@ const LoginPage = (): JSX.Element => {
         </div>
     );
 };
-
-export default LoginPage;

@@ -5,3 +5,6 @@ export * from './sportsPage/SportsPage';
 export * from './singleProductPage/SingleProductPage';
 export * from './brandsPage/BrandsPage';
 export * from './bestellersPage/BestsellersPage';
+export * from './loginPage/LoginPage';
+export * from './registerPage/RegisterPage';
+
