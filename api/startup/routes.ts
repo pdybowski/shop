@@ -2,6 +2,8 @@ import cors from "cors";
 import express, { Request, Response, NextFunction } from "express";
 import productRouter from "../routes/product.router";
 import pageResource from "../routes/page-resource.router";
+import userRouter from "../routes/user.router"
+import authRouter from "../routes/auth.router"
 
 export function routes(app: express.Express) {
   app.use(cors());
@@ -21,4 +23,6 @@ export function routes(app: express.Express) {
 
   app.use("/api/product", productRouter);
   app.use("/api/pageResource", pageResource);
+  app.use("/api/auth", authRouter)
+  app.use("/api/user", userRouter)
 }
