@@ -1,4 +1,4 @@
-.login{
+.register{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,25 +6,26 @@
     background-color: var(--main-background);
 }
 
-.login__form{
-    height: 400px;
+.register__form{
     width: 375px;
     background-color: white;
-    margin-top: 50px;
+    margin-top: 30px;
     margin-bottom: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 7px;
-    -webkit-box-shadow: 8px 8px 24px -10px var(--box-shadow2);
-    -moz-box-shadow: 8px 8px 24px -10px var(--box-shadow2);
-    box-shadow: 8px 8px 24px -10px var(--box-shadow2);
+    -webkit-box-shadow: 0px 0px 24px 0px var(--box-shadow2);
+    -moz-box-shadow: 0px 0px 24px 0px var(--box-shadow2);
+    box-shadow: 0px 0px 24px 0px var(--box-shadow2);
+    padding: 25px 13px;
 }
-.login__form__header{
-    margin: 10px 10px 10px 10px;
+
+.register__form__header{
+    margin: 20px 10px 10px 10px;
     color: var(--green-main);
 }
-.login__form__input{
+.register__form__input{
     color: black;
     width:250px;
     height: 50px;
@@ -34,11 +35,7 @@
     font-size: medium;
 }
 
-.login__info{
-    margin-top: 20px;
-    color: var(--green-main);
-}
-
-.login__info:hover{
-    text-decoration: underline;
+.form__errors{
+    font-size: small;
+    color: red;
 }

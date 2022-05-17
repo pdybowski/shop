@@ -1,14 +1,13 @@
-import React, { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { RoutePaths } from '../../../models';
-import { Button, Spinner } from '../../shared';
-import { ButtonMode } from '../../shared/button/interfaces';
-import '../loginPage/style.css';
+import { BtnMode, Button, Spinner } from '../../shared';
 import { User } from '../../../models/user';
 import { Api } from '../../../Api';
 import { USER_TOKEN } from '../../../constants/userToken';
 import { setLocalStorage } from '../../../utils/localStorage';
-import { SpinnerMode } from '../../shared/spinner/interfaces';
+
+import './style.css';
 
 export const LoginPage = (): JSX.Element => {
     const [form, setForm] = useState(new User());
@@ -43,8 +42,6 @@ export const LoginPage = (): JSX.Element => {
     const api = new Api();
 
     const login = async () => {
-        console.log(form);
-
         try {
             const userData = (await api.post('url..', form)) as User;
             setLocalStorage(USER_TOKEN, userData.token);
@@ -66,7 +63,7 @@ export const LoginPage = (): JSX.Element => {
     return (
         <div className="login">
             <form className="login__form">
-                <h2 className="login__form__header">Member login</h2>
+                <h2 className="login__form__header">Login</h2>
                 <input
                     className="login__form__input"
                     placeholder="Email"
@@ -91,17 +88,16 @@ export const LoginPage = (): JSX.Element => {
                 <Link to={`${RoutePaths.Login}/`} style={{ textDecoration: 'none' }}>
                     <Button
                         type="submit"
+                        mode={BtnMode.PRIMARY}
                         onClick={handleLogin}
-                        mode={ButtonMode.SECONDARY}
                         disabled={!findErrors}
                     >
-                        {isLoading ? <Spinner mode={SpinnerMode.PRIMARYSMALL} /> : 'Login'}
+                        {isLoading ? <Spinner /> : 'Login'}
                     </Button>
                 </Link>
                 <br />
-                <h4 className="login__info">Don't have an account?</h4>
-                <Link to={`${RoutePaths.Register}`}>
-                    <h3 className="login__info">Join us</h3>
+                <Link to={`${RoutePaths.Register}`} style={{ textDecoration: 'none' }}>
+                    Don't have an account?
                 </Link>
             </form>
         </div>

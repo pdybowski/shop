@@ -2,13 +2,12 @@ import {
     CartPage,
     MainPage,
     ProductsPage,
-    SingleProductPage,
     SportsPage,
-    BrandsPage,
-    BestsellersPage,
+    SingleProductPage,
     LoginPage,
     RegisterPage,
-} from './components';
+    BrandsPage,
+} from './components/pages';
 import { RoutePaths } from './models';
 
 export const routes = [
@@ -48,6 +47,12 @@ export const routes = [
         key: 'single-product-page',
     },
     {
+        path: RoutePaths.Brands,
+        exact: true,
+        element: <BrandsPage />,
+        key: 'brands-page',
+    },
+    {
         path: RoutePaths.Register,
         element: <RegisterPage />,
         key: 'user-register',
@@ -56,12 +61,5 @@ export const routes = [
         path: RoutePaths.Login,
         element: <LoginPage />,
         key: 'user-login',
-    },
-    { path: RoutePaths.Brands, exact: true, element: <BrandsPage />, key: 'brands-page' },
-    {
-        path: RoutePaths.Bestsellers,
-        exact: true,
-        element: <BestsellersPage />,
-        key: 'bestsellers-page',
     },
 ];

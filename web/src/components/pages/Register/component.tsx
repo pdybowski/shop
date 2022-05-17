@@ -1,11 +1,11 @@
 import React, { ChangeEvent, useState } from 'react';
-import { Button, Spinner } from '../../shared';
-import { ButtonMode } from '../../shared/button/interfaces';
-import '../registerPage/style.css';
+import { BtnMode, Button, Spinner } from '../../shared';
 import { User } from '../../../models/user';
 import { Api } from '../../../Api';
 import { useNavigate } from 'react-router-dom';
 import { RoutePaths } from '../../../models';
+
+import './style.css';
 
 export const RegisterPage = (): JSX.Element => {
     const [errors, setErrors] = useState(new User());
@@ -67,7 +67,7 @@ export const RegisterPage = (): JSX.Element => {
     return (
         <div className="register">
             <form className="register__form">
-                <h2 className="register__form__header">Join us!</h2>
+                <h2 className="register__form__header">Join Us!</h2>
 
                 <input
                     className="register__form__input"
@@ -111,10 +111,9 @@ export const RegisterPage = (): JSX.Element => {
                     <span className="form__errors">{errors.password}</span>
                 ) : null}
                 <br />
-                <br />
                 <Button
                     type="button"
-                    mode={ButtonMode.SECONDARY}
+                    mode={BtnMode.PRIMARY}
                     disabled={!findErrors}
                     onClick={handleRegister}
                 >
