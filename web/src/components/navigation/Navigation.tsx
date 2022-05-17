@@ -9,6 +9,7 @@ import { ButtonMode } from '../shared/button/interfaces';
 import { Button } from '../shared';
 import { useEffect, useState } from 'react';
 import './style.css';
+import { USER_TOKEN } from '../../constants/userToken';
 
 const navigationLinks: Item[] = [
     {
@@ -96,7 +97,7 @@ const navigationLinks: Item[] = [
 ];
 
 export const Navigation = () => {
-    const [token, setToken] = useState(localStorage.getItem('userToken') || '');
+    const [token, setToken] = useState(localStorage.getItem(USER_TOKEN) || '');
     const location = useLocation();
 
     const cartState = store.getState().cart;
@@ -104,12 +105,12 @@ export const Navigation = () => {
     useSelector(() => cartState.cart.map((item) => item));
 
     const handleLogout = () => {
-        localStorage.removeItem('userToken');
+        localStorage.removeItem(USER_TOKEN);
         setToken('');
     };
 
     useEffect(() => {
-        setToken(localStorage.getItem('userToken') || '');
+        setToken(localStorage.getItem(USER_TOKEN) || '');
     }, [location]);
 
     return (
@@ -124,21 +125,6 @@ export const Navigation = () => {
                 {navigationLinks.map((menu: Item) => (
                     <NavItem key={menu.link} child={menu} level={1} />
                 ))}
-                <li className={'nav-signIn'}>
-                    {token && (
-                        <Button
-                            type="button"
-                            mode={ButtonMode.SECONDARY}
-                            children="Logout"
-                            onClick={handleLogout}
-                        />
-                    )}
-                    {!token && (
-                        <Link to={RoutePaths.Login}>
-                            <Button type="button" mode={ButtonMode.SECONDARY} children="Login" />
-                        </Link>
-                    )}
-                </li>
                 <li className={'nav-cart'}>
                     <Link to={RoutePaths.Cart}>
                         <Button mode={ButtonMode.SECONDARY} type="button">
@@ -149,17 +135,26 @@ export const Navigation = () => {
                         ) : null}
                     </Link>
                 </li>
-
-                <li className={'nav-signIn'}>
-                    {token && (
-                        <Button
-                            type="button"
-                            mode={ButtonMode.SECONDARY}
-                            children="Go to profile"
-                        />
-                    )}
-                </li>
             </ul>
+            <div className="nav-signin">
+                {token && (
+                    <Button
+                        type="button"
+                        mode={ButtonMode.SECONDARY}
+                        children="Logout"
+                        onClick={handleLogout}
+                    />
+                )}
+                {!token && (
+                    <Link to={RoutePaths.Login}>
+                        <Button type="button" mode={ButtonMode.SECONDARY} children="Login" />
+                    </Link>
+                )}
+
+                {token && (
+                    <Button type="button" mode={ButtonMode.SECONDARY} children="Go to profile" />
+                )}
+            </div>
         </nav>
     );
 };

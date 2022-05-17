@@ -4,6 +4,7 @@ export class User {
     lastName: string = '';
     password: string = '';
     role?: string = UserRole.USER;
+    token?: any = '';
 }
 
 enum UserRole {

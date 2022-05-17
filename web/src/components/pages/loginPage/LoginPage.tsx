@@ -8,11 +8,12 @@ import { User } from '../../../models/user';
 import { Api } from '../../../Api';
 import { USER_TOKEN } from '../../../constants/userToken';
 import { setLocalStorage } from '../../../utils/localStorage';
+import { SpinnerMode } from '../../shared/spinner/interfaces';
 
 export const LoginPage = (): JSX.Element => {
     const [form, setForm] = useState(new User());
     const [errors, setErrors] = useState(new User());
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleChange = (e: ChangeEvent<{ value: string; name: string }>) => {
         const { name, value } = e.target;
@@ -45,8 +46,7 @@ export const LoginPage = (): JSX.Element => {
         console.log(form);
 
         try {
-            // TODO you should declare what model type api.post returns
-            const userData = await api.post('url..', form);
+            const userData = (await api.post('url..', form)) as User;
             setLocalStorage(USER_TOKEN, userData.token);
             navigate(RoutePaths.MainPage);
         } catch (error: any) {
@@ -95,7 +95,7 @@ export const LoginPage = (): JSX.Element => {
                         mode={ButtonMode.SECONDARY}
                         disabled={!findErrors}
                     >
-                        {isLoading ? <Spinner /> : 'Login'}
+                        {isLoading ? <Spinner mode={SpinnerMode.PRIMARYSMALL} /> : 'Login'}
                     </Button>
                 </Link>
                 <br />

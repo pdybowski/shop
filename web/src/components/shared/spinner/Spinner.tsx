@@ -1,9 +1,6 @@
+import { SpinnerProps } from './interfaces';
 import './style.css';
 
-interface props {
-    style?: React.CSSProperties;
-}
-
-export const Spinner = ({ style }: props) => {
-    return <div className="spinner" style={style} />;
+export const Spinner = ({ style, mode }: SpinnerProps) => {
+    return <div className={`spinner--${mode}`} style={style} />;
 };

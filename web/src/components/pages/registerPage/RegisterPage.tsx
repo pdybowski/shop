@@ -10,7 +10,7 @@ import { RoutePaths } from '../../../models';
 export const RegisterPage = (): JSX.Element => {
     const [errors, setErrors] = useState(new User());
     const [form, setForm] = useState(new User());
-    const [isLoading, setLoading] = useState(TrustedHTML);
+    const [isLoading, setLoading] = useState(false);
 
     const navigate = useNavigate();
 
@@ -18,7 +18,7 @@ export const RegisterPage = (): JSX.Element => {
 
     async function register() {
         try {
-            const userData = await api.post('url...', form);
+            const userData = (await api.post('url...', form)) as User;
             navigate(RoutePaths.MainPage);
         } catch (error: any) {
             console.log(error?.response.data || error?.response.status);
@@ -59,9 +59,7 @@ export const RegisterPage = (): JSX.Element => {
         e.preventDefault();
 
         const newErrors = findErrors();
-        if (Object.keys(newErrors).length > 0) {
-            return setErrors(newErrors);
-        }
+        if (Object.values(newErrors).some((el) => el)) return setErrors(newErrors);
 
         register();
     };

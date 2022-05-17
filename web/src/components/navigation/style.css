@@ -86,13 +86,6 @@
     color: var(--navigation);
 }
 
-.nav-signIn {
-    margin-left: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .nav-cart a:hover {
     border-bottom: none;
 }
@@ -106,4 +99,13 @@
     background: var(--badge);
     border-radius: 99px;
     color: var(--main-background);
+}
+
+.nav-signin{
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-signin a:hover {
+    border-bottom: none;
 }
