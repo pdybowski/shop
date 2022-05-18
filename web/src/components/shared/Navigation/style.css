@@ -1,8 +1,9 @@
 .main-nav {
+    display: flex;
+    justify-content: space-between;
     background: var(--main-background);
     box-shadow: 0 1px 2px var(--box-shadow1), 0 2px 4px var(--box-shadow2);
 }
-
 .main-nav a {
     color: var(--navigation-text);
     min-height: 64px;
@@ -14,34 +15,27 @@
     transition: background 0.4s;
     background: var(--main-background);
 }
-
 .main-nav a:hover {
     border-bottom: 0.2rem solid var(--navigation);
 }
-
 .main-nav > ul {
     display: flex !important;
     flex-wrap: wrap;
 }
-
 .main-nav ul {
     display: none;
     list-style: none none;
 }
-
 .main-nav li {
     min-width: 150px;
     text-align: center;
 }
-
 .main-nav > ul > li {
     position: relative;
 }
-
 .submenu > li {
     position: relative;
 }
-
 .main-nav > ul > li:hover > .submenu {
     display: block;
     position: absolute;
@@ -49,7 +43,6 @@
     z-index: 1;
     box-shadow: 0 1px 2px var(--box-shadow1), 0 2px 4px var(--box-shadow2);
 }
-
 .submenu > li:hover > .submenu {
     display: block;
     position: absolute;
@@ -59,22 +52,18 @@
     z-index: 2;
     box-shadow: 0 1px 2px var(--box-shadow1), 0 2px 4px var(--box-shadow2);
 }
-
 .arrow {
     margin-left: 8px;
     color: var(--icons);
     font-size: 12px;
 }
-
 .nav-logo-img {
     margin-left: 16px;
     width: 40px;
 }
-
 .nav-logo a:hover {
     border-bottom: none;
 }
-
 .nav-logo-name {
     margin-left: 12px;
     font-size: 36px;
@@ -86,22 +75,31 @@
     color: var(--navigation);
 }
 
-.nav-signIn {
+.nav-signin {
     margin-left: auto;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.nav-signin a:hover {
+    border-bottom: none;
+} 
+
 .nav-cart a:hover {
     border-bottom: none;
 }
 
+.my__cart__btn {
+    position: relative;
+}
+
 .nav-cart-badge {
+    text-align: center;
     position: absolute;
     width: 20px;
     height: 20px;
-    right: 25px;
+    right: 13px;
     top: calc(50% - 20px / 2 - 12px);
     background: var(--badge);
     border-radius: 99px;

@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import { RoutePaths, SportType, ProductCategory, ProductType } from '../../../models';
 import { selectItemsNumber } from '../../../services/selectors/cartSelectors';
@@ -11,6 +11,8 @@ import { Button, BtnMode } from '../Button';
 import { NavItemChild, NavItem } from './NavItem';
 
 import './style.css';
+import { useState, useEffect } from 'react';
+import { USER_TOKEN } from '../../../constants/userToken';
 
 const navigationLinks: NavItemChild[] = [
     {
@@ -102,6 +104,20 @@ export const Navigation = () => {
     const itemsNumber = selectItemsNumber(cartState);
     useSelector(() => cartState.cart.map((item) => item));
 
+    const [token, setToken] = useState(localStorage.getItem(USER_TOKEN) || '');
+    const location = useLocation();
+
+    const handleLogout = () => {
+        localStorage.removeItem('userToken');
+        localStorage.removeItem(USER_TOKEN);
+        setToken('');
+    };
+
+    useEffect(() => {
+        setToken(localStorage.getItem('userToken') || '');
+        setToken(localStorage.getItem(USER_TOKEN) || '');
+    }, [location]);
+
     return (
         <nav className="main-nav">
             <ul>
@@ -114,22 +130,34 @@ export const Navigation = () => {
                 {navigationLinks.map((menu: NavItemChild) => (
                     <NavItem key={menu.link} child={menu} level={1} />
                 ))}
-                <li className={'nav-signIn'}>
-                    <Button mode={BtnMode.SECONDARY} type="button">
-                        Sign in
-                    </Button>
-                </li>
-                <li className={'nav-cart'}>
-                    <Link to={RoutePaths.Cart}>
-                        <Button mode={BtnMode.SECONDARY} type="button">
-                            My cart
-                        </Button>
-                        {itemsNumber > 0 ? (
-                            <p className={'nav-cart-badge'}> {itemsNumber}</p>
-                        ) : null}
-                    </Link>
-                </li>
             </ul>
+            <div className="nav-signin">
+                {token && (
+                    <Button
+                        type="button"
+                        mode={BtnMode.SECONDARY}
+                        children="Logout"
+                        onClick={handleLogout}
+                    />
+                )}
+
+                {!token && (
+                    <Link to={RoutePaths.Login}>
+                        <Button type="button" mode={BtnMode.SECONDARY} children="Login" />
+                    </Link>
+                )}
+
+                {token && (
+                    <Button type="button" mode={BtnMode.SECONDARY} children="Go to profile" />
+                )}
+
+                <Link className="my__cart__btn" to={RoutePaths.Cart}>
+                    <Button mode={BtnMode.SECONDARY} type="button">
+                        My cart
+                    </Button>
+                    {itemsNumber > 0 ? <p className={'nav-cart-badge'}> {itemsNumber}</p> : null}
+                </Link>
+            </div>
         </nav>
     );
 };

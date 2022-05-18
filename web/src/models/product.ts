@@ -1,7 +1,7 @@
-export const aShirtSizes = <const>['XXS', 'XS', 'S', 'M', 'L', 'XL', 'XXL'];
+export const aShirtSizes = ['XXS', 'XS', 'S', 'M', 'L', 'XL', 'XXL'] as const;
 export type tShirtSizes = typeof aShirtSizes[number];
 
-export const aSizes = <const>[
+export const aSizes = [
     '28',
     '29',
     '30',
@@ -23,7 +23,7 @@ export const aSizes = <const>[
     '46',
     '47',
     '48',
-];
+] as const;
 export type tSizes = typeof aSizes[number];
 
 export class Product {

@@ -13,11 +13,12 @@ interface Props {
     backgroundColor?: string;
     borderColor?: string;
     style?: React.CSSProperties;
-    onClick?: () => void;
+    disabled?: boolean;
+    onClick?: (e: any) => void;
 }
 
-export const Button = ({ children, mode, type, ...args }: Props) => (
-    <button className={`button button--${mode}`} type={type} {...args}>
+export const Button = ({ children, mode, type, onClick, ...args }: Props) => (
+    <button className={`button button--${mode}`} type={type} onClick={onClick} {...args}>
         {children}
     </button>
 );

@@ -42,7 +42,7 @@ export const useFilterProducts = ({
             array = array.filter(el => el.sellCount && el.sellCount > BESTSELLER_SELL_COUNT)
         }
         setProductsFilteredByType(array);
-    }, [products, sportType, productCategory, productType, brandType]);
+    }, [products, sportType, productCategory, productType, brandType, bestseller]);
 
     return { productsFilteredByType };
 };
