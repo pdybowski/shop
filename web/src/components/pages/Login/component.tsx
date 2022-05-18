@@ -1,11 +1,13 @@
 import { ChangeEvent, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+
 import { RoutePaths } from '../../../models';
-import { BtnMode, Button, Spinner } from '../../shared';
 import { User } from '../../../models/user';
 import { Api } from '../../../Api';
 import { USER_TOKEN } from '../../../constants/userToken';
 import { setLocalStorage } from '../../../utils/localStorage';
+
+import { Form, FormInput } from '../../shared';
 
 import './style.css';
 
@@ -42,12 +44,17 @@ export const LoginPage = (): JSX.Element => {
     const api = new Api();
 
     const login = async () => {
+        setIsLoading(true);
         try {
+            // TODO save user data to reducer
             const userData = (await api.post('url..', form)) as User;
             setLocalStorage(USER_TOKEN, userData.token);
             navigate(RoutePaths.MainPage);
         } catch (error: any) {
+            // TODO display notification from context
             console.log(error?.response.data || error?.response.status);
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -62,44 +69,42 @@ export const LoginPage = (): JSX.Element => {
 
     return (
         <div className="login">
-            <form className="login__form">
-                <h2 className="login__form__header">Login</h2>
-                <input
-                    className="login__form__input"
-                    placeholder="Email"
-                    type="text"
-                    onChange={handleChange}
-                    name="email"
-                    required
-                ></input>
-                {errors.email && <span className="form__errors">{errors.email}</span>}
-                <input
-                    className="login__form__input"
-                    placeholder="Password"
-                    type="password"
-                    onChange={handleChange}
-                    name="password"
-                    required
-                ></input>
-                {errors.password && errors.password !== '' ? (
-                    <span className="form__errors">{errors.password}</span>
-                ) : null}
-                <br />
-                <Link to={`${RoutePaths.Login}/`} style={{ textDecoration: 'none' }}>
-                    <Button
-                        type="submit"
-                        mode={BtnMode.PRIMARY}
-                        onClick={handleLogin}
-                        disabled={!findErrors}
-                    >
-                        {isLoading ? <Spinner /> : 'Login'}
-                    </Button>
-                </Link>
-                <br />
-                <Link to={`${RoutePaths.Register}`} style={{ textDecoration: 'none' }}>
-                    Don't have an account?
-                </Link>
-            </form>
+            <Form
+                header="Login"
+                submitBtn={{
+                    handleSubmit: handleLogin,
+                    text: 'Login',
+                    isLoading: isLoading,
+                    isSubmitDisabled: !findErrors,
+                }}
+                additionalElement={
+                    <Link to={`${RoutePaths.Register}`} style={{ textDecoration: 'none' }}>
+                        Don't have an account?
+                    </Link>
+                }
+            >
+                <>
+                    <FormInput
+                        inputProps={{
+                            placeholder: 'Email',
+                            type: 'text',
+                            onChange: handleChange,
+                            name: 'email',
+                        }}
+                        error={errors.email}
+                    />
+
+                    <FormInput
+                        inputProps={{
+                            placeholder: 'Password',
+                            type: 'password',
+                            onChange: handleChange,
+                            name: 'password',
+                        }}
+                        error={errors.password}
+                    />
+                </>
+            </Form>
         </div>
     );
 };

@@ -1,9 +1,13 @@
 import React, { ChangeEvent, useState } from 'react';
-import { BtnMode, Button, Spinner } from '../../shared';
-import { User } from '../../../models/user';
+
+import { Form, FormInput } from '../../shared';
+
 import { Api } from '../../../Api';
 import { useNavigate } from 'react-router-dom';
-import { RoutePaths } from '../../../models';
+import { RoutePaths, User } from '../../../models';
+
+import { USER_TOKEN } from '../../../constants/userToken';
+import { setLocalStorage } from '../../../utils/localStorage';
 
 import './style.css';
 
@@ -17,13 +21,18 @@ export const RegisterPage = (): JSX.Element => {
     const api = new Api();
 
     async function register() {
+        setLoading(true);
         try {
+            // TODO save user data to reducer
             const userData = (await api.post('url...', form)) as User;
+            setLocalStorage(USER_TOKEN, userData.token);
             navigate(RoutePaths.MainPage);
         } catch (error: any) {
+            // TODO display notification from context
             console.log(error?.response.data || error?.response.status);
+        } finally {
+            setLoading(false);
         }
-        console.log(form);
     }
 
     const handleChange = (e: ChangeEvent<{ name: string; value: string }>) => {
@@ -66,60 +75,54 @@ export const RegisterPage = (): JSX.Element => {
 
     return (
         <div className="register">
-            <form className="register__form">
-                <h2 className="register__form__header">Join Us!</h2>
+            <Form
+                header="Join Us!"
+                submitBtn={{
+                    handleSubmit: handleRegister,
+                    text: 'Register',
+                    isLoading: isLoading,
+                    isSubmitDisabled: !findErrors,
+                }}
+            >
+                <>
+                    <FormInput
+                        inputProps={{
+                            placeholder: 'Email',
+                            type: 'email',
+                            onChange: handleChange,
+                            name: 'email',
+                        }}
+                        error={errors.email}
+                    />
 
-                <input
-                    className="register__form__input"
-                    name="email"
-                    placeholder="Email"
-                    type="text"
-                    onChange={handleChange}
-                ></input>
-                {errors.email && errors.email !== '' ? (
-                    <span className="form__errors">{errors.email}</span>
-                ) : null}
+                    <FormInput
+                        inputProps={{
+                            placeholder: 'First Name',
+                            onChange: handleChange,
+                            name: 'firstName',
+                        }}
+                        error={errors.firstName}
+                    />
 
-                <input
-                    className="register__form__input"
-                    placeholder="First Name"
-                    type="text"
-                    name="firstName"
-                    onChange={handleChange}
-                ></input>
-                {errors.firstName && errors.firstName !== '' ? (
-                    <span className="form__errors">{errors.firstName}</span>
-                ) : null}
-                <input
-                    className="register__form__input"
-                    placeholder="Last Name"
-                    type="text"
-                    name="lastName"
-                    onChange={handleChange}
-                ></input>
-                {errors.lastName && errors.lastName !== '' ? (
-                    <span className="form__errors">{errors.lastName}</span>
-                ) : null}
-                <input
-                    className="register__form__input down__input"
-                    placeholder="Password"
-                    type="password"
-                    name="password"
-                    onChange={handleChange}
-                ></input>
-                {errors.password && errors.password !== '' ? (
-                    <span className="form__errors">{errors.password}</span>
-                ) : null}
-                <br />
-                <Button
-                    type="button"
-                    mode={BtnMode.PRIMARY}
-                    disabled={!findErrors}
-                    onClick={handleRegister}
-                >
-                    {isLoading ? <Spinner /> : 'Register'}
-                </Button>
-            </form>
+                    <FormInput
+                        inputProps={{
+                            placeholder: 'Last Name',
+                            onChange: handleChange,
+                            name: 'lastName',
+                        }}
+                        error={errors.lastName}
+                    />
+
+                    <FormInput
+                        inputProps={{
+                            placeholder: 'Password',
+                            onChange: handleChange,
+                            name: 'password',
+                        }}
+                        error={errors.password}
+                    />
+                </>
+            </Form>
         </div>
     );
 };
