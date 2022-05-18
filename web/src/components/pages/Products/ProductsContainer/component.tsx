@@ -3,16 +3,17 @@ import { Navigate, useSearchParams } from 'react-router-dom';
 
 import { DownArrow, Pagination, ProductItem, SearchInput, UpArrow } from '../../../shared';
 
-import { Product, ProductCategory, tShirtSizes, tSizes } from '../../../../models';
+import { Product, ProductCategory, ProductType, tShirtSizes, tSizes } from '../../../../models';
 
 import './style.css';
 
 interface Props {
     productsToDisplay: Product[];
     itemsOnPage: number;
+    productType: ProductType;
 }
 
-export const ProductsComponent = ({ productsToDisplay, itemsOnPage }: Props): JSX.Element => {
+export const ProductsComponent = ({ productsToDisplay, itemsOnPage, productType }: Props): JSX.Element => {
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
 
@@ -305,7 +306,6 @@ export const ProductsComponent = ({ productsToDisplay, itemsOnPage }: Props): JS
 
     return (
         <div className='products__container'>
-            <p>{productsToDisplay}</p>
             <div className='products__container--left'>
                 <div className='products__search'>
                     <SearchInput onSearch={searchProductByName} onClear={clearSearchByName} />
@@ -335,7 +335,7 @@ export const ProductsComponent = ({ productsToDisplay, itemsOnPage }: Props): JS
                     {sizeDropdown && (
                         <div className='products__filter__dropdown'>
                             <ul className='products__filter__dropdown__list'>
-                                <div>
+                                {(productType === 'Shirt' || productType === null) && <div>
                                     <SizeCheckbox size='XXS' value={checkedSizeXXS} onChange={handleChangeSizeXXS} />
                                     <SizeCheckbox size='XS' value={checkedSizeXS} onChange={handleChangeSizeXS} />
                                     <SizeCheckbox size='S' value={checkedSizeS} onChange={handleChangeSizeS} />
@@ -343,8 +343,8 @@ export const ProductsComponent = ({ productsToDisplay, itemsOnPage }: Props): JS
                                     <SizeCheckbox size='L' value={checkedSizeL} onChange={handleChangeSizeL} />
                                     <SizeCheckbox size='XL' value={checkedSizeXL} onChange={handleChangeSizeXL} />
                                     <SizeCheckbox size='XXL' value={checkedSizeXXL} onChange={handleChangeSizeXXL} />
-                                </div>
-                                <div>
+                                </div>}
+                                {(productType === 'Shoe' || productType === null) && <div>
                                     <SizeCheckbox size='28' value={checkedSize28} onChange={handleChangeSize28} />
                                     <SizeCheckbox size='29' value={checkedSize29} onChange={handleChangeSize29} />
                                     <SizeCheckbox size='30' value={checkedSize30} onChange={handleChangeSize30} />
@@ -366,7 +366,7 @@ export const ProductsComponent = ({ productsToDisplay, itemsOnPage }: Props): JS
                                     <SizeCheckbox size='46' value={checkedSize46} onChange={handleChangeSize46} />
                                     <SizeCheckbox size='47' value={checkedSize47} onChange={handleChangeSize47} />
                                     <SizeCheckbox size='48' value={checkedSize48} onChange={handleChangeSize48} />
-                                </div>
+                                </div>}
                             </ul>
                         </div>
                     )}
