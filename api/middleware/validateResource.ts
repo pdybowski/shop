@@ -8,7 +8,9 @@ const validate = (schema: AnyZodObject) => (req: Request, res: Response, next: N
             body: req.body,
             query: req.query,
             params: req.params
-        })
+        });
+
+        next()
     } catch (err: any) {
         if (err instanceof ZodError) {
             return res.status(400).json({
