@@ -293,13 +293,13 @@ export const ProductsComponent = ({ productsToDisplay, itemsOnPage, productType 
                           }: { size: tSizes | tShirtSizes, value: boolean, onChange: (e: React.ChangeEvent<HTMLInputElement>) => void }) => {
         return (
             <li className='size__checkbox'>
-                <label className='size__label cursor--pointer'>
-                    <input type='checkbox' checked={value} onChange={(e) => {
-                        searchProductBySize(e);
-                        onChange(e);
-                    }} style={{ marginRight: '7px' }} value={size} />
-                    {size}
-                </label>
+                <input className='cursor--pointer' type='checkbox' checked={value} onChange={(e) => {
+                    searchProductBySize(e);
+                    onChange(e);
+                }} value={size} />
+                <div>
+                    <span>{size}</span>
+                </div>
             </li>
         );
     };
