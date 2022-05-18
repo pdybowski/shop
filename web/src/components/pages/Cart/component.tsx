@@ -25,7 +25,7 @@ export const CartPage = () => {
     const { addNotification } = useContext(NotificationContext);
 
     interface Props {
-        _id?: string;
+        _id: string;
         count: number;
     }
 
@@ -61,7 +61,7 @@ export const CartPage = () => {
                   })
         );
         setTimeout(() => {
-            makePayment('/product/buy', products);
+            makePayment('/productbuy', products);
         }, 2000);
     };
 
