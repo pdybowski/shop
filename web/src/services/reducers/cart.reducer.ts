@@ -1,5 +1,9 @@
 import { Product } from '../../models';
-import { ADD_PRODUCT_TO_CART, REMOVE_PRODUCT_FROM_CART } from '../actions/cart.actions';
+import {
+    ADD_PRODUCT_TO_CART,
+    REMOVE_PRODUCT_FROM_CART,
+    REMOVE_ALL_PRODUCTS_FROM_CART,
+} from '../actions/cart.actions';
 
 interface cartItem {
     quantity: number;
@@ -50,12 +54,19 @@ const removeProductFromCart = (productId: Product['_id'], state: cartState) => {
     return { ...state, cart: updatedCart };
 };
 
+const removeallProductsFromCart = (state: cartState) => {
+    const updatedCart: any = [];
+    return { ...state, cart: updatedCart };
+};
+
 export function cartReducer(state = initCartState, action: any): cartState {
     switch (action.type) {
         case ADD_PRODUCT_TO_CART:
             return addProductToCart(action.payload, state);
         case REMOVE_PRODUCT_FROM_CART:
             return removeProductFromCart(action.payload, state);
+        case REMOVE_ALL_PRODUCTS_FROM_CART:
+            return removeallProductsFromCart(state);
         default:
             return state;
     }
