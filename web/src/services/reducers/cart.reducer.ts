@@ -54,9 +54,8 @@ const removeProductFromCart = (productId: Product['_id'], state: cartState) => {
     return { ...state, cart: updatedCart };
 };
 
-const removeallProductsFromCart = (state: cartState) => {
-    const updatedCart: any = [];
-    return { ...state, cart: updatedCart };
+const removeAllProductsFromCart = (payload: cartItem[], state: cartState) => {
+    return { ...state, cart: payload };
 };
 
 export function cartReducer(state = initCartState, action: any): cartState {
@@ -66,7 +65,7 @@ export function cartReducer(state = initCartState, action: any): cartState {
         case REMOVE_PRODUCT_FROM_CART:
             return removeProductFromCart(action.payload, state);
         case REMOVE_ALL_PRODUCTS_FROM_CART:
-            return removeallProductsFromCart(state);
+            return removeAllProductsFromCart(action.payload, state);
         default:
             return state;
     }

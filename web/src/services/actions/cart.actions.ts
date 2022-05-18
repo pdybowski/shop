@@ -21,5 +21,6 @@ export function removeProductAction(value: Product['_id']) {
 export function removeAllProductsAction() {
     return {
         type: REMOVE_ALL_PRODUCTS_FROM_CART,
+        payload: [],
     };
 }

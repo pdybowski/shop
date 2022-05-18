@@ -1,17 +1,20 @@
 import { useState, useContext } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
 import store from '../../../services/store';
 import { Product } from '../../../models';
 import { selectSubtotalAmount, selectItemsNumber } from '../../../services/selectors/cartSelectors';
-import { useSelector, useDispatch } from 'react-redux';
-import { CartItem } from './CartItem';
-import { Api } from '../../../Api';
-import { Popup } from '../../shared';
-import { Spinner } from '../../shared';
 import { NotificationContext } from '../../../contexts';
 import { NotificationMode } from '../../../models';
 import { Button, BtnMode } from '../../shared';
 import { CURRENCY_TYPE } from '../../../constants';
 import { removeAllProductsAction } from '../../../services/actions';
+
+import { Api } from '../../../Api';
+import { Popup } from '../../shared';
+import { Spinner } from '../../shared';
+
+import { CartItem } from './CartItem';
 
 export const CartPage = () => {
     const cartStore = store.getState().cart;
@@ -24,45 +27,35 @@ export const CartPage = () => {
     const [isLoading, setIsLoading] = useState(false);
     const { addNotification } = useContext(NotificationContext);
 
+    const api = new Api();
+
     interface Props {
         _id: string;
         count: number;
     }
 
-    const makePayment = async (url: string, body: any) => {
-        const api = new Api();
+    const handlePayment = async () => {
+        setIsLoading(true);
 
         try {
-            const response = await api.put(url, body);
-            if (response) {
+            const products = cartStore.cart.map((item) => ({
+                _id: item.product._id,
+                count: item.quantity,
+            }));
+            const response = await api.put('product/buy', products);
+            if (response === 'OK') {
                 setShowPopup(true);
                 dispatch(removeAllProductsAction());
             }
         } catch (err: any) {
             addNotification({
                 mode: NotificationMode.DANGER,
-                title: 'Sorry!',
+                title: 'Payment',
                 message: err.message,
             });
         } finally {
             setIsLoading(false);
         }
-    };
-    const handlePayment = () => {
-        setIsLoading(true);
-        let products: Props[] = [];
-        cartStore.cart.map((item) =>
-            item.product._id
-                ? products.push({ _id: item.product._id, count: item.quantity })
-                : addNotification({
-                      mode: NotificationMode.DANGER,
-                      title: 'Sorry!',
-                      message: 'Some of the products in cart are not available',
-                  })
-        );
-        setTimeout(() => {
-            makePayment('/productbuy', products);
-        }, 2000);
     };
 
     const closePopup = () => {
@@ -110,10 +103,10 @@ export const CartPage = () => {
                 headerText="Payment succeeded!"
                 isDisplayed={showPopup}
                 children={
-                    <div>
+                    <p>
                         We have already sent the confirmation on your e-mail. Thank you for your
                         purchase!
-                    </div>
+                    </p>
                 }
                 handleClose={closePopup}
             ></Popup>
