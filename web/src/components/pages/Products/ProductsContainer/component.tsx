@@ -52,19 +52,11 @@ export const ProductsComponent = ({ productsToDisplay, itemsOnPage, productType 
         setSizeSearchArr([...sizeSearchArr, size]);
     };
 
-    const removeSizeFromSearch = (size: tSizes | tShirtSizes) => {
-        setSizeSearchArr(sizeSearchArr.filter(item => item !== size));
-    };
-
-    const searchProductBySize = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { checked, value } = e.target;
-        if (checked) {
-            // @ts-ignore
-            addSizeToSearch(value);
-        } else {
-            // @ts-ignore
-            removeSizeFromSearch(value);
-        }
+    const setSizesToSearch = (sizes: any) => {
+        const x = sizes.map((size: any) => {
+            return size.label
+        } )
+        setSizeSearchArr(x);
     };
 
     useEffect(() => {
@@ -144,18 +136,38 @@ export const ProductsComponent = ({ productsToDisplay, itemsOnPage, productType 
         setNameSearch('');
     }
 
-    const SizeCheckbox = ({ size }: { size: tSizes | tShirtSizes }) => {
+    const MultiselectCheckbox = ({ options, onChange }: { options: any, onChange: any }) => {
+        const [data, setData] = useState(options);
+
+        const toggle = (index: number) => {
+            const newData = [...data];
+            newData.splice(index, 1, {
+                label: data[index].label,
+                checked: !data[index].checked,
+            });
+
+            setData(newData);
+            onChange(newData.filter(x => x.checked));
+        };
+
         return (
-            <li className='size__checkbox'>
-                <input className= {'cursor--pointer'} type='checkbox' onChange={(e) => {
-                    searchProductBySize(e);
-                }} value={size} />
-                <div>
-                    <span>{size}</span>
-                </div>
-            </li>
+            <>
+                {data.map((item: any, index: number) => (
+                    <li className={item.checked ? 'checked size__checkbox' : 'size__checkbox'} key={item.label}>
+                        <input readOnly className={'cursor--pointer'} type='checkbox'
+                               checked={item.checked || false}
+                               onClick={() => toggle(index)}
+                        />
+                        <div>
+                            <span>{item.label}</span>
+                        </div>
+                    </li>
+                ))}
+            </>
         );
     };
+
+    const optionsShirt = [{ label: 'XXS' }, { label: 'XS' }, { label: 'S' }, { label: 'M' }, { label: 'L' }, { label: 'XL' }, { label: 'XXL' }];
 
     return (
         <div className='products__container'>
@@ -189,36 +201,12 @@ export const ProductsComponent = ({ productsToDisplay, itemsOnPage, productType 
                         <div className='products__filter__dropdown'>
                             <ul className='products__filter__dropdown__list'>
                                 {(productType === 'Shirt' || productType === null) && <div>
-                                    <SizeCheckbox size='XXS' />
-                                    <SizeCheckbox size='XS' />
-                                    <SizeCheckbox size='S' />
-                                    <SizeCheckbox size='M' />
-                                    <SizeCheckbox size='L' />
-                                    <SizeCheckbox size='XL' />
-                                    <SizeCheckbox size='XXL' />
-                                </div>}
-                                {(productType === 'Shoe' || productType === null) && <div>
-                                    <SizeCheckbox size='28' />
-                                    <SizeCheckbox size='29' />
-                                    <SizeCheckbox size='30' />
-                                    <SizeCheckbox size='31' />
-                                    <SizeCheckbox size='32' />
-                                    <SizeCheckbox size='33' />
-                                    <SizeCheckbox size='34' />
-                                    <SizeCheckbox size='35' />
-                                    <SizeCheckbox size='36' />
-                                    <SizeCheckbox size='37' />
-                                    <SizeCheckbox size='38' />
-                                    <SizeCheckbox size='39' />
-                                    <SizeCheckbox size='40' />
-                                    <SizeCheckbox size='41' />
-                                    <SizeCheckbox size='42' />
-                                    <SizeCheckbox size='43' />
-                                    <SizeCheckbox size='44' />
-                                    <SizeCheckbox size='45' />
-                                    <SizeCheckbox size='46' />
-                                    <SizeCheckbox size='47' />
-                                    <SizeCheckbox size='48' />
+                                    <MultiselectCheckbox
+                                        options={optionsShirt}
+                                        onChange={(data: any) => {
+                                            // setSizesToSearch(data) // Fixme breaking sizes selection
+                                        }}
+                                    />
                                 </div>}
                             </ul>
                         </div>

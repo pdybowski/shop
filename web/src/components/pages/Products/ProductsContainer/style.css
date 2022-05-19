@@ -141,7 +141,7 @@
     height: 30px;
 }
 
-input[type=checkbox]:checked ~ div {
+.checked {
     background-color: var(--buttons-light);
     color: var(--main-background);
     font-weight: 700;
