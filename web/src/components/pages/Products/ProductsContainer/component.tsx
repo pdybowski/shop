@@ -14,6 +14,10 @@ interface Props {
 }
 
 export const ProductsComponent = ({ productsToDisplay, itemsOnPage, productType }: Props): JSX.Element => {
+    const optionsShirt = [{ label: 'XXS', checked: false }, { label: 'XS', checked: false }, {label: 'S', checked: false}, { label: 'M', checked: false }, { label: 'L', checked: false }, { label: 'XL', checked: false }, {label: 'XXL', checked: false}];
+
+    const optionsShoe = [{ label: '28', checked: false }, { label: '29', checked: false }, {label: '30', checked: false}, { label: '31', checked: false }, { label: '32', checked: false }, { label: '33', checked: false }, {label: '34', checked: false}, {label: '35', checked: false}, {label: '36', checked: false}, {label: '37', checked: false}, { label: '38', checked: false }, { label: '39', checked: false }, {label: '40', checked: false}, { label: '41', checked: false }, { label: '42', checked: false }, { label: '43', checked: false }, {label: '44', checked: false}, {label: '45', checked: false}, {label: '46', checked: false}, {label: '47', checked: false}, {label: '48', checked: false}];
+
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
 
@@ -29,7 +33,11 @@ export const ProductsComponent = ({ productsToDisplay, itemsOnPage, productType 
     const [nameSearch, setNameSearch] = useState('');
     const [minPriceSearch, setMinPriceSearch] = useState('');
     const [maxPriceSearch, setMaxPriceSearch] = useState('');
-    const [sizeSearchArr, setSizeSearchArr] = useState<(tSizes | tShirtSizes)[]>([]);
+    const [sizeShirtSearchArr, setSizeShirtSearchArr] = useState<tShirtSizes[]>([]);
+    const [sizeShoeSearchArr, setSizeShoeSearchArr] = useState<tSizes[]>([]);
+
+    const [sizeShirt, setSizeShirt] = useState(optionsShirt);
+    const [sizeShoe, setSizeShoe] = useState(optionsShoe);
 
     const productCategory = searchParams.get('productCategory') as ProductCategory;
 
@@ -48,15 +56,18 @@ export const ProductsComponent = ({ productsToDisplay, itemsOnPage, productType 
         setMaxPriceSearch(value);
     };
 
-    const addSizeToSearch = (size: tSizes | tShirtSizes) => {
-        setSizeSearchArr([...sizeSearchArr, size]);
+    const setShirtSizesToSearch = (sizes: any) => {
+        const x = sizes.map((size: any) => {
+            return size.label;
+        });
+        setSizeShirtSearchArr(x);
     };
 
-    const setSizesToSearch = (sizes: any) => {
+    const setShoeSizesToSearch = (sizes: any) => {
         const x = sizes.map((size: any) => {
-            return size.label
-        } )
-        setSizeSearchArr(x);
+            return size.label;
+        });
+        setSizeShoeSearchArr(x);
     };
 
     useEffect(() => {
@@ -79,9 +90,15 @@ export const ProductsComponent = ({ productsToDisplay, itemsOnPage, productType 
             results = results.filter((product) => product.price <= parseInt(maxPriceSearch));
         };
 
-        const filterProductsBySize = () => {
+        const filterProductsByShirtSize = () => {
             results = results.filter(item1 =>
-                !!sizeSearchArr.find(item2 => item1.size === item2),
+                !!sizeShirtSearchArr.find(item2 => item1.size === item2),
+            );
+        };
+
+        const filterProductsByShoeSize = () => {
+            results = results.filter(item1 =>
+                !!sizeShirtSearchArr.find(item2 => item1.size === item2),
             );
         };
 
@@ -97,8 +114,12 @@ export const ProductsComponent = ({ productsToDisplay, itemsOnPage, productType 
             filterProductsByMaxPrice();
         }
 
-        if (sizeSearchArr.length !== 0) {
-            filterProductsBySize();
+        if (sizeShirtSearchArr.length !== 0) {
+            filterProductsByShirtSize();
+        }
+
+        if (sizeShoeSearchArr.length !== 0) {
+            filterProductsByShoeSize();
         }
 
         setFilteredProducts(results);
@@ -107,7 +128,7 @@ export const ProductsComponent = ({ productsToDisplay, itemsOnPage, productType 
         setTotalPages(Math.ceil(results.length / itemsOnPage));
         setProductsForPage(pageProducts);
         setPage(1);
-    }, [nameSearch, minPriceSearch, maxPriceSearch, sizeSearchArr]);
+    }, [nameSearch, minPriceSearch, maxPriceSearch, sizeShirtSearchArr]);
 
     useMemo(() => {
         if (!productCategory) return <Navigate replace to='/' />;
@@ -136,9 +157,7 @@ export const ProductsComponent = ({ productsToDisplay, itemsOnPage, productType 
         setNameSearch('');
     }
 
-    const MultiselectCheckbox = ({ options, onChange }: { options: any, onChange: any }) => {
-        const [data, setData] = useState(options);
-
+    const MultiselectCheckbox = ({ data, setData, onChange }: { data: any, setData: any, onChange: any }) => {
         const toggle = (index: number) => {
             const newData = [...data];
             newData.splice(index, 1, {
@@ -166,8 +185,6 @@ export const ProductsComponent = ({ productsToDisplay, itemsOnPage, productType 
             </>
         );
     };
-
-    const optionsShirt = [{ label: 'XXS' }, { label: 'XS' }, { label: 'S' }, { label: 'M' }, { label: 'L' }, { label: 'XL' }, { label: 'XXL' }];
 
     return (
         <div className='products__container'>
@@ -202,11 +219,17 @@ export const ProductsComponent = ({ productsToDisplay, itemsOnPage, productType 
                             <ul className='products__filter__dropdown__list'>
                                 {(productType === 'Shirt' || productType === null) && <div>
                                     <MultiselectCheckbox
-                                        options={optionsShirt}
                                         onChange={(data: any) => {
-                                            // setSizesToSearch(data) // Fixme breaking sizes selection
+                                            setShirtSizesToSearch(data);
                                         }}
-                                    />
+                                        data={sizeShirt} setData={setSizeShirt} />
+                                </div>}
+                                {(productType === 'Shoe' || productType === null) && <div>
+                                    <MultiselectCheckbox
+                                        onChange={(data: any) => {
+                                            setShoeSizesToSearch(data);
+                                        }}
+                                        data={sizeShoe} setData={setSizeShoe} />
                                 </div>}
                             </ul>
                         </div>
