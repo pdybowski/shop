@@ -11,7 +11,7 @@ const router = express.Router();
 router.post('/register', validate(createUserSchema), registerHandler);
 
 // Login user route
-// router.post('/login', validate(loginUserSchema), loginHandler);
-router.post('/login', loginHandler);
+router.post('/login', validate(loginUserSchema), loginHandler);
+// router.post('/login', loginHandler);
 
 export default router;

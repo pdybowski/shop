@@ -1,9 +1,10 @@
 import config from 'config';
 import { CookieOptions, NextFunction, Request, Response } from 'express';
-import { User } from '../models/user.model';
+import { User, comparePasswords } from '../models/user.model';
 import { CreateUserInput, LoginUserInput } from '../schemaValidators/user.schema';
 import { createUser, findUser, signToken } from '../services/user.service';
 import AppError from '../utils/appError';
+import bcrypt from 'bcrypt';
 
 // Exclude this fields from the response
 export const excludedFields = ['password'];
@@ -64,19 +65,9 @@ export const loginHandler = async (
     // Get the user from the collection
     const user = await findUser({ email: req.body.email });
 
-    console.log("email", req.body.email)
-    console.log("loginHandler, user: ", user)
-    // Check if user exist and password is correct
-    // if (
-    //   !user ||
-    //   !(await user.comparePasswords(user.password, req.body.password))
-    // ) {
-    //   return next(new AppError('Invalid email or password', 401));
-    // }
     if (user) {
-
-      console.log("User", user)
-      await user.comparePasswords(user.password, req.body.password)
+      // await user.comparePasswords(user.password, req.body.password)
+      await bcrypt.compare(user.password, req.body.password)
     } else {
       return next(new AppError('Invalid email or password', 401));
     }
