@@ -64,6 +64,7 @@ export const ProductsPage = (): JSX.Element => {
             <ProductsComponent
                 productsToDisplay={productsFilteredByType}
                 itemsOnPage={ITEMS_ON_PAGE}
+                productType={productType}
             />
         </div>
     );

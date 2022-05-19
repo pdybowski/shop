@@ -8,13 +8,13 @@ import { ProductStars } from '../ProductStars';
 
 import { CURRENCY_TYPE } from '../../../constants';
 import { addProductToCartAction } from '../../../services/actions';
-import { Product, RoutePaths } from '../../../models';
+import { aSizes, Product, RoutePaths } from '../../../models';
 import placeholder from '../../../assets/images/placeholder.jpg';
 
 import './style.css';
 
 export const ProductItem = (item: Product): JSX.Element => {
-    const { img, name, description, price, _id, stars } = item;
+    const { img, name, description, price, _id, stars, size } = item;
 
     const dispatch = useDispatch();
 
@@ -39,7 +39,7 @@ export const ProductItem = (item: Product): JSX.Element => {
                     <div className="product__price">
                         <p>
                             {CURRENCY_TYPE}
-                            {price}
+                            {price} size:{size}
                         </p>
                     </div>
                     <div className="product__description">
