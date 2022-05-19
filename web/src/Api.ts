@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { ApiMethod } from './models';
+import { User } from './models';
 
 export class Api {
     private readonly BASE_URL =
@@ -31,9 +32,22 @@ export class Api {
         const params = {
             method: ApiMethod.PUT,
             url: `${url}`,
-            data: body
+            data: body,
         };
 
+        try {
+            const { data } = await this.instance(params);
+            return data;
+        } catch (error: any) {
+            throw new Error(error.message);
+        }
+    }
+    public async post(url: string, body: User) {
+        const params = {
+            method: ApiMethod.POST,
+            url: `${url}`,
+            data: body,
+        };
         try {
             const { data } = await this.instance(params);
             return data;

@@ -1,0 +1,1 @@
+export type NavItemChild = { name: string; link: string; children?: NavItemChild[] };

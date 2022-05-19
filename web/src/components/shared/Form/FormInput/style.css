@@ -1,0 +1,14 @@
+.form__input {
+    color: black;
+    width:250px;
+    height: 50px;
+    margin: 10px 20px 10px 10px;
+    border-radius: 5px;
+    padding: 8px 8px 8px 8px;
+    font-size: medium;
+}
+
+.form__error {
+    font-size: small;
+    color: red;
+}

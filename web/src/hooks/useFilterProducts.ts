@@ -8,13 +8,18 @@ interface props {
     sportType?: SportType;
     productType?: ProductType;
     brandType?: BrandType;
+    bestseller?: string;
 }
+
+export const BESTSELLER_SELL_COUNT = 20;
+
 export const useFilterProducts = ({
     products,
     productCategory,
     sportType,
     productType,
     brandType,
+    bestseller,
 }: props) => {
     const [productsFilteredByType, setProductsFilteredByType] = useState(products);
 
@@ -22,7 +27,7 @@ export const useFilterProducts = ({
         let array = products;
 
         if (productCategory) {
-            array = filterArrayByType<Product>(array, 'productCategory', productCategory);
+            array = filterArrayByType<Product>(array, 'productCategory', productCategory)
         }
         if (sportType) {
             array = filterArrayByType<Product>(array, 'sportType', sportType);
@@ -33,8 +38,11 @@ export const useFilterProducts = ({
         if (brandType) {
             array = filterArrayByType<Product>(array, 'brand', brandType);
         }
+        if (bestseller) {
+            array = array.filter(el => el.sellCount && el.sellCount > BESTSELLER_SELL_COUNT)
+        }
         setProductsFilteredByType(array);
-    }, [products, sportType, productCategory, productType, brandType]);
+    }, [products, sportType, productCategory, productType, brandType, bestseller]);
 
     return { productsFilteredByType };
 };
