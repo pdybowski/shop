@@ -7,9 +7,11 @@ import { createUserSchema, loginUserSchema } from '../schemaValidators/user.sche
 const router = express.Router();
 
 // Register user route
+// router.post('/register', registerHandler);
 router.post('/register', validate(createUserSchema), registerHandler);
 
 // Login user route
-router.post('/login', validate(loginUserSchema), loginHandler);
+// router.post('/login', validate(loginUserSchema), loginHandler);
+router.post('/login', loginHandler);
 
 export default router;

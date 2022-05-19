@@ -1,5 +1,6 @@
 import config from 'config';
 import { CookieOptions, NextFunction, Request, Response } from 'express';
+import { User } from '../models/user.model';
 import { CreateUserInput, LoginUserInput } from '../schemaValidators/user.schema';
 import { createUser, findUser, signToken } from '../services/user.service';
 import AppError from '../utils/appError';
@@ -26,6 +27,8 @@ export const registerHandler = async (
   res: Response,
   next: NextFunction
 ) => {
+
+  console.log("registerHandler, req body: ", req.body)
   try {
     const user = await createUser({
       email: req.body.email,
@@ -56,23 +59,33 @@ export const loginHandler = async (
   res: Response,
   next: NextFunction
 ) => {
+
   try {
     // Get the user from the collection
     const user = await findUser({ email: req.body.email });
 
+    console.log("email", req.body.email)
+    console.log("loginHandler, user: ", user)
     // Check if user exist and password is correct
-    if (
-      !user ||
-      !(await user.comparePasswords(user.password, req.body.password))
-    ) {
+    // if (
+    //   !user ||
+    //   !(await user.comparePasswords(user.password, req.body.password))
+    // ) {
+    //   return next(new AppError('Invalid email or password', 401));
+    // }
+    if (user) {
+
+      console.log("User", user)
+      await user.comparePasswords(user.password, req.body.password)
+    } else {
       return next(new AppError('Invalid email or password', 401));
     }
 
     // Create an Access Token
-    const { accessToken } = await signToken(user);
+    const { access_token } = await signToken(user);
 
     // Send Access Token in Cookie
-    res.cookie('accessToken', accessToken, accessTokenCookieOptions);
+    res.cookie('access_token', access_token, accessTokenCookieOptions);
     res.cookie('logged_in', true, {
       ...accessTokenCookieOptions,
       httpOnly: false,
@@ -81,10 +94,9 @@ export const loginHandler = async (
     // Send Access Token
     res.status(200).json({
       status: 'success',
-      accessToken,
+      access_token,
     });
   } catch (err: any) {
     next(err);
   }
 };
-

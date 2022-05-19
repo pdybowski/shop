@@ -22,9 +22,7 @@ import {
       timestamps: true,
     },
   })
-  
-
-  
+    
   // Export the User class to be used as TypeScript type
   export class User {
     @prop({required:true})
@@ -39,21 +37,19 @@ import {
     @prop({ required: true, minlength: 8, maxLength: 32, select: false })
     password!: string;
   
-    @prop({ enum: ['user', 'admin'], default: 'user' })
+    @prop({default: 'user', enum: ['user', 'admin'] })
     role: string;
 
-    // @prop()
-  
     // Instance method to check if passwords match
     async comparePasswords(hashedPassword: string, candidatePassword: string) {
       return await bcrypt.compare(candidatePassword, hashedPassword);
     }
   }
   
-
   // Create the user model from the User class
   const userModel = getModelForClass(User);
 
+  
 
   export default userModel;
   

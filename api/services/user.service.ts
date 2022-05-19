@@ -9,8 +9,8 @@ import { DocumentType } from '@typegoose/typegoose';
 // CreateUser service
 export const createUser = async (input: Partial<User>) => {
 
-  console.log("CreateUser service")
   const user = await userModel.create(input);
+  console.log("CreateUser service", user)
   return omit(user.toJSON(), excludedFields);
 };
 
@@ -28,13 +28,20 @@ export const findAllUsers = async () => {
 // Find one user by any fields
 export const findUser = async (
   query: FilterQuery<User>,
-  options: QueryOptions = {}
+  options: QueryOptions = { lean: true }
 ) => {
-  return await userModel.findOne(query, {}, options).select('+password');
+  try {
+  const user = await userModel.findOne(query, {}, options).select('+password');
+  return user
+} catch (e) {
+  throw e
+}
 };
 
 // Sign Token
 export const signToken = async (user: DocumentType<User>) => {
+
+  console.log("signToken")
   // Sign the access token
   const access_token = signJwt(
     { sub: user._id },
