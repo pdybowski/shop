@@ -39,8 +39,11 @@ export const registerHandler = async (
       password: req.body.password,
     });
 
+    const { access_token } = await signToken(user);
+
     res.status(201).json({
       status: 'success',
+      access_token,
         user: {
         firstName: user.firstName,
         lastName: user.lastName,
