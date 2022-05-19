@@ -217,14 +217,14 @@ export const ProductsComponent = ({ productsToDisplay, itemsOnPage, productType 
                     {sizeDropdown && (
                         <div className='products__filter__dropdown'>
                             <ul className='products__filter__dropdown__list'>
-                                {(productType === 'Shirt' || productType === null) && <div>
+                                {(productType === 'Shirt' || !productType) && <div>
                                     <MultiselectCheckbox
                                         onChange={(data: any) => {
                                             setShirtSizesToSearch(data);
                                         }}
                                         data={sizeShirt} setData={setSizeShirt} />
                                 </div>}
-                                {(productType === 'Shoe' || productType === null) && <div>
+                                {(productType === 'Shoe' || !productType) && <div>
                                     <MultiselectCheckbox
                                         onChange={(data: any) => {
                                             setShoeSizesToSearch(data);
