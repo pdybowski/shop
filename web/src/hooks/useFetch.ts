@@ -5,9 +5,8 @@ import { ApiMethod } from '../models';
 interface useFetchProps {
     url: string;
     method?: ApiMethod;
-    requestBody?: any;
 }
-export const useFetch = <T>({ method = ApiMethod.GET, url, requestBody }: useFetchProps) => {
+export const useFetch = <T>({ method = ApiMethod.GET, url }: useFetchProps) => {
     const [data, setData] = useState<T>();
     const [error, setError] = useState<string>('');
     const [isLoading, setIsLoading] = useState(true);
