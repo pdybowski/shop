@@ -41,7 +41,7 @@ import {
     role: string;
 
     // Instance method to check if passwords match
-    async comparePasswords(hashedPassword: string, candidatePassword: string) {
+    async comparePasswords(hashedPassword: string, candidatePassword: string): Promise<Boolean> {
       return await bcrypt.compare(candidatePassword, hashedPassword);
     }
   }
