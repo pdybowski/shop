@@ -5,9 +5,10 @@ import {
     REMOVE_ALL_PRODUCTS_FROM_CART,
 } from '../actions/cart.actions';
 
-interface cartItem {
+export interface cartItem {
     quantity: number;
     product: Product;
+    size: string;
 }
 
 export interface cartState {
@@ -18,14 +19,15 @@ const initCartState: cartState = {
     cart: [],
 };
 
-const addProductToCart = (product: Product, state: cartState) => {
+const addProductToCart = (value: cartItem, state: cartState) => {
     const updatedCart = [...state.cart];
+
     const updatedItemIndex = updatedCart.findIndex(
-        (item) => item.product['_id'] === product['_id']
+        (item) => item.product['_id'] === value.product['_id'] && item.size === value.size
     );
 
     if (updatedItemIndex < 0) {
-        updatedCart.push({ product: product, quantity: 1 });
+        updatedCart.push({ product: value.product, size: value.size, quantity: 1 });
     } else {
         const updatedItem = {
             ...updatedCart[updatedItemIndex],
