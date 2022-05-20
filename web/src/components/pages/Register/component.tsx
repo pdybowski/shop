@@ -1,35 +1,43 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useContext, useState } from 'react';
 
 import { Form, FormInput } from '../../shared';
 
 import { Api } from '../../../Api';
 import { useNavigate } from 'react-router-dom';
-import { RoutePaths, User } from '../../../models';
+import { NotificationMode, RoutePaths, User } from '../../../models';
 
 import { USER_TOKEN } from '../../../constants/userToken';
 import { setLocalStorage } from '../../../utils/localStorage';
 
 import './style.css';
+import { saveUserDataAction } from '../../../services/actions/userActions';
+import { useDispatch } from 'react-redux';
+import { NotificationContext } from '../../../contexts';
 
 export const RegisterPage = (): JSX.Element => {
     const [errors, setErrors] = useState(new User());
     const [form, setForm] = useState(new User());
     const [isLoading, setLoading] = useState(false);
+    const { addNotification } = useContext(NotificationContext);
 
     const navigate = useNavigate();
 
     const api = new Api();
+    const dispatch = useDispatch();
 
     async function register() {
         setLoading(true);
         try {
-            // TODO save user data to reducer
             const userData = (await api.post('url...', form)) as User;
             setLocalStorage(USER_TOKEN, userData.token);
+            dispatch(saveUserDataAction(form));
             navigate(RoutePaths.MainPage);
         } catch (error: any) {
-            // TODO display notification from context
-            console.log(error?.response.data || error?.response.status);
+            return addNotification({
+                mode: NotificationMode.INFO,
+                title: 'Register',
+                message: error,
+            });
         } finally {
             setLoading(false);
         }

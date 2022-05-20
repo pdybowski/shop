@@ -1,18 +1,12 @@
 import { User } from '../../models/user';
 
-export const ADD_USER = 'ADD_USER';
-export const REMOVE_USER = 'REMOVE_USER';
+export const SAVE_USER_DATA = 'SAVE_USER_DATA';
 
-export const addUser = (value: User) => {
+export const saveUserDataAction = (user: User) => {
     return {
-        type: ADD_USER,
-        payload: value,
+        type: SAVE_USER_DATA,
+        payload: user,
     };
 };
 
-export const removeUser = (value: User) => {
-    return {
-        type: REMOVE_USER,
-        payload: value,
-    };
-};
+

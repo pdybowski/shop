@@ -1,7 +1,7 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { RoutePaths } from '../../../models';
+import { NotificationMode, RoutePaths } from '../../../models';
 import { User } from '../../../models/user';
 import { Api } from '../../../Api';
 import { USER_TOKEN } from '../../../constants/userToken';
@@ -10,11 +10,15 @@ import { setLocalStorage } from '../../../utils/localStorage';
 import { Form, FormInput } from '../../shared';
 
 import './style.css';
+import { saveUserDataAction } from '../../../services/actions/userActions';
+import { useDispatch } from 'react-redux';
+import { NotificationContext } from '../../../contexts';
 
-export const LoginPage = (): JSX.Element => {
+export const LoginPage = (): any => {
     const [form, setForm] = useState(new User());
     const [errors, setErrors] = useState(new User());
     const [isLoading, setIsLoading] = useState(false);
+    const { addNotification } = useContext(NotificationContext);
 
     const handleChange = (e: ChangeEvent<{ value: string; name: string }>) => {
         const { name, value } = e.target;
@@ -42,17 +46,20 @@ export const LoginPage = (): JSX.Element => {
     let navigate = useNavigate();
 
     const api = new Api();
+    const dispatch = useDispatch();
 
     const login = async () => {
-        setIsLoading(true);
         try {
-            // TODO save user data to reducer
             const userData = (await api.post('url..', form)) as User;
             setLocalStorage(USER_TOKEN, userData.token);
+            dispatch(saveUserDataAction(form));
             navigate(RoutePaths.MainPage);
         } catch (error: any) {
-            // TODO display notification from context
-            console.log(error?.response.data || error?.response.status);
+            return addNotification({
+                mode: NotificationMode.INFO,
+                title: 'Login',
+                message: error,
+            });
         } finally {
             setIsLoading(false);
         }
