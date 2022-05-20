@@ -1,5 +1,5 @@
 import {Request, Response, NextFunction} from 'express'
-import {AnyZodObject} from 'zod'
+import {AnyZodObject, ZodError} from 'zod'
 
 const validate = (schema: AnyZodObject) => (req: Request, res: Response, next: NextFunction) => {
 
@@ -8,10 +8,18 @@ const validate = (schema: AnyZodObject) => (req: Request, res: Response, next: N
             body: req.body,
             query: req.query,
             params: req.params
-        })
-    } catch (e: any) {
-        return res.status(400).send(e.errors)
-    }
+        });
+
+        next()
+    } catch (err: any) {
+        if (err instanceof ZodError) {
+            return res.status(400).json({
+              status: 'fail',
+              error: err.errors,
+            });
+          }
+          next(err);
+}
 }
 
 export default validate;
