@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { RoutePaths } from '../../../models';
 import { User } from '../../../models/user';
 import { Api } from '../../../Api';
-import { USER_TOKEN } from '../../../constants/userToken';
+import { USER_TOKEN } from '../../../constants';
 import { setLocalStorage } from '../../../utils/localStorage';
 
 import { Form, FormInput } from '../../shared';

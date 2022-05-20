@@ -6,7 +6,7 @@ import { Api } from '../../../Api';
 import { useNavigate } from 'react-router-dom';
 import { RoutePaths, User } from '../../../models';
 
-import { USER_TOKEN } from '../../../constants/userToken';
+import { USER_TOKEN } from '../../../constants';
 import { setLocalStorage } from '../../../utils/localStorage';
 
 import './style.css';

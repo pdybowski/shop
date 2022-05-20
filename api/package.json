@@ -11,7 +11,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@typegoose/typegoose": "^9.8.1",
+    "@types/config": "^0.0.41",
     "bcrypt": "^5.0.1",
+    "config": "^3.3.7",
     "cors": "^2.8.5",
     "dayjs": "^1.11.0",
     "dotenv": "^16.0.0",
