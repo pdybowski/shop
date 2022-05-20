@@ -12,7 +12,7 @@ import { NavItemChild, NavItem } from './NavItem';
 
 import './style.css';
 import { useState, useEffect } from 'react';
-import { USER_TOKEN } from '../../../constants/userToken';
+import { USER_TOKEN } from '../../../constants';
 
 const navigationLinks: NavItemChild[] = [
     {

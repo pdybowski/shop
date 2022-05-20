@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { NotificationMode, RoutePaths } from '../../../models';
 import { User } from '../../../models/user';
 import { Api } from '../../../Api';
-import { USER_TOKEN } from '../../../constants/userToken';
+import { USER_TOKEN } from '../../../constants';
 import { setLocalStorage } from '../../../utils/localStorage';
 
 import { Form, FormInput } from '../../shared';
@@ -50,7 +50,7 @@ export const LoginPage = (): any => {
 
     const login = async () => {
         try {
-            const userData = (await api.post('url..', form)) as User;
+            const userData = (await api.post('/login', form)) as User;
             setLocalStorage(USER_TOKEN, userData.token);
             dispatch(saveUserDataAction(form));
             navigate(RoutePaths.MainPage);

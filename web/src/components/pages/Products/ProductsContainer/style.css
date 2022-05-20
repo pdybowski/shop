@@ -95,6 +95,17 @@
     list-style: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.products__filter__dropdown__list > div{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 10px;
+    padding: 5px;
 }
 
 .search__price__button {
@@ -107,10 +118,31 @@
 }
 
 .size__checkbox {
-    margin-left: 10px;
-    padding: 5px;
+    width: 45px;
+    height: 30px;
+    margin: 5px;
+    border: 1px solid var(--input-border);
 }
 
-.size__label {
-    margin-left: 10px;
+.size__checkbox div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 25px;
+    transition: .5s ease;
+}
+
+.size__checkbox input {
+    position: absolute;
+    opacity: 0;
+    width: 45px;
+    height: 30px;
+}
+
+.checked {
+    background-color: var(--buttons-light);
+    color: var(--main-background);
+    font-weight: 700;
 }
