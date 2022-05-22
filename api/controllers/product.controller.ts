@@ -1,8 +1,6 @@
-import { Request, Response } from "express";
-import { TypeOf } from "zod";
+import { NextFunction, Request, Response } from "express";
 import {
-  CreateProductInput,
-  createProductSchema,
+  CreateProductInput
 } from "../schemaValidators/product.schema";
 import {
   createProduct,
@@ -15,7 +13,7 @@ import {
 
 // get product/
 export async function getAllProductsHandler(
-  req: Request<{}, {}, CreateProductInput["body"]>,
+  req: Request<{}, {}>,
   res: Response,
   next: any
 ) {
@@ -36,11 +34,13 @@ export async function getSingleProductHandler(
   // TODO update request so it looks similar to createProductHandler
   req: Request,
   res: Response,
-  next: any
+  next: NextFunction
 ) {
   const id = req.params.id;
+  console.log("getSingleProductHandler, id", id)
   try {
-    const product = await findProduct({ id });
+    const product = await findProduct({ _id: id });
+    console.log("getSingleProductHandler, product", product)
     if (!product) {
       return res.sendStatus(404);
     }
@@ -52,25 +52,45 @@ export async function getSingleProductHandler(
 
 // post product/
 export async function createProductHandler(
-  req: Request<{}, {}, TypeOf<typeof createProductSchema>>,
-  res: Response
+  req: Request<{}, {}, CreateProductInput>,
+  res: Response,
+  next: NextFunction
 ) {
-  const body = req.body.body;
+  try {
+    
+    const body = req.body
+    const product = await createProduct({...body
+    })
+    res.status(201).json({
+      status: 'created',
+      product
+    })
+  } catch (err: any) {
+    
+      return res.status(400).json({
+        status: 'fail',
+        message: 'Failed to create product',
+        error: err
+      });
+      next(err)
+    }
+  };
+  // const body = req.body;
   // const product = await createProduct(...body);
-  // return res.send(product);
-  return res.send({});
-}
+  // // return res.send(product);
+  // return res.send({});
 
 // patch product/:id
 
 export async function updateSingleProductHandler(
   // TODO update request so it looks similar to createProductHandler
   req: Request,
-  res: Response
+  res: Response,
+  next: NextFunction
 ) {
   const body = req.body;
   const id = req.params.id;
-  const product = await findProduct({ id });
+  const product = await findProduct({ _id: id });
 
   if (!product) {
     return res.sendStatus(404);
@@ -87,15 +107,18 @@ export async function updateSingleProductHandler(
 export async function deleteProductHandler(
   // TODO update request so it looks similar to createProductHandler
   req: Request,
-  res: Response
+  res: Response,
+  next: NextFunction
 ) {
   const id = req.params.id;
-  const product = await findProduct({ id });
-  if (!product) {
-    return res.sendStatus(404);
+  
+  try {
+  
+    await deleteProduct({ _id:id });
+    res.status(200).json({ message: "Product removed" });
+  } catch (error) {
+    next(error);
   }
-  await deleteProduct({ id });
-  return res.sendStatus(200);
 }
 
 export async function buyProductsHandler(req: Request, res: Response) {
