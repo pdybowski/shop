@@ -25,6 +25,7 @@ export interface IProductInput {
     sportType: String,
     size: String,
     brand: String,
+    productCategory: String,
     img?: String,
     description?: String,
     isCarousel?: Boolean,
