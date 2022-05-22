@@ -6,22 +6,17 @@ const routes = Router();
 // get all products WORKING
 routes.get('/', getAllProductsHandler)
 
-// get single product WORKING
-routes.get('/:id', getSingleProductHandler)
-
 // create product WORKING
 routes.post('/', createProductHandler)
 
 // buy products
 routes.put('/buy', buyProductsHandler)
 
-
-
-
-
-// // update product
-// routes.patch('/:id', updateSingleProductHandler)
+// get single product WORKING
+routes.get('/:id', getSingleProductHandler)
+// update product WORKING
+routes.patch('/:id', updateSingleProductHandler)
 // // remove product
-// routes.delete('/:id', deleteProductHandler)
+routes.delete('/:id', deleteProductHandler)
 
 export default routes
