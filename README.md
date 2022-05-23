@@ -1,12 +1,10 @@
 # Sport shop
 
-**[Sport Shop App](https://pdybowski.github.io/shop/) is a single page application created with** **React** **and** **Typescript**.
+**[Sport Shop App](https://pdybowski.github.io/shop/) is a single page application created with React, React Redux & Typescript**.
 
-An example of the fullstack shop application with sport clothes.
+Sport Gen Shop is the fullstack shop application with sport clothes.
 
-Application has its backend deployed on: https://shop-coders-camp.herokuapp.com/
-
-> Note: due to the issuess realted to the limited number of characters available in db.json file, app version published on github page does not display images. To see full version of the app, please [install](#1-installation) and display it locally.
+Backend of the application is deployed on: https://shop-coders-camp.herokuapp.com/
 
 ## Table of contents
 
@@ -27,14 +25,16 @@ Application has its backend deployed on: https://shop-coders-camp.herokuapp.com/
 `npm install`
 
 3. Run application:
-   on local server set `REACT_APP_API_URL=local` and type `react-scripts start`,
-   on production server set `REACT_APP_API_URL=production` and type `react-scripts start`.
+
+`npm run start`
 
 ## 2. Stack
 
 Frontend of the app is created with:
 
 - [React 17.0.2](https://reactjs.org/) and React [packages](https://github.com/pdybowski/healthy-food/blob/master/package.json)
+
+- [React Redux ^8.0.1](https://react-redux.js.org/)
 
 - [Typescript](https://www.typescriptlang.org/)
 
@@ -56,26 +56,35 @@ Backend of the app is created with:
 
 - [Zod 3.14.4](https://github.com/colinhacks/zod)
 
-- [Ts-node](https://www.npmjs.com/package/ts-node)
+- [Ts-node ^10.7.0](https://www.npmjs.com/package/ts-node)
+
+- [jsonwebtoken ^8.5.1](https://www.npmjs.com/package/jsonwebtoken)
+
+- [bcryp ^5.0.1](https://www.npmjs.com/package/bcrypt)
 
 ## 3. Features
 
-<details><summary>Frontend</summary>
--   Available sports
--   Woman clothes
--   Man clothes
--   Children clothes
--   Brands
--   Bestsellers
+Sport Gen Shop is an example of the application for managing the sales process of sportswear. Main data source for the application is the [database](https://shop-coders-camp.herokuapp.com/) with products, divided into main categories and product types.
+
+<details><summary>Frontend features</summary>
+
+- Presentation of the products divided into main categories: Sport types, Woman / Man / Children clothes, Brands, Bestsellers
+- Filtering products based on the product name and price
+- Selection of the product size
+- Adding product to the cart
+- Cart management - adding / removing products from the cart
+- Payment process
 </details>
 
-<details><summary>Backend</summary>
--   Brand model
--   Product model
--   Sport model
--   Shirt model
--   Shoe model
--   Pants model
+<details><summary>Backend features</summary>
+
+- Providing models for: product, brand, sport, shirt, shoe and pants
+- Providing controllers for creating, updating, finding and deleting products
+- Providing controller for buying process
+- Providing controller for fetching page resource data
+- Products routes
+- Page resource route
+- Schemas validation
 </details>
 
 ## 4. Authors
