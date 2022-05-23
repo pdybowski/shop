@@ -68,11 +68,6 @@ export const ProductsComponent = ({
 
     const productCategory = searchParams.get('productCategory') as ProductCategory;
 
-    const searchProductByName = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { value } = e.target;
-        setNameSearch(value);
-    };
-
     const searchProductByMinPrice = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = e.target;
         setMinPriceSearch(value);
@@ -191,10 +186,6 @@ export const ProductsComponent = ({
         setSizeDropdown(!sizeDropdown);
     }
 
-    function clearSearchByName() {
-        setNameSearch('');
-    }
-
     const MultiselectCheckbox = ({
                                      data,
                                      setData,
@@ -233,7 +224,7 @@ export const ProductsComponent = ({
         <div className='products__container'>
             <div className='products__container--left'>
                 <div className='products__search'>
-                    <SearchInput onSearch={searchProductByName} onClear={clearSearchByName} />
+                    <SearchInput inputValue={nameSearch} setInputValue={setNameSearch} />
                 </div>
                 <div className='products__filter'>
                     <button
