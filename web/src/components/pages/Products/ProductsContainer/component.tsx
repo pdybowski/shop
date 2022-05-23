@@ -66,8 +66,6 @@ export const ProductsComponent = ({
     const [sizeShirt, setSizeShirt] = useState(optionsShirt);
     const [sizeShoe, setSizeShoe] = useState(optionsShoe);
 
-    // const [resetCheckbox, setResetCheckbox] = useState(resetFilters);
-
     const productCategory = searchParams.get('productCategory') as ProductCategory;
 
     const searchProductByName = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -106,8 +104,8 @@ export const ProductsComponent = ({
             setMaxPriceSearch('');
             setSizeShirtSearchArr([]);
             setSizeShoeSearchArr([]);
-
-            console.log('zresetuj filtry')
+            setSizeShirt(optionsShirt);
+            setSizeShoe(optionsShoe);
         }
     }, [productsToDisplay]);
 
@@ -197,7 +195,12 @@ export const ProductsComponent = ({
         setNameSearch('');
     }
 
-    const MultiselectCheckbox = ({ data, setData, onChange }: { data: any, setData: any, onChange: any }) => {
+    const MultiselectCheckbox = ({
+                                     data,
+                                     setData,
+                                     onChange,
+                                 }: { data: any, setData: any, onChange: any }) => {
+
         const toggle = (index: number) => {
             const newData = [...data];
             newData.splice(index, 1, {
@@ -208,20 +211,6 @@ export const ProductsComponent = ({
             setData(newData);
             onChange(newData.filter(x => x.checked));
         };
-
-        // if (resetCheckbox) {
-        //     const reset = (index: number) => {
-        //         const newData = [...data];
-        //         newData.splice(index, 1, {
-        //             label: data[index].label,
-        //             checked: false,
-        //         });
-        //
-        //         setData(newData);
-        //         onChange(newData.filter(x => x.checked));
-        //     };
-        //     setResetCheckbox(false);
-        // }
 
         return (
             <>
@@ -316,7 +305,7 @@ export const ProductsComponent = ({
                             <ul className='products__filter__dropdown__list'>
                                 <li>
                                     <input
-                                        value = {minPriceSearch}
+                                        value={minPriceSearch}
                                         type='number'
                                         onChange={searchProductByMinPrice}
                                         placeholder='Min price...'
@@ -325,7 +314,7 @@ export const ProductsComponent = ({
                                     />
                                     -
                                     <input
-                                        value = {maxPriceSearch}
+                                        value={maxPriceSearch}
                                         type='number'
                                         onChange={searchProductByMaxPrice}
                                         placeholder='Max price...'
