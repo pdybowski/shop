@@ -78,7 +78,7 @@ Sport Gen Shop is an example of the application for managing the sales process o
 
 <details><summary>Backend features</summary>
 
-- Providing models for: product, brand, sport, shirt, shoe and pants
+- Providing models for product and user
 - Providing controllers for creating, updating, finding and deleting products
 - Providing controller for buying process
 - Providing controller for fetching page resource data
