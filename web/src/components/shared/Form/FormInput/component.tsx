@@ -9,6 +9,7 @@ interface Props {
         name: string;
         id?: string;
         className?: string;
+        value?: any;
         type?: 'text' | 'button' | 'checkbox' | 'password' | 'email';
         placeholder?: string;
         onChange: (e: any) => void;

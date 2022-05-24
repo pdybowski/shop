@@ -3,22 +3,14 @@ import { TypeOf } from "zod";
 import {
   CreateProductInput,
   createProductSchema,
+  deleteProductSchema,
+  getProductSchema,
+  updateProductSchema,
 } from "../schemaValidators/product.schema";
-import {
-  createProduct,
-  deleteProduct,
-  findAndUpdateProduct,
-  findProduct,
-  findProducts,
-  buyProducts,
-} from "../services/product.service";
+import { createProduct, deleteProduct, findAndUpdateProduct, findProduct, findProducts, buyProducts } from "../services/product.service";
 
 // get product/
-export async function getAllProductsHandler(
-  req: Request<{}, {}, CreateProductInput["body"]>,
-  res: Response,
-  next: any
-) {
+export async function getAllProductsHandler(req: Request<{}, {}, CreateProductInput["body"]>, res: Response, next: any) {
   try {
     const products = await findProducts({});
     if (!products) {
@@ -32,12 +24,7 @@ export async function getAllProductsHandler(
 
 // get product/:id
 
-export async function getSingleProductHandler(
-  // TODO update request so it looks similar to createProductHandler
-  req: Request,
-  res: Response,
-  next: any
-) {
+export async function getSingleProductHandler(req: Request<{}, {}, TypeOf<typeof getProductSchema>>, res: Response, next: any) {
   const id = req.params.id;
   try {
     const product = await findProduct({ id });
@@ -51,10 +38,7 @@ export async function getSingleProductHandler(
 }
 
 // post product/
-export async function createProductHandler(
-  req: Request<{}, {}, TypeOf<typeof createProductSchema>>,
-  res: Response
-) {
+export async function createProductHandler(req: Request<{}, {}, TypeOf<typeof createProductSchema>>, res: Response) {
   const body = req.body.body;
   // const product = await createProduct(...body);
   // return res.send(product);
@@ -63,11 +47,7 @@ export async function createProductHandler(
 
 // patch product/:id
 
-export async function updateSingleProductHandler(
-  // TODO update request so it looks similar to createProductHandler
-  req: Request,
-  res: Response
-) {
+export async function updateSingleProductHandler(req: Request<{}, {}, TypeOf<typeof updateProductSchema>>, res: Response) {
   const body = req.body;
   const id = req.params.id;
   const product = await findProduct({ id });
@@ -84,11 +64,7 @@ export async function updateSingleProductHandler(
 }
 
 // delete product/:id
-export async function deleteProductHandler(
-  // TODO update request so it looks similar to createProductHandler
-  req: Request,
-  res: Response
-) {
+export async function deleteProductHandler(req: Request<{}, {}, TypeOf<typeof deleteProductSchema>>, res: Response) {
   const id = req.params.id;
   const product = await findProduct({ id });
   if (!product) {
