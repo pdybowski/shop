@@ -4,6 +4,7 @@
     background: var(--main-background);
     box-shadow: 0 1px 2px var(--box-shadow1), 0 2px 4px var(--box-shadow2);
 }
+
 .main-nav a {
     color: var(--navigation-text);
     min-height: 64px;
@@ -15,27 +16,34 @@
     transition: background 0.4s;
     background: var(--main-background);
 }
+
 .main-nav a:hover {
     border-bottom: 0.2rem solid var(--navigation);
 }
+
 .main-nav > ul {
     display: flex !important;
     flex-wrap: wrap;
 }
+
 .main-nav ul {
     display: none;
     list-style: none none;
 }
+
 .main-nav li {
     min-width: 150px;
     text-align: center;
 }
+
 .main-nav > ul > li {
     position: relative;
 }
+
 .submenu > li {
     position: relative;
 }
+
 .main-nav > ul > li:hover > .submenu {
     display: block;
     position: absolute;
@@ -43,6 +51,7 @@
     z-index: 1;
     box-shadow: 0 1px 2px var(--box-shadow1), 0 2px 4px var(--box-shadow2);
 }
+
 .submenu > li:hover > .submenu {
     display: block;
     position: absolute;
@@ -52,18 +61,22 @@
     z-index: 2;
     box-shadow: 0 1px 2px var(--box-shadow1), 0 2px 4px var(--box-shadow2);
 }
+
 .arrow {
     margin-left: 8px;
     color: var(--icons);
     font-size: 12px;
 }
+
 .nav-logo-img {
     margin-left: 16px;
     width: 40px;
 }
+
 .nav-logo a:hover {
     border-bottom: none;
 }
+
 .nav-logo-name {
     margin-left: 12px;
     font-size: 36px;
@@ -84,7 +97,7 @@
 
 .nav-signin a:hover {
     border-bottom: none;
-} 
+}
 
 .nav-cart a:hover {
     border-bottom: none;
@@ -104,4 +117,14 @@
     background: var(--badge);
     border-radius: 99px;
     color: var(--main-background);
+}
+
+@media only screen and (max-width: 768px) {
+    .main-nav {
+        flex-direction: column;
+    }
+
+    .main-nav li {
+        width: 100%;
+    }
 }

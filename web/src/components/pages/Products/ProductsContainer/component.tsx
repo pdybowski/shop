@@ -189,7 +189,7 @@ export const ProductsComponent = ({ productsToDisplay, itemsOnPage, productType 
     return (
         <div className='products__container'>
             <div className='products__container--left'>
-                <div className='products__search'>
+                <div>
                     <SearchInput onSearch={searchProductByName} onClear={clearSearchByName} />
                 </div>
                 <div className='products__filter'>
