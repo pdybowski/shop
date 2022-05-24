@@ -14,12 +14,7 @@ interface Props {
     resetFilters: boolean;
 }
 
-export const ProductsComponent = ({
-                                      productsToDisplay,
-                                      itemsOnPage,
-                                      productType,
-                                      resetFilters,
-                                  }: Props): JSX.Element => {
+export const ProductsComponent = ({ productsToDisplay, itemsOnPage, productType, resetFilters}: Props): JSX.Element => {
     const optionsShirt = [{ label: 'XXS', checked: false }, { label: 'XS', checked: false }, {
         label: 'S',
         checked: false,
@@ -186,11 +181,7 @@ export const ProductsComponent = ({
         setSizeDropdown(!sizeDropdown);
     }
 
-    const MultiselectCheckbox = ({
-                                     data,
-                                     setData,
-                                     onChange,
-                                 }: { data: any, setData: any, onChange: any }) => {
+    const MultiselectCheckbox = ({ data, setData, onChange }: { data: any, setData: any, onChange: any }) => {
 
         const toggle = (index: number) => {
             const newData = [...data];

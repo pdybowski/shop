@@ -23,6 +23,7 @@ export const CartItem = ({ cartItem }: Props) => {
                 <div className="cart__item-about">
                     <h1 className="cart__item-title">{cartItem.product.name}</h1>
                     <h3 className="cart__item-brand">{cartItem.product.brand}</h3>
+                    <h3 className="cart__item-brand">size: {cartItem.size}</h3>
                 </div>
                 <div className="cart__item-prices">
                     <div className="amount">
@@ -48,7 +49,7 @@ export const CartItem = ({ cartItem }: Props) => {
                     <div>
                         <button
                             className="btn-right"
-                            onClick={() => dispatch(addProductToCartAction(cartItem.product))}
+                            onClick={() => dispatch(addProductToCartAction(cartItem))}
                         >
                             +
                         </button>

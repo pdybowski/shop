@@ -1,4 +1,3 @@
-import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { Button, BtnMode } from '../Button';
@@ -7,16 +6,15 @@ import { Ellipsis } from '../Ellipsis';
 import { ProductStars } from '../ProductStars';
 
 import { CURRENCY_TYPE } from '../../../constants';
-import { addProductToCartAction } from '../../../services/actions';
+
 import { Product, RoutePaths } from '../../../models';
+
 import placeholder from '../../../assets/images/placeholder.jpg';
 
 import './style.css';
 
 export const ProductItem = (item: Product): JSX.Element => {
     const { img, name, description, price, _id, stars } = item;
-
-    const dispatch = useDispatch();
 
     return (
         <div className="product__item">
@@ -48,17 +46,14 @@ export const ProductItem = (item: Product): JSX.Element => {
                         </Tooltip>
                     </div>
                 </div>
+
+                <div className="product__buttons">
+                    <Button mode={BtnMode.SECONDARY} type="button">
+                        SEE MORE
+                    </Button>
+                    {stars && <ProductStars count={Number(stars)} />}
+                </div>
             </Link>
-            <div className="product__buttons">
-                <Button
-                    mode={BtnMode.SECONDARY}
-                    type="button"
-                    onClick={() => dispatch(addProductToCartAction(item))}
-                >
-                    Add to cart
-                </Button>
-                {stars && <ProductStars count={Number(stars)} />}
-            </div>
         </div>
     );
 };
