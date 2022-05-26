@@ -146,3 +146,23 @@
     color: var(--main-background);
     font-weight: 700;
 }
+
+@media only screen and (max-width: 768px) {
+    .products__container {
+        flex-direction: column;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .products__container--right {
+        width: 355px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 35px;
+    }
+
+    .products__container--left {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

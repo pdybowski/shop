@@ -63,6 +63,11 @@ export const ProductsComponent = ({ productsToDisplay, itemsOnPage, productType,
 
     const productCategory = searchParams.get('productCategory') as ProductCategory;
 
+    const searchProductByName = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { value } = e.target;
+        setNameSearch(value);
+    };
+
     const searchProductByMinPrice = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = e.target;
         setMinPriceSearch(value);

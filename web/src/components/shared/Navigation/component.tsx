@@ -11,7 +11,7 @@ import { Button, BtnMode } from '../Button';
 import { NavItemChild, NavItem } from './NavItem';
 
 import './style.css';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { USER_TOKEN } from '../../../constants';
 
 const navigationLinks: NavItemChild[] = [
@@ -118,41 +118,55 @@ export const Navigation = () => {
         setToken(localStorage.getItem(USER_TOKEN) || '');
     }, [location]);
 
+    const [showMenu, setShowMenu] = useState(false)
+
+    const toggleMenu = () => {
+        setShowMenu(!showMenu)
+    }
+
     return (
-        <nav className="main-nav">
+        <nav className='main-nav'>
+            <li className={'nav-logo'}>
+                <Link to={RoutePaths.MainPage}>
+                    <img src={logo} alt={'logo'} className={'nav-logo-img'} />
+                    <p className={'nav-logo-name'}>Sport Gen</p>
+                </Link>
+                <div className='nav-menu'>
+                    <input className='cursor--pointer' type='checkbox' onClick={toggleMenu} />
+                    <div className='hamburger-lines'>
+                        <span className='line line1'></span>
+                        <span className='line line2'></span>
+                        <span className='line line3'></span>
+                    </div>
+                </div>
+            </li>
             <ul>
-                <li className={'nav-logo'}>
-                    <Link to={RoutePaths.MainPage}>
-                        <img src={logo} alt={'logo'} className={'nav-logo-img'} />
-                        <p className={'nav-logo-name'}>Sport Gen</p>
-                    </Link>
-                </li>
                 {navigationLinks.map((menu: NavItemChild) => (
-                    <NavItem key={menu.link} child={menu} level={1} />
+                    <NavItem key={menu.link} child={menu} level={1} className={showMenu? 'nav-item': 'nav-item nav-item-hide'} />
                 ))}
             </ul>
-            <div className="nav-signin">
+            <div className='nav-signin'>
                 {token && (
                     <Button
-                        type="button"
+                        type='button'
                         mode={BtnMode.SECONDARY}
-                        children="Logout"
+                        children='Logout'
                         onClick={handleLogout}
                     />
                 )}
 
                 {!token && (
                     <Link to={RoutePaths.Login}>
-                        <Button type="button" mode={BtnMode.SECONDARY} children="Login" />
+                        <Button type='button' mode={BtnMode.SECONDARY} children='Login' />
                     </Link>
                 )}
 
                 {token && (
-                    <Button type="button" mode={BtnMode.SECONDARY} children="Go to profile" />
+                    <Button type='button' mode={BtnMode.SECONDARY} children='Go to profile' />
                 )}
 
-                <Link className="my__cart__btn" to={RoutePaths.Cart}>
-                    <Button mode={BtnMode.SECONDARY} type="button">
+                <Link className='my__cart__btn' to={RoutePaths.Cart}>
+                    <Button mode={BtnMode.SECONDARY} type='button'>
                         My cart
                     </Button>
                     {itemsNumber > 0 ? <p className={'nav-cart-badge'}> {itemsNumber}</p> : null}
