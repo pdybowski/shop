@@ -14,7 +14,7 @@ import placeholder from '../../../assets/images/placeholder.jpg';
 import './style.css';
 
 export const ProductItem = (item: Product): JSX.Element => {
-    const { img, name, description, price, _id, stars, size } = item;
+    const { img, name, description, price, _id, stars } = item;
 
     return (
         <div className="product__item">
@@ -37,7 +37,7 @@ export const ProductItem = (item: Product): JSX.Element => {
                     <div className="product__price">
                         <p>
                             {CURRENCY_TYPE}
-                            {price} size:{size}
+                            {price}
                         </p>
                     </div>
                     <div className="product__description">

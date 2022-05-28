@@ -4,21 +4,18 @@ import { AiOutlineClose, AiOutlineSearch } from 'react-icons/ai';
 import './style.css';
 
 interface Props {
-    onSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    onClear: () => void;
+    inputValue: any;
+    setInputValue: any;
 }
 
-export const SearchInput = ({ onSearch, onClear }: Props): JSX.Element => {
-    const [inputValue, setInputValue] = useState('');
+export const SearchInput = ({inputValue, setInputValue }: Props): JSX.Element => {
 
     const handleUserInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(e.target.value);
-        onSearch(e);
     };
 
     const resetInputField = () => {
         setInputValue('');
-        onClear();
     };
 
     return (

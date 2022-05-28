@@ -29,6 +29,7 @@ export const ProductsPage = (): JSX.Element => {
         brandType,
         bestseller,
     });
+    const [resetFilters, setResetFilters] = useState(true);
 
     useEffect(() => {
         let text = '';
@@ -54,6 +55,7 @@ export const ProductsPage = (): JSX.Element => {
             text = 'Sport Shop Products';
         }
         setHeader(text);
+        setResetFilters(true);
     }, [productCategory, sportType, productType]);
 
     return (
@@ -65,6 +67,7 @@ export const ProductsPage = (): JSX.Element => {
                 productsToDisplay={productsFilteredByType}
                 itemsOnPage={ITEMS_ON_PAGE}
                 productType={productType}
+                resetFilters={resetFilters}
             />
         </div>
     );
