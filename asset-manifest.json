@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/shop/static/css/main.f5146fe5.css",
-    "main.js": "/shop/static/js/main.0f910489.js",
+    "main.css": "/shop/static/css/main.e4a51b86.css",
+    "main.js": "/shop/static/js/main.fa9b29ff.js",
     "static/js/787.d1d4a2c2.chunk.js": "/shop/static/js/787.d1d4a2c2.chunk.js",
     "static/media/placeholder.jpg": "/shop/static/media/placeholder.74eb2cb92ec1bd29d90b.jpg",
     "static/media/logo.png": "/shop/static/media/logo.c0c792ecef06fb50da30.png",
@@ -10,12 +10,12 @@
     "static/media/kz-instagram.svg": "/shop/static/media/kz-instagram.3732786121ef46266af8b3efd0e18684.svg",
     "index.html": "/shop/index.html",
     "static/media/kz-facebook.svg": "/shop/static/media/kz-facebook.5ad3e9ceda994ec2f9224f1b8435fa16.svg",
-    "main.f5146fe5.css.map": "/shop/static/css/main.f5146fe5.css.map",
-    "main.0f910489.js.map": "/shop/static/js/main.0f910489.js.map",
+    "main.e4a51b86.css.map": "/shop/static/css/main.e4a51b86.css.map",
+    "main.fa9b29ff.js.map": "/shop/static/js/main.fa9b29ff.js.map",
     "787.d1d4a2c2.chunk.js.map": "/shop/static/js/787.d1d4a2c2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f5146fe5.css",
-    "static/js/main.0f910489.js"
+    "static/css/main.e4a51b86.css",
+    "static/js/main.fa9b29ff.js"
   ]
 }
