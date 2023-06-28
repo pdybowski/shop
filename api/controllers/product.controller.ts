@@ -55,10 +55,9 @@ export async function createProductHandler(
   req: Request<{}, {}, TypeOf<typeof createProductSchema>>,
   res: Response
 ) {
-  const body = req.body.body;
-  // const product = await createProduct(...body);
-  // return res.send(product);
-  return res.send({});
+  const body = req.body;
+  const product = await createProduct(body as any);
+  return res.send(product);
 }
 
 // patch product/:id

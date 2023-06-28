@@ -1,11 +1,9 @@
 import config from 'config';
 import { CookieOptions, NextFunction, Request, Response } from 'express';
-import { User, comparePasswords } from '../models/user.model';
 import { CreateUserInput, LoginUserInput } from '../schemaValidators/user.schema';
 import { createUser, findUser, signToken } from '../services/user.service';
 import AppError from '../utils/appError';
 import bcrypt from 'bcrypt';
-import { userInfo } from 'os';
 
 // Exclude this fields from the response
 export const excludedFields = ['password'];
@@ -29,19 +27,17 @@ export const registerHandler = async (
   res: Response,
   next: NextFunction
 ) => {
-
-  console.log("registerHandler, req body: ", req.body)
   try {
     const user = await createUser({
       email: req.body.email,
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       password: req.body.password,
-    });
+    }) as any;
 
     const { access_token } = await signToken(user);
 
-    res.status(201).json({
+    res.send({
       status: 'success',
       access_token,
         user: {
@@ -81,9 +77,8 @@ export const loginHandler = async (
     }
 
     // Create an Access Token
-    const { access_token } = await signToken(user);
+    const { access_token } = await signToken(user as any);
 
-    console.log(user)
     // Send Access Token in Cookie
     res.cookie('access_token', access_token, accessTokenCookieOptions);
     res.cookie('logged_in', true, {
@@ -91,9 +86,7 @@ export const loginHandler = async (
       httpOnly: false,
     });
 
-    
-    // Send Access Token
-    res.status(200).json({
+    res.send({
       status: 'success',
       access_token,
       user: {
@@ -102,7 +95,6 @@ export const loginHandler = async (
         email: user.email,
         role: user.role
       }
-     
     });
   } catch (err: any) {
     next(err);
