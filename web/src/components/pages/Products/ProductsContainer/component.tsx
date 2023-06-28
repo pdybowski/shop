@@ -11,12 +11,34 @@ interface Props {
     productsToDisplay: Product[];
     itemsOnPage: number;
     productType: ProductType;
+    resetFilters: boolean;
 }
 
-export const ProductsComponent = ({ productsToDisplay, itemsOnPage, productType }: Props): JSX.Element => {
-    const optionsShirt = [{ label: 'XXS', checked: false }, { label: 'XS', checked: false }, {label: 'S', checked: false}, { label: 'M', checked: false }, { label: 'L', checked: false }, { label: 'XL', checked: false }, {label: 'XXL', checked: false}];
+export const ProductsComponent = ({ productsToDisplay, itemsOnPage, productType, resetFilters}: Props): JSX.Element => {
+    const optionsShirt = [{ label: 'XXS', checked: false }, { label: 'XS', checked: false }, {
+        label: 'S',
+        checked: false,
+    }, { label: 'M', checked: false }, { label: 'L', checked: false }, { label: 'XL', checked: false }, {
+        label: 'XXL',
+        checked: false,
+    }];
 
-    const optionsShoe = [{ label: '28', checked: false }, { label: '29', checked: false }, {label: '30', checked: false}, { label: '31', checked: false }, { label: '32', checked: false }, { label: '33', checked: false }, {label: '34', checked: false}, {label: '35', checked: false}, {label: '36', checked: false}, {label: '37', checked: false}, { label: '38', checked: false }, { label: '39', checked: false }, {label: '40', checked: false}, { label: '41', checked: false }, { label: '42', checked: false }, { label: '43', checked: false }, {label: '44', checked: false}, {label: '45', checked: false}, {label: '46', checked: false}, {label: '47', checked: false}, {label: '48', checked: false}];
+    const optionsShoe = [{ label: '28', checked: false }, { label: '29', checked: false }, {
+        label: '30',
+        checked: false,
+    }, { label: '31', checked: false }, { label: '32', checked: false }, { label: '33', checked: false }, {
+        label: '34',
+        checked: false,
+    }, { label: '35', checked: false }, { label: '36', checked: false }, { label: '37', checked: false }, {
+        label: '38',
+        checked: false,
+    }, { label: '39', checked: false }, { label: '40', checked: false }, { label: '41', checked: false }, {
+        label: '42',
+        checked: false,
+    }, { label: '43', checked: false }, { label: '44', checked: false }, { label: '45', checked: false }, {
+        label: '46',
+        checked: false,
+    }, { label: '47', checked: false }, { label: '48', checked: false }];
 
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
@@ -71,10 +93,21 @@ export const ProductsComponent = ({ productsToDisplay, itemsOnPage, productType 
     };
 
     useEffect(() => {
+        if (resetFilters) {
+            setNameSearch('');
+            setMinPriceSearch('');
+            setMaxPriceSearch('');
+            setSizeShirtSearchArr([]);
+            setSizeShoeSearchArr([]);
+            setSizeShirt(optionsShirt);
+            setSizeShoe(optionsShoe);
+        }
+    }, [productsToDisplay]);
+
+    useEffect(() => {
         let results: Product[] = productsToDisplay;
 
         const filterProductsByName = () => {
-            console.log(results);
             results = results.filter(
                 (product) =>
                     product.name.toLowerCase().includes(nameSearch.toLowerCase()) ||
@@ -98,7 +131,7 @@ export const ProductsComponent = ({ productsToDisplay, itemsOnPage, productType 
 
         const filterProductsByShoeSize = () => {
             results = results.filter(item1 =>
-                !!sizeShirtSearchArr.find(item2 => item1.size === item2),
+                !!sizeShoeSearchArr.find(item2 => item1.size === item2),
             );
         };
 
@@ -128,7 +161,7 @@ export const ProductsComponent = ({ productsToDisplay, itemsOnPage, productType 
         setTotalPages(Math.ceil(results.length / itemsOnPage));
         setProductsForPage(pageProducts);
         setPage(1);
-    }, [nameSearch, minPriceSearch, maxPriceSearch, sizeShirtSearchArr]);
+    }, [nameSearch, minPriceSearch, maxPriceSearch, sizeShirtSearchArr, sizeShoeSearchArr]);
 
     useMemo(() => {
         if (!productCategory) return <Navigate replace to='/' />;
@@ -153,11 +186,8 @@ export const ProductsComponent = ({ productsToDisplay, itemsOnPage, productType 
         setSizeDropdown(!sizeDropdown);
     }
 
-    function clearSearchByName() {
-        setNameSearch('');
-    }
-
     const MultiselectCheckbox = ({ data, setData, onChange }: { data: any, setData: any, onChange: any }) => {
+
         const toggle = (index: number) => {
             const newData = [...data];
             newData.splice(index, 1, {
@@ -190,7 +220,7 @@ export const ProductsComponent = ({ productsToDisplay, itemsOnPage, productType 
         <div className='products__container'>
             <div className='products__container--left'>
                 <div className='products__search'>
-                    <SearchInput onSearch={searchProductByName} onClear={clearSearchByName} />
+                    <SearchInput inputValue={nameSearch} setInputValue={setNameSearch} />
                 </div>
                 <div className='products__filter'>
                     <button
@@ -262,6 +292,7 @@ export const ProductsComponent = ({ productsToDisplay, itemsOnPage, productType 
                             <ul className='products__filter__dropdown__list'>
                                 <li>
                                     <input
+                                        value={minPriceSearch}
                                         type='number'
                                         onChange={searchProductByMinPrice}
                                         placeholder='Min price...'
@@ -270,6 +301,7 @@ export const ProductsComponent = ({ productsToDisplay, itemsOnPage, productType 
                                     />
                                     -
                                     <input
+                                        value={maxPriceSearch}
                                         type='number'
                                         onChange={searchProductByMaxPrice}
                                         placeholder='Max price...'

@@ -29,11 +29,6 @@ export const CartPage = () => {
 
     const api = new Api();
 
-    interface Props {
-        _id: string;
-        count: number;
-    }
-
     const handlePayment = async () => {
         setIsLoading(true);
 
@@ -69,7 +64,7 @@ export const CartPage = () => {
                     {itemsNumber <= 0 && <div>Cart is empty!</div>}
                     <ul>
                         {cartStore.cart.map((cartItem: { product: Product; quantity: number }) => (
-                            <CartItem key={cartItem.product['_id']} cartItem={cartItem} />
+                            <CartItem cartItem={cartItem} />
                         ))}
                     </ul>
                 </div>
